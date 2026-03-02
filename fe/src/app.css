@@ -1,0 +1,220 @@
+/* ═══════════════════════════════
+   EduAI Custom Properties & Styles
+   (Moved from App.css to styles/app.css)
+═══════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap');
+
+:root {
+  --edu-primary: #1a56db;
+  --edu-primary-light: #3b82f6;
+  --edu-primary-soft: #eff6ff;
+  --edu-primary-border: #bfdbfe;
+  --edu-secondary: #0891b2;
+  --edu-accent: #f59e0b;
+  --edu-accent-soft: #fef3c7;
+  --edu-success: #10b981;
+  --edu-success-soft: #d1fae5;
+  --edu-danger: #ef4444;
+  --edu-danger-soft: #fee2e2;
+  --edu-purple: #7c3aed;
+  --edu-purple-soft: #ede9fe;
+  --edu-bg: #f0f4ff;
+  --edu-sidebar-bg: #1e3a8a;
+  --edu-sidebar-text: #bfdbfe;
+  --edu-sidebar-active: #ffffff;
+  --edu-gray-50: #f8fafc;
+  --edu-gray-100: #f1f5f9;
+  --edu-gray-200: #e2e8f0;
+  --edu-gray-300: #cbd5e1;
+  --edu-gray-400: #94a3b8;
+  --edu-gray-500: #64748b;
+  --edu-gray-600: #475569;
+  --edu-gray-700: #334155;
+  --edu-gray-800: #1e293b;
+  --edu-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.04);
+  --edu-shadow: 0 4px 16px rgba(0, 0, 0, 0.08), 0 2px 6px rgba(0, 0, 0, 0.04);
+  --edu-shadow-lg: 0 10px 40px rgba(0, 0, 0, 0.12);
+  --edu-radius: 12px;
+  --edu-radius-sm: 8px;
+  --edu-radius-lg: 16px;
+}
+
+body {
+  font-family: 'Nunito', sans-serif;
+}
+
+/* ─── Scrollbar ─── */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 5px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--edu-gray-200);
+  border-radius: 4px;
+}
+
+.chat-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+.chat-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--edu-gray-200);
+  border-radius: 4px;
+}
+
+/* ─── Animations ─── */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes msgIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+@keyframes bounce-dot {
+  0%, 60%, 100% { transform: translateY(0); }
+  30% { transform: translateY(-7px); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.25s ease;
+}
+
+.animate-msg-in {
+  animation: msgIn 0.3s ease;
+}
+
+.animate-pulse-dot {
+  animation: pulse-dot 2s infinite;
+}
+
+.typing-dot {
+  animation: bounce-dot 1.2s infinite;
+}
+.typing-dot:nth-child(2) { animation-delay: 0.2s; }
+.typing-dot:nth-child(3) { animation-delay: 0.4s; }
+
+/* ─── Sidebar ─── */
+.sidebar-gradient::before {
+  content: '';
+  position: absolute;
+  top: -60px;
+  right: -60px;
+  width: 200px;
+  height: 200px;
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+/* ─── Nav active indicator ─── */
+.nav-active-indicator::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3px;
+  height: 18px;
+  background: #60a5fa;
+  border-radius: 0 3px 3px 0;
+}
+
+/* ─── Code blocks ─── */
+.code-block {
+  background: #1e293b;
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 10px 0;
+}
+
+.code-block-header {
+  background: #334155;
+  padding: 7px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: #94a3b8;
+}
+
+.code-block pre {
+  padding: 14px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  line-height: 1.7;
+  color: #e2e8f0;
+  overflow-x: auto;
+}
+
+.code-block .kw { color: #f472b6; }
+.code-block .fn { color: #a78bfa; }
+.code-block .str { color: #86efac; }
+.code-block .num { color: #67e8f9; }
+.code-block .cmt { color: #64748b; font-style: italic; }
+
+/* ─── Chat message bubbles ─── */
+.msg-bubble-ai {
+  background: white;
+  border: 1px solid var(--edu-gray-200);
+  border-radius: 14px 14px 14px 4px;
+  box-shadow: var(--edu-shadow-sm);
+}
+
+.msg-bubble-user {
+  background: var(--edu-primary);
+  color: white;
+  border: 1px solid var(--edu-primary);
+  border-radius: 14px 14px 4px 14px;
+  box-shadow: 0 2px 10px rgba(26, 86, 219, 0.25);
+}
+
+.msg-bubble-ai code {
+  font-family: 'JetBrains Mono', monospace;
+  background: rgba(0, 0, 0, 0.06);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+.msg-bubble-user code {
+  font-family: 'JetBrains Mono', monospace;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+/* ─── Progress bar ─── */
+.progress-track {
+  background: var(--edu-gray-100);
+  border-radius: 20px;
+  height: 7px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  border-radius: 20px;
+  transition: width 0.6s ease;
+}
+
+/* ─── Bar chart ─── */
+.bar-track {
+  background: var(--edu-gray-100);
+  border-radius: 20px;
+  height: 10px;
+  overflow: hidden;
+}
+
+.bar-fill {
+  height: 100%;
+  border-radius: 20px;
+}
