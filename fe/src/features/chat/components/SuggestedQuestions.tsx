@@ -16,7 +16,7 @@ export function SuggestedQuestions({ onSelect }: SuggestedQuestionsProps) {
         <button
           key={s.label}
           onClick={() => onSelect(`Giải thích về ${s.label}`)}
-          className="flex items-center gap-1.5 rounded-full border-[1.5px] border-[var(--edu-gray-200)] bg-white px-[13px] py-[7px] text-xs font-semibold text-[var(--edu-gray-600)] transition-all hover:border-[var(--edu-primary)] hover:bg-[var(--edu-primary-soft)] hover:text-[var(--edu-primary)]"
+          className="flex items-center gap-[6px] rounded-full border-[1.5px] border-[#e2e8f0] bg-white px-[13px] py-[7px] text-[12px] font-semibold text-[#475569] transition-all hover:border-[#1a56db] hover:bg-[#eff6ff] hover:text-[#1a56db]"
         >
           {s.icon} {s.label}
         </button>

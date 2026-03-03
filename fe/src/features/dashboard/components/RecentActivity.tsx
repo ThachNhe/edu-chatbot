@@ -15,38 +15,30 @@ const ACTIVITIES: ActivityItem[] = [
 
 export function RecentActivity() {
   return (
-    <div className="rounded-[var(--edu-radius)] border border-[var(--edu-gray-100)] bg-white shadow-[var(--edu-shadow-sm)]">
-      <div className="flex items-center justify-between border-b border-[var(--edu-gray-100)] px-5 py-4">
-        <div className="flex items-center gap-[7px] text-sm font-extrabold text-[var(--edu-gray-800)]">
+    <div className="rounded-2xl border border-gray-100 bg-white p-5 shadow-sm">
+      <div className="mb-4 flex items-center justify-between">
+        <h3 className="flex items-center gap-2 text-[13px] font-extrabold text-gray-700">
           🕐 Hoạt động gần đây
-        </div>
-        <span className="cursor-pointer text-xs font-bold text-[var(--edu-primary)] hover:underline">
-          Xem tất cả
-        </span>
+        </h3>
+        <button className="text-[11.5px] font-semibold text-blue-500 hover:text-blue-700 transition-colors">
+          Xem tất cả →
+        </button>
       </div>
-      <div className="px-5 py-4">
+      <div className="space-y-1">
         {ACTIVITIES.map((a, i) => (
           <div
             key={i}
-            className={`flex items-start gap-3 py-2.5 ${
-              i < ACTIVITIES.length - 1
-                ? 'border-b border-[var(--edu-gray-100)]'
-                : ''
-            }`}
+            className="flex items-start gap-3 rounded-xl px-3 py-2.5 transition-colors hover:bg-gray-50 cursor-pointer"
           >
             <div
-              className="mt-px flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-[9px] text-[15px]"
+              className="mt-0.5 flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg text-[14px]"
               style={{ background: a.iconBg }}
             >
               {a.icon}
             </div>
-            <div>
-              <p className="mb-0.5 text-[13px] font-semibold text-[var(--edu-gray-700)]">
-                {a.title}
-              </p>
-              <span className="text-[11.5px] text-[var(--edu-gray-400)]">
-                {a.meta}
-              </span>
+            <div className="min-w-0">
+              <div className="text-[12.5px] font-semibold text-gray-700 leading-snug">{a.title}</div>
+              <div className="mt-0.5 text-[11px] text-gray-400">{a.meta}</div>
             </div>
           </div>
         ))}

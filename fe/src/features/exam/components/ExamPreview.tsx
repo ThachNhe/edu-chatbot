@@ -8,7 +8,7 @@ const SAMPLE_QUESTIONS: ExamQuestion[] = [
     number: 1, text: 'Trong Pascal, cú pháp đúng của vòng lặp FOR–DO là gì?', level: 'easy',
     options: [
       { letter: 'A', text: 'for i := 1 to n do', isCorrect: true },
-      { letter: 'B', text: 'for (i = 1; i &lt;= n; i++)' },
+      { letter: 'B', text: 'for (i = 1; i <= n; i++)' },
       { letter: 'C', text: 'for i = 1 to n loop' },
       { letter: 'D', text: 'for i from 1 to n do' },
     ],
@@ -69,30 +69,34 @@ export function ExamPreview() {
 
   return (
     <div
-      className={`overflow-hidden rounded-[var(--edu-radius)] border border-[var(--edu-gray-200)] bg-white shadow-[var(--edu-shadow-sm)] transition-opacity ${
+      className={`overflow-hidden rounded-xl border border-[#e2e8f0] bg-white shadow-[0_1px_3px_rgba(0,0,0,0.08),0_1px_2px_rgba(0,0,0,0.04)] transition-opacity ${
         isGenerating ? 'pointer-events-none opacity-50' : ''
       }`}
     >
-      {/* Header */}
+      {/* Header — khớp .exam-header-bar */}
       <div className="bg-gradient-to-r from-[#1a56db] to-[#0ea5e9] px-7 py-[22px] text-white">
         <h3 className="mb-1.5 text-base font-extrabold">
           📝 Đề kiểm tra Tin học 12 – Chương 2: {title}
         </h3>
+        {/* khớp .exam-meta-row + .exam-meta-item */}
         <div className="flex gap-5">
-          {['⏱️ Thời gian: 45 phút', '📋 Số câu: 10', '🎯 Hình thức: Trắc nghiệm', '📅 Ngày tạo: 27/02/2026'].map(
-            (meta) => (
-              <div
-                key={meta}
-                className="flex items-center gap-[5px] text-xs opacity-85"
-              >
-                {meta}
-              </div>
-            ),
-          )}
+          {[
+            '⏱️ Thời gian: 45 phút',
+            '📋 Số câu: 10',
+            '🎯 Hình thức: Trắc nghiệm',
+            '📅 Ngày tạo: 27/02/2026',
+          ].map((meta) => (
+            <div
+              key={meta}
+              className="flex items-center gap-[5px] text-[12px] opacity-85"
+            >
+              {meta}
+            </div>
+          ))}
         </div>
       </div>
 
-      {/* Questions */}
+      {/* Questions — khớp .exam-body { padding: 24px 28px } */}
       <div className="px-7 py-6">
         {SAMPLE_QUESTIONS.map((q) => (
           <QuestionBlock key={q.number} question={q} />

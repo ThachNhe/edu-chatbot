@@ -19,7 +19,7 @@ export function ChatLayout() {
   }
 
   return (
-    <div className="grid h-[calc(100vh-58px)] grid-cols-[220px_1fr_240px] overflow-hidden">
+    <div className="grid h-[calc(100vh-58px)] grid-cols-[240px_1fr_260px] overflow-hidden">
       <ChatSidebar
         conversations={conversations}
         onNewChat={startNewChat}
