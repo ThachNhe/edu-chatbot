@@ -15,7 +15,7 @@ from pydantic import BaseModel, Field
 
 import chat_bot
 from send_mail import send_support_email
-from config import settings
+from backend.config.config import settings
 # from auth import check_auth
 
 class SendMailRequest(BaseModel):
