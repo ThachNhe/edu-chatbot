@@ -1,7 +1,7 @@
 import { useState, useCallback } from 'react'
 import { QuestionBlock } from './QuestionBlock'
 import { ExamActions } from './ExamActions'
-import type { ExamQuestion } from '../types/exam.types'
+import type { ExamQuestion } from '../types/exam.type'
 
 const SAMPLE_QUESTIONS: ExamQuestion[] = [
   {

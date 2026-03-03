@@ -1,5 +1,6 @@
 import { cn } from '@/lib/utils'
-import type { ExamQuestion } from '../types/exam.types'
+// import type { ExamQuestion } from '../types/exam.types'
+import type { ExamQuestion } from '../types/exam.type'
 
 const LEVEL_STYLES = {
   easy: 'bg-[#d1fae5] text-[#10b981]',
