@@ -15,7 +15,7 @@ from pydantic import BaseModel, Field
 
 import chat_bot
 from send_mail import send_support_email
-from backend.config.config import settings
+# from app.config.config import settings
 # from auth import check_auth
 
 class SendMailRequest(BaseModel):
@@ -32,7 +32,7 @@ async def health():
     return {"status": "ok"}
 
 # Static
-app.mount("/client", StaticFiles(directory="client"), name="client")
+# app.mount("/client", StaticFiles(directory="client"), name="client")
 
 @app.get("/api/auth")
 async def auth_status(request: Request):

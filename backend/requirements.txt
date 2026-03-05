@@ -25,3 +25,7 @@ pydantic-settings>=2.0.0
 # Optional: async tools used by crawl4ai
 aiohttp>=3.9.0
 
+
+sqlalchemy
+alembic
+psycopg2-binary

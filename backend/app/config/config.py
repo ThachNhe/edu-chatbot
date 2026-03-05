@@ -22,6 +22,10 @@ class Settings(BaseSettings):
     smtp_port: int = Field(587, description="SMTP port")
     smtp_user: str = Field(..., description="SMTP username")
     smtp_pass: str = Field(..., description="SMTP password")
+
+    # Database
+    database_url: str = Field(..., description="Database URL")
+    debug: bool = Field(False, description="Debug mode")
     
     @property
     def is_production(self) -> bool:

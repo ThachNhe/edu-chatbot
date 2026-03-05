@@ -2,7 +2,7 @@ import os
 import smtplib
 from email.message import EmailMessage
 from typing import Optional
-from backend.config.config import settings
+from app.config.config import settings
 
 # Hard-coded recipient (customer support)
 SUPPORT_EMAIL = "thach.dv@zinza.com.vn"
