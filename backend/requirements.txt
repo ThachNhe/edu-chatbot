@@ -29,3 +29,7 @@ aiohttp>=3.9.0
 sqlalchemy
 alembic
 psycopg2-binary
+passlib[bcrypt]
+python-jose[cryptography]
+python-multipart
+pydantic[email]

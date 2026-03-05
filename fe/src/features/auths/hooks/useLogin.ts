@@ -110,3 +110,50 @@ export function useMe() {
     staleTime: 1000 * 60 * 5, // 5 minutes
   })
 }
+
+
+export function useForgotPassword() {
+  const { addToast } = useUIStore()
+
+  return useMutation({
+    mutationFn: ({ email }: ForgotPasswordFormValues) =>
+      authService.forgotPassword(email),
+
+    onError: (error: Error) => {
+      addToast({
+        type: 'error',
+        title: 'Gửi email thất bại',
+        description: error.message ?? 'Đã xảy ra lỗi, vui lòng thử lại',
+      })
+    },
+  })
+}
+
+// ─── useResetPassword ──────────────────────────────────────────────────────
+
+export function useResetPassword() {
+  const { addToast } = useUIStore()
+  const router = useRouter()
+
+  return useMutation({
+    mutationFn: ({ token, password }: ResetPasswordFormValues) =>
+      authService.resetPassword(token, password),
+
+    onSuccess: () => {
+      addToast({
+        type: 'success',
+        title: 'Đặt lại mật khẩu thành công',
+        description: 'Vui lòng đăng nhập với mật khẩu mới.',
+      })
+      router.navigate({ to: ROUTES.LOGIN })
+    },
+
+    onError: (error: Error) => {
+      addToast({
+        type: 'error',
+        title: 'Đặt lại mật khẩu thất bại',
+        description: error.message ?? 'Liên kết không hợp lệ hoặc đã hết hạn',
+      })
+    },
+  })
+}

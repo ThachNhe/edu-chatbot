@@ -11,12 +11,14 @@ from typing import Optional
 from fastapi import FastAPI, WebSocket, WebSocketDisconnect, Request
 from fastapi.responses import JSONResponse, FileResponse, HTMLResponse
 from fastapi.staticfiles import StaticFiles
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
 
 import chat_bot
 from send_mail import send_support_email
-# from app.config.config import settings
-# from auth import check_auth
+from app.config.config import settings
+from app.features.auth.router import router as auth_router
+
 
 class SendMailRequest(BaseModel):
     question: str = Field(..., min_length=1, description="User question to send")
@@ -24,86 +26,70 @@ class SendMailRequest(BaseModel):
         None, description="Optional email from user to reply later"
     )
 
+
 app = FastAPI(title="FC2 ChatBot (WebSocket)")
+
+# ─── CORS ────────────────────────────────────────────────────────────────────
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=False,  # phải False nếu dùng wildcard
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+# ─── Routers ─────────────────────────────────────────────────────────────────
+app.include_router(auth_router, prefix="/api")
 
 
 @app.get("/health")
 async def health():
     return {"status": "ok"}
 
-# Static
-# app.mount("/client", StaticFiles(directory="client"), name="client")
-
-@app.get("/api/auth")
-async def auth_status(request: Request):
-    return JSONResponse(
-        status_code=200,
-        content={"authenticated": True, "login_url": ""},
-    )
-
-
 @app.get("/")
 async def index(request: Request):
     return FileResponse("client/index.html")
 
+
 @app.websocket("/ws/chat")
 async def ws_chat(ws: WebSocket):
     await ws.accept()
-    history = []  # Keep the last 2-3 turns (role, content)
+    history: list[tuple[str, str]] = []
+
     try:
         while True:
             data = await ws.receive_text()
-            try:
-                payload = json.loads(data)
-                query = payload.get("text") or payload.get("message") or ""
-            except Exception:
-                query = data
+            payload = json.loads(data)
+            user_msg = payload.get("message", "")
 
-            if not query:
-                await ws.send_json({"role": "system", "content": "Empty message"})
-                continue
+            answer_text, is_answerable = await asyncio.to_thread(
+                chat_bot.answer, user_msg, history
+            )
 
-            try:
-                loop = asyncio.get_running_loop()
-                result = await loop.run_in_executor(None, chat_bot.answer, query, history)
-            except Exception as e:  # pragma: no cover - runtime safety
-                print(f"[ERROR] answer failed: {e}", flush=True)
-                await ws.send_json({"role": "system", "content": f"Lỗi xử lý: {e}"})
-                continue
+            history.append((user_msg, answer_text))
 
-            if isinstance(result, (tuple, list)) and len(result) == 2:
-                response, can_answer = result
-            else:
-                response, can_answer = result, True
+            await ws.send_text(
+                json.dumps(
+                    {
+                        "reply": answer_text,
+                        "is_answerable": is_answerable,
+                    }
+                )
+            )
 
-            await ws.send_json({"role": "assistant", "content": response, "canAnswer": can_answer})
-            history.append(("User", query))
-            history.append(("Assistant", response))
-            if len(history) > 6:
-                history = history[-6:]
     except WebSocketDisconnect:
         pass
 
 
 @app.post("/send_mail")
-async def send_mail_api(payload: SendMailRequest):
-    loop = asyncio.get_running_loop()
-    try:
-        await loop.run_in_executor(
-            None, send_support_email, payload.question, payload.user_email
-        )
+async def send_mail(req: SendMailRequest):
+    result = await asyncio.to_thread(
+        send_support_email, req.question, req.user_email
+    )
+    if result:
         return {"status": "ok"}
-    except Exception as e:  # pragma: no cover
-        return JSONResponse(status_code=500, content={"error": str(e)})
+    return JSONResponse(status_code=500, content={"error": "Failed to send email"})
 
 
-@app.exception_handler(Exception)
-async def _unhandled(request, exc):  # pragma: no cover - safety
-    return JSONResponse(status_code=500, content={"error": str(exc)})
-
-
-if __name__ == "__main__":
-    import uvicorn
-
-    uvicorn.run("server:app", host="0.0.0.0", port=8765, reload=False)
-
+# Static
+# app.mount("/client", StaticFiles(directory="client"), name="client")

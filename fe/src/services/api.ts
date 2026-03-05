@@ -32,18 +32,15 @@ const processQueue = (error: unknown, token: string | null = null) => {
   failedQueue = []
 }
 
-// ─── Request Interceptor ───────────────────────────────────────────────────
+// ─── Request Interceptor ──────────────────────────────────────────────────
 
-api.interceptors.request.use(
-  (config: InternalAxiosRequestConfig) => {
-    const token = useAuthStore.getState().token
-    if (token) {
-      config.headers.Authorization = `Bearer ${token}`
-    }
-    return config
-  },
-  (error) => Promise.reject(error),
-)
+api.interceptors.request.use((config) => {
+  const token = useAuthStore.getState().token
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`
+  }
+  return config
+})
 
 // ─── Response Interceptor ──────────────────────────────────────────────────
 
@@ -54,34 +51,24 @@ api.interceptors.response.use(
       _retry?: boolean
     }
 
-    // Handle 401 - attempt token refresh
     if (error.response?.status === 401 && !originalRequest._retry) {
       if (isRefreshing) {
-        // Queue requests while refreshing
         return new Promise((resolve, reject) => {
-          failedQueue.push({ resolve, reject })
-        })
-          .then((token) => {
-            originalRequest.headers.Authorization = `Bearer ${token}`
-            return api(originalRequest)
+          failedQueue.push({
+            resolve: (token: string) => {
+              originalRequest.headers.Authorization = `Bearer ${token}`
+              resolve(api(originalRequest))
+            },
+            reject,
           })
-          .catch((err) => Promise.reject(err))
+        })
       }
 
       originalRequest._retry = true
       isRefreshing = true
 
-      const storedToken = localStorage.getItem('auth-storage')
-      const refreshToken = storedToken
-        ? JSON.parse(storedToken)?.state?.token
-        : null
-
-      if (!refreshToken) {
-        useAuthStore.getState().logout()
-        return Promise.reject(error)
-      }
-
       try {
+        const refreshToken = useAuthStore.getState().token
         const { data } = await axios.post<RefreshTokenResponse>(
           `${import.meta.env.VITE_API_URL}${API_ENDPOINTS.AUTH.REFRESH}`,
           { refreshToken },
@@ -89,34 +76,47 @@ api.interceptors.response.use(
 
         useAuthStore.getState().setToken(data.accessToken)
         processQueue(null, data.accessToken)
+
         originalRequest.headers.Authorization = `Bearer ${data.accessToken}`
         return api(originalRequest)
       } catch (refreshError) {
         processQueue(refreshError, null)
         useAuthStore.getState().logout()
+        window.location.href = '/login'
         return Promise.reject(refreshError)
       } finally {
         isRefreshing = false
       }
     }
 
-    return Promise.reject(error)
+    // Extract error message
+    const message =
+      error.response?.data?.message ??
+      error.message ??
+      'Đã xảy ra lỗi không xác định'
+
+    return Promise.reject(new Error(message))
   },
 )
 
-// ─── Typed helper methods ──────────────────────────────────────────────────
+// ─── Helper Functions ──────────────────────────────────────────────────────
 
-export const apiGet = <T>(url: string, params?: object) =>
-  api.get<T>(url, { params }).then((res) => res.data)
+export async function apiGet<T>(url: string, params?: object): Promise<T> {
+  const { data } = await api.get<T>(url, { params })
+  return data
+}
 
-export const apiPost = <T>(url: string, data?: unknown) =>
-  api.post<T>(url, data).then((res) => res.data)
+export async function apiPost<T>(url: string, body?: object): Promise<T> {
+  const { data } = await api.post<T>(url, body)
+  return data
+}
 
-export const apiPut = <T>(url: string, data?: unknown) =>
-  api.put<T>(url, data).then((res) => res.data)
+export async function apiPut<T>(url: string, body?: object): Promise<T> {
+  const { data } = await api.put<T>(url, body)
+  return data
+}
 
-export const apiPatch = <T>(url: string, data?: unknown) =>
-  api.patch<T>(url, data).then((res) => res.data)
-
-export const apiDelete = <T>(url: string) =>
-  api.delete<T>(url).then((res) => res.data)
+export async function apiDelete<T>(url: string): Promise<T> {
+  const { data } = await api.delete<T>(url)
+  return data
+}

@@ -26,6 +26,14 @@ class Settings(BaseSettings):
     # Database
     database_url: str = Field(..., description="Database URL")
     debug: bool = Field(False, description="Debug mode")
+
+    # JWT
+    jwt_secret_key: str = Field(..., description="JWT secret key")
+    jwt_algorithm: str = Field("HS256", description="JWT algorithm")
+    jwt_access_token_expire_minutes: int = Field(30, description="Access token expire time in minutes")
+    jwt_refresh_token_expire_days: int = Field(7, description="Refresh token expire time in days")
+
+    frontend_url: str = Field("http://localhost:5173", description="Frontend URL for CORS and reset password link")
     
     @property
     def is_production(self) -> bool:
