@@ -1,7 +1,7 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { LessonToolbar, LessonTable } from '@/features/lessons'
 
-export const Route = createFileRoute('/lessons')({
+export const Route = createFileRoute('/_authenticated/lessons')({
   component: LessonsPage,
 })
 

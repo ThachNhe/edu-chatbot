@@ -4,7 +4,7 @@ import { StatsGrid } from '@/features/dashboard/components/StatsGrid'
 import { QuickAccess } from '@/features/dashboard/components/QuickAccess'
 import { RecentActivity } from '@/features/dashboard/components/RecentActivity'
 
-export const Route = createFileRoute('/dashboard')({
+export const Route = createFileRoute('/_authenticated/dashboard')({
   component: DashboardPage,
 })
 

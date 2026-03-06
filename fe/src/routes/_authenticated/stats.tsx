@@ -8,7 +8,7 @@ import {
 } from '@/features/stats'
 import { useAppStore } from '@/stores/useAppStore'
 
-export const Route = createFileRoute('/stats')({
+export const Route = createFileRoute('/_authenticated/stats')({
   component: StatsPage,
 })
 
