@@ -2,9 +2,14 @@ import { useState, useCallback, useRef, useEffect } from 'react'
 import type { ChatMessage, ChatConversation } from '../types/chat.types'
 
 // Derive ws:// từ VITE_API_URL (http→ws, https→wss)
+// const WS_URL = (() => {
+//   const apiUrl = import.meta.env.VITE_API_URL ?? 'http://localhost:8765'
+//   return apiUrl.replace(/^https?/, (s: any) => (s === 'https' ? 'wss' : 'ws')) + '/ws/chat'
+// })()
+
 const WS_URL = (() => {
   const apiUrl = import.meta.env.VITE_API_URL ?? 'http://localhost:8765'
-  return apiUrl.replace(/^https?/, (s: any) => (s === 'https' ? 'wss' : 'ws')) + '/ws/chat'
+  return apiUrl.replace(/^https?/, (s: any) => (s === 'https' ? 'wss' : 'ws')) + '/api/ws/chat'
 })()
 
 const AI_GREETING: ChatMessage = {
