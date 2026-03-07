@@ -1,9 +1,11 @@
+import { Search } from "lucide-react";
+
 export function LessonToolbar() {
   return (
     <div className="mb-5 flex items-center justify-between">
       {/* khớp .search-box */}
       <div className="flex w-[260px] items-center gap-[9px] rounded-[10px] border-[1.5px] border-[#e2e8f0] bg-white px-3.5 py-[9px] transition-colors focus-within:border-[#1a56db]">
-        <span className="text-[#94a3b8]">🔍</span>
+        <span className="text-[#94a3b8]"><Search size={16} /></span>
         <input
           type="text"
           placeholder="Tìm bài học..."

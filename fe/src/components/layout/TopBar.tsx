@@ -1,4 +1,5 @@
 import { useAppStore } from '@/stores/useAppStore'
+import { Search, Bell } from 'lucide-react'
 
 export function TopBar() {
   const pageInfo = useAppStore((s) => s.pageInfo)
@@ -22,21 +23,17 @@ export function TopBar() {
       <div className="flex items-center gap-2">
         {/* Search */}
         <button className="flex h-8 w-8 items-center justify-center rounded-lg text-gray-400 hover:bg-gray-100 hover:text-gray-600 transition-colors text-sm">
-          🔍
+          <Search size={16} />
         </button>
         {/* Bell */}
         <div className="relative">
           <button className="flex h-8 w-8 items-center justify-center rounded-lg text-gray-400 hover:bg-gray-100 hover:text-gray-600 transition-colors text-sm">
-            🔔
+            <Bell size={16} />
           </button>
           <span className="absolute -right-0.5 -top-0.5 flex h-4 w-4 items-center justify-center rounded-full bg-red-500 text-[9px] font-bold text-white">
             3
           </span>
         </div>
-        {/* Theme */}
-        <button className="flex h-8 w-8 items-center justify-center rounded-lg text-gray-400 hover:bg-gray-100 hover:text-gray-600 transition-colors text-sm">
-          🌙
-        </button>
       </div>
     </header>
   )
