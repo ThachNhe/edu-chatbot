@@ -3,6 +3,13 @@ import { useAuthStore } from '@/stores/useAuthStore'
 import type { ApiErrorResponse, RefreshTokenResponse } from '@/types/api.types'
 import { API_ENDPOINTS } from './endpoints'
 
+const SKIP_REFRESH_URLS = [
+  API_ENDPOINTS.AUTH.LOGIN,
+  API_ENDPOINTS.AUTH.REGISTER,
+  API_ENDPOINTS.AUTH.REFRESH,
+]
+
+
 // ─── Axios Instance ────────────────────────────────────────────────────────
 
 export const api = axios.create({
@@ -51,7 +58,11 @@ api.interceptors.response.use(
       _retry?: boolean
     }
 
-    if (error.response?.status === 401 && !originalRequest._retry) {
+    const requestUrl = originalRequest.url ?? ''
+    const isAuthUrl = SKIP_REFRESH_URLS.some((url) => requestUrl.includes(url))
+    const refreshToken = useAuthStore.getState().refreshToken
+
+    if (error.response?.status === 401 && !originalRequest._retry && !isAuthUrl && refreshToken) {
       if (isRefreshing) {
         return new Promise((resolve, reject) => {
           failedQueue.push({
@@ -68,9 +79,9 @@ api.interceptors.response.use(
       isRefreshing = true
 
       try {
-        const refreshToken = useAuthStore.getState().token
+        const refreshToken = useAuthStore.getState().refreshToken
         const { data } = await axios.post<RefreshTokenResponse>(
-          `${import.meta.env.VITE_API_URL}${API_ENDPOINTS.AUTH.REFRESH}`,
+          `${import.meta.env.VITE_API_URL}/api${API_ENDPOINTS.AUTH.REFRESH}`,
           { refreshToken },
         )
 

@@ -4,7 +4,7 @@ import { useAuthStore } from '@/stores/useAuthStore'
 import { useUIStore } from '@/stores/useUIStore'
 import { QUERY_KEYS, ROUTES } from '@/lib/constants'
 import { authService } from '../services/auth.service.ts'
-import type { LoginFormValues, RegisterFormValues } from '../types/auth.types.ts'
+import type { LoginFormValues, RegisterFormValues, ForgotPasswordFormValues, ResetPasswordFormValues } from '../types/auth.types.ts'
 
 // ─── useLogin ──────────────────────────────────────────────────────────────
 
@@ -18,7 +18,7 @@ export function useLogin() {
       authService.login({ email, password }),
 
     onSuccess: (data) => {
-      login(data.user, data.accessToken)
+      login(data.user, data.accessToken, data.refreshToken)
       addToast({
         type: 'success',
         title: 'Đăng nhập thành công',
