@@ -23,6 +23,7 @@ def create_access_token(data: dict, expires_delta: Optional[timedelta] = None) -
         expires_delta or timedelta(minutes=settings.jwt_access_token_expire_minutes)
     )
     to_encode.update({"exp": expire, "type": "access"})
+    print("Check settings in create_access_token:", settings.jwt_secret_key, settings.jwt_algorithm)
     return jwt.encode(to_encode, settings.jwt_secret_key, algorithm=settings.jwt_algorithm)
 
 
@@ -44,7 +45,10 @@ def create_reset_token(email: str) -> str:
 
 def decode_token(token: str) -> Optional[dict]:
     try:
+        print("Decoding token:", token)
+        print(f"Check settings {settings.jwt_secret_key} and {settings.jwt_algorithm}")
         payload = jwt.decode(token, settings.jwt_secret_key, algorithms=[settings.jwt_algorithm])
         return payload
-    except JWTError:
+    except JWTError as e:
+        print("Failed to decode token:", token, "Error:", str(e))
         return None

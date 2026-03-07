@@ -30,10 +30,9 @@ export const API_ENDPOINTS = {
     AVATAR: (id: string) => `/users/${id}/avatar`,
   },
 
-  // ─── Add more domains below ───────────────────────────────────────────────
-  // PRODUCTS: {
-  //   LIST: '/products',
-  //   BY_ID: (id: string) => `/products/${id}`,
-  //   ...
-  // },
+  // ─── Conversations ────────────────────────────────────────────────────────
+  CONVERSATIONS: {
+    LIST: '/conversations',
+    MESSAGES: (id: number) => `/conversations/${id}/messages`,
+  },
 } as const

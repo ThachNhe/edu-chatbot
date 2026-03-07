@@ -4,20 +4,16 @@ import type { ChatConversation } from '../types/chat.types'
 interface ChatSidebarProps {
   conversations: ChatConversation[]
   onNewChat: () => void
-  onSelectConversation: (id: string) => void
+  onSelectConversation: (id: number) => void
 }
 
-export function ChatSidebar({
-  conversations,
-  onNewChat,
-  onSelectConversation,
-}: ChatSidebarProps) {
-  const today = conversations.slice(0, 3)
-  const yesterday = conversations.slice(3)
+export function ChatSidebar({ conversations, onNewChat, onSelectConversation }: ChatSidebarProps) {
+  const todayStr = new Date().toDateString()
+  const today = conversations.filter((c) => new Date(c.created_at).toDateString() === todayStr)
+  const older = conversations.filter((c) => new Date(c.created_at).toDateString() !== todayStr)
 
   return (
     <div className="flex flex-col overflow-hidden border-r border-[#e2e8f0] bg-white">
-      {/* Header — khớp .chat-sidebar-header */}
       <div className="flex-shrink-0 border-b border-[#e2e8f0] px-3.5 py-4">
         <button
           onClick={onNewChat}
@@ -27,27 +23,37 @@ export function ChatSidebar({
         </button>
       </div>
 
-      {/* Conversations — khớp .chat-history */}
       <div className="flex-1 overflow-y-auto">
-        <SectionLabel>Hôm nay</SectionLabel>
-        <div className="px-2 pb-3">
-          {today.map((c) => (
-            <ConversationItem key={c.id} conversation={c} onSelect={onSelectConversation} />
-          ))}
-        </div>
-
-        <SectionLabel>Hôm qua</SectionLabel>
-        <div className="px-2 pb-3">
-          {yesterday.map((c) => (
-            <ConversationItem key={c.id} conversation={c} onSelect={onSelectConversation} />
-          ))}
-        </div>
+        {today.length > 0 && (
+          <>
+            <SectionLabel>Hôm nay</SectionLabel>
+            <div className="px-2 pb-3">
+              {today.map((c) => (
+                <ConversationItem key={c.id} conversation={c} onSelect={onSelectConversation} />
+              ))}
+            </div>
+          </>
+        )}
+        {older.length > 0 && (
+          <>
+            <SectionLabel>Trước đó</SectionLabel>
+            <div className="px-2 pb-3">
+              {older.map((c) => (
+                <ConversationItem key={c.id} conversation={c} onSelect={onSelectConversation} />
+              ))}
+            </div>
+          </>
+        )}
+        {conversations.length === 0 && (
+          <p className="px-4 py-6 text-center text-[12px] text-[#94a3b8]">
+            Chưa có cuộc trò chuyện nào
+          </p>
+        )}
       </div>
     </div>
   )
 }
 
-// khớp .chat-section-label
 function SectionLabel({ children }: { children: React.ReactNode }) {
   return (
     <div className="px-3.5 pb-1.5 pt-3 text-[10px] font-bold uppercase tracking-[1px] text-[#94a3b8]">
@@ -56,14 +62,18 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
   )
 }
 
-// khớp .chat-history-item
 function ConversationItem({
   conversation: c,
   onSelect,
 }: {
   conversation: ChatConversation
-  onSelect: (id: string) => void
+  onSelect: (id: number) => void
 }) {
+  const dateLabel = new Date(c.created_at).toLocaleTimeString('vi-VN', {
+    hour: '2-digit',
+    minute: '2-digit',
+  })
+
   return (
     <button
       onClick={() => onSelect(c.id)}
@@ -72,7 +82,6 @@ function ConversationItem({
         c.isActive && 'bg-[#eff6ff] hover:bg-[#eff6ff]',
       )}
     >
-      {/* chi-title */}
       <div
         className={cn(
           'truncate text-[12.5px] font-semibold leading-tight',
@@ -81,8 +90,7 @@ function ConversationItem({
       >
         {c.title}
       </div>
-      {/* chi-meta */}
-      <div className="mt-0.5 text-[11px] text-[#94a3b8]">{c.meta}</div>
+      <div className="mt-0.5 text-[11px] text-[#94a3b8]">{dateLabel}</div>
     </button>
   )
 }

@@ -1,6 +1,7 @@
 import { createFileRoute, redirect } from '@tanstack/react-router'
 import { RegisterForm } from '@/features/auths'
 import { useAuthStore } from '@/stores/useAuthStore'
+import { GraduationCap } from 'lucide-react'
 
 export const Route = createFileRoute('/register')({
   beforeLoad: () => {
@@ -25,7 +26,7 @@ function RegisterPage() {
       <div className="relative z-10 w-full max-w-md animate-fade-in">
         <div className="mb-8 text-center">
           <div className="mx-auto mb-3 flex h-14 w-14 items-center justify-center rounded-2xl bg-white/20 text-2xl backdrop-blur-sm">
-            🎓
+            <GraduationCap />
           </div>
           <h1 className="text-2xl font-extrabold text-white">EduChatbot</h1>
           <p className="mt-1 text-sm text-white/70">Tạo tài khoản để bắt đầu</p>

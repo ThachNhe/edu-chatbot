@@ -80,8 +80,8 @@ def login(body: LoginRequest, db: Session = Depends(get_db)):
             detail="Email hoặc mật khẩu không đúng",
         )
 
-    access_token = create_access_token(data={"sub": user.id})
-    refresh_token = create_refresh_token(data={"sub": user.id})
+    access_token = create_access_token(data={"sub": str(user.id)})
+    refresh_token = create_refresh_token(data={"sub": str(user.id)})
 
     return LoginResponse(
         user=_user_to_response(user),
@@ -112,7 +112,7 @@ def refresh_token(body: RefreshTokenRequest, db: Session = Depends(get_db)):
             detail="Người dùng không tồn tại",
         )
 
-    new_access_token = create_access_token(data={"sub": user.id})
+    new_access_token = create_access_token(data={"sub": str(user.id)})
 
     return {
         "accessToken": new_access_token,

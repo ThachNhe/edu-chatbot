@@ -6,10 +6,9 @@ export interface ChatMessage {
 }
 
 export interface ChatConversation {
-  id: string
+  id: number
   title: string
-  meta: string
-  messages: ChatMessage[]
+  created_at: string
   isActive?: boolean
 }
 

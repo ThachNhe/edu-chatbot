@@ -2,6 +2,7 @@ import axios, { type AxiosError, type InternalAxiosRequestConfig } from 'axios'
 import { useAuthStore } from '@/stores/useAuthStore'
 import type { ApiErrorResponse, RefreshTokenResponse } from '@/types/api.types'
 import { API_ENDPOINTS } from './endpoints'
+// import { router } from '@/main'
 
 const SKIP_REFRESH_URLS = [
   API_ENDPOINTS.AUTH.LOGIN,
@@ -92,8 +93,9 @@ api.interceptors.response.use(
         return api(originalRequest)
       } catch (refreshError) {
         processQueue(refreshError, null)
-        useAuthStore.getState().logout()
-        window.location.href = '/login'
+        // useAuthStore.getState().logout()
+        // window.location.href = '/login'
+        // window.location.replace('/login')
         return Promise.reject(refreshError)
       } finally {
         isRefreshing = false
