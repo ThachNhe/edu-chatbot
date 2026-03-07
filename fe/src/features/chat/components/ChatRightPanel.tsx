@@ -4,24 +4,24 @@ interface ChatRightPanelProps {
 
 const TOPICS = [
   { icon: '📦', label: 'Kiểu dữ liệu cơ bản', bg: 'bg-[#eff6ff]', text: 'text-[#1a56db]' },
-  { icon: '🔁', label: 'Cấu trúc lặp',         bg: 'bg-[#d1fae5]', text: 'text-[#065f46]' },
-  { icon: '📊', label: 'Mảng 1D & 2D',          bg: 'bg-[#fef3c7]', text: 'text-[#92400e]' },
-  { icon: '🔧', label: 'Chương trình con',       bg: 'bg-[#ede9fe]', text: 'text-[#4c1d95]' },
-  { icon: '🗂️', label: 'Record & Set',          bg: 'bg-[#fee2e2]', text: 'text-[#7f1d1d]' },
-  { icon: '💾', label: 'Xử lý tệp',             bg: 'bg-[#f0fdf4]', text: 'text-[#166534]' },
+  { icon: '🔁', label: 'Cấu trúc lặp', bg: 'bg-[#d1fae5]', text: 'text-[#065f46]' },
+  { icon: '📊', label: 'Mảng 1D & 2D', bg: 'bg-[#fef3c7]', text: 'text-[#92400e]' },
+  { icon: '🔧', label: 'Chương trình con', bg: 'bg-[#ede9fe]', text: 'text-[#4c1d95]' },
+  { icon: '🗂️', label: 'Record & Set', bg: 'bg-[#fee2e2]', text: 'text-[#7f1d1d]' },
+  { icon: '💾', label: 'Xử lý tệp', bg: 'bg-[#f0fdf4]', text: 'text-[#166534]' },
 ]
 
 const PROGRESS = [
   { label: 'Lập trình cơ bản', pct: 42, color: '#1a56db' },
   { label: 'Cấu trúc dữ liệu', pct: 28, color: '#10b981' },
-  { label: 'Cơ sở dữ liệu',    pct: 18, color: '#f59e0b' },
-  { label: 'Thuật toán',        pct: 12, color: '#7c3aed' },
+  { label: 'Cơ sở dữ liệu', pct: 18, color: '#f59e0b' },
+  { label: 'Thuật toán', pct: 12, color: '#7c3aed' },
 ]
 
 const QUICK_STATS = [
-  { label: 'Câu hỏi hôm nay',  value: '847',   valueColor: 'text-[#1a56db]' },
-  { label: 'Thời gian TB/câu', value: '1.2s',   valueColor: 'text-[#10b981]' },
-  { label: 'Độ hài lòng',      value: '⭐ 4.8/5', valueColor: 'text-[#f59e0b]' },
+  { label: 'Câu hỏi hôm nay', value: '847', valueColor: 'text-[#1a56db]' },
+  { label: 'Thời gian TB/câu', value: '1.2s', valueColor: 'text-[#10b981]' },
+  { label: 'Độ hài lòng', value: '⭐ 4.8/5', valueColor: 'text-[#f59e0b]' },
 ]
 
 export function ChatRightPanel({ onTopicClick }: ChatRightPanelProps) {
@@ -50,7 +50,7 @@ export function ChatRightPanel({ onTopicClick }: ChatRightPanelProps) {
         </Section>
 
         {/* Progress — khớp .progress-bar-wrap */}
-        <Section title="Tiến độ hỏi hôm nay">
+        {/* <Section title="Tiến độ hỏi hôm nay">
           {PROGRESS.map((p) => (
             <div key={p.label} className="mb-2.5">
               <div className="mb-[5px] flex justify-between text-[12px] font-semibold">
@@ -65,10 +65,10 @@ export function ChatRightPanel({ onTopicClick }: ChatRightPanelProps) {
               </div>
             </div>
           ))}
-        </Section>
+        </Section> */}
 
         {/* Quick Stats — khớp inline style trong .rp-body */}
-        <Section title="Thống kê nhanh">
+        {/* <Section title="Thống kê nhanh">
           {QUICK_STATS.map((s) => (
             <div
               key={s.label}
@@ -78,7 +78,7 @@ export function ChatRightPanel({ onTopicClick }: ChatRightPanelProps) {
               <span className={`font-extrabold ${s.valueColor}`}>{s.value}</span>
             </div>
           ))}
-        </Section>
+        </Section> */}
 
       </div>
     </div>

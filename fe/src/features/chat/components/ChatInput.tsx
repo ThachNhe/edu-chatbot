@@ -2,6 +2,7 @@ import { useState, useRef, useCallback } from 'react'
 
 interface ChatInputProps {
   onSend: (text: string) => void
+  disabled?: boolean
 }
 
 function ToolButton({ icon, label }: { icon: string; label: string }) {
@@ -16,7 +17,7 @@ function ToolButton({ icon, label }: { icon: string; label: string }) {
   )
 }
 
-export function ChatInput({ onSend }: ChatInputProps) {
+export function ChatInput({ onSend, disabled }: ChatInputProps) {
   const [value, setValue] = useState('')
   const textareaRef = useRef<HTMLTextAreaElement>(null)
 
@@ -61,6 +62,7 @@ export function ChatInput({ onSend }: ChatInputProps) {
           onKeyDown={handleKeyDown}
           placeholder="Nhập câu hỏi cho trợ lý AI... (Shift+Enter để xuống dòng)"
           rows={1}
+          disabled={disabled}
           className="min-h-[46px] max-h-[140px] w-full resize-none border-none bg-transparent px-3.5 pb-2 pt-3 font-['Nunito',sans-serif] text-[13.5px] leading-[1.6] text-[#1e293b] outline-none placeholder:text-[#94a3b8]"
         />
 
@@ -76,7 +78,7 @@ export function ChatInput({ onSend }: ChatInputProps) {
           {/* Send button */}
           <button
             onClick={handleSend}
-            disabled={!value.trim()}
+            disabled={!value.trim() || disabled}
             className="flex h-9 w-9 items-center justify-center rounded-[9px] bg-[#1a56db] text-white shadow-[0_2px_8px_rgba(26,86,219,0.3)] transition-all hover:scale-[1.05] hover:bg-[#1d4ed8] disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:scale-100 disabled:shadow-none"
           >
             <svg

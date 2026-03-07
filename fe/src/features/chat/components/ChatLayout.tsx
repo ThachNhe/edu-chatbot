@@ -10,6 +10,7 @@ export function ChatLayout() {
     isTyping,
     messagesEndRef,
     sendMessage,
+    wsStatus,
     startNewChat,
     selectConversation,
   } = useChat()
@@ -30,6 +31,7 @@ export function ChatLayout() {
         isTyping={isTyping}
         messagesEndRef={messagesEndRef}
         onSend={sendMessage}
+        wsStatus={wsStatus}
       />
       <ChatRightPanel onTopicClick={handleTopicClick} />
     </div>
