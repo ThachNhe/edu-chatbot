@@ -1,60 +1,93 @@
+import type { ExamConfig, DifficultyLevel } from '../types/exam.type'
+
 interface ExamToolbarProps {
+  config: ExamConfig
+  isGenerating: boolean
+  onChange: (config: ExamConfig) => void
   onGenerate: () => void
 }
 
-export function ExamToolbar({ onGenerate }: ExamToolbarProps) {
+const TOPICS = [
+  'Cấu trúc lặp (FOR, WHILE, REPEAT)',
+  'Mảng một chiều',
+  'Mảng hai chiều',
+  'Chương trình con',
+  'Kiểu Record',
+  'Xử lý tệp',
+  'Cơ sở dữ liệu',
+]
+
+const DURATIONS = ['15', '30', '45', '60', '90']
+const DIFFICULTIES: { value: DifficultyLevel; label: string }[] = [
+  { value: 'mixed', label: 'Hỗn hợp' },
+  { value: 'easy', label: 'Dễ' },
+  { value: 'med', label: 'Trung bình' },
+  { value: 'hard', label: 'Khó' },
+]
+
+export function ExamToolbar({ config, isGenerating, onChange, onGenerate }: ExamToolbarProps) {
   return (
-    <div className="mb-5 flex flex-wrap items-center gap-3 rounded-xl border border-[#e2e8f0] bg-white px-5 py-3.5 shadow-[0_1px_3px_rgba(0,0,0,0.08),0_1px_2px_rgba(0,0,0,0.04)]">
+    <div className="mb-5 flex flex-wrap items-center gap-3 rounded-xl border border-[#e2e8f0] bg-white px-5 py-3.5 shadow-[0_1px_3px_rgba(0,0,0,0.08)]">
       <label className="text-[12.5px] font-bold text-[#475569]">Chủ đề:</label>
-      <SelectField>
-        <option>Cấu trúc lặp (FOR, WHILE, REPEAT)</option>
-        <option>Mảng một chiều</option>
-        <option>Mảng hai chiều</option>
-        <option>Chương trình con</option>
-        <option>Kiểu Record</option>
-        <option>Xử lý tệp</option>
-        <option>Cơ sở dữ liệu</option>
+      <SelectField
+        value={config.topic}
+        onChange={(v) => onChange({ ...config, topic: v })}
+      >
+        {TOPICS.map((t) => <option key={t} value={t}>{t}</option>)}
       </SelectField>
 
       <label className="text-[12.5px] font-bold text-[#475569]">Số câu:</label>
       <input
         type="number"
-        defaultValue={10}
+        value={config.questionCount}
         min={5}
         max={40}
+        onChange={(e) => onChange({ ...config, questionCount: Number(e.target.value) })}
         className="w-[70px] rounded-lg border-[1.5px] border-[#e2e8f0] bg-[#f8fafc] px-3 py-2 font-['Nunito',sans-serif] text-[13px] text-[#334155] outline-none transition-colors focus:border-[#1a56db]"
       />
 
       <label className="text-[12.5px] font-bold text-[#475569]">Mức độ:</label>
-      <SelectField>
-        <option>Hỗn hợp</option>
-        <option>Dễ</option>
-        <option>Trung bình</option>
-        <option>Khó</option>
+      <SelectField
+        value={config.difficulty}
+        onChange={(v) => onChange({ ...config, difficulty: v as DifficultyLevel })}
+      >
+        {DIFFICULTIES.map((d) => <option key={d.value} value={d.value}>{d.label}</option>)}
       </SelectField>
 
       <label className="text-[12.5px] font-bold text-[#475569]">Thời gian:</label>
-      <SelectField>
-        <option>15 phút</option>
-        <option>45 phút</option>
-        <option>60 phút</option>
-        <option>90 phút</option>
+      <SelectField
+        value={config.duration}
+        onChange={(v) => onChange({ ...config, duration: v })}
+      >
+        {DURATIONS.map((d) => <option key={d} value={d}>{d} phút</option>)}
       </SelectField>
 
-      {/* khớp .gen-btn */}
       <button
         onClick={onGenerate}
-        className="ml-auto flex items-center gap-[7px] rounded-[9px] bg-[#1a56db] px-[22px] py-[9px] font-['Nunito',sans-serif] text-[13px] font-bold text-white shadow-[0_2px_8px_rgba(26,86,219,0.25)] transition-all hover:-translate-y-px hover:bg-[#1d4ed8]"
+        disabled={isGenerating}
+        className="ml-auto flex items-center gap-[7px] rounded-[9px] bg-[#1a56db] px-[22px] py-[9px] font-['Nunito',sans-serif] text-[13px] font-bold text-white shadow-[0_2px_8px_rgba(26,86,219,0.25)] transition-all hover:-translate-y-px hover:bg-[#1d4ed8] disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:translate-y-0"
       >
-        ✨ Tạo đề thi
+        {isGenerating ? '⏳ Đang tạo...' : '✨ Tạo đề thi'}
       </button>
     </div>
   )
 }
 
-function SelectField({ children }: { children: React.ReactNode }) {
+function SelectField({
+  children,
+  value,
+  onChange,
+}: {
+  children: React.ReactNode
+  value: string
+  onChange: (v: string) => void
+}) {
   return (
-    <select className="rounded-lg border-[1.5px] border-[#e2e8f0] bg-[#f8fafc] px-3 py-2 font-['Nunito',sans-serif] text-[13px] text-[#334155] outline-none transition-colors focus:border-[#1a56db]">
+    <select
+      value={value}
+      onChange={(e) => onChange(e.target.value)}
+      className="rounded-lg border-[1.5px] border-[#e2e8f0] bg-[#f8fafc] px-3 py-2 font-['Nunito',sans-serif] text-[13px] text-[#334155] outline-none transition-colors focus:border-[#1a56db]"
+    >
       {children}
     </select>
   )

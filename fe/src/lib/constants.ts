@@ -23,6 +23,9 @@ export const ROUTES = {
   // Users
   USERS: '/users',
   USER_DETAIL: (id: string) => `/users/${id}`,
+
+  EXAM: '/exam',
+  ROOM: (code: string) => `/room/${code}`,
 } as const
 
 // ─── Pagination ────────────────────────────────────────────────────────────
@@ -45,7 +48,15 @@ export const QUERY_KEYS = {
     LIST: (params?: object) => ['users', 'list', params] as const,
     DETAIL: (id: string) => ['users', 'detail', id] as const,
   },
-  // Add more as needed
+  EXAMS: {
+    ALL: ['exams'] as const,
+    LIST: ['exams', 'list'] as const,
+    DETAIL: (id: number) => ['exams', 'detail', id] as const,
+    ROOMS: (id: number) => ['exams', id, 'rooms'] as const,
+  },
+  ROOMS: {
+    DETAIL: (code: string) => ['rooms', code] as const,
+  },
 } as const
 
 // ─── Local Storage Keys ────────────────────────────────────────────────────

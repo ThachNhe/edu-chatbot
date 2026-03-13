@@ -1,15 +1,4 @@
-/**
- * Centralized API endpoints.
- * All endpoints are defined here to avoid magic strings scattered across the codebase.
- *
- * Usage:
- *   import { API_ENDPOINTS } from '@/services/endpoints'
- *   api.get(API_ENDPOINTS.USERS.LIST)
- *   api.get(API_ENDPOINTS.USERS.BY_ID(userId))
- */
-
 export const API_ENDPOINTS = {
-  // ─── Auth ────────────────────────────────────────────────────────────────
   AUTH: {
     LOGIN: '/auth/login',
     REGISTER: '/auth/register',
@@ -20,7 +9,6 @@ export const API_ENDPOINTS = {
     RESET_PASSWORD: '/auth/reset-password',
   },
 
-  // ─── Users ───────────────────────────────────────────────────────────────
   USERS: {
     LIST: '/users',
     BY_ID: (id: string) => `/users/${id}`,
@@ -30,9 +18,30 @@ export const API_ENDPOINTS = {
     AVATAR: (id: string) => `/users/${id}/avatar`,
   },
 
-  // ─── Conversations ────────────────────────────────────────────────────────
   CONVERSATIONS: {
     LIST: '/conversations',
     MESSAGES: (id: number) => `/conversations/${id}/messages`,
+  },
+
+  // ─── Exams ───────────────────────────────────────────────────────────────
+  EXAMS: {
+    GENERATE: '/exams/generate',
+    CREATE: '/exams',
+    LIST: '/exams',
+    DETAIL: (id: number) => `/exams/${id}`,
+    DELETE: (id: number) => `/exams/${id}`,
+    UPDATE_QUESTION: (examId: number, questionId: number) =>
+      `/exams/${examId}/questions/${questionId}`,
+    CREATE_ROOM: (examId: number) => `/exams/${examId}/rooms`,
+    LIST_ROOMS: (examId: number) => `/exams/${examId}/rooms`,
+    TOGGLE_ROOM: (examId: number, roomId: number) =>
+      `/exams/${examId}/rooms/${roomId}/toggle`,
+    SCORES: (examId: number) => `/exams/${examId}/scores`,
+  },
+
+  // ─── Public Rooms (học sinh) ─────────────────────────────────────────────
+  ROOMS: {
+    GET: (code: string) => `/rooms/${code}`,
+    SUBMIT: (code: string) => `/rooms/${code}/submit`,
   },
 } as const

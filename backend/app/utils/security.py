@@ -45,8 +45,6 @@ def create_reset_token(email: str) -> str:
 
 def decode_token(token: str) -> Optional[dict]:
     try:
-        print("Decoding token:", token)
-        print(f"Check settings {settings.jwt_secret_key} and {settings.jwt_algorithm}")
         payload = jwt.decode(token, settings.jwt_secret_key, algorithms=[settings.jwt_algorithm])
         return payload
     except JWTError as e:

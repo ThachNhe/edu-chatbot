@@ -6,7 +6,7 @@ from app.config.config import settings
 from app.database import Base
 from app.models import (  # noqa: F401 – import để Alembic thấy metadata
     User, Lesson, Question, QuestionOption,
-    Exam, ExamQuestion, Student, Score,
+    Exam, ExamQuestion, ExamRoom, Student, Score,
     Conversation, Message,
 )
 
