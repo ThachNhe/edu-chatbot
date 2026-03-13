@@ -23,6 +23,21 @@ export const API_ENDPOINTS = {
     MESSAGES: (id: number) => `/conversations/${id}/messages`,
   },
 
+  // ─── Dashboard ───────────────────────────────────────────────────────────
+  DASHBOARD: {
+    SUMMARY: '/dashboard/summary',
+    RECENT_ACTIVITY: '/dashboard/recent-activity',
+    WEEK_SCHEDULE: '/dashboard/week-schedule',
+  },
+
+  // ─── Stats ───────────────────────────────────────────────────────────────
+  STATS: {
+    OVERVIEW: '/stats/overview',
+    CHAPTER_SCORES: '/stats/chapter-scores',
+    STUDENT_DISTRIBUTION: '/stats/student-distribution',
+    STUDENT_RANKING: '/stats/student-ranking',
+  },
+
   // ─── Exams ───────────────────────────────────────────────────────────────
   EXAMS: {
     GENERATE: '/exams/generate',

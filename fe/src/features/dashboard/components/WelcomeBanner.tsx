@@ -1,7 +1,20 @@
 import { useNavigate } from '@tanstack/react-router'
+import { useAuthStore } from '@/stores/useAuthStore'
+import { useDashboardSummary } from '../hooks/useDashboardData'
 
 export function WelcomeBanner() {
   const navigate = useNavigate()
+  const userName = useAuthStore((s) => s.user?.name) ?? 'Thầy/Cô'
+  const { data } = useDashboardSummary()
+  const pendingCount = data?.pending_questions ?? 0
+
+  const today = new Date()
+  const weekdays = ['Chủ Nhật', 'Thứ Hai', 'Thứ Ba', 'Thứ Tư', 'Thứ Năm', 'Thứ Sáu', 'Thứ Bảy']
+  const dayLabel = weekdays[today.getDay()]
+
+  // Greeting based on hour
+  const hour = today.getHours()
+  const greeting = hour < 12 ? 'Chào buổi sáng' : hour < 18 ? 'Chào buổi chiều' : 'Chào buổi tối'
 
   return (
     <div
@@ -19,15 +32,20 @@ export function WelcomeBanner() {
         <div>
           <div className="mb-1 flex items-center gap-2">
             <span className="rounded-full bg-white/15 px-3 py-0.5 text-[11px] font-bold backdrop-blur-sm">
-              ✨ Hôm nay, Thứ Tư
+              ✨ Hôm nay, {dayLabel}
             </span>
           </div>
           <h2 className="mt-2 text-[22px] font-extrabold leading-tight">
-            Chào buổi sáng, thầy/cô Nguyễn Văn An! 👋
+            {greeting}, {userName}! 👋
           </h2>
           <p className="mt-1.5 max-w-[440px] text-[13px] leading-relaxed text-white/80">
-            Hôm nay có <strong className="text-white">3 câu hỏi mới từ học sinh</strong> đang chờ xem xét,
-            và đề thi tuần sau chưa được tạo.
+            {pendingCount > 0 ? (
+              <>
+                Hôm nay có <strong className="text-white">{pendingCount} câu hỏi từ học sinh</strong> đang chờ xem xét.
+              </>
+            ) : (
+              <>Mọi thứ đang ổn định. Hãy tiếp tục công việc bạn đang làm! 🚀</>
+            )}
           </p>
         </div>
         <button

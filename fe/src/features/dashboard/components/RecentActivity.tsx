@@ -1,19 +1,8 @@
-interface ActivityItem {
-  icon: string
-  iconBg: string
-  title: string
-  meta: string
-}
-
-const ACTIVITIES: ActivityItem[] = [
-  { icon: '📝', iconBg: '#eff6ff', title: 'Đề kiểm tra 15 phút – Chương 3: Cơ sở dữ liệu', meta: 'Vừa tạo • 10 câu hỏi • Lớp 12A1' },
-  { icon: '✅', iconBg: '#d1fae5', title: 'Soạn xong bài 14: Kiểu dữ liệu có cấu trúc', meta: '2 giờ trước • Đã xuất bản' },
-  { icon: '💬', iconBg: '#fef3c7', title: 'Học sinh Trần Thị B hỏi về vòng lặp FOR–DO', meta: '3 giờ trước • AI đã trả lời' },
-  { icon: '📊', iconBg: '#ede9fe', title: 'Báo cáo kết quả thi giữa kỳ đã được xuất', meta: 'Hôm qua • 156 học sinh • TB: 7.4' },
-  { icon: '🔔', iconBg: '#fee2e2', title: '3 câu hỏi mới từ học sinh chờ duyệt', meta: 'Hôm nay • Cần xem xét' },
-]
+import { useRecentActivity } from '../hooks/useDashboardData'
 
 export function RecentActivity() {
+  const { data: activities, isLoading } = useRecentActivity()
+
   return (
     <div className="rounded-2xl border border-gray-100 bg-white p-5 shadow-sm">
       <div className="mb-4 flex items-center justify-between">
@@ -25,23 +14,40 @@ export function RecentActivity() {
         </button>
       </div>
       <div className="space-y-1">
-        {ACTIVITIES.map((a, i) => (
-          <div
-            key={i}
-            className="flex items-start gap-3 rounded-xl px-3 py-2.5 transition-colors hover:bg-gray-50 cursor-pointer"
-          >
+        {isLoading && (
+          <>
+            {[...Array(4)].map((_, i) => (
+              <div key={i} className="flex items-start gap-3 rounded-xl px-3 py-2.5">
+                <div className="mt-0.5 h-8 w-8 flex-shrink-0 animate-pulse rounded-lg bg-gray-100" />
+                <div className="flex-1 space-y-1.5 py-1">
+                  <div className="h-3 w-3/4 animate-pulse rounded bg-gray-100" />
+                  <div className="h-2.5 w-1/2 animate-pulse rounded bg-gray-100" />
+                </div>
+              </div>
+            ))}
+          </>
+        )}
+        {!isLoading && activities?.length === 0 && (
+          <p className="py-4 text-center text-[12px] text-gray-400">Chưa có hoạt động nào</p>
+        )}
+        {!isLoading &&
+          activities?.map((a, i) => (
             <div
-              className="mt-0.5 flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg text-[14px]"
-              style={{ background: a.iconBg }}
+              key={i}
+              className="flex items-start gap-3 rounded-xl px-3 py-2.5 transition-colors hover:bg-gray-50 cursor-pointer"
             >
-              {a.icon}
+              <div
+                className="mt-0.5 flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg text-[14px]"
+                style={{ background: a.icon_bg }}
+              >
+                {a.icon}
+              </div>
+              <div className="min-w-0">
+                <div className="text-[12.5px] font-semibold text-gray-700 leading-snug">{a.title}</div>
+                <div className="mt-0.5 text-[11px] text-gray-400">{a.meta}</div>
+              </div>
             </div>
-            <div className="min-w-0">
-              <div className="text-[12.5px] font-semibold text-gray-700 leading-snug">{a.title}</div>
-              <div className="mt-0.5 text-[11px] text-gray-400">{a.meta}</div>
-            </div>
-          </div>
-        ))}
+          ))}
       </div>
     </div>
   )

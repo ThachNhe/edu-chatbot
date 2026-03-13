@@ -3,7 +3,7 @@ import { useNavigate } from '@tanstack/react-router'
 const ITEMS = [
   { icon: '💬', label: 'Trợ lý AI', path: '/chat', bg: 'linear-gradient(135deg,#dbeafe,#eff6ff)', color: '#1a56db' },
   { icon: '📝', label: 'Tạo đề thi', path: '/exam', bg: 'linear-gradient(135deg,#d1fae5,#ecfdf5)', color: '#10b981' },
-  { icon: '📚', label: 'Bài học', path: '/lessons', bg: 'linear-gradient(135deg,#fef3c7,#fffbeb)', color: '#f59e0b' },
+  // { icon: '📚', label: 'Bài học', path: '/lessons', bg: 'linear-gradient(135deg,#fef3c7,#fffbeb)', color: '#f59e0b' },
   { icon: '📊', label: 'Thống kê', path: '/stats', bg: 'linear-gradient(135deg,#ede9fe,#f5f3ff)', color: '#7c3aed' },
 ]
 
@@ -14,7 +14,7 @@ export function QuickAccess() {
       <h3 className="mb-4 flex items-center gap-2 text-[13px] font-extrabold text-gray-700">
         ⚡ Truy cập nhanh
       </h3>
-      <div className="grid grid-cols-4 gap-3">
+      <div className="grid grid-cols-3 gap-3">
         {ITEMS.map((item) => (
           <button
             key={item.label}
