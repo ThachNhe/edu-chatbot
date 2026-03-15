@@ -57,6 +57,10 @@ export const QUERY_KEYS = {
   ROOMS: {
     DETAIL: (code: string) => ['rooms', code] as const,
   },
+  ADMIN: {
+    STUDENTS: ['admin', 'students'] as const,
+    INSTRUCTORS: ['admin', 'instructors'] as const,
+  }
 } as const
 
 // ─── Local Storage Keys ────────────────────────────────────────────────────

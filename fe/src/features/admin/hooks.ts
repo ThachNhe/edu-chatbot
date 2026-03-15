@@ -1,0 +1,57 @@
+import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
+import { adminService } from './services'
+import { QUERY_KEYS } from '@/lib/constants'
+import { toast } from 'react-hot-toast'
+import type { 
+    AdminStudentCreatePayload, 
+    StudentValidatePayload,
+    AdminInstructorCreatePayload
+} from './types'
+
+export function useAdminStudents() {
+    return useQuery({
+        queryKey: QUERY_KEYS.ADMIN.STUDENTS,
+        queryFn: () => adminService.listStudents(),
+    })
+}
+
+export function useAddAdminStudent() {
+    const queryClient = useQueryClient()
+    return useMutation({
+        mutationFn: (payload: AdminStudentCreatePayload) => adminService.createStudent(payload),
+        onSuccess: () => {
+            queryClient.invalidateQueries({ queryKey: QUERY_KEYS.ADMIN.STUDENTS })
+            toast.success('Thêm học sinh thành công')
+        },
+        onError: (err: any) => {
+            toast.error(err.message || 'Lỗi thêm học sinh. Mã HS có thể đã tồn tại.')
+        }
+    })
+}
+
+export function useValidateStudent() {
+    return useMutation({
+        mutationFn: (payload: StudentValidatePayload) => adminService.validateStudent(payload)
+    })
+}
+
+export function useAdminInstructors() {
+    return useQuery({
+        queryKey: QUERY_KEYS.ADMIN.INSTRUCTORS,
+        queryFn: () => adminService.listInstructors(),
+    })
+}
+
+export function useAddAdminInstructor() {
+    const queryClient = useQueryClient()
+    return useMutation({
+        mutationFn: (payload: AdminInstructorCreatePayload) => adminService.createInstructor(payload),
+        onSuccess: () => {
+            queryClient.invalidateQueries({ queryKey: QUERY_KEYS.ADMIN.INSTRUCTORS })
+            toast.success('Thêm giáo viên thành công')
+        },
+        onError: (err: any) => {
+            toast.error(err.message || 'Lỗi thêm giáo viên. Email có thể đã tồn tại.')
+        }
+    })
+}

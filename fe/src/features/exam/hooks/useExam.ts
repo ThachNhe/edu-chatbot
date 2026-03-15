@@ -123,7 +123,9 @@ export function useSubmitExam(code: string) {
     return useMutation({
         mutationFn: (payload: {
             student_name: string
+            student_code?: string
             class_name?: string
+            email?: string
             answers: { question_id: number; selected_letter: string }[]
         }) => examService.submitExam(code, payload),
         onError: () => {

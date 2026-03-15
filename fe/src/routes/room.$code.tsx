@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
 import { createFileRoute } from '@tanstack/react-router'
+import { useValidateStudent } from '@/features/admin'
 import { useRoomExam, useSubmitExam } from '@/features/exam'
 import type { SubmitResult } from '@/features/exam'
 
@@ -18,6 +19,7 @@ function StudentExamPage() {
   const { code } = Route.useParams()
   const { data: exam, isLoading, isError } = useRoomExam(code)
   const { mutate: submit, isPending: isSubmitting } = useSubmitExam(code)
+  const { mutateAsync: validateStudentAsync, isPending: isValidating } = useValidateStudent()
 
   const [step, setStep] = useState<'info' | 'exam' | 'result'>('info')
   const [studentName, setStudentName] = useState('')
@@ -28,6 +30,7 @@ function StudentExamPage() {
   const [result, setResult] = useState<SubmitResult | null>(null)
   const [timeLeft, setTimeLeft] = useState<number>(0)
   const [isExpired, setIsExpired] = useState(false)
+  const [errorMsg, setErrorMsg] = useState('')
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null)
   const hasSubmittedRef = useRef(false)
 
@@ -82,10 +85,23 @@ function StudentExamPage() {
     setAnswers((prev) => ({ ...prev, [questionId]: letter }))
   }
 
-  const handleStart = () => {
-    if (!studentName.trim()) return
-    hasSubmittedRef.current = false
-    setStep('exam')
+  const handleStart = async () => {
+    if (!studentName.trim() || !studentCode.trim()) {
+       setErrorMsg('Vui lòng nhập đầy đủ Tên và Mã số học sinh.')
+       return
+    }
+    setErrorMsg('')
+    try {
+        const res = await validateStudentAsync({ student_code: studentCode })
+        if (!res.valid) {
+            setErrorMsg('Học sinh không tồn tại trong hệ thống. Vui lòng kiểm tra lại Mã số học sinh.')
+            return
+        }
+        hasSubmittedRef.current = false
+        setStep('exam')
+    } catch(err) {
+        setErrorMsg('Lỗi kiểm tra học sinh. Vui lòng thử lại.')
+    }
   }
 
   const handleSubmit = () => doSubmit()
@@ -165,12 +181,18 @@ function StudentExamPage() {
               ⚠️ Mỗi học sinh chỉ nộp bài một lần. Đảm bảo thông tin chính xác trước khi bắt đầu.
             </div>
 
+            {errorMsg && (
+              <div className="mt-2 rounded-xl bg-[#fef2f2] border border-[#fecaca] px-4 py-3 text-[12px] font-medium text-[#ef4444]">
+                ❌ {errorMsg}
+              </div>
+            )}
+
             <button
               onClick={handleStart}
-              disabled={!studentName.trim()}
+              disabled={!studentName.trim() || !studentCode.trim() || isValidating}
               className="mt-2 w-full rounded-xl bg-[#1a56db] py-3 text-[14px] font-bold text-white hover:bg-[#1d4ed8] disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
             >
-              🚀 Bắt đầu làm bài
+              🚀 {isValidating ? 'Đang kiểm tra...' : 'Bắt đầu làm bài'}
             </button>
           </div>
         </div>

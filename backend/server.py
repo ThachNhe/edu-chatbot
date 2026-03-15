@@ -9,6 +9,8 @@ from app.features.questions.router import router as questions_router
 from app.features.scores.router import router as rooms_router
 from app.features.stats.router import router as stats_router
 
+from app.features.admin.router import router as admin_router
+
 app = FastAPI(title="FC2 ChatBot")
 
 app.add_middleware(
@@ -26,6 +28,7 @@ app.include_router(exams_router, prefix="/api")
 app.include_router(questions_router, prefix="/api")
 app.include_router(rooms_router, prefix="/api")
 app.include_router(stats_router, prefix="/api")
+app.include_router(admin_router, prefix="/api")
 
 
 @app.get("/health")

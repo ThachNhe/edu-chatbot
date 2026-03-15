@@ -110,13 +110,16 @@ def submit_exam(
     total = len(correct_map)
     score_value = round((correct_count / total) * 10, 2) if total > 0 else 0.0
 
-    student = score_repo.create_student(
-        db,
-        body.student_name,
-        body.class_name,
-        student_code=body.student_code,
-        email=body.email,
-    )
+    from app.models.student import Student
+    student = None
+    if body.student_code:
+        student = db.query(Student).filter(Student.student_code == body.student_code).first()
+        
+    if not student:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Mã học sinh không hợp lệ hoặc không tồn tại trong hệ thống."
+        )
     score_repo.create_score(db, student.id, room.exam_id, score_value)
 
     return SubmitResult(
