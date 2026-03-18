@@ -60,6 +60,7 @@ async def generate_exam(
     body: GenerateExamRequest,
     current_user: User = Depends(get_current_user),
 ):
+    print("body: \n", body)
     try:
         questions = await exam_service.generate_exam_questions(
             topic=body.topic,

@@ -49,6 +49,7 @@ async def generate_exam_questions(topic: str, count: int, difficulty: str) -> Li
     )
 
     prompt = _build_prompt(topic, count, difficulty)
+    print("prompt: \n", prompt)
     result = await llm.ainvoke(prompt)
     raw = result.content.strip()
 

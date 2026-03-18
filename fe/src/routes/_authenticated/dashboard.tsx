@@ -32,11 +32,6 @@ function WeeklySchedule() {
     { day: 'T4', color: '#f59e0b', bg: '#fef3c7', title: 'Lớp 12A3 – Tiết 1,2', sub: 'Kiểm tra 15 phút Chương 3' },
     { day: 'T6', color: '#10b981', bg: '#d1fae5', title: 'Lớp 12A3 – Tiết 5,6', sub: 'Ôn tập cuối chương' },
   ]
-  const goals = [
-    { label: 'Bài học hoàn thành', pct: 80, color: '#1a56db', val: '24/30' },
-    { label: 'Đề thi đã tạo', pct: 50, color: '#10b981', val: '10/20' },
-    { label: 'Câu hỏi AI xử lý', pct: 85, color: '#7c3aed', val: '847/1000' },
-  ]
   return (
     <div className="space-y-5">
       {/* Schedule */}
@@ -55,29 +50,6 @@ function WeeklySchedule() {
               <div>
                 <div className="text-[12px] font-bold text-gray-700">{e.title}</div>
                 <div className="text-[11px] text-gray-500">{e.sub}</div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Goals */}
-      <div className="rounded-2xl border border-gray-100 bg-white p-5 shadow-sm">
-        <h3 className="mb-4 flex items-center gap-2 text-[13px] font-extrabold text-gray-700">
-          🎯 Mục tiêu tháng
-        </h3>
-        <div className="space-y-3.5">
-          {goals.map((g) => (
-            <div key={g.label}>
-              <div className="mb-1.5 flex items-center justify-between">
-                <span className="text-[11.5px] font-semibold text-gray-600">{g.label}</span>
-                <span className="text-[11px] font-bold" style={{ color: g.color }}>{g.val}</span>
-              </div>
-              <div className="h-2 w-full overflow-hidden rounded-full bg-gray-100">
-                <div
-                  className="h-full rounded-full transition-all duration-500"
-                  style={{ width: `${g.pct}%`, background: g.color }}
-                />
               </div>
             </div>
           ))}

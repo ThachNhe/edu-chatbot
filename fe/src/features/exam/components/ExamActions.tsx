@@ -21,13 +21,13 @@ export function ExamActions({
 }: ExamActionsProps) {
   return (
     <div className="flex flex-wrap gap-2.5 border-t border-[#f1f5f9] bg-[#f8fafc] px-7 py-4">
-      <ActionButton
+      {/* <ActionButton
         variant="primary"
         disabled={!hasQuestions || isSaving}
         onClick={onSaveDraft}
       >
         {isSaving ? '⏳ Đang lưu...' : '💾 Lưu nháp'}
-      </ActionButton>
+      </ActionButton> */}
 
       <ActionButton
         variant="success"

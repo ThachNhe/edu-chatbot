@@ -1,6 +1,6 @@
-import { Outlet } from '@tanstack/react-router'
-import { Sidebar } from './SideBar'
-import { TopBar } from './TopBar'
+import { Outlet } from "@tanstack/react-router";
+import { Sidebar } from "./SideBar";
+import { TopBar } from "./TopBar";
 
 export function AppLayout() {
   return (
@@ -8,10 +8,10 @@ export function AppLayout() {
       <Sidebar />
       <div className="flex flex-1 flex-col overflow-hidden">
         <TopBar />
-        <main className="flex-1 overflow-hidden">
+        <main className="flex-1 overflow-y-auto">
           <Outlet />
         </main>
       </div>
     </div>
-  )
+  );
 }

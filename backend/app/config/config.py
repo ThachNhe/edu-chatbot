@@ -10,7 +10,7 @@ class Settings(BaseSettings):
 
     # OpenAI
     openai_api_key: str = Field(..., description="OpenAI API key")
-    openai_model: str = Field("gpt-3.5-turbo", description="LLM model name")
+    openai_model: str = Field("gpt-4o-mini", description="LLM model name")
 
     # App
     app_env: str = Field("dev", description="Environment: dev | production")

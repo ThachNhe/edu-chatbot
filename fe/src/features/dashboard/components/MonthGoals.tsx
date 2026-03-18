@@ -18,9 +18,9 @@ export function MonthGoals() {
   return (
     <div className="rounded-[var(--edu-radius)] border border-[var(--edu-gray-100)] bg-white shadow-[var(--edu-shadow-sm)]">
       <div className="flex items-center justify-between border-b border-[var(--edu-gray-100)] px-5 py-4">
-        <div className="flex items-center gap-[7px] text-sm font-extrabold text-[var(--edu-gray-800)]">
+        {/* <div className="flex items-center gap-[7px] text-sm font-extrabold text-[var(--edu-gray-800)]">
           🎯 Mục tiêu tháng
-        </div>
+        </div> */}
       </div>
       <div className="px-5 py-4">
         {goals.map((g, i) => {
