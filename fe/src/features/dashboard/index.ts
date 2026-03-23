@@ -1,6 +1,0 @@
-export { WelcomeBanner } from './components/WelcomeBanner'
-export { StatsGrid } from './components/StatsGrid'
-export { QuickAccess } from './components/QuickAccess'
-export { RecentActivity } from './components/RecentActivity'
-export { WeekSchedule } from './components/WeekSchedule'
-export { MonthGoals } from './components/MonthGoals'
