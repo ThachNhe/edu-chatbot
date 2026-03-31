@@ -157,10 +157,10 @@ export function LoginForm() {
         <p className="text-sm text-muted-foreground">
           Chưa có tài khoản?{' '}
           <Link
-            to={ROUTES.REGISTER}
-            className="font-medium text-primary hover:underline"
+            // to={ROUTES.REGISTER}
+            className="font-medium text-primary"
           >
-            Đăng ký ngay
+            Liên hệ admin
           </Link>
         </p>
       </CardFooter>

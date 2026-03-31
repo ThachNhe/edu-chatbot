@@ -5,12 +5,12 @@ interface ChatInputProps {
   disabled?: boolean
 }
 
-function ToolButton({ icon, label }: { icon: string; label: string }) {
+function ToolButton({ icon, label, disabled }: { icon: string; label: string; disabled?: boolean }) {
   return (
     <button
       title={label}
-      className="flex items-center gap-[5px] rounded-[7px] border border-[#e2e8f0] bg-white px-[11px] py-[5px] font-['Nunito',sans-serif] text-[12px] font-semibold text-[#64748b] transition-all hover:border-[#1a56db] hover:text-[#1a56db]"
-    >
+      disabled={disabled}
+      className="flex items-center gap-[5px] rounded-[7px] border border-[#e2e8f0] bg-white px-[11px] py-[5px] font-['Nunito',sans-serif] text-[12px] font-semibold text-[#64748b] transition-all hover:border-[#1a56db] hover:text-[#1a56db] disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:border-[#e2e8f0] disabled:hover:text-[#64748b]"    >
       <span>{icon}</span>
       <span>{label}</span>
     </button>
@@ -70,9 +70,9 @@ export function ChatInput({ onSend, disabled }: ChatInputProps) {
         <div className="flex items-center justify-between px-3 pb-[9px] pt-[7px]">
           {/* Tool buttons */}
           <div className="flex items-center gap-[5px]">
-            <ToolButton icon="📎" label="Đính kèm" />
-            <ToolButton icon="🖼️" label="Hình ảnh" />
-            <ToolButton icon="📄" label="Tài liệu" />
+            <ToolButton disabled={true} icon="📎" label="Đính kèm" />
+            <ToolButton disabled={true} icon="🖼️" label="Hình ảnh" />
+            <ToolButton disabled={true} icon="📄" label="Tài liệu" />
           </div>
 
           {/* Send button */}
