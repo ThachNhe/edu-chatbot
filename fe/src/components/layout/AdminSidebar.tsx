@@ -6,6 +6,7 @@ import { useLogout } from '@/features/auths'
 import { LogOut, Settings } from 'lucide-react'
 
 const NAV_ITEMS = [
+  { icon: '📊', label: 'Bảng điều khiển', path: '/admin/dashboard' },
   { icon: '🎓', label: 'Quản lý Học sinh', path: '/admin/students' },
   { icon: '👨‍🏫', label: 'Quản lý Giáo viên', path: '/admin/instructors' },
 ]

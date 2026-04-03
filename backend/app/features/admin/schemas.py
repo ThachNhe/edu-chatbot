@@ -9,6 +9,7 @@ class AdminStudentOut(BaseModel):
     student_code: Optional[str] = None
     email: Optional[str] = None
     avatar: Optional[str] = None
+    is_active: bool = True
     created_at: datetime
 
     model_config = {"from_attributes": True}
@@ -31,6 +32,7 @@ class AdminInstructorOut(BaseModel):
     name: str
     email: str
     role: str
+    is_active: bool = True
     created_at: datetime
     
     model_config = {"from_attributes": True}

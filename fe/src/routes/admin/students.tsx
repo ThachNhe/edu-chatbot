@@ -1,6 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { useState } from 'react'
-import { useAdminStudents, useAddAdminStudent } from '@/features/admin'
+import { useAdminStudents, useAddAdminStudent, useToggleStudentLock } from '@/features/admin'
 
 export const Route = createFileRoute('/admin/students')({
     component: AdminStudentsPage,
@@ -9,6 +9,7 @@ export const Route = createFileRoute('/admin/students')({
 function AdminStudentsPage() {
     const { data: students, isLoading } = useAdminStudents()
     const { mutate: addStudent, isPending } = useAddAdminStudent()
+    const { mutate: toggleLock, isPending: isToggling } = useToggleStudentLock()
     
     const [isAdding, setIsAdding] = useState(false)
     const [form, setForm] = useState({ name: '', class_name: '', student_code: '', email: '' })
@@ -68,6 +69,7 @@ function AdminStudentsPage() {
                             <th className="p-4 font-semibold">Họ và Tên</th>
                             <th className="p-4 font-semibold">Lớp</th>
                             <th className="p-4 font-semibold">Email</th>
+                            <th className="p-4 font-semibold text-center">Trạng thái</th>
                         </tr>
                     </thead>
                     <tbody className="divide-y">
@@ -82,6 +84,20 @@ function AdminStudentsPage() {
                                     <td className="p-4">{s.name}</td>
                                     <td className="p-4">{s.class_name || '-'}</td>
                                     <td className="p-4">{s.email || '-'}</td>
+                                    <td className="p-4 text-center">
+                                        <div className="flex items-center justify-center gap-2">
+                                            <span className={`px-2 py-1 text-xs font-medium rounded-md ${s.is_active ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`}>
+                                                {s.is_active ? 'Hoạt động' : 'Bị khóa'}
+                                            </span>
+                                            <button 
+                                                onClick={() => toggleLock(s.id)}
+                                                disabled={isToggling}
+                                                className={`px-3 py-1 text-xs rounded border ${s.is_active ? 'border-red-500 text-red-500 hover:bg-red-50' : 'border-green-500 text-green-500 hover:bg-green-50'} disabled:opacity-50`}
+                                            >
+                                                {s.is_active ? 'Khóa' : 'Mở khóa'}
+                                            </button>
+                                        </div>
+                                    </td>
                                 </tr>
                             ))
                         )}

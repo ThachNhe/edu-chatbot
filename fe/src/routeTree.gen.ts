@@ -19,6 +19,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as RoomCodeRouteImport } from './routes/room.$code'
 import { Route as AdminStudentsRouteImport } from './routes/admin/students'
 import { Route as AdminInstructorsRouteImport } from './routes/admin/instructors'
+import { Route as AdminDashboardRouteImport } from './routes/admin/dashboard'
 import { Route as AuthenticatedStatsRouteImport } from './routes/_authenticated/stats'
 import { Route as AuthenticatedLessonsRouteImport } from './routes/_authenticated/lessons'
 import { Route as AuthenticatedExamRouteImport } from './routes/_authenticated/exam'
@@ -74,6 +75,11 @@ const AdminInstructorsRoute = AdminInstructorsRouteImport.update({
   path: '/instructors',
   getParentRoute: () => AdminRoute,
 } as any)
+const AdminDashboardRoute = AdminDashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => AdminRoute,
+} as any)
 const AuthenticatedStatsRoute = AuthenticatedStatsRouteImport.update({
   id: '/stats',
   path: '/stats',
@@ -112,6 +118,7 @@ export interface FileRoutesByFullPath {
   '/exam': typeof AuthenticatedExamRoute
   '/lessons': typeof AuthenticatedLessonsRoute
   '/stats': typeof AuthenticatedStatsRoute
+  '/admin/dashboard': typeof AdminDashboardRoute
   '/admin/instructors': typeof AdminInstructorsRoute
   '/admin/students': typeof AdminStudentsRoute
   '/room/$code': typeof RoomCodeRoute
@@ -128,6 +135,7 @@ export interface FileRoutesByTo {
   '/exam': typeof AuthenticatedExamRoute
   '/lessons': typeof AuthenticatedLessonsRoute
   '/stats': typeof AuthenticatedStatsRoute
+  '/admin/dashboard': typeof AdminDashboardRoute
   '/admin/instructors': typeof AdminInstructorsRoute
   '/admin/students': typeof AdminStudentsRoute
   '/room/$code': typeof RoomCodeRoute
@@ -146,6 +154,7 @@ export interface FileRoutesById {
   '/_authenticated/exam': typeof AuthenticatedExamRoute
   '/_authenticated/lessons': typeof AuthenticatedLessonsRoute
   '/_authenticated/stats': typeof AuthenticatedStatsRoute
+  '/admin/dashboard': typeof AdminDashboardRoute
   '/admin/instructors': typeof AdminInstructorsRoute
   '/admin/students': typeof AdminStudentsRoute
   '/room/$code': typeof RoomCodeRoute
@@ -164,6 +173,7 @@ export interface FileRouteTypes {
     | '/exam'
     | '/lessons'
     | '/stats'
+    | '/admin/dashboard'
     | '/admin/instructors'
     | '/admin/students'
     | '/room/$code'
@@ -180,6 +190,7 @@ export interface FileRouteTypes {
     | '/exam'
     | '/lessons'
     | '/stats'
+    | '/admin/dashboard'
     | '/admin/instructors'
     | '/admin/students'
     | '/room/$code'
@@ -197,6 +208,7 @@ export interface FileRouteTypes {
     | '/_authenticated/exam'
     | '/_authenticated/lessons'
     | '/_authenticated/stats'
+    | '/admin/dashboard'
     | '/admin/instructors'
     | '/admin/students'
     | '/room/$code'
@@ -285,6 +297,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminInstructorsRouteImport
       parentRoute: typeof AdminRoute
     }
+    '/admin/dashboard': {
+      id: '/admin/dashboard'
+      path: '/dashboard'
+      fullPath: '/admin/dashboard'
+      preLoaderRoute: typeof AdminDashboardRouteImport
+      parentRoute: typeof AdminRoute
+    }
     '/_authenticated/stats': {
       id: '/_authenticated/stats'
       path: '/stats'
@@ -344,11 +363,13 @@ const AuthenticatedRouteWithChildren = AuthenticatedRoute._addFileChildren(
 )
 
 interface AdminRouteChildren {
+  AdminDashboardRoute: typeof AdminDashboardRoute
   AdminInstructorsRoute: typeof AdminInstructorsRoute
   AdminStudentsRoute: typeof AdminStudentsRoute
 }
 
 const AdminRouteChildren: AdminRouteChildren = {
+  AdminDashboardRoute: AdminDashboardRoute,
   AdminInstructorsRoute: AdminInstructorsRoute,
   AdminStudentsRoute: AdminStudentsRoute,
 }

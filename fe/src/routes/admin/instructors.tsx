@@ -1,6 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { useState } from 'react'
-import { useAdminInstructors, useAddAdminInstructor } from '@/features/admin'
+import { useAdminInstructors, useAddAdminInstructor, useToggleInstructorLock } from '@/features/admin'
 
 export const Route = createFileRoute('/admin/instructors')({
     component: AdminInstructorsPage,
@@ -9,6 +9,7 @@ export const Route = createFileRoute('/admin/instructors')({
 function AdminInstructorsPage() {
     const { data: instructors, isLoading } = useAdminInstructors()
     const { mutate: addInstructor, isPending } = useAddAdminInstructor()
+    const { mutate: toggleLock, isPending: isToggling } = useToggleInstructorLock()
     
     const [isAdding, setIsAdding] = useState(false)
     const [form, setForm] = useState({ name: '', email: '', password: '' })
@@ -63,6 +64,7 @@ function AdminInstructorsPage() {
                             <th className="p-4 font-semibold">Họ và Tên</th>
                             <th className="p-4 font-semibold">Email</th>
                             <th className="p-4 font-semibold">Vai trò</th>
+                            <th className="p-4 font-semibold text-center">Trạng thái</th>
                         </tr>
                     </thead>
                     <tbody className="divide-y">
@@ -76,6 +78,20 @@ function AdminInstructorsPage() {
                                     <td className="p-4 font-medium">{user.name}</td>
                                     <td className="p-4">{user.email}</td>
                                     <td className="p-4 capitalize">{user.role === 'teacher' ? 'Giáo viên' : user.role}</td>
+                                    <td className="p-4 text-center">
+                                        <div className="flex items-center justify-center gap-2">
+                                            <span className={`px-2 py-1 text-xs font-medium rounded-md ${user.is_active ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`}>
+                                                {user.is_active ? 'Hoạt động' : 'Bị khóa'}
+                                            </span>
+                                            <button 
+                                                onClick={() => toggleLock(user.id)}
+                                                disabled={isToggling}
+                                                className={`px-3 py-1 text-xs rounded border ${user.is_active ? 'border-red-500 text-red-500 hover:bg-red-50' : 'border-green-500 text-green-500 hover:bg-green-50'} disabled:opacity-50`}
+                                            >
+                                                {user.is_active ? 'Khóa' : 'Mở khóa'}
+                                            </button>
+                                        </div>
+                                    </td>
                                 </tr>
                             ))
                         )}

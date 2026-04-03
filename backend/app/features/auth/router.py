@@ -80,6 +80,12 @@ def login(body: LoginRequest, db: Session = Depends(get_db)):
             detail="Email hoặc mật khẩu không đúng",
         )
 
+    if not user.is_active:
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="Tài khoản của bạn đã bị khóa. Vui lòng liên hệ Admin.",
+        )
+
     access_token = create_access_token(data={"sub": str(user.id)})
     refresh_token = create_refresh_token(data={"sub": str(user.id)})
 

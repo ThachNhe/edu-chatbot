@@ -35,6 +35,20 @@ export function useValidateStudent() {
     })
 }
 
+export function useToggleStudentLock() {
+    const queryClient = useQueryClient()
+    return useMutation({
+        mutationFn: (studentId: number) => adminService.toggleStudentLock(studentId),
+        onSuccess: () => {
+            queryClient.invalidateQueries({ queryKey: QUERY_KEYS.ADMIN.STUDENTS })
+            toast.success('Cập nhật trạng thái thành công')
+        },
+        onError: (err: any) => {
+            toast.error(err.message || 'Lỗi cập nhật trạng thái')
+        }
+    })
+}
+
 export function useAdminInstructors() {
     return useQuery({
         queryKey: QUERY_KEYS.ADMIN.INSTRUCTORS,
@@ -53,5 +67,26 @@ export function useAddAdminInstructor() {
         onError: (err: any) => {
             toast.error(err.message || 'Lỗi thêm giáo viên. Email có thể đã tồn tại.')
         }
+    })
+}
+
+export function useToggleInstructorLock() {
+    const queryClient = useQueryClient()
+    return useMutation({
+        mutationFn: (instructorId: number) => adminService.toggleInstructorLock(instructorId),
+        onSuccess: () => {
+            queryClient.invalidateQueries({ queryKey: QUERY_KEYS.ADMIN.INSTRUCTORS })
+            toast.success('Cập nhật trạng thái thành công')
+        },
+        onError: (err: any) => {
+            toast.error(err.message || 'Lỗi cập nhật trạng thái')
+        }
+    })
+}
+
+export function useAdminStats() {
+    return useQuery({
+        queryKey: ['ADMIN_STATS'],
+        queryFn: () => adminService.getAdminStats(),
     })
 }

@@ -29,12 +29,18 @@ export function ExamToolbar({ config, isGenerating, onChange, onGenerate }: Exam
   return (
     <div className="mb-5 flex flex-wrap items-center gap-3 rounded-xl border border-[#e2e8f0] bg-white px-5 py-3.5 shadow-[0_1px_3px_rgba(0,0,0,0.08)]">
       <label className="text-[12.5px] font-bold text-[#475569]">Chủ đề:</label>
-      <SelectField
-        value={config.topic}
-        onChange={(v) => onChange({ ...config, topic: v })}
-      >
-        {TOPICS.map((t) => <option key={t} value={t}>{t}</option>)}
-      </SelectField>
+      <div className="relative">
+        <input
+          list="topic-options"
+          value={config.topic}
+          onChange={(e) => onChange({ ...config, topic: e.target.value })}
+          placeholder="Chọn hoặc nhập..."
+          className="w-[180px] rounded-lg border-[1.5px] border-[#e2e8f0] bg-[#f8fafc] px-3 py-2 font-['Nunito',sans-serif] text-[13px] text-[#334155] outline-none transition-colors focus:border-[#1a56db]"
+        />
+        <datalist id="topic-options">
+          {TOPICS.map((t) => <option key={t} value={t} />)}
+        </datalist>
+      </div>
 
       <label className="text-[12.5px] font-bold text-[#475569]">Số câu:</label>
       <input
