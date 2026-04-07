@@ -5,10 +5,20 @@ import tailwindcss from '@tailwindcss/vite'
 import { tanstackRouter } from '@tanstack/router-plugin/vite'
 
 export default defineConfig({
-  plugins: [ tanstackRouter({ autoCodeSplitting: true }), react(), tailwindcss()],
+  plugins: [tanstackRouter({ autoCodeSplitting: true }), react(), tailwindcss()],
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
+    },
+  },
+  server: {
+    allowedHosts: ['expects-decreased-rivers-tall.trycloudflare.com'],
+    proxy: {
+      '/api': {
+        target: 'http://backend:8765',
+        changeOrigin: true,
+        ws: true,
+      },
     },
   },
 })

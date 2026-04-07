@@ -6,8 +6,14 @@ import { useAuthStore } from '@/stores/useAuthStore'
 import type { ChatMessage, ChatConversation } from '../types/chat.types'
 
 const buildWsUrl = (token: string, conversationId?: number): string => {
-  const apiUrl = import.meta.env.VITE_API_URL ?? 'http://localhost:8765'
-  const wsBase = apiUrl.replace(/^https?/, (s: string) => (s === 'https' ? 'wss' : 'ws'))
+  const apiUrl = import.meta.env.VITE_API_URL
+  let wsBase: string
+  if (apiUrl) {
+    wsBase = apiUrl.replace(/^https?/, (s: string) => (s === 'https' ? 'wss' : 'ws'))
+  } else {
+    const proto = window.location.protocol === 'https:' ? 'wss' : 'ws'
+    wsBase = `${proto}://${window.location.host}`
+  }
   const params = new URLSearchParams({ token })
   if (conversationId !== undefined) {
     params.set('conversation_id', String(conversationId))

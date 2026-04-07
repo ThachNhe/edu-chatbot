@@ -14,7 +14,7 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U admin -d mydb"]
+      test: [ "CMD-SHELL", "pg_isready -U admin -d mydb" ]
       interval: 10s
       timeout: 5s
       retries: 5
@@ -48,7 +48,7 @@ services:
       - ./fe:/app
       - /app/node_modules
     environment:
-      - VITE_API_URL=http://localhost:8765
+      - VITE_API_URL=
     depends_on:
       - backend
 
