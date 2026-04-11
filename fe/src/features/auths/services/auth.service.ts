@@ -20,7 +20,8 @@ export const authService = {
     apiPost<LoginApiResponse>(API_ENDPOINTS.AUTH.LOGIN, payload),
 
   /**
-   * Register a new account
+   * Public registration is disabled on the server.
+   * This method remains only to keep legacy modules type-safe.
    */
   register: (payload: RegisterPayload) =>
     apiPost<RegisterApiResponse>(API_ENDPOINTS.AUTH.REGISTER, payload),

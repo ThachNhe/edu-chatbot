@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Depends, HTTPException, status
+from fastapi import APIRouter, Depends, HTTPException, Response, status
 from sqlalchemy.orm import Session
 
 from app.database import get_db
@@ -6,7 +6,6 @@ from app.models.user import User
 from app.features.auth.schemas import (
     RegisterRequest,
     LoginRequest,
-    RefreshTokenRequest,
     ForgotPasswordRequest,
     ResetPasswordRequest,
     LoginResponse,
@@ -18,7 +17,6 @@ from app.utils.security import (
     hash_password,
     verify_password,
     create_access_token,
-    create_refresh_token,
     create_reset_token,
     decode_token,
 )
@@ -26,6 +24,31 @@ from app.dependencies.auth import get_current_user
 from app.config.config import settings
 
 router = APIRouter(prefix="/auth", tags=["Authentication"])
+
+
+COOKIE_MAX_AGE_SECONDS = settings.jwt_access_token_expire_days * 24 * 60 * 60
+
+
+def _set_auth_cookie(response: Response, access_token: str) -> None:
+    response.set_cookie(
+        key=settings.auth_cookie_name,
+        value=access_token,
+        max_age=COOKIE_MAX_AGE_SECONDS,
+        httponly=True,
+        secure=settings.is_production,
+        samesite="lax",
+        path="/",
+    )
+
+
+def _clear_auth_cookie(response: Response) -> None:
+    response.delete_cookie(
+        key=settings.auth_cookie_name,
+        path="/",
+        secure=settings.is_production,
+        httponly=True,
+        samesite="lax",
+    )
 
 
 def _user_to_response(user: User) -> UserResponse:
@@ -43,35 +66,17 @@ def _user_to_response(user: User) -> UserResponse:
 # ─── Register ───────────────────────────────────────────────────────────────
 
 @router.post("/register", response_model=RegisterResponse, status_code=status.HTTP_201_CREATED)
-def register(body: RegisterRequest, db: Session = Depends(get_db)):
-    # Check existing email
-    existing = db.query(User).filter(User.email == body.email.lower()).first()
-    if existing:
-        raise HTTPException(
-            status_code=status.HTTP_409_CONFLICT,
-            detail="Email đã được sử dụng",
-        )
-
-    user = User(
-        name=body.name,
-        email=body.email.lower(),
-        password=hash_password(body.password),
-        role="teacher",
-    )
-    db.add(user)
-    db.commit()
-    db.refresh(user)
-
-    return RegisterResponse(
-        user=_user_to_response(user),
-        message="Đăng ký thành công",
+def register(_body: RegisterRequest):
+    raise HTTPException(
+        status_code=status.HTTP_403_FORBIDDEN,
+        detail="Tài khoản giáo viên được cấp bởi admin. Bạn không thể tự đăng ký.",
     )
 
 
 # ─── Login ──────────────────────────────────────────────────────────────────
 
 @router.post("/login", response_model=LoginResponse)
-def login(body: LoginRequest, db: Session = Depends(get_db)):
+def login(body: LoginRequest, response: Response, db: Session = Depends(get_db)):
     user = db.query(User).filter(User.email == body.email.lower()).first()
 
     if not user or not verify_password(body.password, user.password):
@@ -87,51 +92,19 @@ def login(body: LoginRequest, db: Session = Depends(get_db)):
         )
 
     access_token = create_access_token(data={"sub": str(user.id)})
-    refresh_token = create_refresh_token(data={"sub": str(user.id)})
+    _set_auth_cookie(response, access_token)
 
     return LoginResponse(
         user=_user_to_response(user),
-        accessToken=access_token,
-        refreshToken=refresh_token,
-        expiresIn=settings.jwt_access_token_expire_minutes * 60,
+        expiresIn=COOKIE_MAX_AGE_SECONDS,
     )
-
-
-# ─── Refresh Token ──────────────────────────────────────────────────────────
-
-@router.post("/refresh", response_model=dict)
-def refresh_token(body: RefreshTokenRequest, db: Session = Depends(get_db)):
-    payload = decode_token(body.refreshToken)
-
-    if payload is None or payload.get("type") != "refresh":
-        raise HTTPException(
-            status_code=status.HTTP_401_UNAUTHORIZED,
-            detail="Refresh token không hợp lệ hoặc đã hết hạn",
-        )
-
-    user_id = payload.get("sub")
-    user = db.query(User).filter(User.id == user_id).first()
-
-    if not user:
-        raise HTTPException(
-            status_code=status.HTTP_401_UNAUTHORIZED,
-            detail="Người dùng không tồn tại",
-        )
-
-    new_access_token = create_access_token(data={"sub": str(user.id)})
-
-    return {
-        "accessToken": new_access_token,
-        "expiresIn": settings.jwt_access_token_expire_minutes * 60,
-    }
 
 
 # ─── Logout ─────────────────────────────────────────────────────────────────
 
 @router.post("/logout", response_model=ApiResponse)
-def logout(current_user: User = Depends(get_current_user)):
-    # Stateless JWT — client just discards the token
-    # For production: add token to a blacklist (Redis)
+def logout(response: Response):
+    _clear_auth_cookie(response)
     return ApiResponse(
         message="Đăng xuất thành công",
         success=True,

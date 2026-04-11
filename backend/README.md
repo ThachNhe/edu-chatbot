@@ -14,7 +14,16 @@ pip install -r requirements.txt
 ```
 OPENAI_API_KEY=...
 OPENAI_MODEL=gpt-4o-mini
+SMTP_HOST=mailhog
+SMTP_PORT=1026
+SMTP_FROM_EMAIL=no-reply@educhatbot.local
+SMTP_USE_TLS=false
+JWT_ACCESS_TOKEN_EXPIRE_DAYS=7
+AUTH_COOKIE_NAME=access_token
 ```
+
+## MailHog
+Khi chạy bằng Docker Compose, MailHog khả dụng tại `http://localhost:8025` để xem email tài khoản giáo viên do admin tạo.
 
 ## Build Index
 Đặt file `output.txt` vào thư mục `data/`, sau đó chạy:

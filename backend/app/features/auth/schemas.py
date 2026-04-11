@@ -16,10 +16,6 @@ class LoginRequest(BaseModel):
     password: str = Field(..., min_length=1)
 
 
-class RefreshTokenRequest(BaseModel):
-    refreshToken: str
-
-
 class ForgotPasswordRequest(BaseModel):
     email: EmailStr
 
@@ -46,8 +42,6 @@ class UserResponse(BaseModel):
 
 class LoginResponse(BaseModel):
     user: UserResponse
-    accessToken: str
-    refreshToken: str
     expiresIn: int
 
 

@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
+from app.config.config import settings
 from app.features.auth.router import router as auth_router
 from app.features.conversations.router import router as conversations_router
 from app.features.dashboard.router import router as dashboard_router
@@ -13,10 +14,12 @@ from app.features.admin.router import router as admin_router
 
 app = FastAPI(title="FC2 ChatBot")
 
+cors_origins = [origin.strip() for origin in settings.frontend_url.split(",") if origin.strip()]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
-    allow_credentials=False,
+    allow_origins=cors_origins or ["http://localhost:5173"],
+    allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )

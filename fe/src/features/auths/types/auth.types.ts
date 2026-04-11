@@ -1,25 +1,10 @@
-
 import type { User } from '@/types/common.types'
-
-// ─── Auth State ────────────────────────────────────────────────────────────
-
-export interface AuthTokens {
-  accessToken: string
-  refreshToken: string
-  expiresIn: number
-}
-
-export interface AuthSession {
-  user: User
-  tokens: AuthTokens
-}
 
 // ─── Form Values ───────────────────────────────────────────────────────────
 
 export interface LoginFormValues {
   email: string
   password: string
-  rememberMe?: boolean
 }
 
 export interface RegisterFormValues {
@@ -41,15 +26,13 @@ export interface ResetPasswordFormValues {
 
 // ─── API Payloads ──────────────────────────────────────────────────────────
 
-export type LoginPayload = Omit<LoginFormValues, 'rememberMe'>
+export type LoginPayload = LoginFormValues
 export type RegisterPayload = Omit<RegisterFormValues, 'confirmPassword'>
 
 // ─── API Responses ─────────────────────────────────────────────────────────
 
 export interface LoginApiResponse {
   user: User
-  accessToken: string
-  refreshToken: string
   expiresIn: number
 }
 

@@ -9,7 +9,7 @@ import type { LoginFormValues, RegisterFormValues, ForgotPasswordFormValues, Res
 // ─── useLogin ──────────────────────────────────────────────────────────────
 
 export function useLogin() {
-  const { login } = useAuthStore()
+  const { restoreSession } = useAuthStore()
   const { addToast } = useUIStore()
   const router = useRouter()
 
@@ -18,7 +18,7 @@ export function useLogin() {
       authService.login({ email, password }),
 
     onSuccess: (data) => {
-      login(data.user, data.accessToken, data.refreshToken)
+      restoreSession(data.user)
       addToast({
         type: 'success',
         title: 'Đăng nhập thành công',
@@ -97,13 +97,13 @@ export function useLogout() {
 // ─── useMe ─────────────────────────────────────────────────────────────────
 
 export function useMe() {
-  const { isAuthenticated, setUser } = useAuthStore()
+  const { isAuthenticated, restoreSession } = useAuthStore()
 
   return useQuery({
     queryKey: QUERY_KEYS.AUTH.ME,
     queryFn: async () => {
       const user = await authService.getMe()
-      setUser(user) // keep store in sync
+      restoreSession(user)
       return user
     },
     enabled: isAuthenticated,

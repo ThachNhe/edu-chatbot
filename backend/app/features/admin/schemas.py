@@ -1,6 +1,6 @@
 from datetime import datetime
 from typing import Optional
-from pydantic import BaseModel
+from pydantic import BaseModel, EmailStr, Field
 
 class AdminStudentOut(BaseModel):
     id: int
@@ -39,5 +39,5 @@ class AdminInstructorOut(BaseModel):
 
 class AdminInstructorCreate(BaseModel):
     name: str
-    email: str
-    password: str
+    email: EmailStr
+    password: str = Field(..., min_length=8, max_length=100)

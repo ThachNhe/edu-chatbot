@@ -2,10 +2,9 @@ import { useState, useCallback, useRef, useEffect } from 'react'
 import { useNavigate, useSearch } from '@tanstack/react-router'
 import { api } from '@/services/api'
 import { API_ENDPOINTS } from '@/services/endpoints'
-import { useAuthStore } from '@/stores/useAuthStore'
 import type { ChatMessage, ChatConversation } from '../types/chat.types'
 
-const buildWsUrl = (token: string, conversationId?: number): string => {
+const buildWsUrl = (conversationId?: number): string => {
   const apiUrl = import.meta.env.VITE_API_URL
   let wsBase: string
   if (apiUrl) {
@@ -14,7 +13,7 @@ const buildWsUrl = (token: string, conversationId?: number): string => {
     const proto = window.location.protocol === 'https:' ? 'wss' : 'ws'
     wsBase = `${proto}://${window.location.host}`
   }
-  const params = new URLSearchParams({ token })
+  const params = new URLSearchParams()
   if (conversationId !== undefined) {
     params.set('conversation_id', String(conversationId))
   }
@@ -34,7 +33,6 @@ const genId = () => `msg-${Date.now()}-${++msgIdCounter}`
 export type WsStatus = 'connecting' | 'open' | 'closed' | 'error'
 
 export function useChat() {
-  const token = useAuthStore((s) => s.token)
   const navigate = useNavigate()
 
   // Đọc conversationId từ URL search params
@@ -75,19 +73,17 @@ export function useChat() {
 
   useEffect(() => {
     refreshConversations()
-  }, [token, refreshConversations])
+  }, [refreshConversations])
 
   const connectWs = useCallback(
     (conversationId?: number) => {
-      if (!token) return
-
       if (wsRef.current) {
         wsRef.current.onclose = null
         wsRef.current.close()
       }
 
       setWsStatus('connecting')
-      const ws = new WebSocket(buildWsUrl(token, conversationId))
+      const ws = new WebSocket(buildWsUrl(conversationId))
       wsRef.current = ws
 
       ws.onopen = () => setWsStatus('open')
@@ -132,7 +128,7 @@ export function useChat() {
         }
       }
     },
-    [token, scrollToBottom, refreshConversations, updateUrlConversationId],
+    [scrollToBottom, refreshConversations, updateUrlConversationId],
   )
 
   // Nếu có conversationId trên URL khi mount → load conversation đó

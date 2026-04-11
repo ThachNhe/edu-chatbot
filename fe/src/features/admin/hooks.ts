@@ -2,8 +2,8 @@ import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
 import { adminService } from './services'
 import { QUERY_KEYS } from '@/lib/constants'
 import { toast } from 'react-hot-toast'
-import type { 
-    AdminStudentCreatePayload, 
+import type {
+    AdminStudentCreatePayload,
     StudentValidatePayload,
     AdminInstructorCreatePayload
 } from './types'
@@ -62,7 +62,7 @@ export function useAddAdminInstructor() {
         mutationFn: (payload: AdminInstructorCreatePayload) => adminService.createInstructor(payload),
         onSuccess: () => {
             queryClient.invalidateQueries({ queryKey: QUERY_KEYS.ADMIN.INSTRUCTORS })
-            toast.success('Thêm giáo viên thành công')
+            toast.success('Thêm giáo viên thành công và đã gửi email qua MailHog/SMTP')
         },
         onError: (err: any) => {
             toast.error(err.message || 'Lỗi thêm giáo viên. Email có thể đã tồn tại.')

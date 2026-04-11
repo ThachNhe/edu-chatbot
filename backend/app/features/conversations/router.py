@@ -8,10 +8,9 @@ from sqlalchemy.orm import Session
 import app.features.conversations.repository as conversation_repo
 import app.features.conversations.service as conversation_service
 from app.database import get_db
-from app.dependencies.auth import get_current_user
+from app.dependencies.auth import get_current_user, get_current_user_from_websocket
 from app.features.conversations.schemas import ConversationDetail, ConversationOut
 from app.models.user import User
-from app.utils.security import decode_token
 
 router = APIRouter(tags=["Conversations"])
 
@@ -46,21 +45,17 @@ def get_conversation_messages(
 @router.websocket("/ws/chat")
 async def ws_chat(
     ws: WebSocket,
-    token: str = Query(...),
     conversation_id: Optional[int] = Query(None),
     db: Session = Depends(get_db),
 ):
-    # Authenticate via query param (WebSocket cannot send Authorization headers)
-    payload = decode_token(token)
-    if payload is None or payload.get("type") != "access":
+    try:
+        current_user = get_current_user_from_websocket(ws, db)
+    except HTTPException:
         await ws.accept()
         await ws.close(code=4001)
         return
 
-    user_id: int = payload.get("sub")
-    if user_id is None:
-        await ws.close(code=4001)
-        return
+    user_id = current_user.id
 
     await ws.accept()
 

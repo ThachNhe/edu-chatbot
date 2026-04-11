@@ -1,12 +1,13 @@
 import { createFileRoute, redirect } from '@tanstack/react-router'
 import { LoginForm } from '@/features/auths'
-import { useAuthStore } from '@/stores/useAuthStore'
 import { GraduationCap } from 'lucide-react'
+import { resolveSessionUser } from '@/lib/auth'
 
 export const Route = createFileRoute('/login')({
-  beforeLoad: () => {
-    if (useAuthStore.getState().isAuthenticated) {
-      throw redirect({ to: '/dashboard' })
+  beforeLoad: async () => {
+    const user = await resolveSessionUser()
+    if (user) {
+      throw redirect({ to: user.role === 'admin' ? '/admin' : '/dashboard' })
     }
   },
   component: LoginPage,
@@ -31,7 +32,7 @@ function LoginPage() {
             <GraduationCap size={26} />
           </div>
           <h1 className="text-2xl font-extrabold text-white">EduChatbot</h1>
-          <p className="mt-1 text-sm text-white/70">Trợ lý AI cho giáo viên Tin học</p>
+          <p className="mt-1 text-sm text-white/70">Trợ lý AI cho giáo viên với tài khoản do admin cấp</p>
         </div>
 
         <LoginForm />

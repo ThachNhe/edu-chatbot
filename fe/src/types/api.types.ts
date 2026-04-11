@@ -11,6 +11,7 @@ export interface ApiResponse<T = unknown> {
 export interface ApiErrorResponse {
   message: string
   success: false
+  detail?: unknown
   errors?: Record<string, string[]> // field-level validation errors
   code?: string                      // error code (e.g. "UNAUTHORIZED")
 }

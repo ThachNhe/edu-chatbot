@@ -1,7 +1,7 @@
-import os
 import smtplib
 from email.message import EmailMessage
 from typing import Optional
+
 from app.config.config import settings
 
 # Hard-coded recipient (customer support)
@@ -9,27 +9,9 @@ SUPPORT_EMAIL = "thach.dv@zinza.com.vn"
 
 
 def send_support_email(question: str, user_email: Optional[str] = None) -> bool:
-    """
-    Send a support email containing the user's question.
-    Read SMTP config from environment variables:
-      SMTP_HOST (default: smtp.gmail.com)
-      SMTP_PORT (default: 587)
-      SMTP_USER (required)
-      SMTP_PASS (required)
-    """
-    smtp_host = settings.smtp_host
-    smtp_port = settings.smtp_port
-    smtp_user = settings.smtp_user
-    smtp_pass = settings.smtp_pass
-    
-    print(f"SMTP config: host={smtp_host}, port={smtp_port}, user={smtp_user}, pass={'***' if smtp_pass else None}")
-
-    if not smtp_user or not smtp_pass:
-        raise RuntimeError("SMTP_USER/SMTP_PASS is not configured in .env")
-
     msg = EmailMessage()
     msg["Subject"] = "New support question from chatbot"
-    msg["From"] = smtp_user
+    msg["From"] = settings.smtp_from_email or settings.smtp_user or "no-reply@localhost"
     msg["To"] = SUPPORT_EMAIL
     body = [
         "A question could not be answered by the chatbot:",
@@ -40,11 +22,46 @@ def send_support_email(question: str, user_email: Optional[str] = None) -> bool:
         body.append(f"User email: {user_email}")
     msg.set_content("\n".join(body))
 
-    with smtplib.SMTP(smtp_host, smtp_port) as server:
-        server.starttls()
-        server.login(smtp_user, smtp_pass)
+    with smtplib.SMTP(settings.smtp_host, settings.smtp_port) as server:
+        if settings.smtp_use_tls:
+            server.starttls()
+        if settings.smtp_user and settings.smtp_pass:
+            server.login(settings.smtp_user, settings.smtp_pass)
         server.send_message(msg)
     return True
 
 
-__all__ = ["send_support_email", "SUPPORT_EMAIL"]
+def send_teacher_credentials_email(
+    teacher_name: str,
+    recipient_email: str,
+    password: str,
+) -> bool:
+    msg = EmailMessage()
+    msg["Subject"] = "Tai khoan giao vien EduChatbot"
+    msg["From"] = settings.smtp_from_email or settings.smtp_user or "no-reply@localhost"
+    msg["To"] = recipient_email
+    msg.set_content(
+        "\n".join(
+            [
+                f"Xin chao {teacher_name},",
+                "",
+                "Tai khoan giao vien cua ban da duoc admin tao tren EduChatbot.",
+                f"Email dang nhap: {recipient_email}",
+                f"Mat khau tam thoi: {password}",
+                "",
+                "Vui long dang nhap va doi mat khau neu can.",
+            ]
+        )
+    )
+
+    with smtplib.SMTP(settings.smtp_host, settings.smtp_port) as server:
+        if settings.smtp_use_tls:
+            server.starttls()
+        if settings.smtp_user and settings.smtp_pass:
+            server.login(settings.smtp_user, settings.smtp_pass)
+        server.send_message(msg)
+
+    return True
+
+
+__all__ = ["send_support_email", "send_teacher_credentials_email", "SUPPORT_EMAIL"]

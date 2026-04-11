@@ -1,53 +1,25 @@
-import axios, { type AxiosError, type InternalAxiosRequestConfig } from 'axios'
+import axios, { type AxiosError } from 'axios'
+import { ROUTES } from '@/lib/constants'
 import { useAuthStore } from '@/stores/useAuthStore'
-import type { ApiErrorResponse, RefreshTokenResponse } from '@/types/api.types'
+import type { ApiErrorResponse } from '@/types/api.types'
 import { API_ENDPOINTS } from './endpoints'
-// import { router } from '@/main'
 
-const SKIP_REFRESH_URLS = [
+const SKIP_AUTH_FAILURE_URLS = [
   API_ENDPOINTS.AUTH.LOGIN,
   API_ENDPOINTS.AUTH.REGISTER,
-  API_ENDPOINTS.AUTH.REFRESH,
+  API_ENDPOINTS.AUTH.LOGOUT,
+  API_ENDPOINTS.AUTH.FORGOT_PASSWORD,
+  API_ENDPOINTS.AUTH.RESET_PASSWORD,
+  API_ENDPOINTS.AUTH.ME,
 ]
-
-
-// ─── Axios Instance ────────────────────────────────────────────────────────
 
 export const api = axios.create({
   baseURL: `${import.meta.env.VITE_API_URL}/api`,
   timeout: 1500000,
+  withCredentials: true,
   headers: {
     'Content-Type': 'application/json',
   },
-})
-
-// ─── Token Refresh Logic ───────────────────────────────────────────────────
-
-let isRefreshing = false
-let failedQueue: Array<{
-  resolve: (token: string) => void
-  reject: (err: unknown) => void
-}> = []
-
-const processQueue = (error: unknown, token: string | null = null) => {
-  failedQueue.forEach((prom) => {
-    if (error) {
-      prom.reject(error)
-    } else {
-      prom.resolve(token!)
-    }
-  })
-  failedQueue = []
-}
-
-// ─── Request Interceptor ──────────────────────────────────────────────────
-
-api.interceptors.request.use((config) => {
-  const token = useAuthStore.getState().token
-  if (token) {
-    config.headers.Authorization = `Bearer ${token}`
-  }
-  return config
 })
 
 // ─── Response Interceptor ──────────────────────────────────────────────────
@@ -55,56 +27,25 @@ api.interceptors.request.use((config) => {
 api.interceptors.response.use(
   (response) => response,
   async (error: AxiosError<ApiErrorResponse>) => {
-    const originalRequest = error.config as InternalAxiosRequestConfig & {
-      _retry?: boolean
-    }
+    const requestUrl = error.config?.url ?? ''
+    const isAuthUrl = SKIP_AUTH_FAILURE_URLS.some((url) => requestUrl.includes(url))
 
-    const requestUrl = originalRequest.url ?? ''
-    const isAuthUrl = SKIP_REFRESH_URLS.some((url) => requestUrl.includes(url))
-    const refreshToken = useAuthStore.getState().refreshToken
-
-    if (error.response?.status === 401 && !originalRequest._retry && !isAuthUrl && refreshToken) {
-      if (isRefreshing) {
-        return new Promise((resolve, reject) => {
-          failedQueue.push({
-            resolve: (token: string) => {
-              originalRequest.headers.Authorization = `Bearer ${token}`
-              resolve(api(originalRequest))
-            },
-            reject,
-          })
-        })
-      }
-
-      originalRequest._retry = true
-      isRefreshing = true
-
-      try {
-        const refreshToken = useAuthStore.getState().refreshToken
-        const { data } = await axios.post<RefreshTokenResponse>(
-          `${import.meta.env.VITE_API_URL}/api${API_ENDPOINTS.AUTH.REFRESH}`,
-          { refreshToken },
-        )
-
-        useAuthStore.getState().setToken(data.accessToken)
-        processQueue(null, data.accessToken)
-
-        originalRequest.headers.Authorization = `Bearer ${data.accessToken}`
-        return api(originalRequest)
-      } catch (refreshError) {
-        processQueue(refreshError, null)
-        // useAuthStore.getState().logout()
-        // window.location.href = '/login'
-        // window.location.replace('/login')
-        return Promise.reject(refreshError)
-      } finally {
-        isRefreshing = false
+    if (error.response?.status === 401 && !isAuthUrl) {
+      useAuthStore.getState().logout()
+      if (window.location.pathname !== ROUTES.LOGIN) {
+        window.location.assign(ROUTES.LOGIN)
       }
     }
 
-    // Extract error message
+    const responseData = error.response?.data
+    const detailMessage =
+      typeof responseData?.detail === 'string'
+        ? responseData.detail
+        : undefined
+
     const message =
-      error.response?.data?.message ??
+      detailMessage ??
+      responseData?.message ??
       error.message ??
       'Đã xảy ra lỗi không xác định'
 

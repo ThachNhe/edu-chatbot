@@ -1,12 +1,14 @@
 import { createFileRoute, redirect } from '@tanstack/react-router'
-import { RegisterForm } from '@/features/auths'
-import { useAuthStore } from '@/stores/useAuthStore'
-import { GraduationCap } from 'lucide-react'
+import { Link } from '@tanstack/react-router'
+import { GraduationCap, ShieldCheck } from 'lucide-react'
+import { ROUTES } from '@/lib/constants'
+import { resolveSessionUser } from '@/lib/auth'
 
 export const Route = createFileRoute('/register')({
-  beforeLoad: () => {
-    if (useAuthStore.getState().isAuthenticated) {
-      throw redirect({ to: '/dashboard' })
+  beforeLoad: async () => {
+    const user = await resolveSessionUser()
+    if (user) {
+      throw redirect({ to: user.role === 'admin' ? '/admin' : '/dashboard' })
     }
   },
   component: RegisterPage,
@@ -29,10 +31,29 @@ function RegisterPage() {
             <GraduationCap />
           </div>
           <h1 className="text-2xl font-extrabold text-white">EduChatbot</h1>
-          <p className="mt-1 text-sm text-white/70">Tạo tài khoản để bắt đầu</p>
+          <p className="mt-1 text-sm text-white/70">Tài khoản giáo viên được quản trị viên cấp</p>
         </div>
 
-        <RegisterForm />
+        <div className="rounded-3xl bg-white/95 p-8 shadow-2xl backdrop-blur-sm">
+          <div className="mb-5 flex size-14 items-center justify-center rounded-2xl bg-sky-100 text-sky-700">
+            <ShieldCheck className="size-7" />
+          </div>
+          <h2 className="text-2xl font-bold text-slate-900">Không hỗ trợ tự đăng ký</h2>
+          <p className="mt-3 text-sm leading-6 text-slate-600">
+            Giáo viên không thể tự tạo tài khoản. Admin sẽ tạo tài khoản và gửi email đăng nhập kèm mật khẩu qua MailHog hoặc hệ thống SMTP đã cấu hình.
+          </p>
+          <div className="mt-6 flex gap-3">
+            <Link
+              to={ROUTES.LOGIN}
+              className="inline-flex items-center justify-center rounded-xl bg-sky-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-sky-700"
+            >
+              Quay lại đăng nhập
+            </Link>
+            <span className="inline-flex items-center rounded-xl border border-slate-200 px-4 py-2 text-sm text-slate-600">
+              Cần tài khoản mới? Liên hệ admin.
+            </span>
+          </div>
+        </div>
       </div>
     </div>
   )

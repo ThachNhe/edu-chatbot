@@ -17,6 +17,7 @@ from app.models.user import User
 from app.models.student import Student
 from app.models.exam import Exam
 from app.utils.security import hash_password
+from send_mail import send_teacher_credentials_email
 
 router = APIRouter(prefix="/admin", tags=["Admin"])
 
@@ -112,12 +113,31 @@ def create_instructor(
             detail="Email đã được sử dụng."
         )
     
-    instructor = admin_repo.create_instructor(
-        db,
+    instructor = User(
         name=body.name,
         email=body.email.lower(),
-        password_hash=hash_password(body.password)
+        password=hash_password(body.password),
+        role='teacher',
     )
+
+    db.add(instructor)
+
+    try:
+        db.flush()
+        send_teacher_credentials_email(
+            teacher_name=instructor.name,
+            recipient_email=instructor.email,
+            password=body.password,
+        )
+        db.commit()
+    except Exception:
+        db.rollback()
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail='Không thể gửi email tài khoản giáo viên. Vui lòng kiểm tra MailHog/SMTP và thử lại.',
+        )
+
+    db.refresh(instructor)
     return instructor
 
 @router.post("/instructors/{instructor_id}/toggle-lock")

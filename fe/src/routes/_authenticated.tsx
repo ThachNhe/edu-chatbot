@@ -1,16 +1,16 @@
 import { createFileRoute, redirect } from '@tanstack/react-router'
-import { useAuthStore } from '@/stores/useAuthStore'
 import { AppLayout } from '@/components/layout/AppLayout'
+import { resolveSessionUser } from '@/lib/auth'
 
 export const Route = createFileRoute('/_authenticated')({
-  beforeLoad: () => {
-  const { user, token} = useAuthStore.getState()
+  beforeLoad: async () => {
+    const user = await resolveSessionUser()
 
-    if (!token) {
+    if (!user) {
       throw redirect({ to: '/login' })
     }
-    
-    if (user?.role === 'admin') {
+
+    if (user.role === 'admin') {
       throw redirect({ to: '/admin' })
     }
   },

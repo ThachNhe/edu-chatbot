@@ -1,5 +1,7 @@
-from pydantic_settings import BaseSettings, SettingsConfigDict
+from typing import Optional
+
 from pydantic import Field
+from pydantic_settings import BaseSettings, SettingsConfigDict
 
 class Settings(BaseSettings):
     model_config = SettingsConfigDict(
@@ -18,10 +20,12 @@ class Settings(BaseSettings):
     app_port: int = Field(8765, description="Port")
     
     # SMTP
-    smtp_host: str = Field("smtp.gmail.com", description="SMTP host")
-    smtp_port: int = Field(587, description="SMTP port")
-    smtp_user: str = Field(..., description="SMTP username")
-    smtp_pass: str = Field(..., description="SMTP password")
+    smtp_host: str = Field("mailhog", description="SMTP host")
+    smtp_port: int = Field(1026, description="SMTP port")
+    smtp_user: Optional[str] = Field(None, description="SMTP username")
+    smtp_pass: Optional[str] = Field(None, description="SMTP password")
+    smtp_from_email: str = Field("no-reply@educhatbot.local", description="SMTP sender")
+    smtp_use_tls: bool = Field(False, description="Enable STARTTLS for SMTP")
 
     # Database
     database_url: str = Field(..., description="Database URL")
@@ -30,8 +34,8 @@ class Settings(BaseSettings):
     # JWT
     jwt_secret_key: str = Field(..., description="JWT secret key")
     jwt_algorithm: str = Field("HS256", description="JWT algorithm")
-    jwt_access_token_expire_minutes: int = Field(30, description="Access token expire time in minutes")
-    jwt_refresh_token_expire_days: int = Field(7, description="Refresh token expire time in days")
+    jwt_access_token_expire_days: int = Field(7, description="Access token expire time in days")
+    auth_cookie_name: str = Field("access_token", description="Authentication cookie name")
 
     frontend_url: str = Field("http://localhost:5173", description="Frontend URL for CORS and reset password link")
     

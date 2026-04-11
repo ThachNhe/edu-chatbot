@@ -5,14 +5,11 @@ import type { User } from '@/types/common.types'
 interface AuthState {
   // State
   user: User | null
-  token: string | null
-  refreshToken?: string | null
   isAuthenticated: boolean
 
   // Actions
   setUser: (user: User) => void
-  setToken: (token: string) => void
-  login: (user: User, token: string, refreshToken: string) => void
+  restoreSession: (user: User) => void
   logout: () => void
   updateUser: (partial: Partial<User>) => void
 }
@@ -23,20 +20,17 @@ export const useAuthStore = create<AuthState>()(
       (set) => ({
         // Initial state
         user: null,
-        token: null,
         isAuthenticated: false,
 
         // Actions
         setUser: (user) => set({ user }, false, 'auth/setUser'),
 
-        setToken: (token) => set({ token }, false, 'auth/setToken'),
-
-        login: (user, token, refreshToken) =>
-          set({ user, token, refreshToken, isAuthenticated: true }, false, 'auth/login'),
+        restoreSession: (user) =>
+          set({ user, isAuthenticated: true }, false, 'auth/restoreSession'),
 
         logout: () =>
           set(
-            { user: null, token: null, refreshToken: null, isAuthenticated: false },
+            { user: null, isAuthenticated: false },
             false,
             'auth/logout',
           ),
@@ -55,8 +49,6 @@ export const useAuthStore = create<AuthState>()(
         // Chỉ persist những field cần thiết
         partialize: (state) => ({
           user: state.user,
-          token: state.token,
-          refreshToken: state.refreshToken,
           isAuthenticated: state.isAuthenticated,
         }),
       },

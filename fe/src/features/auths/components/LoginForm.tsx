@@ -6,7 +6,6 @@ import { useState } from 'react'
 
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
-import { Checkbox } from '@/components/ui/checkbox'
 import {
   Form,
   FormControl,
@@ -31,7 +30,6 @@ export function LoginForm() {
     defaultValues: {
       email: '',
       password: '',
-      rememberMe: false,
     },
   })
 
@@ -116,26 +114,6 @@ export function LoginForm() {
               )}
             />
 
-            {/* Remember me */}
-            <FormField
-              control={form.control}
-              name="rememberMe"
-              render={({ field }) => (
-                <FormItem className="flex items-center gap-2 space-y-0">
-                  <FormControl>
-                    <Checkbox
-                      checked={field.value}
-                      onCheckedChange={field.onChange}
-                      disabled={isPending}
-                    />
-                  </FormControl>
-                  <FormLabel className="font-normal cursor-pointer">
-                    Ghi nhớ đăng nhập
-                  </FormLabel>
-                </FormItem>
-              )}
-            />
-
             <Button type="submit" className="w-full" disabled={isPending}>
               {isPending ? (
                 <>
@@ -155,13 +133,7 @@ export function LoginForm() {
 
       <CardFooter className="justify-center">
         <p className="text-sm text-muted-foreground">
-          Chưa có tài khoản?{' '}
-          <Link
-            // to={ROUTES.REGISTER}
-            className="font-medium text-primary"
-          >
-            Liên hệ admin
-          </Link>
+          Tài khoản giáo viên do admin cấp. Nếu chưa có, vui lòng liên hệ quản trị viên.
         </p>
       </CardFooter>
     </Card>
