@@ -3,7 +3,7 @@ import { useRef, useState, useEffect } from 'react'
 import { cn } from '@/lib/utils'
 import { useAuthStore } from '@/stores/useAuthStore'
 import { useLogout } from '@/features/auths'
-import { LogOut, Settings, BarChart2, GraduationCap, UserCog, ClipboardList, Crown } from 'lucide-react'
+import { LogOut, Settings, BarChart2, GraduationCap, UserCog, ClipboardList, Crown, Menu } from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
 
 const NAV_ITEMS: { icon: LucideIcon; label: string; path: string; badge?: number }[] = [
@@ -13,11 +13,16 @@ const NAV_ITEMS: { icon: LucideIcon; label: string; path: string; badge?: number
   { icon: ClipboardList, label: 'Nhật ký hoạt động', path: '/admin/activity-logs' },
 ]
 
-export function AdminSidebar() {
+export function AdminSidebar({ open, onClose, onMenuClick }: { open: boolean; onClose: () => void; onMenuClick: () => void }) {
   const navigate = useNavigate()
   const { pathname } = useLocation()
   const user = useAuthStore((s) => s.user)
   const { mutate: logout, isPending } = useLogout()
+
+  const handleNav = (path: string) => {
+    navigate({ to: path as any })
+    onClose()
+  }
   const [menuOpen, setMenuOpen] = useState(false)
   const menuRef = useRef<HTMLDivElement>(null)
 
@@ -37,13 +42,18 @@ export function AdminSidebar() {
 
   return (
     <aside
-      className="flex h-screen w-[220px] flex-shrink-0 flex-col"
+      className={cn(
+        'flex h-screen w-[220px] flex-shrink-0 flex-col transition-transform duration-300',
+        'md:relative md:translate-x-0',
+        'fixed inset-y-0 left-0 z-40',
+        open ? 'translate-x-0' : '-translate-x-full md:translate-x-0',
+      )}
       style={{
         background: 'linear-gradient(180deg, #1f2937 0%, #111827 100%)',
         boxShadow: '4px 0 24px rgba(0,0,0,0.18)',
       }}
     >
-      {/* Logo */}
+      {/* Logo + hamburger row */}
       <div className="flex items-center gap-3 px-5 py-5 border-b border-white/10">
         <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-white/10 shadow-inner">
           <Crown size={20} className="text-white" />
@@ -58,7 +68,7 @@ export function AdminSidebar() {
       <nav className="flex-1 overflow-y-auto px-3 py-4 space-y-1">
         <p className="px-3 mb-2 text-[10px] font-bold uppercase tracking-widest text-gray-400">Hệ thống</p>
         {NAV_ITEMS.map((item) => (
-          <NavItem key={item.path} item={item} active={pathname === item.path || pathname.startsWith(item.path)} onClick={() => navigate({ to: item.path as any })} />
+          <NavItem key={item.path} item={item} active={pathname === item.path || pathname.startsWith(item.path)} onClick={() => handleNav(item.path)} />
         ))}
       </nav>
 
@@ -68,7 +78,7 @@ export function AdminSidebar() {
         {menuOpen && (
           <div className="mb-2 rounded-xl overflow-hidden bg-white/10 backdrop-blur border border-white/15 shadow-lg">
             <button
-              onClick={() => { setMenuOpen(false); navigate({ to: '/settings' as any }) }}
+              onClick={() => { setMenuOpen(false); handleNav('/settings') }}
               className="flex w-full items-center gap-2.5 px-3.5 py-2.5 text-[12.5px] text-white/80 hover:bg-white/10 transition-colors"
             >
               <span><Settings size={15} /></span>

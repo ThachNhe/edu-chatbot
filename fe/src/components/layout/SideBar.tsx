@@ -21,13 +21,18 @@ const ROLE_LABELS: Record<string, string> = {
   user: "Giáo viên",
 };
 
-export function Sidebar() {
+export function Sidebar({ open, onClose }: { open: boolean; onClose: () => void }) {
   const navigate = useNavigate();
   const { pathname } = useLocation();
   const user = useAuthStore((s) => s.user);
   const { mutate: logout, isPending } = useLogout();
   const [menuOpen, setMenuOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
+
+  const handleNav = (path: string) => {
+    navigate({ to: path as any });
+    onClose();
+  };
 
   const avatarLetter = user?.name?.charAt(0).toUpperCase() ?? "?";
   const roleLabel = ROLE_LABELS[user?.role ?? ""] ?? "";
@@ -45,7 +50,14 @@ export function Sidebar() {
 
   return (
     <aside
-      className="flex h-screen w-[220px] flex-shrink-0 flex-col"
+      className={cn(
+        "flex h-screen w-[220px] flex-shrink-0 flex-col transition-transform duration-300",
+        // Desktop: always visible (relative in flow)
+        "md:relative md:translate-x-0",
+        // Mobile: fixed drawer sliding in/out
+        "fixed inset-y-0 left-0 z-40",
+        open ? "translate-x-0" : "-translate-x-full md:translate-x-0",
+      )}
       style={{
         background:
           "linear-gradient(180deg, #1e3a8a 0%, #1e40af 60%, #1d4ed8 100%)",
@@ -77,7 +89,7 @@ export function Sidebar() {
             key={item.path}
             item={item}
             active={pathname === item.path}
-            onClick={() => navigate({ to: item.path as any })}
+            onClick={() => handleNav(item.path)}
           />
         ))}
 
@@ -89,7 +101,7 @@ export function Sidebar() {
             key={item.path}
             item={item}
             active={pathname === item.path}
-            onClick={() => navigate({ to: item.path as any })}
+            onClick={() => handleNav(item.path)}
           />
         ))}
       </nav>
@@ -102,7 +114,7 @@ export function Sidebar() {
             <button
               onClick={() => {
                 setMenuOpen(false);
-                navigate({ to: "/settings" as any });
+                handleNav("/settings");
               }}
               className="flex w-full items-center gap-2.5 px-3.5 py-2.5 text-[12.5px] text-white/80 hover:bg-white/10 transition-colors"
             >
