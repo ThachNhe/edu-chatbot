@@ -41,8 +41,7 @@ export const API_ENDPOINTS = {
   // ─── Exams ───────────────────────────────────────────────────────────────
   EXAMS: {
     GENERATE: '/exams/generate',
-    CREATE: '/exams',
-    LIST: '/exams',
+    CREATE: '/exams', CREATE_FROM_BANK: '/exams/from-bank', LIST: '/exams',
     DETAIL: (id: number) => `/exams/${id}`,
     DELETE: (id: number) => `/exams/${id}`,
     UPDATE_QUESTION: (examId: number, questionId: number) =>
@@ -66,6 +65,7 @@ export const API_ENDPOINTS = {
     COUNT: '/questions/count',
     CREATE: '/questions',
     DELETE: (id: number) => `/questions/${id}`,
+    GENERATE: '/questions/generate',
   },
 
   // ─── Students (teacher view) ──────────────────────────────────────────────

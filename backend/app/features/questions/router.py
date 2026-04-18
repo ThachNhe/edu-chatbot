@@ -4,11 +4,13 @@ from fastapi import APIRouter, Depends, HTTPException, Query, Request, status
 from sqlalchemy.orm import Session
 
 import app.features.questions.repository as question_repo
+import app.features.exams.service as exam_service
 from app.database import get_db
 from app.dependencies.auth import get_current_user
-from app.features.exams.schemas import OptionOut, QuestionOut
+from app.features.exams.schemas import GeneratedQuestionOut, OptionOut, QuestionOut
 from app.features.questions.schemas import (
     CreateQuestionRequest,
+    GenerateQuestionsRequest,
     QuestionBankItem,
     UpdateQuestionRequest,
 )
@@ -19,6 +21,27 @@ from app.utils.activity_logger import log_activity
 router = APIRouter(tags=["Questions"])
 
 
+# ─── AI Generate (trả về để review, chưa lưu DB) ─────────────────────────────
+
+@router.post("/questions/generate", response_model=List[GeneratedQuestionOut])
+async def generate_questions_for_bank(
+    body: GenerateQuestionsRequest,
+    current_user: User = Depends(get_current_user),
+):
+    try:
+        questions = await exam_service.generate_exam_questions(
+            topic=body.topic,
+            count=body.count,
+            difficulty=body.difficulty,
+        )
+        return questions
+    except Exception as e:
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=f"Lỗi tạo câu hỏi bằng AI: {str(e)}",
+        )
+
+
 # ─── Question Bank: List (with filter) ────────────────────────────────────
 
 @router.get("/questions", response_model=List[QuestionBankItem])
@@ -26,6 +49,7 @@ def list_questions(
     level: Optional[str] = Query(None, description="easy | med | hard"),
     lesson_id: Optional[int] = Query(None),
     search: Optional[str] = Query(None),
+    topic: Optional[str] = Query(None),
     skip: int = Query(0, ge=0),
     limit: int = Query(50, ge=1, le=200),
     db: Session = Depends(get_db),
@@ -37,6 +61,7 @@ def list_questions(
         level=level,
         lesson_id=lesson_id,
         search=search,
+        topic=topic,
         skip=skip,
         limit=limit,
     )
@@ -53,6 +78,7 @@ def list_questions(
                 id=q.id,
                 content=q.content,
                 level=q.level,
+                topic=q.topic,
                 lesson_id=q.lesson_id,
                 lesson_name=lesson_name,
                 usage_count=usage,
@@ -68,6 +94,7 @@ def count_questions(
     level: Optional[str] = Query(None),
     lesson_id: Optional[int] = Query(None),
     search: Optional[str] = Query(None),
+    topic: Optional[str] = Query(None),
     db: Session = Depends(get_db),
     current_user: User = Depends(get_current_user),
 ):
@@ -77,6 +104,7 @@ def count_questions(
         level=level,
         lesson_id=lesson_id,
         search=search,
+        topic=topic,
     )
     return {"total": total}
 
@@ -96,6 +124,7 @@ def create_question(
         level=body.level,
         created_by=current_user.id,
         lesson_id=body.lesson_id,
+        topic=body.topic,
     )
     for opt in body.options:
         question_repo.create_option(db, question.id, opt.letter, opt.content, opt.is_correct)
@@ -123,6 +152,7 @@ def create_question(
         id=question.id,
         content=question.content,
         level=question.level,
+        topic=question.topic,
         lesson_id=question.lesson_id,
         lesson_name=lesson_name,
         usage_count=usage,

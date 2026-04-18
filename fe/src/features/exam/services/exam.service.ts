@@ -3,6 +3,7 @@ import { apiGet, apiPost, apiDelete } from '@/services/api'
 import { API_ENDPOINTS } from '@/services/endpoints'
 import type { ScoreWithStudent } from '../types/exam.type'
 import type {
+    CreateExamFromBankPayload,
     ExamConfig,
     ExamDetail,
     ExamOut,
@@ -30,6 +31,9 @@ export const examService = {
         status: 'draft' | 'published'
         questions: ExamQuestion[]
     }) => apiPost<ExamDetail>(API_ENDPOINTS.EXAMS.CREATE, payload),
+
+    createFromBank: (payload: CreateExamFromBankPayload) =>
+        apiPost<ExamDetail>(API_ENDPOINTS.EXAMS.CREATE_FROM_BANK, payload),
 
     list: () => apiGet<ExamOut[]>(API_ENDPOINTS.EXAMS.LIST),
 

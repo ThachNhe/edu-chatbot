@@ -1,6 +1,14 @@
 from typing import List, Optional
 
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
+
+
+# ─── AI Generate ─────────────────────────────────────────────────────────────
+
+class GenerateQuestionsRequest(BaseModel):
+    topic: str
+    count: int = Field(default=5, ge=1, le=30)
+    difficulty: str = "mixed"  # 'easy' | 'med' | 'hard' | 'mixed'
 
 
 # ─── Existing ─────────────────────────────────────────────────────────────
@@ -30,6 +38,7 @@ class CreateQuestionRequest(BaseModel):
     content: str
     level: str  # 'easy' | 'med' | 'hard'
     lesson_id: Optional[int] = None
+    topic: Optional[str] = None
     options: List[CreateOptionIn]
 
 
@@ -48,6 +57,7 @@ class QuestionBankItem(BaseModel):
     id: int
     content: str
     level: str
+    topic: Optional[str] = None
     lesson_id: Optional[int]
     lesson_name: Optional[str] = None
     usage_count: int = 0

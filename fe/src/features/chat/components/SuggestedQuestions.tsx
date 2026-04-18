@@ -1,4 +1,4 @@
-import { Lightbulb, Repeat2, ClipboardList, FileText } from 'lucide-react'
+import { Lightbulb, Repeat2, ClipboardList } from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
 
 interface SuggestedQuestionsProps {

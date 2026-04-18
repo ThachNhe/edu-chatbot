@@ -2,7 +2,7 @@ import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { QUERY_KEYS } from '@/lib/constants'
 import { useUIStore } from '@/stores/useUIStore'
 import { examService } from '../services/exam.service'
-import type { ExamConfig, ExamQuestion } from '../types/exam.type'
+import type { CreateExamFromBankPayload, ExamConfig, ExamQuestion } from '../types/exam.type'
 
 // ─── Teacher hooks ────────────────────────────────────────────────────────
 
@@ -33,6 +33,26 @@ export function useCreateExam() {
         },
         onError: () => {
             addToast({ type: 'error', title: 'Lưu thất bại', description: 'Vui lòng thử lại.' })
+        },
+    })
+}
+
+export function useCreateExamFromBank() {
+    const queryClient = useQueryClient()
+    const { addToast } = useUIStore()
+
+    return useMutation({
+        mutationFn: (payload: CreateExamFromBankPayload) => examService.createFromBank(payload),
+        onSuccess: (data) => {
+            queryClient.invalidateQueries({ queryKey: QUERY_KEYS.EXAMS.LIST })
+            addToast({
+                type: 'success',
+                title: data.status === 'published' ? 'Đề thi đã xuất bản' : 'Đã lưu nháp',
+                description: data.title,
+            })
+        },
+        onError: () => {
+            addToast({ type: 'error', title: 'Tạo đề thất bại', description: 'Vui lòng thử lại.' })
         },
     })
 }

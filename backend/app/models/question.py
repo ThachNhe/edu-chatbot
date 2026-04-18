@@ -11,6 +11,7 @@ class Question(Base):
     lesson_id: Mapped[int | None] = mapped_column(Integer, ForeignKey("lessons.id", ondelete="SET NULL"))
     content: Mapped[str] = mapped_column(Text, nullable=False)
     level: Mapped[str] = mapped_column(String(10), nullable=False)  # 'easy' | 'med' | 'hard'
+    topic: Mapped[str | None] = mapped_column(String(200), nullable=True)
     created_by: Mapped[int | None] = mapped_column(Integer, ForeignKey("users.id"))
     created_at: Mapped[datetime] = mapped_column(DateTime, server_default=func.now())
 

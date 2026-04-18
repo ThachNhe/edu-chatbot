@@ -8,7 +8,16 @@ export interface ExamConfig {
   difficulty: DifficultyLevel
   duration: string
 }
+// ─── Create from Bank ──────────────────────────────────────────────
 
+export interface CreateExamFromBankPayload {
+  title: string
+  topic?: string
+  duration: string
+  level_mix: string
+  status: 'draft' | 'published'
+  question_ids: number[]
+}
 // ─── Generated: AI trả về, chưa lưu DB ────────────────────────────────────
 
 export interface ExamOption {

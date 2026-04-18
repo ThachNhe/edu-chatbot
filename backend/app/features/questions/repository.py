@@ -14,6 +14,7 @@ def list_questions(
     level: Optional[str] = None,
     lesson_id: Optional[int] = None,
     search: Optional[str] = None,
+    topic: Optional[str] = None,
     skip: int = 0,
     limit: int = 50,
 ) -> List[Question]:
@@ -24,6 +25,8 @@ def list_questions(
         q = q.filter(Question.lesson_id == lesson_id)
     if search:
         q = q.filter(Question.content.ilike(f"%{search}%"))
+    if topic:
+        q = q.filter(Question.topic == topic)
     return q.order_by(Question.created_at.desc()).offset(skip).limit(limit).all()
 
 
@@ -34,6 +37,7 @@ def count_questions(
     level: Optional[str] = None,
     lesson_id: Optional[int] = None,
     search: Optional[str] = None,
+    topic: Optional[str] = None,
 ) -> int:
     q = db.query(func.count(Question.id)).filter(Question.created_by == created_by)
     if level:
@@ -42,6 +46,8 @@ def count_questions(
         q = q.filter(Question.lesson_id == lesson_id)
     if search:
         q = q.filter(Question.content.ilike(f"%{search}%"))
+    if topic:
+        q = q.filter(Question.topic == topic)
     return q.scalar() or 0
 
 
@@ -60,8 +66,9 @@ def create_question(
     level: str,
     created_by: int,
     lesson_id: Optional[int] = None,
+    topic: Optional[str] = None,
 ) -> Question:
-    question = Question(content=content, level=level, created_by=created_by, lesson_id=lesson_id)
+    question = Question(content=content, level=level, created_by=created_by, lesson_id=lesson_id, topic=topic)
     db.add(question)
     db.flush()
     return question

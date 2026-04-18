@@ -11,6 +11,7 @@ import app.features.questions.repository as question_repo
 from app.database import get_db
 from app.dependencies.auth import get_current_user
 from app.features.exams.schemas import (
+    CreateExamFromBankRequest,
     CreateExamRequest,
     CreateRoomRequest,
     ExamDetail,
@@ -22,6 +23,7 @@ from app.features.exams.schemas import (
     RoomOut,
 )
 from app.models.exam import ExamQuestion
+from app.models.question import Question
 from app.models.user import User
 from app.features.scores.schemas import ScoreWithStudentOut
 
@@ -109,6 +111,48 @@ def create_exam(
                 is_correct=opt_in.is_correct,
             )
         db.add(ExamQuestion(exam_id=exam.id, question_id=question.id, order_num=order))
+
+    db.commit()
+
+    exam_with_qs = exam_repo.get_exam_with_questions(db, exam.id, current_user.id)
+    return _to_exam_detail(exam_with_qs)
+
+
+# ─── List ─────────────────────────────────────────────────────────────────────
+
+# ─── Create from Bank ────────────────────────────────────────────────────────
+
+@router.post("/from-bank", response_model=ExamDetail, status_code=status.HTTP_201_CREATED)
+def create_exam_from_bank(
+    body: CreateExamFromBankRequest,
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_user),
+):
+    if not body.question_ids:
+        raise HTTPException(
+            status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
+            detail="Phải chọn ít nhất một câu hỏi",
+        )
+
+    existing = db.query(Question.id).filter(Question.id.in_(body.question_ids)).all()
+    if len(existing) != len(body.question_ids):
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="Một số câu hỏi không tồn tại trong ngân hàng",
+        )
+
+    exam = exam_repo.create_exam(
+        db=db,
+        title=body.title,
+        topic=body.topic,
+        duration=body.duration,
+        level_mix=body.level_mix,
+        status=body.status,
+        created_by=current_user.id,
+    )
+
+    for order, qid in enumerate(body.question_ids, start=1):
+        db.add(ExamQuestion(exam_id=exam.id, question_id=qid, order_num=order))
 
     db.commit()
 

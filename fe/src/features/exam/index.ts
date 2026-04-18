@@ -5,7 +5,7 @@ export { QuestionBlock } from './components/QuestionBlock'
 export { ExamList } from './components/ExamList'
 export { CreateRoomModal } from './components/CreateRoomModal'
 
-export { useGenerateExam, useCreateExam, useExamList, useExamDetail, useDeleteExam, useUpdateQuestion, useCreateRoom, useRoomExam, useSubmitExam } from './hooks/useExam'
+export { useGenerateExam, useCreateExam, useCreateExamFromBank, useExamList, useExamDetail, useDeleteExam, useUpdateQuestion, useCreateRoom, useRoomExam, useSubmitExam } from './hooks/useExam'
 
 export { examService } from './services/exam.service'
 
@@ -19,4 +19,5 @@ export type {
     StudentExam,
     SubmitResult,
     DifficultyLevel,
+    CreateExamFromBankPayload,
 } from './types/exam.type'

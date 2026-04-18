@@ -2,7 +2,7 @@ import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
 import { toast } from 'react-hot-toast'
 import { QUERY_KEYS } from '@/lib/constants'
 import { questionService } from './services'
-import type { CreateQuestionPayload, QuestionFilter } from './types'
+import type { CreateQuestionPayload, QuestionFilter, GenerateQuestionsPayload } from './types'
 
 export function useQuestions(filter?: QuestionFilter) {
     return useQuery({
@@ -35,6 +35,16 @@ export function useDeleteQuestion() {
         },
         onError: (err: any) => {
             toast.error(err.message || 'Lỗi khi xóa câu hỏi')
+        },
+    })
+}
+
+/** Gọi AI để tạo danh sách câu hỏi mẫu — chưa lưu ngân hàng */
+export function useGenerateBankQuestions() {
+    return useMutation({
+        mutationFn: (payload: GenerateQuestionsPayload) => questionService.generateForBank(payload),
+        onError: (err: any) => {
+            toast.error(err.message || 'Lỗi khi tạo câu hỏi')
         },
     })
 }

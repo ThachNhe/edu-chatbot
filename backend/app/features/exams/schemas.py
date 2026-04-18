@@ -36,6 +36,15 @@ class CreateExamRequest(BaseModel):
     questions: List[QuestionIn]
 
 
+class CreateExamFromBankRequest(BaseModel):
+    title: str
+    topic: Optional[str] = None
+    duration: str
+    level_mix: str = "mixed"
+    status: str = "draft"  # 'draft' | 'published'
+    question_ids: List[int]
+
+
 # ─── Request: Create Room ─────────────────────────────────────────────────────
 
 class CreateRoomRequest(BaseModel):
