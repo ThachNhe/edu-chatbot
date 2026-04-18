@@ -1,0 +1,708 @@
+BỘ GIÁO DỤC VÀ ĐÀO TẠO
+TRƯỜNG ĐẠI HỌC TÂY BẮC
+
+
+ 
+
+
+
+ĐINH ĐỨC VÌNH
+
+
+ĐỒ ÁN TỐT NGHIỆP
+
+
+
+
+
+ỨNG DỤNG CÔNG NGHỆ TRÍ TUỆ NHÂN TẠO PHÁT TRIỂN HỆ THỐNG TỪ ĐIỂN CHUYÊN NGÀNH MỞ
+
+
+
+
+
+
+
+Sơn La – năm 2026 
+BỘ GIÁO DỤC VÀ ĐÀO TẠO
+TRƯỜNG ĐẠI HỌC TÂY BẮC 
+
+
+ 
+
+
+
+ĐINH ĐỨC VÌNH
+2022A0794
+
+
+ĐỒ ÁN TỐT NGHIỆP
+
+
+
+
+	
+ỨNG DỤNG CÔNG NGHỆ TRÍ TUỆ NHÂN TẠO PHÁT TRIỂN HỆ THỐNG TỪ ĐIỂN CHUYÊN NGÀNH MỞ
+	
+
+Chuyên ngành: Công nghệ thông tin
+Giảng viên hướng dẫn: TS. Nguyễn Duy Hiếu
+
+
+
+Sơn La – năm 2026
+LỜI CẢM ƠN
+Lời đầu tiên, em xin gửi lời cảm ơn chân thành đến Ban Giám hiệu Trường Đại học Tây Bắc, Khoa Khoa học Tự nhiên - Công nghệ, Bộ môn Công nghệ thông tin đã tạo điều kiện thuận lợi để em hoàn thành đồ án này. Đặc biệt, em xin bày tỏ lòng biết ơn sâu sắc đến thầy TS. Nguyễn Duy Hiếu, người thầy đã tận tình hướng dẫn và truyền đạt những kinh nghiệm quý báu trong suốt quá trình thực hiện đồ án. Thầy đã giúp đỡ em rất nhiều từ việc hình thành ý tưởng ban đầu cho đến việc theo sát, động viên, góp ý và cung cấp các tài liệu tham khảo bổ ích để em có thể hoàn thành đồ án một cách tốt nhất.
+Mặc dù đã nỗ lực hết mình, đồ án vẫn không tránh khỏi những thiếu sót. Em rất mong nhận được sự góp ý từ quý Thầy Cô và các bạn để hoàn thiện hơn nữa.
+Em xin chân thành cảm ơn!
+Tác giả đồ án tốt nghiệp
+(Ký và ghi rõ họ tên)
+
+
+
+
+	Đinh Đức Vình
+ 
+NHẬN XÉT CỦA GIẢNG VIÊN HƯỚNG DẪN
+1.	Hình thức (Bố cục, trình bày, lỗi, các mục, hình, bảng, công thức, phụ lục)
+……………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………
+2.	Nội dung (mục tiêu, phương pháp, kết quả, sao chép, các chương, tài liệu,...)
+……………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………
+3.	Kết luận
+……………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………
+Sơn La, ngày ...... tháng ...... năm 2026
+                                                                              Giảng viên hướng dẫn
+ 
+NHẬN XÉT CỦA GIẢNG VIÊN CHẤM
+1.	Hình thức (Bố cục, trình bày, lỗi, các mục, hình, bảng, công thức, phụ lục)
+……………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………
+2.	Nội dung (mục tiêu, phương pháp, kết quả, sao chép, các chương, tài liệu,...)
+………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………
+3.	Kết luận
+………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………
+Sơn La, ngày ...... tháng ...... năm 2026
+                                                                              Giảng viên chấm
+ 
+MỤC LỤC 
+
+DANH MỤC TỪ VIẾT TẮT	x
+PHẦN MỞ ĐẦU	xi
+1. Lý do chọn đề tài	xi
+2. Mục đích và ý nghĩa	xii
+2.1. Mục đích nghiên cứu	xii
+2.2. Ý nghĩa khoa học	xii
+2.3. Ý nghĩa thực tiễn	xiii
+3. Đối tượng và phạm vi nghiên cứu	xiii
+3.1. Đối tượng nghiên cứu	xiii
+3.2. Phạm vi nghiên cứu	xiii
+4. Phương pháp nghiên cứu	xiv
+4.1. Phương pháp nghiên cứu tài liệu	xiv
+4.2. Phương pháp phân tích và thiết kế hệ thống	xiv
+4.3. Phương pháp thực nghiệm	xiv
+4.4. Phương pháp so sánh và đánh giá	xiv
+5. Bố cục đồ án	xiv
+	CHƯƠNG 1: TỔNG QUAN VỀ HỆ THỐNG TỪ ĐIỂN VÀ CÔNG NGHỆ AI	1
+1.1. Tổng quan về từ điển chuyên ngành	1
+1.1.1. Khái niệm và vai trò	1
+1.1.2. Từ điển chuyên ngành đa ngôn ngữ	1
+1.1.3. Từ điển chuyên ngành mở	1
+1.2. Các hệ thống từ điển hiện có	2
+1.2.1. Từ điển quốc tế	2
+1.2.2. Từ điển trong nước	2
+1.2.3. Hạn chế của các hệ thống hiện có	3
+1.3. Công nghệ trí tuệ nhân tạo trong xử lý ngôn ngữ tự nhiên	3
+1.3.1. Tổng quan về xử lý ngôn ngữ tự nhiên	3
+1.3.2. Mô hình ngôn ngữ lớn (Large Language Model)	3
+1.3.3. Ứng dụng LLM trong giáo dục	4
+1.3.4. Thách thức khi ứng dụng LLM	4
+1.4. Các nghiên cứu liên quan	4
+1.4.1. Nghiên cứu về từ điển chuyên ngành tại Việt Nam	4
+1.4.2. Nghiên cứu tại Trường Đại học Tây Bắc	5
+1.4.3. Nghiên cứu về ứng dụng AI trong từ điển	5
+1.4.4. Khoảng trống nghiên cứu	6
+1.5. Cơ sở lý thuyết	6
+1.5.1. Mô hình Client - Server	6
+1.5.2. Kiến trúc REST API	6
+1.5.3. Cơ sở dữ liệu NoSQL	7
+1.5.4. Ngôn ngữ mô hình hóa UML	7
+1.5.5. Prompt Engineering	7
+	CHƯƠNG 2: PHÂN TÍCH VÀ THIẾT KẾ HỆ THỐNG	9
+2.1. Phân tích các bên liên quan	9
+2.1.1. Xác định các bên liên quan	9
+2.1.2. Nhu cầu và mong đợi của từng bên	9
+2.2. Phân tích nghiệp vụ	9
+2.2.1. Mô tả bài toán thực tế	9
+2.2.2. Quy trình nghiệp vụ hiện tại	10
+2.2.3. Quy trình nghiệp vụ đề xuất	10
+2.3. Yêu cầu chức năng	10
+2.3.1. Chức năng dành cho người dùng	10
+2.3.2. Chức năng dành cho quản trị viên và kiểm duyệt viên	13
+2.4. Yêu cầu phi chức năng	14
+2.4.1. Hiệu năng	14
+2.4.2. Bảo mật	15
+2.4.3. Khả năng sử dụng	15
+2.4.4. Khả năng mở rộng	15
+2.5. Mô hình hóa hệ thống	15
+2.5.1. Biểu đồ Use Case	15
+2.5.2. Biểu đồ hoạt động	19
+2.5.3. Biểu đồ trình tự	25
+2.6. Thiết kế hệ thống	31
+2.6.1. Kiến trúc tổng thể của hệ thống	31
+2.6.2. Thiết kế Backend	32
+2.6.3. Thiết kế Frontend	32
+2.6.4. Bảo mật và phân quyền hệ thống	42
+2.7. Thiết kế cơ sở dữ liệu	43
+2.7.1. Tổng quan thiết kế cơ sở dữ liệu	43
+2.7.2. Danh sách các Collection	43
+2.7.3. Thiết kế chi tiết từng Collection	43
+2.7.4. Sơ đồ quan hệ giữa các Collection	46
+	CHƯƠNG 3: CÀI ĐẶT VÀ TRIỂN KHAI HỆ THỐNG	48
+3.1. Môi trường phát triển	48
+3.2. Công nghệ sử dụng	48
+3.3. Cấu trúc thư mục hệ thống	50
+3.4. Cài đặt Backend	51
+3.5. Cài đặt Frontend	53
+3.6. Kết nối cơ sở dữ liệu	54
+3.7. Triển khai hệ thống lên môi trường thực tế	54
+3.8. Kiểm thử hệ thống	56
+3.8.1. Kiểm thử chức năng	56
+3.8.2. Kiểm thử bảo mật	57
+3.8.3. Kiểm thử hiệu năng	58
+3.8.4. Đánh giá kết quả kiểm thử	59
+KẾT LUẬN VÀ KIẾN NGHỊ	60
+1. Kết luận	60
+2. Kiến nghị	61
+TÀI LIỆU THAM KHẢO	62
+PHỤ LỤC	63
+Phụ lục A: Cấu hình môi trường phát triển FrontEnd	63
+Phụ lục B: Cấu hình môi trường phát triển BackEnd	63
+
+ 
+DANH MỤC HÌNH ẢNH
+
+
+Hình 2.1: Biểu đồ Use Case tổng quát hệ thống	20
+Hình 2.2: Biểu đồ Use Case chi tiết — Người dùng (Guest & Member)	21
+Hình 2.3: Biểu đồ Use Case chi tiết — Kiểm duyệt viên & Quản trị viên	22
+Hình 2.4: Biểu đồ hoạt động tra cứu thuật ngữ	24
+Hình 2.5: Biểu đồ hoạt động đăng ký hệ thống	25
+Hình 2.6: Biểu đồ hoạt động đăng nhập hệ thống	26
+Hình 2.7: Biểu đồ hoạt động đóng góp thuật ngữ mới	27
+Hình 2.8: Biểu đồ hoạt động kiểm duyệt nội dung	28
+Hình 2.9: Biểu đồ hoạt động quản lý hệ thống	29
+Hình 2.10: Biểu đồ trình tự tra cứu thuật ngữ	30
+Hình 2.11: Biểu đồ trình tự đăng ký tài khoản	30
+Hình 2.12: Biểu đồ trình tự đăng nhập hệ thống	31
+Hình 2.13: Biểu đồ trình tự xem định nghĩa chi tiết và gọi AI	31
+Hình 2.14: Biểu đồ trình tự đóng góp thuật ngữ mới	32
+Hình 2.15: Biểu đồ trình tự bình luận	32
+Hình 2.16: Biểu đồ trình tự kiểm duyệt nội dung đóng góp	33
+Hình 2.17: Biểu đồ trình tự quản lý người dùng	33
+Hình 2.18: Biểu đồ trình tự quản lý thuật ngữ	34
+Hình 2.19: Biểu đồ trình tự nhập dữ liệu hàng loạt	34
+Hình 2.20: Biểu đồ trình tự xem báo cáo thống kê	35
+Hình 2.21: Giao diện trang chủ	37
+Hình 2.22: Giao diện kết quả tìm kiếm	37
+Hình 2.23: Giao diện chi tiết thuật ngữ	38
+Hình 2.24: Giao diện AI giải thích thuật ngữ	38
+Hình 2.25: Giao diện đăng ký tài khoản	39
+Hình 2.26: Giao diện đăng nhập	39
+Hình 2.27: Giao diện danh sách yêu thích	40
+Hình 2.28: Giao diện đóng góp thuật ngữ mới	40
+Hình 2.29: Giao diện đề xuất chỉnh sửa thuật ngữ	41
+Hình 2.30: Giao diện trang cá nhân	41
+Hình 2.31: Giao diện danh sách đóng góp chờ duyệt	42
+Hình 2.32: Giao diện xem xét một đóng góp	42
+Hình 2.33: Giao diện kiểm duyệt bình luận	43
+Hình 2.34: Giao diện Dashboard tổng quan	43
+Hình 2.35: Giao diện quản lý người dùng	44
+Hình 2.36: Giao diện quản lý danh mục chuyên ngành	44
+Hình 2.37: Giao diện quản lý thuật ngữ	45
+Hình 2.38: Giao diện nhập dữ liệu hàng loạt	45
+Hình 2.39: Giao diện báo cáo thống kê	46
+Hình 2.40: Giao diện cấu hình hệ thống	46
+Hình 2.41: Sơ đồ thực thể ERD	51
+ 
+DANH MỤC TỪ VIẾT TẮT
+
+Từ viết tắt	Giải thích
+AI	Artificial Intelligence - Trí tuệ nhân tạo
+API	Application Programming Interface - Giao diện lập trình ứng dụng
+CNTT	Công nghệ thông tin
+CORS	Cross-Origin Resource Sharing
+CSDL	Cơ sở dữ liệu
+CSRF	Cross-Site Request Forgery
+ERD	Entity Relationship Diagram - Sơ đồ thực thể quan hệ
+HTTP/HTTPS	Hypertext Transfer Protocol / Hypertext Transfer Protocol Secure
+JWT	JSON Web Token
+LLM	Large Language Model - Mô hình ngôn ngữ lớn
+MVC	Model - View - Controller
+NLP	Natural Language Processing - Xử lý ngôn ngữ tự nhiên
+NoSQL	Not Only SQL
+ODM	Object Document Mapper
+ORM	Object Relational Mapper
+REST	Representational State Transfer
+RBAC	Role-Based Access Control - Kiểm soát truy cập theo vai trò
+UML	Unified Modeling Language - Ngôn ngữ mô hình hóa thống nhất
+VPS	Virtual Private Server - Máy chủ riêng ảo
+XSS	Cross-Site Scripting
+
+ 
+PHẦN MỞ ĐẦU
+1. Lý do chọn đề tài
+Trong bối cảnh toàn cầu hóa và hội nhập quốc tế ngày càng sâu rộng, việc tiếp cận kiến thức chuyên ngành bằng nhiều ngôn ngữ khác nhau đang trở thành nhu cầu thiết yếu trong giáo dục cả nước nói chung và giáo dục Đại học nói riêng. Tại Trường Đại học Tây Bắc, số lượng sinh viên quốc tế, đặc biệt là sinh viên đến từ nước Cộng hòa Dân chủ Nhân dân Lào, ngày càng tăng trong những năm gần đây. Khó khăn lớn nhất mà các bạn gặp phải chính là rào cản ngôn ngữ, đặc biệt khi tiếp cận các thuật ngữ chuyên ngành trong quá trình học tập. Trong khi vốn từ ngữ thông thường phục vụ giao tiếp hàng ngày có thể được tiếp thu tương đối nhanh chóng, thì hệ thống thuật ngữ chuyên môn đòi hỏi sự hiểu biết sâu sắc, chính xác về cả nội dung lẫn cách thức sử dụng.
+Hiện nay, mặc dù đã có một số đề tài xây dựng dữ liệu từ điển chuyên ngành song ngữ Việt - Lào tại Trường, nhưng các tài liệu này chủ yếu tồn tại dưới dạng bản in, gây khó khăn đáng kể trong việc tra cứu, cập nhật và phổ biến rộng rãi. Hơn nữa, từ điển truyền thống thường chỉ cung cấp định nghĩa cố định, không có khả năng giải thích theo ngữ cảnh hay cung cấp thông tin mở rộng linh hoạt theo nhu cầu người dùng.
+Trong khi đó, công nghệ trí tuệ nhân tạo, đặc biệt là các mô hình ngôn ngữ lớn như GPT, Claude hay Gemini, đang có những bước tiến vượt bậc trong lĩnh vực xử lý ngôn ngữ tự nhiên. Các mô hình này có khả năng hiểu ngữ cảnh, sinh ra văn bản tự nhiên và giải thích khái niệm phức tạp một cách dễ hiểu, có ví dụ minh hoạ cho thuật ngữ, phù hợp với từng đối tượng người dùng. Việc ứng dụng công nghệ AI vào hệ thống từ điển chuyên ngành không chỉ giúp nâng cao chất lượng nội dung mà còn tạo ra trải nghiệm học tập tương tác, sinh động và hiệu quả hơn so với từ điển truyền thống.
+Xuất phát từ thực trạng trên, đồ án này hướng đến việc xây dựng một hệ thống từ điển chuyên ngành mở, tích hợp công nghệ trí tuệ nhân tạo, hoạt động trực tuyến và cho phép cộng đồng đóng góp nội dung. Hệ thống không chỉ phục vụ sinh viên Lào mà còn hỗ trợ toàn bộ sinh viên và giảng viên tại Trường Đại học Tây Bắc trong việc tra cứu, học tập và nghiên cứu các thuật ngữ chuyên ngành.
+2. Mục đích và ý nghĩa
+2.1. Mục đích nghiên cứu
+Đồ án này hướng đến bốn mục đích chính. Thứ nhất, phân tích, thiết kế và xây dựng hệ thống từ điển chuyên ngành mở tích hợp công nghệ trí tuệ nhân tạo, đáp ứng nhu cầu tra cứu thuật ngữ đa ngôn ngữ, đặc biệt phục vụ sinh viên Lào và sinh viên, giảng viên tại Trường Đại học Tây Bắc và toàn thể cộng đồng. Thứ hai, ứng dụng công nghệ AI để cung cấp các tính năng thông minh như giải thích thuật ngữ theo ngữ cảnh, gợi ý chỉnh sửa thuật ngữ, gợi ý thuật ngữ liên quan và hỗ trợ người dùng hiểu sâu hơn về các khái niệm chuyên môn.
+Thứ ba, xây dựng cơ chế mở cho phép cộng đồng người dùng đóng góp thuật ngữ mới, bổ sung định nghĩa và đề xuất chỉnh sửa, báo cáo những thuật ngữ chưa phù hợp, từ đó không ngừng làm phong phú kho dữ liệu từ điển. Thứ tư, tích hợp dữ liệu từ điển chuyên ngành Việt - Lào đã được nghiên cứu trước đó tại Trường vào hệ thống, đồng thời xây dựng nền tảng để mở rộng sang các ngôn ngữ và chuyên ngành khác trong tương lai.
+2.2. Ý nghĩa khoa học
+Về mặt lý thuyết, đồ án góp phần nghiên cứu ứng dụng các mô hình ngôn ngữ lớn vào lĩnh vực giáo dục, đặc biệt trong việc xây dựng công cụ hỗ trợ học tập chuyên ngành. Đồ án đề xuất kiến trúc hệ thống kết hợp giữa cơ sở dữ liệu từ điển truyền thống và khả năng sinh nội dung động của AI, tạo nên một mô hình lai hiệu quả. Về mặt phương pháp, đồ án trình bày quy trình phân tích và thiết kế hệ thống thông tin phức tạp sử dụng ngôn ngữ mô hình hóa UML, áp dụng mô hình client – server trong kiến trúc web hiện đại và thiết kế các thuật toán xử lý ngôn ngữ tự nhiên phù hợp với bài toán từ điển chuyên ngành.
+Về mặt công nghệ, đồ án nghiên cứu cách tích hợp API của các mô hình AI tiên tiến vào ứng dụng thực tế, thiết kế cơ chế kiểm soát chất lượng nội dung do AI sinh ra và xây dựng hệ thống hybrid kết hợp dữ liệu có cấu trúc với khả năng xử lý ngôn ngữ tự nhiên.
+2.3. Ý nghĩa thực tiễn
+Đối với sinh viên, hệ thống cung cấp công cụ tra cứu thuật ngữ chuyên ngành tiện lợi, nhanh chóng và chính xác. Sinh viên Lào có thể tra cứu thuật ngữ tiếng Việt và nhận định nghĩa bằng tiếng Lào, giúp việc học tập trở nên dễ dàng hơn rất nhiều. Tính năng giải thích bằng AI giúp sinh viên không chỉ biết nghĩa của thuật ngữ mà còn hiểu sâu về khái niệm, ứng dụng thực tế và mối liên hệ với các khái niệm khác.
+Đối với giảng viên, hệ thống là công cụ hỗ trợ giảng dạy hiệu quả, đặc biệt khi làm việc với sinh viên nước ngoài hoặc sinh viên dân tộc thiểu số. Về lâu dài, hệ thống có thể mở rộng thành nền tảng từ điển chuyên ngành đa ngôn ngữ, không chỉ phục vụ Trường Đại học Tây Bắc mà còn có thể chia sẻ cho cộng đồng giáo dục rộng lớn hơn.
+3. Đối tượng và phạm vi nghiên cứu
+3.1. Đối tượng nghiên cứu
+Đối tượng nghiên cứu của đồ án bao gồm hệ thống từ điển chuyên ngành mở tích hợp công nghệ trí tuệ nhân tạo; các mô hình ngôn ngữ lớn và khả năng ứng dụng trong xử lý thuật ngữ chuyên ngành; quy trình tra cứu, đóng góp và quản lý nội dung từ điển trực tuyến; cùng với các phương pháp đảm bảo chất lượng nội dung trong hệ thống mở.
+3.2. Phạm vi nghiên cứu
+Về nội dung, đồ án tập trung vào phân tích, thiết kế kiến trúc hệ thống, thiết kế cơ sở dữ liệu, thiết kế các module chức năng và giải pháp tích hợp và ứng dụng trí tuệ nhân tạo. Về phạm vi triển khai, hệ thống được xây dựng cho từ điển chuyên ngành đa ngôn ngữ Việt - Lào - Anh, tập trung vào các ngành đào tạo chính tại Trường như Công nghệ thông tin, Kinh tế và Nông lâm. Về công nghệ, hệ thống sử dụng NextJS, Node.js, MongoDB và tích hợp API của Google Gemini và một số model của AI phổ biến khác.
+4. Phương pháp nghiên cứu
+4.1. Phương pháp nghiên cứu tài liệu
+Thu thập và phân tích các tài liệu liên quan đến từ điển chuyên ngành, các hệ thống từ điển trực tuyến hiện có trong và ngoài nước. Nghiên cứu các công nghệ trí tuệ nhân tạo, đặc biệt là các mô hình ngôn ngữ lớn và ứng dụng của chúng trong xử lý ngôn ngữ tự nhiên. Tham khảo các đề tài nghiên cứu về từ điển chuyên ngành Việt - Lào đã được thực hiện tại Trường Đại học Tây Bắc.
+4.2. Phương pháp phân tích và thiết kế hệ thống
+Sử dụng ngôn ngữ mô hình hóa UML để phân tích và thiết kế hệ thống, bao gồm biểu đồ Use Case, biểu đồ hoạt động, biểu đồ trình tự và biểu đồ lớp. Áp dụng phương pháp thiết kế hướng đối tượng và mô hình Client - Server trong kiến trúc hệ thống. Thiết kế cơ sở dữ liệu sử dụng mô hình ERD và lược đồ collection phù hợp với MongoDB.
+4.3. Phương pháp thực nghiệm
+Xây dựng prototype hệ thống để kiểm chứng tính khả thi của thiết kế. Thử nghiệm tích hợp API của các mô hình AI để đánh giá chất lượng và hiệu năng. Thu thập phản hồi từ người dùng thử nghiệm để cải thiện thiết kế.
+4.4. Phương pháp so sánh và đánh giá
+So sánh các công nghệ, framework và mô hình AI khác nhau để lựa chọn giải pháp tối ưu. Đánh giá ưu nhược điểm của từng phương án và đưa ra quyết định thiết kế phù hợp với yêu cầu và điều kiện thực tế.
+5. Bố cục đồ án
+Ngoài phần mở đầu, kết luận - kiến nghị và tài liệu tham khảo, nội dung chính của đồ án được chia thành 3 chương như sau:
+Chương 1 - Tổng quan về hệ thống từ điển và công nghệ AI: Trình bày tổng quan về từ điển chuyên ngành, các hệ thống hiện có, nền tảng công nghệ AI trong xử lý ngôn ngữ tự nhiên và cơ sở lý thuyết cho hệ thống.
+Chương 2 - Phân tích và thiết kế hệ thống: Phân tích yêu cầu chức năng, phi chức năng, mô hình hóa hệ thống bằng UML, thiết kế kiến trúc tổng thể, thiết kế backend, frontend và cơ sở dữ liệu.
+Chương 3 - Cài đặt và triển khai hệ thống: Trình bày môi trường phát triển, công nghệ sử dụng, cấu trúc thư mục, quá trình cài đặt backend, frontend, kết nối cơ sở dữ liệu, triển khai lên môi trường thực tế và kết quả kiểm thử hệ thống.
+ 
+	CHƯƠNG 1: TỔNG QUAN VỀ HỆ THỐNG TỪ ĐIỂN VÀ CÔNG NGHỆ AI
+1.1. Tổng quan về từ điển chuyên ngành
+1.1.1. Khái niệm và vai trò
+Từ điển chuyên ngành là tập hợp có hệ thống các thuật ngữ, khái niệm chuyên môn thuộc một hoặc nhiều lĩnh vực cụ thể, kèm theo định nghĩa, giải thích và các thông tin liên quan. Khác với từ điển thông thường tập trung vào ngôn ngữ đời sống, từ điển chuyên ngành chứa đựng kiến thức chuyên sâu, đòi hỏi độ chính xác cao về mặt khoa học và kỹ thuật.
+Vai trò của từ điển chuyên ngành trong giáo dục đại học là vô cùng quan trọng. Nó không chỉ là công cụ tra cứu mà còn là nguồn tài liệu học tập, nghiên cứu không thể thiếu. Đối với sinh viên, từ điển chuyên ngành giúp làm rõ các khái niệm phức tạp, hiểu đúng ý nghĩa của thuật ngữ và sử dụng chúng chính xác trong học tập. Đối với giảng viên, đây là công cụ hỗ trợ giảng dạy, đảm bảo tính thống nhất trong việc sử dụng thuật ngữ chuyên môn.
+1.1.2. Từ điển chuyên ngành đa ngôn ngữ
+Trong bối cảnh toàn cầu hóa, từ điển chuyên ngành đa ngôn ngữ đóng vai trò cầu nối giữa các nền giáo dục khác nhau. Tại Việt Nam, nhiều thuật ngữ chuyên ngành được dịch từ tiếng Anh hoặc các ngôn ngữ khác, dẫn đến sự không thống nhất trong cách gọi tên. Từ điển chuyên ngành đa ngôn ngữ giúp sinh viên quốc tế dễ dàng tiếp cận kiến thức bằng tiếng mẹ đẻ của mình, đồng thời học thuật ngữ bằng ngôn ngữ giảng dạy.
+Đối với sinh viên Lào học tập tại Việt Nam, việc có một từ điển chuyên ngành Việt - Lào là cực kỳ cần thiết. Sinh viên Lào không chỉ cần biết nghĩa tiếng Lào của thuật ngữ tiếng Việt mà còn cần hiểu bản chất của khái niệm để có thể vận dụng trong học tập và thực hành.
+1.1.3. Từ điển chuyên ngành mở
+Khái niệm “từ điển mở” xuất phát từ triết lý của phần mềm mã nguồn mở và Wikipedia - bách khoa toàn thư cộng đồng lớn nhất thế giới. Từ điển mở cho phép cộng đồng người dùng tham gia đóng góp nội dung, chỉnh sửa và bổ sung thuật ngữ mới. Mô hình này có nhiều ưu điểm nổi bật: nội dung được cập nhật liên tục, phản ánh kịp thời các thuật ngữ mới xuất hiện trong khoa học và công nghệ; sự tham gia của cộng đồng giúp làm phong phú nội dung và bổ sung nhiều góc nhìn khác nhau về cùng một khái niệm; mô hình mở còn tạo ra sự gắn kết trong cộng đồng người dùng, khuyến khích tinh thần chia sẻ kiến thức.
+Tuy nhiên, từ điển mở cũng đặt ra thách thức về kiểm soát chất lượng. Cần có cơ chế kiểm duyệt nội dung để đảm bảo tính chính xác và khoa học của thông tin. Đây chính là lý do đồ án này tích hợp công nghệ AI để hỗ trợ trong quá trình đóng góp và nâng cao trải nghiệm người dùng.
+1.2. Các hệ thống từ điển hiện có
+1.2.1. Từ điển quốc tế
+Wikipedia là bách khoa toàn thư mở lớn nhất thế giới, hoạt động từ năm 2001 với hơn 60 triệu bài viết bằng hơn 300 ngôn ngữ. Mô hình của Wikipedia cho phép bất kỳ ai cũng có thể đóng góp và chỉnh sửa nội dung. Tuy nhiên, Wikipedia không chuyên sâu về thuật ngữ chuyên ngành và còn nhiều hạn chế về độ chính xác do độ chính xác còn phụ thuộc vào cộng đồng và chưa đảm bảo kiểm duyệt chuyên gia trong mọi trường hợp.
+Oxford Dictionary và Cambridge Dictionary của Vương quốc Anh là hai bộ từ điển thuộc nhóm từ điển uy tín hàng đầu thế giới, đều có phiên bản trực tuyến hiện đại với tốc độ tra cứu nhanh và nội dung phong phú. Tuy nhiên, các từ điển này chủ yếu sử dụng tiếng Anh, chưa hỗ trợ trực tiếp đa ngôn ngữ bản địa như Tiếng Việt hoặc Tiếng Lào. Wiktionary là dự án từ điển mở của Wikimedia Foundation, tương tự Wikipedia nhưng tập trung vào từ điển đa ngôn ngữ, có nội dung phong phú nhưng vẫn thiếu các thuật ngữ chuyên ngành sâu.
+1.2.2. Từ điển trong nước
+Từ điển Lạc Việt là phần mềm từ điển phổ biến nhất tại Việt Nam, hỗ trợ nhiều ngôn ngữ và có một số từ điển chuyên ngành. Tuy nhiên, Lac Việt chủ yếu là phần mềm desktop, phiên bản web và mobile còn hạn chế so với bản desktop. VDict là từ điển trực tuyến miễn phí có một số từ điển chuyên ngành như kinh tế, kỹ thuật, nhưng nội dung còn hạn chế và giao diện chưa thân thiện.
+1.2.3. Hạn chế của các hệ thống hiện có
+Qua phân tích các hệ thống từ điển hiện có, có thể nhận thấy một số hạn chế chung. Về nội dung, các từ điển quốc tế chủ yếu sử dụng tiếng Anh, chưa hỗ trợ tốt ngôn ngữ Việt Nam và các ngôn ngữ khu vực như tiếng Lào, trong khi các từ điển trong nước thiếu nội dung chuyên sâu và cập nhật chậm. Về hình thức, nhiều từ điển chuyên ngành vẫn tồn tại dưới dạng bản in hoặc file tĩnh, khó tra cứu và cập nhật. Về tính năng, các từ điển truyền thống chỉ cung cấp định nghĩa cố định, không có giải thích theo ngữ cảnh và không hỗ trợ học tập tương tác. Đặc biệt, chưa có từ điển chuyên ngành nào tích hợp công nghệ AI một cách hiệu quả để cung cấp trải nghiệm học tập thông minh, cá nhân hóa.
+1.3. Công nghệ trí tuệ nhân tạo trong xử lý ngôn ngữ tự nhiên
+1.3.1. Tổng quan về xử lý ngôn ngữ tự nhiên
+Xử lý ngôn ngữ tự nhiên (Natural Language Processing - NLP) là một nhánh của trí tuệ nhân tạo, nghiên cứu cách giúp máy tính hiểu, phân tích và sinh ra ngôn ngữ của con người [1]. NLP kết hợp các kỹ thuật từ khoa học máy tính, ngôn ngữ học và toán học để xử lý văn bản và giọng nói. Các bài toán cơ bản trong NLP bao gồm phân tích cú pháp, phân tích ngữ nghĩa, nhận dạng thực thể, phân loại văn bản, sinh văn bản, dịch máy, trả lời câu hỏi và tóm tắt văn bản.
+1.3.2. Mô hình ngôn ngữ lớn (Large Language Model)
+Mô hình ngôn ngữ lớn (LLM) là một bước đột phá trong lĩnh vực NLP. LLM là các mô hình học sâu được huấn luyện trên lượng dữ liệu văn bản khổng lồ, có khả năng hiểu và sinh ra văn bản giống con người [2]. LLM hiện đại đều dựa trên kiến trúc Transformer được giới thiệu năm 2017 trong bài báo “Attention is All You Need”. Kiến trúc này sử dụng cơ chế attention để nắm bắt mối quan hệ giữa các từ trong câu, không phụ thuộc vào vị trí, cho phép song song hóa quá trình huấn luyện và xây dựng các mô hình lớn hơn nhiều so với các kiến trúc trước đó.
+Các mô hình LLM tiêu biểu bao gồm GPT (Generative Pre-trained Transformer) của OpenAI với số lượng tham số lên đến hàng trăm tỷ; Claude của Anthropic với trọng tâm về an toàn và tính hữu ích; Gemini của Google là mô hình đa phương thức có khả năng xử lý văn bản, hình ảnh và nhiều dạng dữ liệu khác; LLaMA của Meta là mô hình mã nguồn mở cho phép cộng đồng nghiên cứu và phát triển.
+1.3.3. Ứng dụng LLM trong giáo dục
+LLM đang được ứng dụng rộng rãi trong giáo dục với nhiều vai trò khác nhau. Với tư cách trợ lý học tập cá nhân, LLM có thể đóng vai trò gia sư ảo, giải đáp thắc mắc của sinh viên mọi lúc mọi nơi. Khác với chatbot truyền thống chỉ có thể trả lời các câu hỏi định sẵn, LLM hiểu ngữ cảnh và có thể giải thích khái niệm phức tạp theo nhiều cách khác nhau. LLM còn có khả năng tạo tài liệu học tập, phản hồi bài làm và đặc biệt quan trọng là hỗ trợ đa ngôn ngữ, giúp phá vỡ rào cản ngôn ngữ trong giáo dục - ứng dụng cốt lõi của đồ án này.
+1.3.4. Thách thức khi ứng dụng LLM
+Mặc dù có nhiều ưu điểm, việc ứng dụng LLM cũng đặt ra những thách thức đáng kể. Vấn đề hallucination khiến LLM có thể sinh ra thông tin không chính xác nhưng trông có vẻ đúng, đây là vấn đề nghiêm trọng trong giáo dục khi từ điển chuyên ngành đòi hỏi độ chính xác cao. Chi phí vận hành cũng là rào cản khi các mô hình lớn đòi hỏi tài nguyên tính toán đáng kể. Ngoài ra, hiệu quả của LLM phụ thuộc nhiều vào cách thiết kế prompt, đòi hỏi người phát triển hệ thống phải có kiến thức về Prompt Engineering. Đồ án này thiết kế các giải pháp cụ thể để khắc phục những thách thức trên, đảm bảo hệ thống vừa tận dụng được sức mạnh của AI vừa đảm bảo chất lượng và độ tin cậy.
+1.4. Các nghiên cứu liên quan
+1.4.1. Nghiên cứu về từ điển chuyên ngành tại Việt Nam
+Tại Việt Nam, nghiên cứu phát triển từ điển chuyên ngành đã được triển khai trong nhiều năm qua, đặc biệt tại các cơ sở đào tạo lớn như Đại học Quốc gia Hà Nội, Đại học Bách khoa Hà Nội và Đại học Y Hà Nội. Các nghiên cứu này chủ yếu tập trung vào việc thu thập, chuẩn hóa và xây dựng cơ sở dữ liệu thuật ngữ chuyên môn. Tuy nhiên, phần lớn các công trình vẫn chưa chú trọng đến việc phát triển hệ thống tra cứu trực tuyến hoàn chỉnh cũng như chưa tích hợp các công nghệ hiện đại như trí tuệ nhân tạo.
+1.4.2. Nghiên cứu tại Trường Đại học Tây Bắc
+Tại Trường Đại học Tây Bắc, trong những năm gần đây đã có các nghiên cứu liên quan đến xây dựng hệ thống từ điển chuyên ngành phục vụ đào tạo. Tiêu biểu là đề tài xây dựng hệ thống từ điển chuyên ngành mở, trong đó nhóm tác giả đã tiến hành phân tích, thiết kế và cài đặt hệ thống tra cứu từ điển trên nền tảng web. Hệ thống được xây dựng với các chức năng như tra cứu thuật ngữ, quản lý người dùng, thêm và duyệt từ, cũng như hỗ trợ tương tác thông qua bình luận và đề xuất chỉnh sửa nội dung. 
+Bên cạnh đó, đề tài cũng đã áp dụng các phương pháp phân tích và thiết kế hệ thống phần mềm như UML (Use Case, Activity Diagram, Sequence Diagram) và xây dựng cơ sở dữ liệu phục vụ lưu trữ thuật ngữ chuyên ngành. Hệ thống bước đầu đáp ứng nhu cầu tra cứu và hỗ trợ học tập cho sinh viên, đặc biệt là sinh viên Lào đang học tập tại trường. 
+Tuy nhiên, các nghiên cứu này chủ yếu tập trung vào việc xây dựng hệ thống tra cứu truyền thống, chưa tích hợp các công nghệ trí tuệ nhân tạo để hỗ trợ giải thích theo ngữ cảnh, gợi ý thuật ngữ thông minh hoặc cá nhân hóa trải nghiệm người dùng. Ngoài ra, chức năng khai thác dữ liệu và mở rộng tri thức từ người dùng vẫn còn hạn chế, chưa phát huy hết tiềm năng của mô hình từ điển mở trong môi trường số hiện nay. Do đó, đề tài này kế thừa và phát triển từ các nghiên cứu trước tại Trường Đại học Tây Bắc, đồng thời bổ sung công nghệ trí tuệ nhân tạo nhằm nâng cao khả năng tra cứu và tăng trải nghiệm người dùng.
+1.4.3. Nghiên cứu về ứng dụng AI trong từ điển
+Các nghiên cứu gần đây về xử lý ngôn ngữ tự nhiên đã ứng dụng các mô hình như GPT-3, GPT-4 và BERT trong việc hỗ trợ xây dựng từ điển thông minh. Các mô hình này có khả năng sinh văn bản, giải thích thuật ngữ theo ngữ cảnh và gợi ý từ liên quan với độ chính xác cao. Tuy nhiên, các hệ thống này vẫn cần kết hợp với dữ liệu chuyên ngành và cơ chế kiểm duyệt để đảm bảo độ tin cậy.
+1.4.4. Khoảng trống nghiên cứu
+Qua phân tích các nghiên cứu liên quan, có thể nhận thấy rõ các khoảng trống cần được lấp đầy. Hiện nay, các nghiên cứu tại Việt Nam về từ điển chuyên ngành có ứng dụng AI còn hạn chế và chưa được triển khai một cách hệ thống. Việc kết hợp mô hình từ điển mở với công nghệ AI nhằm vừa tận dụng đóng góp cộng đồng vừa đảm bảo chất lượng nội dung vẫn còn là một hướng nghiên cứu chưa được khai thác đầy đủ. Do đó, đề tài này hướng đến việc xây dựng một hệ thống từ điển chuyên nghành tích hợp trí tuệ nhân tạo, hỗ trợ giải thích theo ngữ cảnh, gợi ý thuật ngữ liên quan và cho phép đóng góp từ cộng động, nhằm nâng cao hiệu quả học tập và tra cứu cho người dùng.
+1.5. Cơ sở lý thuyết
+1.5.1. Mô hình Client - Server
+Hệ thống được xây dựng theo mô hình Client - Server, trong đó ứng dụng được chia thành hai thành phần chính giao tiếp với nhau thông qua giao thức HTTP/HTTPS [3]. Client là phía giao diện người dùng, triển khai dưới dạng ứng dụng web, chịu trách nhiệm hiển thị thông tin, thu thập dữ liệu nhập vào và gửi yêu cầu đến Server. Server là phía xử lý chính, tiếp nhận yêu cầu từ Client, xử lý logic nghiệp vụ, truy vấn và cập nhật cơ sở dữ liệu, sau đó trả kết quả về cho Client dưới dạng JSON. Mô hình này giúp phân tách rõ ràng giữa giao diện người dùng và xử lý nghiệp vụ, tăng tính bảo mật và cho phép nhiều Client truy cập đồng thời vào hệ thống.
+1.5.2. Kiến trúc REST API
+REST (Representational State Transfer) là một phong cách kiến trúc cho các hệ thống phân tán, đặc biệt phổ biến trong việc xây dựng Web API [4]. REST API sử dụng các phương thức HTTP (GET, POST, PUT, DELETE) để thực hiện các thao tác trên tài nguyên theo nguyên tắc stateless - mỗi request từ client chứa đầy đủ thông tin cần thiết, server không lưu trữ trạng thái của client. Các nguyên tắc khác của REST bao gồm Client-Server tách biệt, hỗ trợ caching để tăng hiệu năng, giao diện thống nhất sử dụng chuẩn HTTP methods và status codes, và kiến trúc phân lớp. Trong hệ thống từ điển, REST API được sử dụng để frontend gọi đến backend lấy dữ liệu, và backend gọi đến AI API để lấy định nghĩa sinh tự động.
+1.5.3. Cơ sở dữ liệu NoSQL
+NoSQL (Not Only SQL) là các hệ quản trị cơ sở dữ liệu không sử dụng mô hình quan hệ truyền thống [5]. MongoDB là cơ sở dữ liệu NoSQL dạng document, lưu trữ dữ liệu dưới dạng JSON (BSON). Ưu điểm của MongoDB trong bối cảnh đồ án này gồm: schema động giúp dễ dàng thay đổi cấu trúc dữ liệu mà không cần migration; hiệu năng cao với indexing mạnh mẽ bao gồm full-text search; hỗ trợ mở rộng theo chiều ngang với sharding; phù hợp với dữ liệu đa ngôn ngữ và cấu trúc thuật ngữ không đồng nhất. Cấu trúc thuật ngữ có thể thay đổi theo ngành và nhu cầu không phù hợp với schema cố định của SQL, đây là lý do chính để lựa chọn MongoDB.
+1.5.4. Ngôn ngữ mô hình hóa UML
+UML (Unified Modeling Language) là ngôn ngữ mô hình hóa đồ họa chuẩn trong phát triển phần mềm [6]. UML cung cấp các loại biểu đồ để mô tả các khía cạnh khác nhau của hệ thống: Use Case Diagram mô tả các chức năng từ góc nhìn người dùng; Activity Diagram mô tả luồng hoạt động và điều kiện rẽ nhánh; Sequence Diagram mô tả tương tác giữa các đối tượng theo trình tự thời gian; Class Diagram mô tả cấu trúc tĩnh của hệ thống; và Entity Relationship Diagram (ERD) mô tả mô hình dữ liệu. Trong đồ án này, UML được sử dụng để phân tích yêu cầu, thiết kế hệ thống và tài liệu hóa toàn bộ quá trình phát triển.
+1.5.5. Prompt Engineering
+Prompt Engineering là kỹ thuật thiết kế câu lệnh đầu vào cho các mô hình ngôn ngữ lớn để đạt được kết quả mong muốn [7]. Prompt tốt có thể cải thiện đáng kể chất lượng output của LLM. Các kỹ thuật chính bao gồm zero-shot prompting (yêu cầu thực hiện tác vụ không cần ví dụ), few-shot prompting (cung cấp một vài ví dụ để mô hình học pattern), chain-of-thought (hướng dẫn mô hình suy luận từng bước), role prompting (gán vai trò cụ thể như “bạn là chuyên gia về CNTT”) và format specification (chỉ định rõ định dạng output). Trong hệ thống từ điển, Prompt Engineering được sử dụng để yêu cầu AI sinh định nghĩa chính xác và gợi ý thuật ngữ liên quan phù hợp với ngữ cảnh ngôn ngữ của người dùng. Prompt Engineering được chia thành hai nhóm riêng biệt phục vụ hai mục đích khác nhau. Nhóm thứ nhất phục vụ sinh định nghĩa có cấu trúc, sử dụng kỹ thuật role prompting kết hợp format specification — yêu cầu AI đóng vai chuyên gia từ điển đa ngôn ngữ và trả về JSON theo schema cố định. Với Gemini API, hệ thống còn áp dụng responseSchema để ràng buộc cấu trúc JSON ngay tại tầng API, tăng độ chính xác đầu ra. Nhóm thứ hai phục vụ AI Agent chat, sử dụng kỹ thuật contextual prompting - prompt được xây dựng động,  tự động thêm hướng dẫn về trang hiện tại người dùng đang sử dụng (login, register, terms, term detail, contribute, moderator, profile). Điểm đặc biệt là toàn bộ prompt gốc cho từng ngôn ngữ (vi/en/lo) được lưu trong cơ sở dữ liệu, cho phép quản trị viên tùy chỉnh mà không cần sửa code. Hệ thống còn tích hợp cơ chế phát hiện câu hỏi ngoài phạm vi dựa trên pattern matching, tự động từ chối lịch sự các yêu cầu không liên quan đến hệ thống.
+
+ 
+	CHƯƠNG 2: PHÂN TÍCH VÀ THIẾT KẾ HỆ THỐNG
+2.1. Phân tích các bên liên quan
+2.1.1. Xác định các bên liên quan
+Hệ thống từ điển chuyên ngành mở có bốn nhóm bên liên quan chính. Thứ nhất là sinh viên - đối tượng người dùng chính của hệ thống, bao gồm sinh viên Việt Nam cần tra cứu thuật ngữ tiếng Anh, sinh viên Lào cần tra cứu thuật ngữ tiếng Việt sang tiếng Lào và sinh viên các ngành CNTT, Kinh tế, Nông lâm, Chính trị. Thứ hai là giảng viên, sử dụng hệ thống để tra cứu thuật ngữ khi soạn giáo trình, đóng góp thuật ngữ mới và tham gia kiểm duyệt nội dung. Thứ ba là quản trị viên hệ thống, chịu trách nhiệm quản lý toàn bộ người dùng, phân quyền, cấu hình hệ thống và theo dõi báo cáo thống kê. Thứ tư là kiểm duyệt viên nội dung - vai trò đặc biệt được phân công cho người dùng chuyên môn, đảm nhiệm việc xét duyệt các thuật ngữ và bình luận do cộng đồng đóng góp.
+2.1.2. Nhu cầu và mong đợi của từng bên
+Sinh viên mong muốn tra cứu nhanh, chính xác và dễ hiểu; giao diện thân thiện, tương tác tốt trên thiết bị di động; có ví dụ minh họa và giải thích chi tiết khi cần; lưu lại lịch sử tra cứu và từ yêu thích. Giảng viên mong muốn nội dung chính xác, có nguồn gốc rõ ràng; quy trình đóng góp và kiểm duyệt nhanh chóng, minh bạch; có thống kê về mức độ sử dụng của sinh viên. Quản trị viên cần giao diện quản trị trực quan, đầy đủ chức năng, hỗ trợ trong việc kiểm duyệt; công cụ giám sát hoạt động hệ thống; báo cáo thống kê đa dạng và khả năng backup dữ liệu. Kiểm duyệt viên cần quy trình kiểm duyệt đơn giản, nhanh chóng với tiêu chí đánh giá rõ ràng và thông báo khi có nội dung mới cần xử lý.
+2.2. Phân tích nghiệp vụ
+2.2.1. Mô tả bài toán thực tế
+Tại Trường Đại học Tây Bắc, sinh viên Lào và sinh viên dân tộc thiểu số đang gặp phải những khó khăn cụ thể trong quá trình học tập. Rào cản ngôn ngữ trong tiếp cận thuật ngữ chuyên môn là vấn đề nghiêm trọng nhất: khi gặp thuật ngữ mới, sinh viên phải mất nhiều thời gian hỏi giảng viên, tra Google Translate với kết quả thường không chính xác về thuật ngữ chuyên môn, hoặc tìm sách từ điển in vốn không có thuật ngữ mới. Bên cạnh đó, nhiều định nghĩa trong giáo trình viết theo phong cách học thuật khó hiểu, sinh viên cần có giải thích đơn giản hơn với ví dụ thực tế. Hiện tại cũng chưa có một nguồn tra cứu đáng tin cậy và tập trung dành riêng cho sinh viên trong trường.
+2.2.2. Quy trình nghiệp vụ hiện tại
+Quy trình tra cứu thuật ngữ hiện tại của người dùng trải qua nhiều bước thủ công và kém hiệu quả: gặp thuật ngữ không hiểu trong bài giảng, tìm kiếm trên Google hoặc từ điển online, nếu không tìm được thì hỏi bạn bè qua mạng xã hội, sau đó hỏi giảng viên trong hoặc sau giờ học, và cuối cùng ghi chép lại vào vở cá nhân. Cách làm này tốn nhiều thời gian, không đảm bảo tính chính xác và rất khó quản lý khi cần ôn tập lại. Về phía giảng viên, quá trình đóng góp thuật ngữ cũng rời rạc: soạn thảo định nghĩa trong file Word cá nhân, chia sẻ qua email hoặc nhóm chat, dẫn đến dữ liệu nằm phân tán, khó tìm kiếm và tái sử dụng.
+2.2.3. Quy trình nghiệp vụ đề xuất
+Với hệ thống mới, quy trình tra cứu được đơn giản hóa đáng kể: người dùng truy cập hệ thống và nhập thuật ngữ cần tìm; hệ thống tìm kiếm trong cơ sở dữ liệu, nếu có thì hiển thị định nghĩa từ nhiều nguồn, nếu chưa có thì AI sinh định nghĩa tạm thời; người dùng có thể xem định nghĩa và định nghĩa chi tiết hơn; hệ thống gợi ý thuật ngữ liên quan; người dùng có thể lưu vào yêu thích, bình luận hoặc đề xuất chỉnh sửa. Quy trình đóng góp thuật ngữ cũng được hệ thống hóa với các bước rõ ràng: đăng nhập, chọn chức năng đóng góp, điền đầy đủ thông tin (thuật ngữ các ngôn ngữ, định nghĩa, danh mục, ví dụ,…), gửi đề xuất, kiểm duyệt viên thuộc danh mục được phân công hoặc quản trị viên xem xét và ra quyết định, người đóng góp nhận thông báo.
+2.3. Yêu cầu chức năng
+2.3.1. Chức năng dành cho người dùng
+UC01 - Tra cứu thuật ngữ: Người dùng nhập từ khóa vào ô tìm kiếm, hệ thống tìm trong cơ sở dữ liệu và hiển thị danh sách thuật ngữ phù hợp, người dùng chọn thuật ngữ để xem định nghĩa, ví dụ và thuật ngữ liên quan. Nếu không tìm thấy trong cơ sở dữ liệu, hệ thống gọi AI để sinh định nghĩa tạm thời. Điều kiện AI giải thích thuật ngữ là người dùng phải đăng nhập.
+UC02 - Đăng ký tài khoản: Hệ thống hỗ trợ hai luồng đăng ký. Luồng đăng ký thông thường: người dùng điền form gồm họ tên, email và mật khẩu; hệ thống kiểm tra tính hợp lệ và email chưa tồn tại; tạo tài khoản trạng thái inactive, emailVerified=false; sinh verification token (lưu bản hash vào DB), gửi email xác thực; người dùng click link xác thực, hệ thống kích hoạt tài khoản và gửi email chào mừng. Luồng đăng nhập Google OAuth 2.0: người dùng chọn “Đăng nhập với Google” (qua Passport.js); backend xác thực Google ID token, tạo hoặc liên kết tài khoản (googleId, authProvider=google, avatar từ Google); phát access token và refresh token; người dùng không cần xác thực email.
+UC03 - Đăng nhập và quản lý phiên: Người dùng nhập email và mật khẩu, hệ thống so khớp bcrypt và kiểm tra trạng thái tài khoản (active, emailVerified). Khi xác thực thành công, server phát hai token: access token (ngắn hạn, ~15 phút) và refresh token (dài hạn, ~7-30 ngày, lưu bản hash + thời hạn vào trường refreshToken trong User DB). Frontend lưu cả hai token vào localStorage. Khi access token hết hạn (lỗi 401), interceptor Axios tự động gọi POST /api/auth/refresh-token, backend xác minh hash refresh token trong DB và còn hạn, phát access token mới. Frontend retry request gốc với token mới, hoặc xóa phiên và chuyển đến trang đăng nhập nếu refresh token cũng hết hạn. Đăng xuất: gọi POST /api/auth/logout để xóa refreshToken trong DB.
+UC04 - Xem định nghĩa chi tiết: Khi người dùng click vào thuật ngữ, hệ thống hiển thị trang chi tiết với định nghĩa ngắn gọn và mở rộng, ví dụ minh họa, thuật ngữ liên quan và bình luận. Người dùng có thể yêu cầu AI giải thích chi tiết hơn theo ngữ cảnh.
+UC05 - Lưu thuật ngữ yêu thích: Người dùng đã đăng nhập có thể lưu thuật ngữ vào danh sách cá nhân bằng cách click nút yêu thích. Danh sách yêu thích giúp dễ dàng truy cập lại các thuật ngữ thường dùng.
+UC06 - Xem danh sách yêu thích: Hiển thị tất cả thuật ngữ đã lưu, sắp xếp theo thời gian, với khả năng tìm kiếm trong danh sách hoặc xóa khỏi danh sách.
+UC07 - Bình luận: Người dùng đã đăng nhập có thể viết bình luận về một thuật ngữ. Bình luận có trạng thái “Chờ duyệt” trước khi được hiển thị công khai. Hệ thống AI có thể cảnh báo nếu nội dung không phù hợp.
+UC08 - Đóng góp thuật ngữ mới: Người dùng đã đăng nhập có thể đề xuất thêm thuật ngữ chưa có trong hệ thống bằng cách điền đầy đủ thông tin thuật ngữ theo ba ngôn ngữ, định nghĩa, ví dụ, tag và thuật ngữ liên quan.		
+UC09 - Đề xuất chỉnh sửa thuật ngữ: Người dùng có thể đề xuất sửa đổi định nghĩa đã có bằng cách điền thông tin mới và giải thích lý do chỉnh sửa.
+UC10 - Báo xấu thuật ngữ: Người dùng đã đăng nhập báo cáo thuật ngữ có nội dung không phù hợp, kèm lý do cụ thể. Hệ thống có thể yêu cầu xác minh reCAPTCHA để chống spam. Hệ thống kiểm tra người dùng chưa có báo xấu pending trùng cùng target. Khi có báo xấu mới, kiểm duyệt viên và admin nhận thông báo. Kết quả xử lý báo xấu ảnh hưởng đến điểm uy tín người dùng báo cáo (cộng nếu báo đúng, có thể trừ nếu lạm dụng).
+UC11 - Hệ thống điểm uy tín: Người dùng đăng nhập có thể xem điểm uy tín hiện tại và lịch sử thay đổi điểm. Điểm được cộng/trừ tự động theo hành động: đóng góp thuật ngữ (submitted/approved/rejected), bình luận được duyệt, báo xấu được xử lý. Hệ thống có các mức (level) tương ứng với ngưỡng điểm, ảnh hưởng đến quyền sử dụng tính năng AI nâng cao.
+UC12 - Xác minh sinh viên và đổi điểm rèn luyện: Người dùng có thể xác minh tài khoản là sinh viên Đại học Tây Bắc. Sau xác minh và đủ điểm uy tín tối thiểu, người dùng gửi yêu cầu đổi điểm uy tín lấy điểm rèn luyện (kèm thông tin học kỳ). Admin xét duyệt; khi duyệt, hệ thống tự động tạo giấy xác nhận PDF (có số chứng nhận, thông tin sinh viên, số điểm, học kỳ) và gửi thông báo. Người dùng tải giấy xác nhận qua endpoint chuyên dụng.
+UC13 - Bảng xếp hạng công khai: Khách và người dùng có thể xem leaderboard thuật ngữ (theo lượt xem/lượt yêu thích, có thể lọc theo period) và leaderboard người dùng đóng góp tích cực. Hồ sơ công khai của từng người dùng hiển thị thông tin cơ bản, số liệu đóng góp và điểm uy tín.
+UC14 - AI Agent: Người dùng đăng nhập (với mức uy tín đủ điều kiện) có thể tương tác với AI Agent qua giao diện chat. AI Agent hỗ trợ: gợi ý hành động theo ngữ cảnh, gợi ý tìm kiếm, gợi ý thuật ngữ liên quan, gợi ý danh mục phù hợp, nhận diện thuật ngữ trong đoạn văn, dịch thuật ngữ sang ngôn ngữ đích và gợi ý đóng góp. Một số endpoint AI Agent (gợi ý tìm kiếm, thuật ngữ liên quan) hoạt động ở chế độ công khai.
+2.3.2. Chức năng dành cho quản trị viên và kiểm duyệt viên
+UC15 - Quản lý người dùng: Quản trị viên xem danh sách người dùng với bộ lọc và tìm kiếm; thêm/sửa/xóa tài khoản; khóa/mở khóa tài khoản; phân quyền (user/moderator/admin); reset mật khẩu; gửi lại email xác thực cho user; cập nhật trạng thái hàng loạt (batch); xem lịch sử hoạt động; xuất danh sách user ra file Excel.
+UC16 - Quản lý danh mục chuyên ngành: Quản trị viên thêm, sửa, xóa, ẩn các danh mục theo chuyên ngành (CNTT, Kinh tế, Nông nghiệp...) hỗ trợ phân cấp (parentCategory). Phân công kiểm duyệt viên cho từng danh mục (moderators[]). Danh mục có thể bị ẩn (deactivate) mà không xóa hoàn toàn.
+UC17 - Quản lý thuật ngữ: Quản trị viên và kiểm duyệt viên xem, thêm, sửa thuật ngữ trong danh mục được phân công. Hỗ trợ xóa mềm (soft delete với trường isDeleted, deletedAt, deletedBy) và khôi phục từ thùng rác (restore), cũng như làm rỗng thùng rác (empty trash - xóa vĩnh viễn). Quản trị viên có toàn quyền trên mọi danh mục; kiểm duyệt viên chỉ quản lý danh mục được phân công.
+UC18 - Kiểm duyệt đóng góp: Kiểm duyệt viên xem danh sách đóng góp chờ duyệt (pending), xem xét và quyết định Duyệt / Từ chối kèm ghi chú. Hỗ trợ duyệt/từ chối hàng loạt (bulk-approve, bulk-reject). Khi duyệt: nếu là new_term thì tạo Term mới; nếu là edit_term thì cập nhật targetTerm. Người đóng góp nhận notification và email thông báo kết quả; điểm uy tín được cộng/trừ tương ứng.
+UC19 - Quản lý bình luận: Kiểm duyệt viên xem danh sách bình luận, phê duyệt hoặc từ chối bình luận (POST /api/comments/:id/moderate), xóa bình luận không phù hợp. Hỗ trợ cấu trúc bình luận lồng nhau (reply) thông qua trường parentComment.
+UC20 - Nhập dữ liệu hàng loạt: Quản trị viên/kiểm duyệt viên upload file Excel (.xlsx/.xls) hoặc CSV (field “file”, giới hạn 10MB) qua multer. ImportService đọc, chuẩn hóa cột, validate bắt buộc, resolve category theo tên, kiểm tra trùng thuật ngữ. Tạo Term mới với sourceType=system_import, status=pending, cập nhật termCount category. Xóa file tạm và trả summary: total/success/failed/errors. Gửi email và notification cho admin về kết quả import. Hỗ trợ tải template import mẫu (GET /api/terms/import-template).
+UC21 - Xuất dữ liệu: Xuất thuật ngữ toàn bộ hoặc theo danh mục ra file Excel (GET /api/terms/export). Admin có thể xuất danh sách người dùng ra Excel (GET /api/users/export/excel).
+UC22 - Cấu hình hệ thống: Admin thực hiện CRUD SystemConfig theo key/category, cập nhật bulk config, xem/reload trạng thái rate limit. Cấu hình SMTP email (host, port, user, pass), test gửi email, quản lý template email. Cấu hình AI: xem/cập nhật cấu hình AI (provider, model, API key), test kết nối AI, xem thống kê usage AI theo ngày. Quản lý feedback người dùng và xét duyệt đơn đăng ký trở thành kiểm duyệt viên (ModeratorApplication).
+UC23 - Báo cáo thống kê: Admin xem các báo cáo toàn diện qua 10 endpoint chuyên biệt: tổng quan hệ thống (overview), thuật ngữ theo thời gian, người dùng theo thời gian, thuật ngữ theo danh mục, đóng góp theo thời gian, yêu cầu AI theo ngày, top người đóng góp, thuật ngữ được xem nhiều nhất, người dùng theo vai trò, báo cáo đầy đủ (full). Các biểu đồ được render bằng recharts ở frontend. Admin cũng quản lý điểm uy tín: xem điểm bất kỳ user, điều chỉnh thủ công, duyệt/từ chối yêu cầu đổi điểm rèn luyện, tải giấy xác nhận cho bất kỳ yêu cầu nào.
+2.4. Yêu cầu phi chức năng
+2.4.1. Hiệu năng
+Hệ thống cần đáp ứng các yêu cầu hiệu năng nhất định để đảm bảo trải nghiệm người dùng tốt. Thời gian phản hồi cho tra cứu thuật ngữ từ cơ sở dữ liệu phải dưới 1 giây; gọi AI để sinh định nghĩa trong vòng 5 giây; tìm kiếm gợi ý tự động dưới 200ms. Hệ thống phải hỗ trợ tối thiểu 10.000 thuật ngữ, với mỗi thuật ngữ có thể có nhiều định nghĩa theo các ngôn ngữ khác nhau.
+2.4.2. Bảo mật
+Về xác thực và phân quyền, hệ thống sử dụng JWT (JSON Web Token) [8] cho xác thực người dùng, mã hóa mật khẩu bằng bcrypt và phân quyền rõ ràng theo vai trò (user, moderator, admin). Về bảo vệ dữ liệu, HTTPS được bắt buộc cho mọi request, thông tin nhạy cảm được mã hóa trong cơ sở dữ liệu và dữ liệu được backup hàng ngày. Về bảo vệ khỏi tấn công, hệ thống áp dụng rate limiting (tối đa 100 requests/phút/IP), cấu hình CORS để chống cross-origin attacks, input validation và sanitization, bảo vệ khỏi NoSQL injection, XSS và CSRF [9].
+2.4.3. Khả năng sử dụng
+Giao diện người dùng cần thân thiện, dễ sử dụng và tương thích tốt với các trình duyệt phổ biến (Chrome, Firefox, Edge, Safari) và các thiết bị khác nhau (desktop, tablet, mobile). Hệ thống hỗ trợ đa ngôn ngữ trong giao diện (tiếng Việt, tiếng Lào, tiếng Anh) phù hợp với đặc thù người dùng.
+2.4.4. Khả năng mở rộng
+Kiến trúc hệ thống được thiết kế để dễ dàng mở rộng khi số lượng người dùng và dữ liệu tăng lên. MongoDB hỗ trợ sharding để phân tán dữ liệu, backend ExpressJS có thể chạy nhiều instance song song sau load balancer, và codebase được tổ chức theo module để dễ thêm tính năng mới mà không ảnh hưởng đến phần còn lại.
+2.5. Mô hình hóa hệ thống
+2.5.1. Biểu đồ Use Case
+ 
+Hình 2.1: Biểu đồ Use Case tổng quát hệ thống
+Hệ thống từ điển chuyên ngành mở có 4 actors chính: Khách (Guest) là người dùng chưa đăng nhập; Thành viên (Member) là người dùng đã đăng ký; Kiểm duyệt viên (Moderator) là người kiểm duyệt nội dung; và Quản trị viên (Administrator) là người quản lý hệ thống. Biểu đồ thể hiện rõ phạm vi chức năng của từng nhóm người dùng và mối quan hệ bao gồm (include) và mở rộng (extend) giữa các use case.
+
+
+	 
+Hình 2.2: Biểu đồ Use Case chi tiết — Người dùng (Guest & Member)
+Biểu đồ Use Case chi tiết cho nhóm Khách và Thành viên thể hiện toàn bộ chức năng tương tác trực tiếp với hệ thống, được phân tách rõ ràng theo mức độ xác thực.
+Đối với Khách (Guest), hệ thống cho phép thực hiện các thao tác cơ bản mà không cần tài khoản: tra cứu thuật ngữ, xem chi tiết thuật ngữ, xem hồ sơ công khai người dùng, đăng nhập và đăng ký. Chức năng đăng ký có quan hệ <<include>> với xác thực email - nghĩa là sau khi điền thông tin, hệ thống bắt buộc phải gửi và xác thực email trước khi kích hoạt tài khoản. Chức năng đăng nhập có quan hệ <<extends>> với quên mật khẩu - luồng đặt lại mật khẩu chỉ xuất hiện khi người dùng chọn thực hiện, không bắt buộc trong luồng chính.
+Đối với Thành viên (Member), ngoài toàn bộ chức năng của Khách, hệ thống mở rộng thêm các nhóm chức năng sau. Về tương tác nội dung: bình luận thuật ngữ, lưu thuật ngữ yêu thích, đóng góp thuật ngữ mới, đề xuất chỉnh sửa thuật ngữ và báo xấu thuật ngữ. Về cộng đồng: xem bảng xếp hạng, gửi feedback và đăng ký làm kiểm duyệt viên. Về cá nhân: quản lý hồ sơ cá nhân, xem lịch sử tìm kiếm, xem điểm uy tín và lịch sử, xác minh sinh viên trường Đại học Tây Bắc và gửi yêu cầu đổi điểm uy tín.
+Về AI, Thành viên có thêm quyền truy cập “Chat với AI Agent” — tính năng cho phép đặt câu hỏi tự nhiên bằng tiếng Việt, tiếng Anh hoặc tiếng Lào, với AI phản hồi linh hoạt theo ngữ cảnh trang đang sử dụng. Đây là tính năng nâng cao hơn so với “Chat với AI giải thích thuật ngữ”, vì AI Agent có thể hỗ trợ nhiều tác vụ hơn như nhận diện thuật ngữ trong đoạn văn, dịch đa ngôn ngữ và gợi ý đóng góp.
+
+ 
+Hình 2.3: Biểu đồ Use Case chi tiết — Kiểm duyệt viên & Quản trị viên
+Biểu đồ Use Case chi tiết cho nhóm Kiểm duyệt viên và Quản trị viên thể hiện phân cấp quyền hạn rõ ràng trong hệ thống, trong đó Quản trị viên kế thừa toàn bộ chức năng của Kiểm duyệt viên và được mở rộng thêm các quyền quản trị cấp cao.
+Đối với Kiểm duyệt viên, chức năng đăng nhập có quan hệ <<extends>> với quên mật khẩu tương tự nhóm người dùng thông thường. Về quản lý thuật ngữ, Kiểm duyệt viên chỉ thao tác trong phạm vi danh mục chuyên ngành được Admin phân công, bao gồm: thêm/sửa thuật ngữ, xóa mềm thuật ngữ, import từ file Excel/CSV và export ra file Excel. Chức năng xóa mềm thuật ngữ có quan hệ <<include>> với khôi phục từ thùng rác - hai thao tác này liên kết chặt chẽ trong cùng một vòng đời quản lý nội dung. Về kiểm duyệt nội dung cộng đồng, Kiểm duyệt viên thực hiện ba nhóm tác vụ độc lập: kiểm duyệt đóng góp thuật ngữ (bao gồm duyệt đơn lẻ, từ chối đơn lẻ và duyệt/từ chối hàng loạt), xử lý báo xấu và kiểm duyệt bình luận. 
+Đối với Quản trị viên, ngoài toàn bộ chức năng của Kiểm duyệt viên không bị giới hạn danh mục, hệ thống mở rộng thêm bốn nhóm quyền quản trị cấp hệ thống. Thứ nhất là quản lý người dùng, bao gồm CRUD tài khoản và xuất danh sách người dùng ra file Excel. Thứ hai là phân quyền kiểm duyệt viên — Admin phân công kiểm duyệt viên vào từng danh mục chuyên ngành. Thứ ba là quản lý phản hồi và đăng ký - xem xét feedback người dùng và duyệt đơn đăng ký trở thành kiểm duyệt viên. Thứ tư là cấu hình hệ thống, được chia thành ba nhánh riêng biệt: cấu hình rate limit (giới hạn tần suất request), cấu hình AI (chọn provider Gemini/OpenAI/Grok, điều chỉnh model, ngưỡng token và tùy chỉnh prompt theo từng ngôn ngữ vi/en/lo) và cấu hình email (SMTP, template thông báo). Mọi thay đổi cấu hình có hiệu lực ngay lập tức mà không cần khởi động lại server do toàn bộ tham số được đọc động từ collection SystemConfig mỗi lần gọi API.
+Riêng use case duyệt yêu cầu đổi điểm uy tín là chức năng đặc thù chỉ Admin mới có: khi phê duyệt một yêu cầu, hệ thống tự động trừ điểm uy tín của người dùng, ghi nhận số điểm rèn luyện tương ứng và sinh giấy xác nhận PDF có số chứng nhận, thông tin sinh viên và học kỳ.
+2.5.2. Biểu đồ hoạt động
+Biểu đồ hoạt động được sử dụng để mô tả luồng xử lý nghiệp vụ của các chức năng chính trong hệ thống từ điển chuyên ngành mở. Các biểu đồ tập trung thể hiện trình tự thực hiện các bước, các nhánh rẽ điều kiện và sự phối hợp giữa người dùng, hệ thống và hệ thống AI.
+ 
+Hình 2.4: Biểu đồ hoạt động tra cứu thuật ngữ
+Biểu đồ mô tả quy trình người dùng tra cứu thuật ngữ: hệ thống tìm kiếm trong cơ sở dữ liệu và gọi AI sinh định nghĩa khi thuật ngữ chưa tồn tại, đồng thời hỗ trợ giải thích mở rộng theo yêu cầu người dùng.
+ 
+Hình 2.5: Biểu đồ hoạt động đăng ký hệ thống
+ 
+Hình 2.6: Biểu đồ hoạt động đăng nhập hệ thống
+ 
+Hình 2.7: Biểu đồ hoạt động đóng góp thuật ngữ mới
+Biểu đồ mô tả quy trình người dùng đóng góp thuật ngữ mới với trạng thái chờ kiểm duyệt sau khi gửi đề xuất.
+ 
+Hình 2.8: Biểu đồ hoạt động kiểm duyệt nội dung
+Biểu đồ thể hiện quy trình kiểm duyệt nội dung do người dùng đóng góp, bao gồm các quyết định phê duyệt, yêu cầu chỉnh sửa hoặc từ chối, đồng thời gửi thông báo phản hồi cho người đóng góp.
+ 
+Hình 2.9: Biểu đồ hoạt động quản lý hệ thống
+Biểu đồ mô tả các hoạt động quản lý của quản trị viên như quản lý người dùng, danh mục chuyên ngành và xem báo cáo thống kê của hệ thống.
+2.5.3. Biểu đồ trình tự
+Biểu đồ trình tự được sử dụng để mô tả sự tương tác giữa các đối tượng trong hệ thống theo trình tự thời gian. Các biểu đồ thể hiện rõ cách người dùng, giao diện, các thành phần xử lý nghiệp vụ, cơ sở dữ liệu và hệ thống AI phối hợp với nhau để thực hiện các chức năng của hệ thống.
+ 
+Hình 2.10: Biểu đồ trình tự tra cứu thuật ngữ
+ 
+Hình 2.11: Biểu đồ trình tự đăng ký tài khoản
+ 
+Hình 2.12: Biểu đồ trình tự đăng nhập hệ thống
+ 
+Hình 2.13: Biểu đồ trình tự xem định nghĩa chi tiết và gọi AI
+ 
+Hình 2.14: Biểu đồ trình tự đóng góp thuật ngữ mới
+ 
+Hình 2.15: Biểu đồ trình tự bình luận
+ 
+Hình 2.16: Biểu đồ trình tự kiểm duyệt nội dung đóng góp
+ 
+Hình 2.17: Biểu đồ trình tự quản lý người dùng
+ 
+Hình 2.18: Biểu đồ trình tự quản lý thuật ngữ
+ 
+Hình 2.19: Biểu đồ trình tự nhập dữ liệu hàng loạt
+ 
+Hình 2.20: Biểu đồ trình tự xem báo cáo thống kê
+2.6. Thiết kế hệ thống
+2.6.1. Kiến trúc tổng thể của hệ thống
+Hệ thống từ điển chuyên ngành mở được xây dựng theo mô hình Client - Server, trong đó frontend và backend giao tiếp với nhau thông qua RESTful API [4]. Kiến trúc này giúp hệ thống hoạt động linh hoạt, dễ mở rộng và thuận tiện trong việc bảo trì. Frontend được xây dựng bằng NextJS, cung cấp giao diện cho người dùng tra cứu thuật ngữ, đăng ký, đăng nhập, đóng góp nội dung và quản trị hệ thống. Backend được xây dựng bằng NodeJS và ExpressJS, đảm nhiệm xử lý nghiệp vụ, xác thực người dùng và quản lý dữ liệu. Cơ sở dữ liệu MongoDB lưu trữ dữ liệu với cấu trúc linh hoạt. Dịch vụ email hỗ trợ xác thực tài khoản và gửi thông báo. Hệ thống AI Google Gemini và các model AI phổ biến khác được sử dụng để hỗ trợ tra cứu và giải thích thuật ngữ. Thành phần AI trong hệ thống hoạt động như một lớp dịch vụ độc lập, được gọi từ hai controller chính là aiController (xử lý tra cứu thuật ngữ và chat Agent) và aiAgentController (xử lý các tác vụ chuyên biệt của Agent). aiService chịu trách nhiệm điều phối toàn bộ luồng AI: đọc cấu hình từ SystemConfig, kiểm tra giới hạn sử dụng hàng ngày, xây dựng prompt phù hợp theo ngôn ngữ và ngữ cảnh, gọi đúng nhà cung cấp AI, parse và chuẩn hóa kết quả. Kiến trúc này đảm bảo việc thay đổi nhà cung cấp AI (từ Gemini sang OpenAI hoặc Grok) chỉ cần cập nhật cấu hình trong SystemConfig mà không ảnh hưởng đến bất kỳ phần nào khác của hệ thống.
+2.6.2. Thiết kế Backend
+Backend được thiết kế theo mô hình Controller - Service - Model, trong đó mỗi tầng đảm nhận một vai trò riêng biệt [3]. Tầng Controller tiếp nhận yêu cầu từ client, kiểm tra dữ liệu đầu vào và trả kết quả cho frontend. Tầng Service xử lý toàn bộ nghiệp vụ của hệ thống, bao gồm kiểm tra logic, phân quyền và điều phối các thao tác dữ liệu. Tầng Model đại diện cho các collection trong MongoDB, được xây dựng bằng Mongoose, chịu trách nhiệm truy vấn và cập nhật dữ liệu. Việc tách biệt rõ các tầng giúp mã nguồn rõ ràng, dễ bảo trì và dễ mở rộng chức năng.
+Hệ thống bao gồm các Controller chính: AuthController xử lý đăng ký, đăng nhập và xác thực; TermController quản lý tra cứu và quản lý thuật ngữ; CommentController quản lý bình luận; ContributionController xử lý đóng góp và đề xuất chỉnh sửa; ModerationController thực hiện kiểm duyệt; và ReportController cung cấp báo cáo thống kê.
+2.6.3. Thiết kế Frontend
+Frontend được xây dựng bằng NextJS - framework React phổ biến hỗ trợ Server Side Rendering (SSR) và Static Site Generation (SSG), giúp cải thiện hiệu năng và SEO [10]. Kết hợp với HTML, CSS và JavaScript, giao tiếp với backend thông qua thư viện Axios. Hệ thống cung cấp các giao diện chính: trang tra cứu thuật ngữ và xem chi tiết; trang đăng ký và đăng nhập; trang đóng góp thuật ngữ và bình luận; trang quản trị và kiểm duyệt nội dung. Giao diện được thiết kế đơn giản, thân thiện và responsive, phù hợp với nhiều đối tượng người dùng và kích thước màn hình khác nhau.
+2.6.3.1. Giao diện người dùng
+ 
+Hình 2.21: Giao diện trang chủ
+
+Trang chủ hiển thị ô tìm kiếm trung tâm, danh sách chuyên ngành và các thuật ngữ được tra cứu nhiều nhất, giúp người dùng nhanh chóng định hướng tra cứu.
+
+ 
+Hình 2.22: Giao diện kết quả tìm kiếm
+
+Trang kết quả tìm kiếm hiển thị danh sách các thuật ngữ khớp với từ khóa, hỗ trợ bộ lọc theo ngôn ngữ và chuyên ngành, phân trang kết quả.
+ 
+Hình 2.23: Giao diện chi tiết thuật ngữ
+
+Trang chi tiết hiển thị đầy đủ tên thuật ngữ theo ba ngôn ngữ, định nghĩa, ví dụ minh họa, thuật ngữ liên quan và nút Hỏi AI để yêu cầu giải thích mở rộng.
+ 
+Hình 2.24: Giao diện AI giải thích thuật ngữ
+
+Kết quả giải thích mở rộng từ AI được hiển thị theo dạng streaming ngay trong trang chi tiết, giúp người dùng hiểu sâu hơn về khái niệm theo ngữ cảnh.
+ 
+Hình 2.25: Giao diện đăng ký tài khoản
+
+Form đăng ký yêu cầu người dùng nhập email, mật khẩu, họ tên và chọn ngôn ngữ ưu tiên, có xác thực dữ liệu phía client trước khi gửi.
+ 
+Hình 2.26: Giao diện đăng nhập
+
+Form đăng nhập với ô nhập email và mật khẩu, liên kết quên mật khẩu và thông báo lỗi rõ ràng khi xác thực không thành công.
+ 
+Hình 2.27: Giao diện danh sách yêu thích
+
+Trang hiển thị danh sách các thuật ngữ đã lưu của người dùng, sắp xếp theo thời gian, có thể xóa từng mục hoặc click xem chi tiết.
+ 
+Hình 2.28: Giao diện đóng góp thuật ngữ mới
+
+Form đóng góp cho phép người dùng nhập thuật ngữ theo ba ngôn ngữ, định nghĩa, chọn chuyên ngành, thêm ví dụ minh họa và nguồn tham khảo.
+ 
+Hình 2.29: Giao diện đề xuất chỉnh sửa thuật ngữ
+
+Form chỉnh sửa hiển thị nội dung hiện tại và cho phép người dùng đề xuất thay đổi kèm giải thích lý do, giúp kiểm duyệt viên dễ dàng so sánh.
+ 
+Hình 2.30: Giao diện trang cá nhân
+
+Trang cá nhân hiển thị thông tin tài khoản, lịch sử tra cứu gần đây và thống kê số lượng thuật ngữ đã đóng góp của người dùng.
+2.6.3.2. Giao diện Kiểm duyệt viên
+ 
+Hình 2.31: Giao diện danh sách đóng góp chờ duyệt
+
+Bảng liệt kê các đóng góp với bộ lọc theo trạng thái pending/approved/rejected, hiển thị thông tin tóm tắt và thời gian gửi.
+ 
+Hình 2.32: Giao diện xem xét một đóng góp
+
+Trang xem xét chi tiết nội dung đóng góp với các nút thao tác Duyệt, Yêu cầu chỉnh sửa, Từ chối và ô nhập ghi chú phản hồi cho người đóng góp.
+ 
+Hình 2.33: Giao diện kiểm duyệt bình luận
+
+Bảng danh sách bình luận chờ duyệt, hỗ trợ duyệt nhanh từng dòng hoặc xóa bình luận không phù hợp.
+2.6.3.3. Giao diện Quản trị viên
+ 
+Hình 2.34: Giao diện Dashboard tổng quan
+
+Dashboard hiển thị các chỉ số quan trọng: tổng số người dùng, thuật ngữ, lượt tra cứu hôm nay và biểu đồ hoạt động theo tuần/tháng.
+ 
+Hình 2.35: Giao diện quản lý người dùng
+
+Bảng danh sách người dùng với bộ lọc theo vai trò và trạng thái, hỗ trợ tìm kiếm, khóa/mở khóa tài khoản và phân quyền.
+ 
+Hình 2.36: Giao diện quản lý danh mục chuyên ngành
+
+Danh sách các chuyên ngành, hỗ trợ thêm mới, chỉnh sửa, xóa và phân công kiểm duyệt viên cho từng danh mục.
+ 
+Hình 2.37: Giao diện quản lý thuật ngữ
+
+Bảng quản lý toàn bộ thuật ngữ với bộ lọc theo chuyên ngành và trạng thái, hỗ trợ thêm mới trực tiếp, chỉnh sửa và xóa.
+ 
+Hình 2.38: Giao diện nhập dữ liệu hàng loạt
+
+Giao diện upload file Excel với preview dữ liệu trước khi nhập và báo cáo kết quả chi tiết sau khi hoàn thành (số dòng thành công/lỗi).
+ 
+Hình 2.39: Giao diện báo cáo thống kê
+
+Trang báo cáo hiển thị biểu đồ tra cứu theo thời gian, danh sách thuật ngữ phổ biến nhất và xếp hạng người dùng đóng góp tích cực.
+ 
+Hình 2.40: Giao diện cấu hình hệ thống
+
+Form cấu hình các tham số hệ thống bao gồm API key cho AI, thông tin server email và các cấu hình khác
+2.6.4. Bảo mật và phân quyền hệ thống
+Hệ thống áp dụng cơ chế xác thực dựa trên JWT (JSON Web Token) - một chuẩn mở cho phép truyền thông tin an toàn giữa các bên dưới dạng JSON object [8]. Khi người dùng đăng nhập thành công, server cấp phát một JWT token chứa thông tin định danh và vai trò người dùng. Token này được gửi kèm trong header của mỗi request tiếp theo, server kiểm tra và giải mã để xác định quyền truy cập. Phân quyền theo ba cấp độ rõ ràng: người dùng thông thường chỉ có thể tra cứu và đóng góp; kiểm duyệt viên có thêm quyền duyệt nội dung trong danh mục được phân công; quản trị viên có toàn quyền quản lý hệ thống.
+2.7. Thiết kế cơ sở dữ liệu
+2.7.1. Tổng quan thiết kế cơ sở dữ liệu
+Hệ thống sử dụng MongoDB kết hợp với Mongoose ODM để định nghĩa schema và thao tác với dữ liệu [5]. Lý do lựa chọn MongoDB xuất phát từ nhiều ưu điểm phù hợp với đặc thù của hệ thống. Thứ nhất, cấu trúc dữ liệu linh hoạt: thuật ngữ chuyên ngành có độ dài và cấu trúc khác nhau tùy theo lĩnh vực, schema động của MongoDB cho phép lưu trữ các trường không cố định mà không cần migration như SQL. Thứ hai, hỗ trợ đa ngôn ngữ tốt: MongoDB xử lý Unicode tự nhiên, phù hợp với yêu cầu lưu trữ thuật ngữ bằng tiếng Việt, tiếng Lào và tiếng Anh. Thứ ba, hiệu năng truy vấn cao với indexing mạnh mẽ bao gồm full-text search. Thứ tư, dễ mở rộng theo chiều ngang với sharding khi hệ thống phát triển.
+2.7.2. Danh sách các Collection
+Hệ thống được thiết kế với 13 collection chính, mỗi collection đảm nhận một vai trò cụ thể: User (thông tin người dùng, xác thực, phân quyền); Category (danh mục chuyên ngành); Term (thuật ngữ chính thức đã kiểm duyệt); Contribution (đóng góp chờ kiểm duyệt); Comment (bình luận); Favorite (thuật ngữ yêu thích); SearchHistory (lịch sử tra cứu); Notification (thông báo); Report (báo xấu); Feedback và ModeratorApplication (liên hệ và đăng ký kiểm duyệt viên); SystemConfig (cấu hình hệ thống); ReputationHistory, ReputationSummary và RedemptionRequest (ba model trong file ReputationPoint.js quản lý hệ thống điểm uy tín và đổi điểm để lấy phần quà).
+2.7.3. Thiết kế chi tiết từng Collection
+Collection User
+Mục đích: Lưu trữ thông tin người dùng, quản lý xác thực và phân quyền truy cập. Các trường chính: email (unique, indexed), password (bcrypt hash), fullName, role (user/moderator/admin), preferredLanguage (vi/lo/en), status (active/inactive/banned), emailVerified (boolean), emailVerificationToken và emailVerificationExpires (hash token xác thực email), resetPasswordToken và resetPasswordExpires (reset mật khẩu), refreshToken và refreshTokenExpires (hash refresh token, hỗ trợ cơ chế tự làm mới phiên đăng nhập), googleId và authProvider (google/local, hỗ trợ OAuth), avatar (URL ảnh đại diện), emailNotifications (cài đặt thông báo), moderationPermissions.categories (mảng Category ID được phân công cho moderator), contributionCount, profileViewCount, lastLogin. Quan hệ: một User tạo nhiều Contribution, Comment, Favorite, SearchHistory, Notification, Report (1-n); một User (moderator/admin) kiểm duyệt nhiều Contribution, Comment, Report; moderationPermissions.categories tham chiếu Category.
+Collection Category
+Mục đích: Phân loại thuật ngữ theo chuyên ngành, tổ chức dữ liệu có hệ thống. Các trường chính: name (đa ngôn ngữ vi/lo/en), slug (URL-friendly identifier, unique), description, parentCategory (hỗ trợ phân cấp danh mục), moderators (danh sách kiểm duyệt viên được phân công), termCount. Quan hệ: một Category có thể có nhiều Category con (self-reference) và chứa nhiều Term.
+Collection Term
+Mục đích: Lưu trữ các thuật ngữ chuyên ngành chính thức đã được kiểm duyệt - đây là dữ liệu cốt lõi của hệ thống. Các trường chính: term (vi/lo/en, tiếng Việt bắt buộc), definition (vi/lo/en), detailedExplanation, examples (mảng ví dụ đa ngôn ngữ), partOfSpeech, category, relatedTerms (mảng ID các thuật ngữ liên quan), status (draft/published), createdBy, viewCount, favoriteCount, commentCount, searchText (full-text search index).
+Collection Contribution
+Mục đích: Quản lý các thuật ngữ mới hoặc đề xuất chỉnh sửa do người dùng đóng góp, chờ kiểm duyệt. Các trường chính: type (new_term/edit_term), targetTerm (ID thuật ngữ gốc khi chỉnh sửa), nội dung thuật ngữ, contributor, status (pending/approved/rejected), moderator, moderatorNote, moderatedAt.
+Collection Comment
+Mục đích: Lưu trữ bình luận và thảo luận về các thuật ngữ. Hỗ trợ cấu trúc cây thông qua trường parentComment, cho phép người dùng reply comment của nhau. Status bao gồm pending/approved/rejected để quản lý kiểm duyệt.
+Collection Report
+Mục đích: Quản lý chức năng báo cáo nội dung không phù hợp từ người dùng, phục vụ kiểm duyệt hệ thống. Các trường chính: type, targetTerm, targetComment, category, reason, description, reporter, status, moderator, moderatorNote, actionTaken, resolvedAt. Quan hệ: một User có thể tạo nhiều Report (1-n), một User (moderator) xử lý nhiều Report (1-n), Report liên kết với Term hoặc Comment (quan hệ đa hình).
+Collection ReputationPoint
+Mục đích: Quản lý toàn bộ hệ thống điểm uy tín của người dùng, bao gồm lịch sử thay đổi điểm, dữ liệu tổng hợp và các yêu cầu đổi thưởng. Hỗ trợ theo dõi hoạt động, xếp hạng và triển khai cơ chế khuyến khích người dùng.
+Collection Feedback
+Mục đích: Lưu trữ phản hồi, góp ý, báo lỗi hoặc đề xuất tính năng từ người dùng. Các trường chính: name, email, subject, type (feedback/bug/feature/other), message, status (pending/reviewed/resolved), adminNote. Quan hệ: không liên kết trực tiếp với User (cho phép gửi phản hồi không cần đăng nhập).
+Collection ModeratorApplication
+Mục đích: Quản lý các yêu cầu để đăng ký trở thành kiểm duyệt viên của người dùng. Các trường chính: name, email, reason, experience, status (pending/approved/rejected), adminNote, reviewedBy, reviewedAt. Quan hệ: một User (admin) có thể xét duyệt nhiều đơn đăng ký (1-n).
+Collection AICache
+Mục đích: Lưu trữ tạm thời kết quả sinh nội dung từ AI nhằm tối ưu hiệu năng và giảm số lần gọi API. Các trường chính: termId, language, response (definition, examples...), provider, model, expiresAt. Quan hệ: liên kết với Term (1-1 theo ngôn ngữ), không thuộc nghiệp vụ cốt lõi nên không thể hiện trong ERD chính.
+Các Collection còn lại
+Favorite lưu danh sách yêu thích với compound unique index (user + term) để đảm bảo mỗi người dùng chỉ lưu một thuật ngữ một lần. SearchHistory ghi lại lịch sử tra cứu phục vụ tính năng “Tìm kiếm gần đây” và thống kê. Notification quản lý thông báo theo loại (contribution_approved, contribution_rejected, comment_reply, system) với trạng thái đã đọc/chưa đọc. SystemConfig lưu trữ các tham số cấu hình dạng key-value, cho phép thay đổi tham số mà không cần sửa code.
+Favorite lưu danh sách yêu thích với compound unique index (user + term) đảm bảo mỗi người dùng chỉ lưu một thuật ngữ một lần; có trường note để người dùng thêm ghi chú riêng. SearchHistory ghi lại lịch sử tra cứu (user, query, resultCount) phục vụ tính năng “Tìm kiếm gần đây”; có TTL index tự động xóa sau 30 ngày. Notification quản lý thông báo (recipient, type, title, message, relatedId, relatedModel, isRead, actionUrl) theo nhiều loại sự kiện (contribution_approved, contribution_rejected, comment_reply, report_resolved, system). SystemConfig lưu tham số cấu hình dạng key-value (key, value, description, category, isActive, isEncrypted, updatedBy), cho phép thay đổi hành vi hệ thống (rate limit, AI config, email config) mà không cần sửa code.
+2.7.4. Sơ đồ quan hệ giữa các Collection
+ 
+Hình 2.41: Sơ đồ thực thể ERD
+
+Sơ đồ ERD thể hiện các quan hệ chính trong hệ thống: User tạo Term và Contribution (1-n), User viết Comment và Favorite (1-n), Category chứa Term và Contribution (1-n), Term có Comment và Favorite (1-n), Term liên quan đến Term khác (n-n qua relatedTerms), Comment có reply Comment (self-reference), Contribution tham chiếu Term gốc khi chỉnh sửa.
+ 
+	CHƯƠNG 3: CÀI ĐẶT VÀ TRIỂN KHAI HỆ THỐNG
+3.1. Môi trường phát triển
+Quá trình phát triển hệ thống được thực hiện trên máy tính cá nhân chạy hệ điều hành Windows 10 (64-bit) với cấu hình phần cứng tối thiểu: bộ xử lý Intel Core i5 thế hệ 10 trở lên, RAM 16GB và ổ SSD 256GB. Môi trường phát triển sử dụng các công cụ chính như sau.
+Visual Studio Code là trình soạn thảo mã nguồn chính, được lựa chọn nhờ hỗ trợ tốt cho JavaScript/TypeScript, có bộ extension phong phú và tích hợp terminal thuận tiện. Các extension cần thiết bao gồm ESLint (kiểm tra lỗi cú pháp), Prettier (tự động định dạng code), MongoDB for VS Code và REST Client (kiểm thử API nhanh ngay trong editor).
+Node.js phiên bản 22.22.1 được sử dụng làm nền tảng runtime cho cả backend (ExpressJS) và công cụ build của frontend (NextJS), npm phiên bản 9 đi kèm với Node.js được dùng để quản lý các thư viện phụ thuộc.
+MongoDB Community Server được cài đặt trực tiếp trên máy phát triển, kết hợp với MongoDB Compass - giao diện đồ họa trực quan giúp xem và thao tác dữ liệu dễ dàng hơn trong quá trình phát triển và kiểm thử. Postman được sử dụng để kiểm thử các REST API endpoint của backend một cách có hệ thống, hỗ trợ tạo collection và tự động hóa việc kiểm thử.
+Git là công cụ quản lý phiên bản mã nguồn, kết hợp với GitHub để lưu trữ repository và theo dõi lịch sử thay đổi. Quy trình làm việc theo mô hình feature branch giúp tách biệt rõ ràng các tính năng đang phát triển.
+3.2. Công nghệ sử dụng
+Hệ thống được xây dựng dựa trên một bộ công nghệ web hiện đại, được lựa chọn dựa trên các tiêu chí như hiệu năng, sự phổ biến trong cộng đồng lập trình viên, tài liệu đầy đủ và khả năng hỗ trợ lâu dài.
+Về phía backend, Node.js với Express 5 là framework được lựa chọn để xây dựng RESTful API [3]. Express 5 (phiên bản mới nhất, phát hành chính thức năm 2024) kế thừa tính đơn giản và linh hoạt của Express 4, đồng thời cải thiện xử lý lỗi bất đồng bộ và async/await tốt hơn. Cấu trúc middleware của Express cho phép dễ dàng thêm các lớp xử lý như xác thực, logging và rate limiting. Mongoose được sử dụng làm ODM (Object Document Mapper) để làm việc với MongoDB, cung cấp lớp trừu tượng với schema validation và query builder tiện lợi [5]. Các thư viện xác thực và bảo mật bao gồm: jsonwebtoken (tạo/xác thực JWT access token và refresh token) [8], bcryptjs (mã hóa mật khẩu), passport và passport-google-oauth20 (xác thực Google OAuth 2.0). Về gửi email và tài liệu: nodemailer (gửi email xác thực, thông báo), pdfkit (tạo giấy xác nhận điểm rèn luyện dạng PDF). Về upload và nhập/xuất dữ liệu: multer (xử lý upload file), xlsx và csv-parser (đọc/ghi file Excel/CSV cho tính năng import-export thuật ngữ). Về bảo mật nhiều tầng: helmet (thiết lập HTTP security headers), hpp (ngăn HTTP parameter pollution), express-rate-limit kết hợp rate-limit-mongo (giới hạn tần suất request với lưu trữ trên MongoDB), xss (sanitize đầu vào chống XSS), middleware chống NoSQL injection, express-recaptcha hoặc middleware recaptcha tùy chỉnh (xác minh reCAPTCHA cho các thao tác nhạy cảm như báo xấu, đóng góp). Về validate input: express-validator (kiểm tra và chuẩn hóa dữ liệu đầu vào cho tất cả các endpoint). SDK tích hợp AI: @google/generative-ai (Google Gemini) và openai (OpenAI GPT), cho phép cấu hình linh hoạt giữa nhiều nhà cung cấp AI.
+Về phía frontend, Next.js phiên bản 14 là framework được chọn để xây dựng giao diện người dùng [10]. Next.js cung cấp App Router với cấu trúc thư mục theo locale ([locale]), hỗ trợ Server Side Rendering và Static Site Generation. next-intl được sử dụng để quản lý đa ngôn ngữ (tiếng Việt, tiếng Lào, tiếng Anh) theo chuẩn ICU, kết hợp với middleware.ts để routing theo locale. next-themes cung cấp chuyển đổi giao diện sáng/tối (dark/light mode) mà không gây nhấp nháy khi tải trang. Axios là HTTP client chính giao tiếp với backend API, với interceptor tự động refresh access token khi nhận lỗi 401 (gọi /api/auth/refresh-token, lấy access token mới rồi retry request gốc). @react-oauth/google hỗ trợ đăng nhập Google phía frontend (Google One Tap / OAuth flow). Về UI và nội dung: Tailwind CSS (utility-first styling), react-quill-new (rich text editor cho soạn thảo định nghĩa), react-markdown kết hợp remark-gfm (render nội dung Markdown từ AI), recharts (vẽ biểu đồ thống kê trong dashboard quản trị), lucide-react (bộ icon), sass (SCSS cho một số component cần style phức tạp). react-hot-toast (hiển thị thông báo toast). Quản lý state: AuthContext (React Context API) quản lý trạng thái xác thực toàn cục; các service layer tách riêng (thư mục services) để gọi API.
+Về cơ sở dữ liệu, MongoDB là hệ quản trị cơ sở dữ liệu NoSQL dạng document [5]. Ngoài các ưu điểm đã nêu ở phần thiết kế, MongoDB còn hỗ trợ Atlas Search - tính năng full-text search mạnh mẽ tích hợp sẵn, phù hợp với yêu cầu tra cứu thuật ngữ của hệ thống.
+Người quản trị có thể cấu hình khóa API, lựa chọn mô hình sử dụng và điều chỉnh tham số phù hợp với từng mục đích (sinh định nghĩa, giải thích, gợi ý thuật ngữ), từ đó đảm bảo tính linh hoạt và khả năng mở rộng của hệ thống trong tương lai.
+3.3. Cấu trúc thư mục hệ thống
+Hệ thống được tổ chức thành hai project riêng biệt: backend và frontend, mỗi project có cấu trúc thư mục rõ ràng theo từng chức năng.
+Cấu trúc thư mục Backend:
+Thư mục gốc backend chứa các file cấu hình: package.json (thư viện phụ thuộc), .env (biến môi trường bí mật), .gitignore, app.js (bootstrap toàn bộ middleware và route) và server.js (khởi động HTTP server). Thư mục src tổ chức theo lớp: config/ - kết nối MongoDB (database.js), cấu hình Passport.js OAuth (passport.js), và middleware bảo mật (security.js); controllers/ - nhận request và trả response (authController.js, termController.js, contributionController.js, commentController.js, reportController.js, feedbackController.js, categoryController.js); services/ - toàn bộ nghiệp vụ chính (authService.js, termService.js, contributionService.js, commentService.js, reportService.js, reputationService.js, importService.js, exportService.js, emailService.js, pdfService.js, reportStatsService.js); models/ - schema Mongoose (User.js, Term.js, Category.js, Contribution.js, Comment.js, Favorite.js, Notification.js, SearchHistory.js, SystemConfig.js, AICache.js, AIUsageDaily.js, Report.js, Feedback.js, ModeratorApplication.js, ReputationPoint.js); routes/ - khai báo endpoint, gắn middleware auth/role/validate/rate-limit (authRoutes.js, termRoutes.js, contributionRoutes.js, commentRoutes.js, categoryRoutes.js, favoriteRoutes.js, reportRoutes.js, notificationRoutes.js, userRoutes.js, systemConfigRoutes.js, aiRoutes.js, aiAgentRoutes.js, reputationRoutes.js, leaderboardRoutes.js, reportStatsRoutes.js, feedbackRoutes.js); middlewares/ - xác thực JWT (auth.js), phân quyền theo role (role.js), rate limiter (rateLimiter.js), validate input (validate.js), recaptcha (recaptcha.js); utils/ - hàm tiện ích dùng chung; uploads/ - lưu file tải lên tạm thời.
+Cấu trúc thư mục Frontend:
+Next.js sử dụng kiến trúc App Router với thư mục app/[locale]/ là nơi định nghĩa các trang theo ngôn ngữ, kết hợp với middleware.ts và i18n.ts để tự động routing theo locale. Bên trong [locale] có các nhóm trang theo nghiệp vụ: (auth)/ - đăng nhập và đăng ký; (main)/ - trang chủ, tra cứu, chi tiết thuật ngữ, leaderboard; terms/ - danh sách và chi tiết thuật ngữ; profile/ - hồ sơ cá nhân; favorites/ - danh sách yêu thích; contributions/ - lịch sử đóng góp cá nhân; reputation/ - điểm uy tín và đổi điểm rèn luyện; contact/ - gửi feedback và đăng ký kiểm duyệt viên; moderation/ - giao diện kiểm duyệt viên (đóng góp, bình luận, báo xấu, thuật ngữ); admin/ - quản trị hệ thống (users, terms, contributions, reports, categories, settings, email, ai, stats). Thư mục components/ chứa các React component tái sử dụng theo nhóm (ui/, layout/, term/, search/). Thư mục contexts/ chứa AuthContext.tsx (quản lý trạng thái xác thực toàn cục). Thư mục services/ chứa các module gọi API tách riêng theo nghiệp vụ (authService.ts, termService.ts, contributionService.ts, v.v.). Thư mục lib/ chứa axios instance với interceptor refresh token (axios.ts), utils và hooks. Thư mục messages/ chứa file ngôn ngữ vi.json, lo.json, en.json cho next-intl. Thư mục public/ chứa tài nguyên tĩnh.
+3.4. Cài đặt Backend
+Quá trình cài đặt backend bắt đầu bằng việc tạo project Node.js mới và cài đặt các thư viện cần thiết. Khởi tạo project với lệnh npm init -y để tạo file package.json. Các thư viện production được cài đặt gồm: express (web framework v5), mongoose (ODM MongoDB), jsonwebtoken và bcryptjs (xác thực và mã hóa), passport và passport-google-oauth20 (OAuth 2.0 Google), nodemailer (gửi email), pdfkit (tạo PDF giấy xác nhận), multer (upload file), xlsx (đọc/ghi Excel), cors và dotenv (cấu hình cross-origin và biến môi trường), @google/generative-ai và openai (SDK AI), helmet và hpp (security headers), express-rate-limit và rate-limit-mongo (giới hạn tần suất), xss (sanitize đầu vào), express-validator (validate dữ liệu). Thư viện development gồm nodemon (tự động restart server khi code thay đổi). File app.js là trung tâm bootstrap: mount toàn bộ middleware bảo mật (helmet, hpp, cors, rate-limit, xss) và đăng ký tất cả router; file server.js kết nối MongoDB rồi khởi động HTTP server lắng nghe trên PORT (mặc định 5000).
+File server.js - điểm khởi động của ứng dụng - thực hiện các bước: import module Express và các middleware cần thiết; cấu hình CORS cho phép frontend truy cập; đăng ký các middleware xử lý JSON body và giới hạn kích thước request; import và mount các router từ thư mục routes; cấu hình xử lý lỗi toàn cục; kết nối MongoDB và khởi động server lắng nghe trên cổng được chỉ định trong biến môi trường PORT (mặc định 5000).
+Cấu hình biến môi trường được lưu trong file .env và không được commit lên repository. Các biến môi trường quan trọng bao gồm: MONGODB_URI (chuỗi kết nối MongoDB), JWT_SECRET và JWT_EXPIRES_IN (khóa bí mật và thời hạn access token), JWT_REFRESH_SECRET và JWT_REFRESH_EXPIRES_IN (cho refresh token), GOOGLE_CLIENT_ID và GOOGLE_CLIENT_SECRET (cho Google OAuth 2.0), GEMINI_API_KEY và OPENAI_API_KEY (khóa API các nhà cung cấp AI), EMAIL_HOST, EMAIL_PORT, EMAIL_USER, EMAIL_PASS (cấu hình SMTP), FRONTEND_URL (URL frontend để cấu hình CORS và link trong email), RECAPTCHA_SECRET_KEY (xác minh reCAPTCHA phía server), USE_CSRF (bật/tắt CSRF middleware, mặc định false trong dev), NODE_ENV (development/production) và PORT (cổng server).
+Thiết kế middleware xác thực hoạt động theo nguyên tắc: nhận JWT token từ header Authorization, giải mã và xác minh token, sau đó gắn thông tin người dùng vào đối tượng request để các handler tiếp theo sử dụng. Middleware phân quyền kiểm tra vai trò người dùng và từ chối request nếu không đủ quyền, trả về mã HTTP 403 (Forbidden).
+3.5. Cài đặt Frontend
+Frontend được khởi tạo bằng lệnh create-next-app chính thức của Next.js, cung cấp bộ khung dự án hoàn chỉnh với TypeScript, ESLint và Tailwind CSS được cấu hình sẵn. Lệnh khởi tạo là npx create-next-app@latest frontend --typescript --tailwind --eslint --app.
+Sau khi khởi tạo, cài đặt thêm các thư viện cần thiết: axios (HTTP client với interceptor refresh token), next-intl (đa ngôn ngữ theo locale), next-themes (dark/light mode), react-hot-toast (thông báo toast), react-quill-new (rich text editor soạn định nghĩa), react-markdown và remark-gfm (render kết quả AI dạng Markdown), recharts (biểu đồ thống kê dashboard), lucide-react (icon), sass (SCSS bổ sung), @react-oauth/google (đăng nhập Google phía frontend).
+Cấu hình Axios instance tập trung trong file lib/api.js, thiết lập baseURL trỏ đến backend API, tự động gắn JWT token vào header Authorization của mọi request, và xử lý lỗi 401 (Unauthorized) bằng cách tự động đăng xuất và chuyển về trang đăng nhập. Cấu hình này giúp tránh lặp lại mã xử lý xác thực ở từng component.
+Tính năng đa ngôn ngữ trong giao diện được triển khai bằng next-intl - thư viện i18n chuẩn cho Next.js App Router. Các chuỗi dịch được lưu trong file JSON theo từng ngôn ngữ (messages/vi.json, messages/lo.json, messages/en.json). File i18n.ts định nghĩa cấu hình locale, middleware.ts tự động redirect theo ngôn ngữ ưu tiên của trình duyệt. Hook useTranslations() từ next-intl giúp component truy cập chuỗi dịch một cách type-safe. Ngôn ngữ người dùng chọn được lưu trong localStorage và đồng bộ với route URL (ví dụ /vi/terms, /lo/terms). Cấu hình Axios instance tập trung trong lib/axios.ts, thiết lập baseURL trỏ đến backend API, tự động gắn JWT access token vào header Authorization của mọi request, và interceptor response tự động gọi /api/auth/refresh-token khi gặp lỗi 401, sau đó retry request gốc với access token mới, đảm bảo trải nghiệm liền mạch không bị đăng xuất đột ngột.
+Giao diện tra cứu thuật ngữ là tính năng trung tâm của frontend, bao gồm ô tìm kiếm với tính năng gợi ý tự động (autocomplete) được debounce 200ms để tránh gọi API quá nhiều. Kết quả tìm kiếm hiển thị dưới dạng danh sách với thumbnail và định nghĩa ngắn gọn. Trang chi tiết thuật ngữ hiển thị đầy đủ thông tin và có nút “Hỏi AI” để yêu cầu giải thích mở rộng, kết quả AI được stream về từng từ một (streaming response) tạo cảm giác phản hồi tức thì.
+3.6. Kết nối cơ sở dữ liệu
+Kết nối MongoDB được thực hiện thông qua Mongoose với chuỗi kết nối URI lưu trong biến môi trường MONGODB_URI. Hàm kết nối được tổ chức trong file config/database.js và được gọi khi server khởi động. Cấu hình kết nối bao gồm các tùy chọn quan trọng như maxPoolSize (kích thước pool kết nối, thường đặt là 10) để tái sử dụng kết nối hiệu quả, serverSelectionTimeoutMS để xác định thời gian chờ khi không thể kết nối, và autoIndex ở môi trường production nên đặt là false để tránh Mongoose tự động tạo index mỗi khi khởi động.
+Các index trên MongoDB được tạo thủ công theo thiết kế đã xác định ở Chương 2, bao gồm index đơn (email trên User, status trên Term) và compound index (user + term trên Favorite để đảm bảo tính duy nhất). Full-text search index được tạo trên trường searchText của collection Term, tổng hợp nội dung từ các trường term, definition và examples để hỗ trợ tìm kiếm toàn văn bản. Ngoài ra, index TTL (Time To Live) được cấu hình trên collection SearchHistory để tự động xóa lịch sử tra cứu cũ hơn 30 ngày, giúp kiểm soát kích thước dữ liệu.
+Xử lý lỗi kết nối cơ sở dữ liệu được thiết kế theo nguyên tắc fail-fast: nếu không thể kết nối MongoDB khi khởi động, ứng dụng sẽ dừng lại và ghi log lỗi rõ ràng thay vì tiếp tục chạy ở trạng thái lỗi. Trong runtime, Mongoose tự động quản lý việc kết nối lại khi mất kết nối tạm thời, giúp hệ thống có khả năng phục hồi tự động.
+3.7. Triển khai hệ thống lên môi trường thực tế
+Hệ thống được triển khai trên VPS (Virtual Private Server) chạy Ubuntu Server 22.04 LTS. Lựa chọn này phù hợp với quy mô pilot của dự án, cho phép kiểm soát hoàn toàn môi trường chạy với chi phí hợp lý. Cấu hình server tối thiểu khuyến nghị là 2 vCPU, 4GB RAM và 50GB SSD.
+Quá trình cài đặt server bắt đầu bằng việc cập nhật hệ điều hành và cài đặt các công cụ cần thiết: Node.js 22.22.1 (thông qua NodeSource PPA), MongoDB 6.0 Community, Nginx (web server và reverse proxy) và PM2 (process manager cho Node.js). Ngoài ra còn cài đặt Certbot để quản lý chứng chỉ SSL miễn phí từ Let's Encrypt, đảm bảo HTTPS cho hệ thống.
+Nginx được cấu hình làm reverse proxy, nhận request từ người dùng trên cổng 80 (HTTP) và 443 (HTTPS), sau đó chuyển tiếp đến các service nội bộ. Cấu hình Nginx cho backend API chuyển tiếp request từ đường dẫn /api đến server backend chạy trên cổng 5000. Cấu hình cho frontend NextJS chuyển tiếp tất cả request còn lại đến server NextJS chạy trên cổng 3000. Cấu hình SSL với Certbot tự động gia hạn chứng chỉ, đảm bảo kết nối HTTPS luôn hợp lệ.
+PM2 là công cụ quản lý process không thể thiếu trong môi trường production. PM2 đảm bảo ứng dụng tự động khởi động lại khi bị lỗi crash, tự động chạy lại sau khi server reboot, và hỗ trợ chạy nhiều instance song song (cluster mode) để tận dụng đa nhân CPU. File ecosystem.config.js định nghĩa cấu hình cho cả backend và frontend, bao gồm tên ứng dụng, script khởi động, số instance, biến môi trường và đường dẫn file log. Lệnh pm2 startup được chạy để tạo systemd service, đảm bảo PM2 tự động khởi động cùng hệ điều hành.
+Quy trình triển khai cập nhật phiên bản mới được thực hiện theo các bước: kéo mã nguồn mới từ repository git (git pull origin main); cài đặt thư viện mới nếu có (npm ci - dùng thay npm install để đảm bảo cài đúng phiên bản trong package-lock.json); build frontend NextJS (npm run build); và reload PM2 để áp dụng thay đổi mà không gây downtime (pm2 reload all). Quá trình này thường mất dưới 2 phút và người dùng không bị gián đoạn.
+Chiến lược backup dữ liệu sử dụng công cụ mongodump của MongoDB để xuất toàn bộ dữ liệu hàng ngày vào lúc 2 giờ sáng qua cron job. File backup được nén và lưu trữ trên server trong vòng 7 ngày, đồng thời được tải lên Google Drive để lưu trữ lâu dài. Trong trường hợp cần khôi phục, sử dụng mongorestore với file backup tương ứng.
+3.8. Kiểm thử hệ thống
+3.8.1. Kiểm thử chức năng
+Kiểm thử chức năng được thực hiện theo phương pháp black-box testing, tức là kiểm tra kết quả đầu ra dựa trên đầu vào mà không cần biết chi tiết bên trong code. Mỗi use case đã xác định ở Chương 2 đều được xây dựng thành các ca kiểm thử (test case) với đầy đủ điều kiện đầu vào, kết quả mong đợi và kết quả thực tế.
+Nhóm kiểm thử tra cứu và hiển thị thuật ngữ (UC01, UC04): kiểm tra tìm kiếm với từ khóa chính xác, từ khóa một phần, từ khóa không tồn tại (kỳ vọng AI sinh định nghĩa), từ khóa có dấu tiếng Việt và ký tự đặc biệt. Đồng thời kiểm tra việc hiển thị trang chi tiết thuật ngữ bao gồm định nghĩa, ví dụ minh họa và các thuật ngữ liên quan. Kết quả cho thấy tìm kiếm và hiển thị hoạt động đúng với tất cả trường hợp, thời gian phản hồi trung bình 350ms từ cơ sở dữ liệu và khoảng 3.2 giây khi gọi AI.
+Nhóm kiểm thử xác thực người dùng và quản lý phiên (UC02, UC03): kiểm tra đăng ký với email hợp lệ, email đã tồn tại, mật khẩu yếu; kiểm tra luồng xác thực email với token hợp lệ và hết hạn; kiểm tra đăng nhập với thông tin đúng, sai mật khẩu, tài khoản chưa xác thực hoặc bị khóa. Ngoài ra kiểm tra cơ chế refresh token khi access token hết hạn và xử lý khi refresh token không còn hiệu lực. Kết quả: tất cả các test case đều pass, hệ thống xác thực và quản lý phiên hoạt động ổn định.
+Nhóm kiểm thử tương tác người dùng (UC05, UC06, UC07, UC10): kiểm tra chức năng lưu thuật ngữ yêu thích, hiển thị danh sách yêu thích, tìm kiếm trong danh sách và xóa khỏi danh sách. Kiểm tra việc gửi bình luận, trạng thái “chờ duyệt” và khả năng kiểm soát nội dung. Kiểm tra chức năng báo xấu thuật ngữ với các trường hợp hợp lệ, trùng lặp và yêu cầu xác minh. Kết quả cho thấy các chức năng hoạt động đúng, dữ liệu được lưu trữ và xử lý chính xác theo trạng thái.
+Nhóm kiểm thử đóng góp và kiểm duyệt (UC08, UC09, UC18): kiểm tra quy trình người dùng đóng góp thuật ngữ mới và đề xuất chỉnh sửa thuật ngữ, kiểm duyệt viên nhận thông báo, xem xét và thực hiện duyệt hoặc từ chối kèm ghi chú. Kiểm tra các trường hợp dữ liệu không hợp lệ như thiếu thông tin bắt buộc hoặc vượt giới hạn ký tự. Kết quả: quy trình hoạt động đúng, thông báo email và notification được gửi trong vòng khoảng 30 giây.
+Nhóm kiểm thử hệ thống điểm uy tín và bảng xếp hạng (UC11, UC13): kiểm tra việc cộng/trừ điểm uy tín theo các hành động như đóng góp, bình luận và báo xấu; kiểm tra hiển thị bảng xếp hạng người dùng và thuật ngữ theo các tiêu chí khác nhau. Kết quả cho thấy hệ thống tính toán chính xác và hiển thị đúng dữ liệu.
+Nhóm kiểm thử AI Agent (UC14): kiểm tra các chức năng gợi ý tìm kiếm, gợi ý thuật ngữ liên quan, nhận diện thuật ngữ trong đoạn văn, dịch thuật ngữ và hỗ trợ người dùng trong quá trình sử dụng hệ thống. Kết quả: AI phản hồi đúng ngữ cảnh, thời gian phản hồi trung bình từ 2 đến 4 giây.
+Nhóm kiểm thử quản trị hệ thống (UC15–UC23): kiểm tra toàn bộ chức năng quản trị bao gồm quản lý người dùng, phân quyền, quản lý danh mục, quản lý thuật ngữ, kiểm duyệt nội dung, nhập dữ liệu hàng loạt từ file Excel và xuất dữ liệu. Đặc biệt kiểm tra tính năng nhập dữ liệu với file Excel 500 dòng, kết quả nhập thành công 498 dòng hợp lệ và hiển thị lỗi rõ ràng cho 2 dòng không hợp lệ. Các chức năng báo cáo thống kê và cấu hình hệ thống hoạt động đúng theo yêu cầu.
+3.8.2. Kiểm thử bảo mật
+Kiểm thử bảo mật được thực hiện dựa trên danh sách OWASP Top 10 - các lỗ hổng bảo mật phổ biến nhất trong ứng dụng web [9]. Quá trình kiểm thử tập trung vào các vector tấn công chính.
+Kiểm thử SQL Injection và NoSQL Injection: thử gửi các payload tấn công như {“$gt”: ““} vào trường email khi đăng nhập. Hệ thống sử dụng Mongoose với schema validation đã ngăn chặn thành công các payload này, không cho phép đối tượng phức tạp vào các trường kiểu String.
+Kiểm thử XSS (Cross-Site Scripting): thử nhập các đoạn script HTML vào các trường nhập liệu như nội dung bình luận và định nghĩa thuật ngữ. Hệ thống sử dụng thư viện DOMPurify ở frontend và xử lý sanitization ở backend để loại bỏ các tag script độc hại trước khi lưu vào cơ sở dữ liệu.
+Kiểm thử xác thực và phân quyền: thử truy cập các API endpoint yêu cầu quyền admin với token của người dùng thường. Kết quả: server trả về mã 403 Forbidden chính xác. Thử giả mạo JWT token bằng cách sửa payload - hệ thống phát hiện chữ ký không hợp lệ và từ chối. Thử replay attack với token đã hết hạn - hệ thống xác minh thời gian hết hạn và trả về lỗi 401.
+Kiểm thử CSRF: hệ thống sử dụng Same-Site cookie policy và kiểm tra Origin header. Kiểm thử bằng cách giả lập request từ domain khác cho thấy hệ thống từ chối đúng.
+Kiểm thử Rate Limiting: gửi liên tục hơn 100 request trong vòng 1 phút từ cùng một địa chỉ IP. Hệ thống trả về mã 429 (Too Many Requests) đúng như cấu hình và giải phóng sau 1 phút.
+3.8.3. Kiểm thử hiệu năng
+Kiểm thử hiệu năng được thực hiện sử dụng công cụ Apache JMeter để mô phỏng nhiều người dùng truy cập đồng thời. Kịch bản kiểm thử được thiết kế theo luồng sử dụng thực tế: người dùng truy cập trang chủ, thực hiện tìm kiếm và xem chi tiết thuật ngữ.
+Kịch bản 1 - Tải bình thường (50 người dùng đồng thời): kết quả cho thấy thời gian phản hồi trung bình của API tra cứu là 320ms, percentile 95 là 580ms. CPU của server ở mức 35%, RAM sử dụng 65%. Không có request nào bị lỗi. Đây là hiệu năng đáp ứng tốt yêu cầu đặt ra (dưới 1 giây).
+Kịch bản 2 - Tải cao (200 người dùng đồng thời): thời gian phản hồi trung bình tăng lên 850ms, percentile 95 là 1.8 giây. CPU đạt 78%, RAM 82%. Tỷ lệ lỗi 2.3% (chủ yếu do timeout khi gọi AI). Kết quả này nằm trong ngưỡng chấp nhận được, nhưng cho thấy cần tối ưu thêm nếu muốn phục vụ số lượng lớn người dùng đồng thời.
+Tối ưu hóa hiệu năng được áp dụng sau khi phân tích kết quả: thêm index compound cho truy vấn tìm kiếm phức hợp; triển khai cơ chế cache kết quả tìm kiếm thường gặp với Redis (thời gian cache 10 phút); sử dụng pagination để giới hạn số kết quả trả về mỗi lần; và tối ưu hóa Mongoose query bằng cách chỉ select các trường cần thiết thay vì lấy toàn bộ document. Sau tối ưu, thời gian phản hồi trung bình giảm xuống còn 210ms ở kịch bản tải bình thường.
+3.8.4. Đánh giá kết quả kiểm thử
+Tổng kết quá trình kiểm thử cho thấy hệ thống đạt được phần lớn các yêu cầu đã đặt ra. Về chức năng, tất cả 95 test case chức năng đều pass, đảm bảo hệ thống hoạt động đúng theo đặc tả. Về bảo mật, không phát hiện lỗ hổng nghiêm trọng trong các vector tấn công phổ biến được kiểm thử. Về hiệu năng, hệ thống đáp ứng yêu cầu thời gian phản hồi ở mức tải bình thường, nhưng cần cải thiện thêm cho tải cao nếu quy mô người dùng tăng lên.
+Một số hạn chế còn tồn tại cần được cải thiện trong các phiên bản tiếp theo. Thời gian phản hồi khi gọi AI (trung bình 3.2 giây) chưa đạt mục tiêu 5 giây theo yêu cầu nhưng còn cao so với trải nghiệm lý tưởng - cần nghiên cứu cơ chế pre-caching định nghĩa AI cho các thuật ngữ phổ biến. Tính năng kiểm thử tải cao cho thấy cần triển khai horizontal scaling với nhiều instance backend và load balancer khi số lượng người dùng tăng đáng kể. Ngoài ra, chưa có automated test suite hoàn chỉnh - cần bổ sung unit test và integration test để đảm bảo chất lượng mã nguồn khi phát triển tính năng mới trong tương lai.
+ 
+KẾT LUẬN VÀ KIẾN NGHỊ
+1. Kết luận
+Sau quá trình nghiên cứu, phân tích, thiết kế và xây dựng, đồ án đã đạt được các kết quả quan trọng cả về mặt lý thuyết và thực tiễn.
+Về mặt lý thuyết, đồ án đã tổng quan được hiện trạng các hệ thống từ điển chuyên ngành, phân tích xu hướng ứng dụng trí tuệ nhân tạo và mô hình ngôn ngữ lớn (LLM) trong xử lý ngôn ngữ, từ đó đề xuất kiến trúc hệ thống hybrid kết hợp giữa cơ sở dữ liệu từ điển truyền thống và AI. Đồng thời, hệ thống đã được mô hình hóa đầy đủ thông qua các sơ đồ UML, đảm bảo tính chặt chẽ và khả năng mở rộng.
+Về mặt thực tiễn, hệ thống đã được thiết kế và triển khai với đầy đủ các chức năng cốt lõi như: tra cứu thuật ngữ đa ngôn ngữ (Việt – Lào – Anh) có hỗ trợ AI, cơ chế đóng góp cộng đồng và kiểm duyệt nội dung, hệ thống quản trị toàn diện và các chức năng liên quan đến người dùng. Hệ thống đã được triển khai thử nghiệm trên môi trường thực tế với các cơ chế bảo mật cơ bản. Kết quả kiểm thử cho thấy hệ thống hoạt động ổn định, đáp ứng tốt các yêu cầu chức năng và hiệu năng đã đề ra. Đặc biệt, kiến trúc AI của hệ thống được thiết kế theo nguyên tắc linh hoạt và có kiểm soát: toàn bộ cấu hình AI (nhà cung cấp, model, giới hạn hàng ngày, prompt theo từng ngôn ngữ) được lưu trong cơ sở dữ liệu được mã hoá và thay đổi được qua chức năng cài đặt của quản trị viên mà không cần sửa code — đây là điểm khác biệt quan trọng so với các hệ thống cài đặt AI cứng trong mã nguồn. Sự kết hợp giữa AI sinh nội dung động, kiểm duyệt cộng đồng và hệ thống điểm uy tín tạo nên một vòng lặp chất lượng khép kín: AI hỗ trợ khi dữ liệu chưa có, cộng đồng bổ sung và kiểm tra, hệ thống điểm thưởng khuyến khích đóng góp chất lượng cao.
+Tuy nhiên, bên cạnh những kết quả đạt được, đồ án vẫn còn một số hạn chế nhất định. Hệ thống chưa xây dựng được bộ kiểm thử tự động (automated test) hoàn chỉnh; giao diện người dùng chưa được đánh giá thông qua khảo sát người dùng thực tế; và chất lượng nội dung do AI sinh ra vẫn cần được cải thiện, đặc biệt đối với các thuật ngữ chuyên ngành sâu.
+Nhìn chung, đồ án đã hoàn thành mục tiêu đề ra, đồng thời tạo nền tảng cho việc phát triển một hệ thống từ điển chuyên ngành thông minh, có khả năng mở rộng và ứng dụng trong thực tế.
+2. Kiến nghị
+Để hệ thống có thể tiếp tục phát triển và hoàn thiện hơn trong tương lai, một số kiến nghị được đề xuất như sau:
+Về mặt kỹ thuật, cần nghiên cứu fine-tuning mô hình AI với tập dữ liệu từ điển chuyên ngành Việt – Lào nhằm nâng cao độ chính xác của nội dung sinh tự động. Đồng thời, nên triển khai cơ chế caching (ví dụ Redis) để cải thiện hiệu năng hệ thống khi xử lý số lượng lớn yêu cầu, và xây dựng bộ kiểm thử tự động đầy đủ nhằm đảm bảo chất lượng phần mềm.
+Về mặt nội dung, cần có sự phối hợp với các giảng viên và chuyên gia trong từng lĩnh vực để xây dựng và chuẩn hóa kho dữ liệu thuật ngữ ban đầu, vì đây là yếu tố cốt lõi quyết định giá trị sử dụng của hệ thống.
+Về mặt vận hành, nên triển khai thử nghiệm với một nhóm sinh viên Lào tại Trường Đại học Tây Bắc để thu thập phản hồi thực tế, từ đó cải thiện giao diện và trải nghiệm người dùng. Sau giai đoạn thử nghiệm, hệ thống có thể được mở rộng phạm vi triển khai ra toàn trường và các đối tượng người dùng khác.
+Trong tương lai, hệ thống có thể được nghiên cứu mở rộng theo hướng hỗ trợ thêm nhiều ngôn ngữ, tích hợp sâu hơn các mô hình AI tiên tiến, và phát triển thành một nền tảng học tập và tra cứu thuật ngữ thông minh phục vụ nhiều lĩnh vực khác nhau.
+ 
+ 
+TÀI LIỆU THAM KHẢO
+[1] Bird, S., Klein, E., & Loper, E. (2009). Natural language processing with Python: Analyzing text with the natural language toolkit. O'Reilly Media.
+[2] Vaswani, A., Shazeer, N., Parmar, N., Uszkoreit, J., Jones, L., Gomez, A. N., Kaiser, Ł., & Polosukhin, I. (2017). Attention is all you need. Advances in Neural Information Processing Systems, 30.
+[3] Cantelon, M., Harter, M., Holowaychuk, T. J., & Rajlich, N. (2013). Node.js in Action. Manning Publications.
+[4] Fielding, R. T. (2000). Architectural styles and the design of network-based software architectures. Doctoral dissertation, University of California, Irvine.
+[5] Chodorow, K. (2013). MongoDB: The definitive guide. O'Reilly Media.
+[6] Booch, G., Rumbaugh, J., & Jacobson, I. (2005). The Unified Modeling Language User Guide (2nd ed.). Addison-Wesley Professional.
+[7] Liu, P., Yuan, W., Fu, J., Jiang, Z., Hayashi, H., & Neubig, G. (2023). Pre-train, prompt, and predict: A systematic survey of prompting methods in natural language processing. ACM Computing Surveys, 55(9), 1-35.
+[8] Jones, M., Bradley, J., & Sakimura, N. (2015). JSON Web Token (JWT). RFC 7519, Internet Engineering Task Force (IETF).
+[9] OWASP Foundation. (2021). OWASP Top Ten 2021. Open Web Application Security Project. Truy cập tại https://owasp.org/www-project-top-ten/.
+[10] Vercel Inc. (2024). Next.js Documentation (v14). Truy cập tại https://nextjs.org/docs.
+ 
+PHỤ LỤC
+Phụ lục A: Cấu hình môi trường phát triển FrontEnd
+Danh sách phần mềm và phiên bản sử dụng trong quá trình phát triển hệ thống FrontEnd:
+Tên công nghệ	Phiên bản	Mô tả
+Next.js	14.2.35	Framework React cho frontend
+React	19.0.1	Thư viện xây dựng giao diện
+Tailwind CSS	3.3.6	Framework CSS
+Axios	1.13.2	Gọi API
+React Hot Toast	2.6.0	Hiển thị thông báo
+Recharts	3.7.0	Vẽ biểu đồ thống kê
+React Markdown	10.1.0	Render nội dung Markdown
+React Quill	3.8.3	Soạn thảo văn bản
+next-themes	0.4.6	Hỗ trợ dark mode
+next-intl	4.7.0	Đa ngôn ngữ
+Sass	1.97.3	CSS nâng cao
+Phụ lục B: Cấu hình môi trường phát triển BackEnd
+Tên công nghệ	Phiên bản	Mô tả
+Node.js	22.22.1	Runtime environment cho JavaScript phía server
+Express	5.2.1	Framework xây dựng API backend
+MongoDB	6.0.12	Cơ sở dữ liệu NoSQL
+Mongoose	8.21.0	ODM cho MongoDB
+jsonwebtoken	9.0.3	Xác thực người dùng bằng JWT
+bcryptjs	3.0.3	Mã hóa mật khẩu
+Passport.js	0.7.0	Xác thực OAuth (Google)
+passport-google-oauth20	2.0.0	Đăng nhập Google
+Multer	2.0.2	Upload file
+Nodemailer	8.0.0	Gửi email hệ thống
+Helmet	8.1.0	Bảo mật HTTP headers
+express-rate-limit	8.2.1	Giới hạn request chống spam
+express-validator	7.3.1	Validate dữ liệu đầu vào
+PDFKit	0.17.2	Sinh file PDF
+XLSX	0.18.5	Xử lý file Excel
+dotenv	17.2.3	Quản lý biến môi trường
+@google/genai	0.3.1	Tích hợp Gemini API
+OpenAI	6.22.0	Tích hợp AI (tuỳ chọn)
+

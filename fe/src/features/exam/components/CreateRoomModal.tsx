@@ -6,6 +6,7 @@ import {
     DialogTitle,
 } from '@/components/ui/dialog'
 import type { RoomOut } from '../types/exam.type'
+import { Rocket, Clock, CheckCircle2, ClipboardList } from 'lucide-react'
 
 interface CreateRoomModalProps {
     room: RoomOut | null
@@ -29,7 +30,7 @@ export function CreateRoomModal({ room, onClose }: CreateRoomModalProps) {
         <Dialog open={room !== null} onOpenChange={(open) => !open && onClose()}>
             <DialogContent className="max-w-md">
                 <DialogHeader>
-                    <DialogTitle>🚀 Phòng thi đã được tạo!</DialogTitle>
+                    <DialogTitle className="flex items-center gap-2"><Rocket size={16} /> Phòng thi đã được tạo!</DialogTitle>
                 </DialogHeader>
 
                 <div className="space-y-4">
@@ -43,8 +44,8 @@ export function CreateRoomModal({ room, onClose }: CreateRoomModalProps) {
                     </div>
 
                     {room?.expires_at && (
-                        <p className="text-[12px] text-[#94a3b8]">
-                            ⏰ Hết hạn: {new Date(room.expires_at).toLocaleString('vi-VN')}
+                        <p className="text-[12px] text-[#94a3b8] flex items-center gap-1">
+                            <Clock size={13} /> Hết hạn: {new Date(room.expires_at).toLocaleString('vi-VN')}
                         </p>
                     )}
 
@@ -53,7 +54,7 @@ export function CreateRoomModal({ room, onClose }: CreateRoomModalProps) {
                             onClick={handleCopy}
                             className="flex-1 rounded-xl bg-[#1a56db] py-2.5 text-[13px] font-bold text-white hover:bg-[#1d4ed8] transition-colors"
                         >
-                            {copied ? '✅ Đã sao chép!' : '📋 Sao chép link'}
+                            {copied ? <><CheckCircle2 size={14} /> Đã sao chép!</> : <><ClipboardList size={14} /> Sao chép link</>}
                         </button>
                         <button
                             onClick={onClose}

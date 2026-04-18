@@ -3,13 +3,14 @@ import { useRef, useState, useEffect } from 'react'
 import { cn } from '@/lib/utils'
 import { useAuthStore } from '@/stores/useAuthStore'
 import { useLogout } from '@/features/auths'
-import { LogOut, Settings } from 'lucide-react'
+import { LogOut, Settings, BarChart2, GraduationCap, UserCog, ClipboardList, Crown } from 'lucide-react'
+import type { LucideIcon } from 'lucide-react'
 
-const NAV_ITEMS = [
-  { icon: '📊', label: 'Bảng điều khiển', path: '/admin/dashboard' },
-  { icon: '🎓', label: 'Quản lý Học sinh', path: '/admin/students' },
-  { icon: '👨‍🏫', label: 'Quản lý Giáo viên', path: '/admin/instructors' },
-  { icon: '📋', label: 'Nhật ký hoạt động', path: '/admin/activity-logs' },
+const NAV_ITEMS: { icon: LucideIcon; label: string; path: string; badge?: number }[] = [
+  { icon: BarChart2, label: 'Bảng điều khiển', path: '/admin/dashboard' },
+  { icon: GraduationCap, label: 'Quản lý Học sinh', path: '/admin/students' },
+  { icon: UserCog, label: 'Quản lý Giáo viên', path: '/admin/instructors' },
+  { icon: ClipboardList, label: 'Nhật ký hoạt động', path: '/admin/activity-logs' },
 ]
 
 export function AdminSidebar() {
@@ -44,8 +45,8 @@ export function AdminSidebar() {
     >
       {/* Logo */}
       <div className="flex items-center gap-3 px-5 py-5 border-b border-white/10">
-        <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-white/10 text-[20px] shadow-inner">
-          👑
+        <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-white/10 shadow-inner">
+          <Crown size={20} className="text-white" />
         </div>
         <div>
           <div className="text-[14px] font-extrabold text-white leading-tight">Admin Portal</div>
@@ -117,7 +118,7 @@ function NavItem({
   active,
   onClick,
 }: {
-  item: { icon: string; label: string; path: string; badge?: number }
+  item: { icon: LucideIcon; label: string; path: string; badge?: number }
   active: boolean
   onClick: () => void
 }) {
@@ -131,7 +132,7 @@ function NavItem({
           : 'text-gray-300 hover:bg-white/10 hover:text-white',
       )}
     >
-      <span className="text-[16px] w-5 text-center flex-shrink-0">{item.icon}</span>
+      <span className="w-5 flex-shrink-0 flex items-center justify-center"><item.icon size={16} /></span>
       <span className="flex-1">{item.label}</span>
       {item.badge && (
         <span className={cn(

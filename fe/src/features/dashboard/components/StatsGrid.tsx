@@ -1,10 +1,12 @@
 import { useDashboardSummary } from '../hooks/useDashboardData'
+import { BookOpen, FileText, GraduationCap, Bot } from 'lucide-react'
+import type { LucideIcon } from 'lucide-react'
 
-const ICON_CONFIG = [
-  { icon: '📚', iconBg: 'linear-gradient(135deg,#dbeafe,#eff6ff)', valueColor: '#1a56db', label: 'Bài học đã soạn', key: 'lesson' as const },
-  { icon: '📝', iconBg: 'linear-gradient(135deg,#d1fae5,#ecfdf5)', valueColor: '#10b981', label: 'Đề thi đã tạo', key: 'exam' as const },
-  { icon: '🎓', iconBg: 'linear-gradient(135deg,#fef3c7,#fffbeb)', valueColor: '#f59e0b', label: 'Học sinh đang học', key: 'student' as const },
-  { icon: '🤖', iconBg: 'linear-gradient(135deg,#ede9fe,#f5f3ff)', valueColor: '#7c3aed', label: 'Lượt hỏi AI hôm nay', key: 'ai' as const },
+const ICON_CONFIG: { icon: LucideIcon; iconBg: string; valueColor: string; label: string; key: 'lesson' | 'exam' | 'student' | 'ai' }[] = [
+  { icon: BookOpen, iconBg: 'linear-gradient(135deg,#dbeafe,#eff6ff)', valueColor: '#1a56db', label: 'Bài học đã soạn', key: 'lesson' },
+  { icon: FileText, iconBg: 'linear-gradient(135deg,#d1fae5,#ecfdf5)', valueColor: '#10b981', label: 'Đề thi đã tạo', key: 'exam' },
+  { icon: GraduationCap, iconBg: 'linear-gradient(135deg,#fef3c7,#fffbeb)', valueColor: '#f59e0b', label: 'Học sinh đang học', key: 'student' },
+  { icon: Bot, iconBg: 'linear-gradient(135deg,#ede9fe,#f5f3ff)', valueColor: '#7c3aed', label: 'Lượt hỏi AI hôm nay', key: 'ai' },
 ]
 
 export function StatsGrid() {
@@ -12,11 +14,11 @@ export function StatsGrid() {
 
   const values = data
     ? {
-        lesson: data.lesson_count,
-        exam: data.exam_count,
-        student: data.student_count,
-        ai: data.ai_query_count,
-      }
+      lesson: data.lesson_count,
+      exam: data.exam_count,
+      student: data.student_count,
+      ai: data.ai_query_count,
+    }
     : { lesson: 0, exam: 0, student: 0, ai: 0 }
 
   return (
@@ -28,10 +30,10 @@ export function StatsGrid() {
         >
           <div className="mb-3 flex items-center justify-between">
             <div
-              className="flex h-11 w-11 items-center justify-center rounded-xl text-xl shadow-sm"
+              className="flex h-11 w-11 items-center justify-center rounded-xl shadow-sm"
               style={{ background: stat.iconBg }}
             >
-              {stat.icon}
+              <stat.icon size={20} style={{ color: stat.valueColor }} />
             </div>
           </div>
           <div

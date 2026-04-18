@@ -6,6 +6,7 @@ import { ExamScores } from './ExamScores'
 import { QUERY_KEYS } from '@/lib/constants'
 import { examService } from '../services/exam.service'
 import { useQuery } from '@tanstack/react-query'
+import { ClipboardList, CheckCircle2, Pin, Clock, Target, Calendar, BarChart2, Loader2, Rocket, Trash2, Lock, LockOpen, Eye, ChevronUp, DoorOpen, Check, Inbox } from 'lucide-react'
 
 const LEVEL_LABELS: Record<string, string> = {
     mixed: 'Hỗn hợp', easy: 'Dễ', med: 'Trung bình', hard: 'Khó',
@@ -42,7 +43,7 @@ export function ExamList() {
     if (isLoading) {
         return (
             <div className="flex items-center justify-center py-20">
-                <div className="text-[14px] text-[#94a3b8]">⏳ Đang tải...</div>
+                <div className="flex items-center gap-2 text-[14px] text-[#94a3b8]"><Loader2 size={16} className="animate-spin" /> Đang tải...</div>
             </div>
         )
     }
@@ -50,7 +51,7 @@ export function ExamList() {
     if (!exams?.length) {
         return (
             <div className="flex flex-col items-center justify-center rounded-xl border border-dashed border-[#e2e8f0] bg-white py-20 text-center">
-                <div className="mb-3 text-5xl">📋</div>
+                <Inbox size={48} className="mb-3 text-[#94a3b8]" />
                 <p className="text-[15px] font-semibold text-[#475569]">Chưa có đề thi nào</p>
                 <p className="mt-1 text-[13px] text-[#94a3b8]">Chuyển sang tab "Tạo đề thi" để bắt đầu</p>
             </div>
@@ -110,14 +111,14 @@ function ExamCard({
                         <h4 className="text-[14px] font-bold text-[#1e293b]">{exam.title}</h4>
                         <span className={`rounded-full px-2 py-0.5 text-[10.5px] font-bold ${exam.status === 'published' ? 'bg-[#d1fae5] text-[#10b981]' : 'bg-[#f1f5f9] text-[#94a3b8]'
                             }`}>
-                            {exam.status === 'published' ? '✅ Xuất bản' : '📋 Nháp'}
+                            {exam.status === 'published' ? <><CheckCircle2 size={11} className="inline mr-0.5" /> Xuất bản</> : <><ClipboardList size={11} className="inline mr-0.5" /> Nháp</>}
                         </span>
                     </div>
                     <div className="flex flex-wrap gap-4 text-[12px] text-[#94a3b8]">
-                        {exam.topic && <span>📌 {exam.topic}</span>}
-                        <span>⏱️ {exam.duration} phút</span>
-                        <span>🎯 {LEVEL_LABELS[exam.level_mix]}</span>
-                        <span>📅 {new Date(exam.created_at).toLocaleDateString('vi-VN')}</span>
+                        {exam.topic && <span className="flex items-center gap-1"><Pin size={11} /> {exam.topic}</span>}
+                        <span className="flex items-center gap-1"><Clock size={11} /> {exam.duration} phút</span>
+                        <span className="flex items-center gap-1"><Target size={11} /> {LEVEL_LABELS[exam.level_mix]}</span>
+                        <span className="flex items-center gap-1"><Calendar size={11} /> {new Date(exam.created_at).toLocaleDateString('vi-VN')}</span>
                     </div>
                 </div>
 
@@ -126,19 +127,19 @@ function ExamCard({
                         onClick={onTogglePreview}
                         className="rounded-lg border border-[#e2e8f0] px-3 py-1.5 text-[12px] font-bold text-[#475569] hover:border-[#1a56db] hover:text-[#1a56db] transition-colors"
                     >
-                        {isPreviewOpen ? '🔼 Ẩn' : '👁️ Xem trước'}
+                        {isPreviewOpen ? <><ChevronUp size={13} className="inline" /> Ẩn</> : <><Eye size={13} className="inline" /> Xem trước</>}
                     </button>
                     <button
                         onClick={() => setShowRooms((v) => !v)}
-                        className="rounded-lg border border-[#e2e8f0] px-3 py-1.5 text-[12px] font-bold text-[#475569] hover:border-[#1a56db] hover:text-[#1a56db] transition-colors"
+                        className="rounded-lg border border-[#e2e8f0] px-3 py-1.5 text-[12px] font-bold text-[#475569] hover:border-[#1a56db] hover:text-[#1a56db] transition-colors flex items-center gap-1"
                     >
-                        🚪 Phòng thi
+                        <DoorOpen size={13} /> Phòng thi
                     </button>
                     <button
                         onClick={onViewStats}
-                        className="rounded-lg border border-[#e2e8f0] px-3 py-1.5 text-[12px] font-bold text-[#475569] hover:border-[#7c3aed] hover:text-[#7c3aed] transition-colors"
+                        className="rounded-lg border border-[#e2e8f0] px-3 py-1.5 text-[12px] font-bold text-[#475569] hover:border-[#7c3aed] hover:text-[#7c3aed] transition-colors flex items-center gap-1"
                     >
-                        📊 Thống kê
+                        <BarChart2 size={13} /> Thống kê
                     </button>
                     <button
                         onClick={onCreateRoom}
@@ -159,7 +160,7 @@ function ExamCard({
             {/* Rooms panel */}
             {showRooms && (
                 <div className="border-t border-[#f1f5f9] px-5 py-4">
-                    <p className="mb-3 text-[12px] font-bold text-[#475569]">🚪 Danh sách phòng thi</p>
+                    <p className="mb-3 text-[12px] font-bold text-[#475569] flex items-center gap-1"><DoorOpen size={13} /> Danh sách phòng thi</p>
                     {!rooms?.length ? (
                         <p className="text-[12px] text-[#94a3b8]">Chưa có phòng thi nào. Nhấn "Tạo phòng mới" để tạo.</p>
                     ) : (
@@ -175,8 +176,8 @@ function ExamCard({
                                             {window.location.origin}/room/{room.access_code}
                                         </p>
                                         <p className="text-[11px] text-[#94a3b8] mt-0.5">
-                                            {room.is_active ? '🟢 Đang mở' : '🔴 Đã khóa'}
-                                            {room.expires_at && ` · ⏰ Hết hạn ${new Date(room.expires_at).toLocaleString('vi-VN')}`}
+                                            {room.is_active ? 'Đang mở' : 'Đã khóa'}
+                                            {room.expires_at && ` · Hết hạn ${new Date(room.expires_at).toLocaleString('vi-VN')}`}
                                             {' · '}Tạo lúc {new Date(room.created_at).toLocaleString('vi-VN')}
                                         </p>
                                     </div>
@@ -187,7 +188,7 @@ function ExamCard({
                                             : 'bg-[#d1fae5] text-[#10b981] hover:bg-[#a7f3d0]'
                                             }`}
                                     >
-                                        {room.is_active ? '🔒 Khóa' : '🔓 Mở'}
+                                        {room.is_active ? <><Lock size={12} /> Khóa</> : <><LockOpen size={12} /> Mở</>}
                                     </button>
                                     <CopyButton code={room.access_code} />
                                 </div>
@@ -238,7 +239,7 @@ function CopyButton({ code }: { code: string }) {
             }}
             className="rounded-lg border border-[#e2e8f0] px-2.5 py-1.5 text-[11px] font-bold text-[#475569] hover:border-[#1a56db] hover:text-[#1a56db] transition-colors"
         >
-            {copied ? '✅' : '📋'}
+            {copied ? <Check size={13} /> : <ClipboardList size={13} />}
         </button>
     )
 }

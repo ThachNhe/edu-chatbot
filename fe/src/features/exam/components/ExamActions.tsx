@@ -1,3 +1,5 @@
+import { Upload, Rocket, RotateCcw, Loader2 } from 'lucide-react'
+
 interface ExamActionsProps {
   hasQuestions: boolean
   isSavedToDb: boolean       // true = đề đã lưu, có examId

@@ -1,4 +1,5 @@
 import { useWeekSchedule } from '../hooks/useDashboardData'
+import { Calendar } from 'lucide-react'
 
 const DAY_STYLES: Record<string, { dayColor: string; borderColor: string; bg: string }> = {
   T2: { dayColor: 'text-[var(--edu-primary)]', borderColor: 'border-[var(--edu-primary)]', bg: 'bg-[var(--edu-primary-soft)]' },
@@ -18,7 +19,7 @@ export function WeekSchedule() {
     <div className="rounded-[var(--edu-radius)] border border-[var(--edu-gray-100)] bg-white shadow-[var(--edu-shadow-sm)]">
       <div className="flex items-center justify-between border-b border-[var(--edu-gray-100)] px-5 py-4">
         <div className="flex items-center gap-[7px] text-sm font-extrabold text-[var(--edu-gray-800)]">
-          📅 Lịch tuần này
+          <Calendar size={15} /> Lịch tuần này
         </div>
       </div>
       <div className="flex flex-col gap-2 px-4 py-3">

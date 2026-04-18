@@ -1,10 +1,12 @@
 import { useNavigate } from '@tanstack/react-router'
+import { MessageCircle, FileText, BarChart2, Zap } from 'lucide-react'
+import type { LucideIcon } from 'lucide-react'
 
-const ITEMS = [
-  { icon: '💬', label: 'Trợ lý AI', path: '/chat', bg: 'linear-gradient(135deg,#dbeafe,#eff6ff)', color: '#1a56db' },
-  { icon: '📝', label: 'Tạo đề thi', path: '/exam', bg: 'linear-gradient(135deg,#d1fae5,#ecfdf5)', color: '#10b981' },
-  // { icon: '📚', label: 'Bài học', path: '/lessons', bg: 'linear-gradient(135deg,#fef3c7,#fffbeb)', color: '#f59e0b' },
-  { icon: '📊', label: 'Thống kê', path: '/stats', bg: 'linear-gradient(135deg,#ede9fe,#f5f3ff)', color: '#7c3aed' },
+const ITEMS: { icon: LucideIcon; label: string; path: string; bg: string; color: string }[] = [
+  { icon: MessageCircle, label: 'Trợ lý AI', path: '/chat', bg: 'linear-gradient(135deg,#dbeafe,#eff6ff)', color: '#1a56db' },
+  { icon: FileText, label: 'Tạo đề thi', path: '/exam', bg: 'linear-gradient(135deg,#d1fae5,#ecfdf5)', color: '#10b981' },
+  // { icon: BookOpen, label: 'Bài học', path: '/lessons', bg: 'linear-gradient(135deg,#fef3c7,#fffbeb)', color: '#f59e0b' },
+  { icon: BarChart2, label: 'Thống kê', path: '/stats', bg: 'linear-gradient(135deg,#ede9fe,#f5f3ff)', color: '#7c3aed' },
 ]
 
 export function QuickAccess() {
@@ -12,7 +14,7 @@ export function QuickAccess() {
   return (
     <div className="mb-6 rounded-2xl border border-gray-100 bg-white p-5 shadow-sm">
       <h3 className="mb-4 flex items-center gap-2 text-[13px] font-extrabold text-gray-700">
-        ⚡ Truy cập nhanh
+        <Zap size={14} /> Truy cập nhanh
       </h3>
       <div className="grid grid-cols-3 gap-3">
         {ITEMS.map((item) => (
@@ -24,7 +26,7 @@ export function QuickAccess() {
             onMouseEnter={(e) => (e.currentTarget.style.background = item.bg)}
             onMouseLeave={(e) => (e.currentTarget.style.background = 'white')}
           >
-            <span className="text-[26px]">{item.icon}</span>
+            <span className="flex items-center justify-center text-gray-600" style={{ color: item.color }}><item.icon size={26} /></span>
             <span className="text-[12px] font-bold text-gray-600 group-hover:text-gray-800">{item.label}</span>
           </button>
         ))}

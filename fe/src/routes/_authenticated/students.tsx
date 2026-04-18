@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { createFileRoute } from '@tanstack/react-router'
 import { useStudents, useStudentDetail } from '@/features/students'
 import type { StudentOut } from '@/features/students'
+import { GraduationCap, Search, Inbox } from 'lucide-react'
 
 export const Route = createFileRoute('/_authenticated/students')({
     component: StudentsPage,
@@ -104,7 +105,7 @@ function StudentsPage() {
 
             {/* Header */}
             <div className="mb-5">
-                <h1 className="text-xl font-bold text-[#1e293b]">🎓 Quản lý Học sinh</h1>
+                <h1 className="text-xl font-bold text-[#1e293b] flex items-center gap-2"><GraduationCap size={20} /> Quản lý Học sinh</h1>
                 <p className="text-sm text-gray-500 mt-0.5">
                     Học sinh đã tham gia kỳ thi của bạn
                     {students ? ` • ${students.length} học sinh` : ''}
@@ -116,7 +117,7 @@ function StudentsPage() {
                 <input
                     value={search}
                     onChange={e => setSearch(e.target.value)}
-                    placeholder="🔍 Tìm theo tên học sinh..."
+                    placeholder="Tìm theo tên học sinh..."
                     className="w-full max-w-sm border border-[#e2e8f0] rounded-xl px-4 py-2 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-blue-200"
                 />
             </div>
@@ -147,7 +148,7 @@ function StudentsPage() {
                         ) : students?.length === 0 ? (
                             <tr>
                                 <td colSpan={5} className="px-4 py-12 text-center text-gray-400">
-                                    <div className="text-3xl mb-2">🎓</div>
+                                    <GraduationCap size={36} className="mx-auto mb-2 text-gray-300" />
                                     <p>Chưa có học sinh nào tham gia kỳ thi của bạn</p>
                                 </td>
                             </tr>

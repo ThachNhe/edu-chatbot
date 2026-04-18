@@ -145,7 +145,7 @@ export function useToggleRoom(examId: number) {
             queryClient.invalidateQueries({ queryKey: QUERY_KEYS.EXAMS.ROOMS(examId) })
             addToast({
                 type: room.is_active ? 'success' : 'warning',
-                title: room.is_active ? '🔓 Phòng thi đã mở' : '🔒 Phòng thi đã khóa',
+                title: room.is_active ? 'Phòng thi đã mở' : 'Phòng thi đã khóa',
             })
         },
         onError: () => {

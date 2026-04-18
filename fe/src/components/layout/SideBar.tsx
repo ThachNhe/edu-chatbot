@@ -3,15 +3,16 @@ import { useRef, useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
 import { useAuthStore } from "@/stores/useAuthStore";
 import { useLogout } from "@/features/auths";
-import { LogOut, Settings } from "lucide-react";
+import { LogOut, Settings, Home, MessageCircle, FileText, BookOpen, GraduationCap, BarChart2, Bot } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 
-const NAV_ITEMS = [
-  { icon: "🏠", label: "Trang chủ", path: "/dashboard" },
-  { icon: "💬", label: "Trợ lý AI Chat", path: "/chat", badge: 3 },
-  { icon: "📝", label: "Tạo đề thi / Bài tập", path: "/exam" },
-  { icon: "📚", label: "Ngân hàng câu hỏi", path: "/questions" },
-  { icon: "🎓", label: "Quản lý học sinh", path: "/students" },
-  { icon: "📊", label: "Thống kê & Báo cáo", path: "/stats" },
+const NAV_ITEMS: { icon: LucideIcon; label: string; path: string; badge?: number }[] = [
+  { icon: Home, label: "Trang chủ", path: "/dashboard" },
+  { icon: MessageCircle, label: "Trợ lý AI Chat", path: "/chat", badge: 3 },
+  { icon: FileText, label: "Tạo đề thi / Bài tập", path: "/exam" },
+  { icon: BookOpen, label: "Ngân hàng câu hỏi", path: "/questions" },
+  { icon: GraduationCap, label: "Quản lý học sinh", path: "/students" },
+  { icon: BarChart2, label: "Thống kê & Báo cáo", path: "/stats" },
 ];
 
 const ROLE_LABELS: Record<string, string> = {
@@ -53,8 +54,8 @@ export function Sidebar() {
     >
       {/* Logo */}
       <div className="flex items-center gap-3 px-5 py-5 border-b border-white/10">
-        <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-white/15 text-[20px] shadow-inner">
-          🤖
+        <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-white/15 shadow-inner">
+          <Bot size={20} className="text-white" />
         </div>
         <div>
           <div className="text-[14px] font-extrabold text-white leading-tight">
@@ -170,7 +171,7 @@ function NavItem({
   active,
   onClick,
 }: {
-  item: { icon: string; label: string; path: string; badge?: number };
+  item: { icon: LucideIcon; label: string; path: string; badge?: number };
   active: boolean;
   onClick: () => void;
 }) {
@@ -184,8 +185,8 @@ function NavItem({
           : "text-blue-100/80 hover:bg-white/10 hover:text-white",
       )}
     >
-      <span className="text-[16px] w-5 text-center flex-shrink-0">
-        {item.icon}
+      <span className="w-5 flex-shrink-0 flex items-center justify-center">
+        <item.icon size={16} />
       </span>
       <span className="flex-1">{item.label}</span>
       {item.badge && (

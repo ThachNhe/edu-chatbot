@@ -3,6 +3,7 @@ import { ChatInput } from './ChatInput'
 import { SuggestedQuestions } from './SuggestedQuestions'
 import type { ChatMessage } from '../types/chat.types'
 import type { WsStatus } from '../hooks/useChat'
+import { Bot, Trash2, Settings2, Loader2, AlertTriangle } from 'lucide-react'
 
 interface ChatMainProps {
   messages: ChatMessage[]
@@ -21,14 +22,14 @@ export function ChatMain({ messages, isTyping, wsStatus, messagesEndRef, onSend 
       <div className="flex flex-shrink-0 items-center justify-between border-b border-[#e2e8f0] bg-white px-5 py-3">
         <div className="flex items-center gap-2 rounded-full border border-[#bfdbfe] bg-[#eff6ff] px-3 py-[5px] text-[12.5px] font-bold text-[#1a56db]">
           <span className={`h-[7px] w-[7px] rounded-full ${wsStatus === 'open' ? 'animate-pulse bg-[#10b981]' :
-              wsStatus === 'connecting' ? 'animate-pulse bg-amber-400' :
-                'bg-red-400'
+            wsStatus === 'connecting' ? 'animate-pulse bg-amber-400' :
+              'bg-red-400'
             }`} />
-          🤖 EduAI – Tin học 12
+          <Bot size={14} /> EduAI – Tin học 12
         </div>
         <div className="flex items-center gap-2">
-          <TopbarBtn title="Xóa">🗑️</TopbarBtn>
-          <TopbarBtn title="Cài đặt">⚙️</TopbarBtn>
+          <TopbarBtn title="Xóa"><Trash2 size={16} /></TopbarBtn>
+          <TopbarBtn title="Cài đặt"><Settings2 size={16} /></TopbarBtn>
         </div>
       </div>
 
@@ -37,8 +38,8 @@ export function ChatMain({ messages, isTyping, wsStatus, messagesEndRef, onSend 
         <div className={`flex-shrink-0 px-5 py-2 text-center text-[12px] font-medium ${wsStatus === 'connecting' ? 'bg-amber-50 text-amber-700' : 'bg-red-50 text-red-600'
           }`}>
           {wsStatus === 'connecting'
-            ? '⏳ Đang kết nối tới AI...'
-            : '⚠️ Mất kết nối. Hãy bắt đầu cuộc trò chuyện mới để thử lại.'}
+            ? <><Loader2 size={13} className="animate-spin inline mr-1" /> Đang kết nối tới AI...</>
+            : <><AlertTriangle size={13} className="inline mr-1" /> Mất kết nối. Hãy bắt đầu cuộc trò chuyện mới để thử lại.</>}
         </div>
       )}
 

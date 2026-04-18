@@ -3,6 +3,7 @@ import { WelcomeBanner } from '@/features/dashboard/components/WelcomeBanner'
 import { StatsGrid } from '@/features/dashboard/components/StatsGrid'
 import { QuickAccess } from '@/features/dashboard/components/QuickAccess'
 import { RecentActivity } from '@/features/dashboard/components/RecentActivity'
+import { Calendar } from 'lucide-react'
 
 export const Route = createFileRoute('/_authenticated/dashboard')({
   component: DashboardPage,
@@ -37,7 +38,7 @@ function WeeklySchedule() {
       {/* Schedule */}
       <div className="rounded-2xl border border-gray-100 bg-white p-5 shadow-sm">
         <h3 className="mb-4 flex items-center gap-2 text-[13px] font-extrabold text-gray-700">
-          📅 Lịch tuần này
+          <Calendar size={14} /> Lịch tuần này
         </h3>
         <div className="space-y-2.5">
           {events.map((e) => (

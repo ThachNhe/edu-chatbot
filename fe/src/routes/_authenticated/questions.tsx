@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { createFileRoute } from '@tanstack/react-router'
 import { useQuestions, useCreateQuestion, useDeleteQuestion } from '@/features/questions'
 import type { CreateQuestionPayload } from '@/features/questions'
+import { BookOpen, Inbox, BookOpenCheck } from 'lucide-react'
 
 export const Route = createFileRoute('/_authenticated/questions')({
     component: QuestionsPage,
@@ -66,7 +67,7 @@ function QuestionsPage() {
             {/* Header */}
             <div className="flex items-center justify-between mb-5">
                 <div>
-                    <h1 className="text-xl font-bold text-[#1e293b]">📚 Ngân hàng câu hỏi</h1>
+                    <h1 className="text-xl font-bold text-[#1e293b] flex items-center gap-2"><BookOpen size={20} /> Ngân hàng câu hỏi</h1>
                     <p className="text-sm text-gray-500 mt-0.5">
                         {questions ? `${questions.length} câu hỏi` : 'Đang tải...'}
                     </p>
@@ -84,7 +85,7 @@ function QuestionsPage() {
                 <input
                     value={search}
                     onChange={e => setSearch(e.target.value)}
-                    placeholder="🔍 Tìm kiếm câu hỏi..."
+                    placeholder="Tìm kiếm câu hỏi..."
                     className="flex-1 border border-[#e2e8f0] rounded-xl px-4 py-2 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-blue-200"
                 />
                 <select
@@ -176,7 +177,7 @@ function QuestionsPage() {
                     ))
                 ) : questions?.length === 0 ? (
                     <div className="bg-white rounded-xl border border-[#e2e8f0] p-12 text-center text-gray-400">
-                        <div className="text-4xl mb-3">📭</div>
+                        <Inbox size={40} className="mx-auto mb-3 text-gray-300" />
                         <p className="font-medium">Chưa có câu hỏi nào</p>
                         <p className="text-sm mt-1">Nhấn "+ Thêm câu hỏi" để tạo câu hỏi đầu tiên</p>
                     </div>
@@ -199,7 +200,7 @@ function QuestionsPage() {
                                                 <span className="text-[11px] text-gray-400">Dùng trong {q.usage_count} đề</span>
                                             )}
                                             {q.lesson_name && (
-                                                <span className="text-[11px] text-blue-500">📖 {q.lesson_name}</span>
+                                                <span className="text-[11px] text-blue-500 flex items-center gap-0.5"><BookOpenCheck size={11} /> {q.lesson_name}</span>
                                             )}
                                         </div>
                                     </div>

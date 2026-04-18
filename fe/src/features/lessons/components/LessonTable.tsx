@@ -1,20 +1,21 @@
 import type { Lesson, LessonStatus } from '../types/lesson.types'
+import { CheckCircle2, Zap, Clock, Lightbulb, Repeat2, RefreshCw, Wrench, Cog, BarChart2, Save, Database, Eye, Pencil, Trash2 } from 'lucide-react'
 
 const STATUS_CONFIG: Record<LessonStatus, { label: string; className: string }> = {
-  done: { label: '✅ Hoàn thành', className: 'bg-[#d1fae5] text-[#10b981]' },
-  wip:  { label: '⚡ Đang soạn',  className: 'bg-[#fef3c7] text-[#d97706]' },
-  todo: { label: '⏳ Chưa làm',   className: 'bg-[#f1f5f9] text-[#64748b]' },
+  done: { label: 'Hoàn thành', className: 'bg-[#d1fae5] text-[#10b981]' },
+  wip: { label: 'Đang soạn', className: 'bg-[#fef3c7] text-[#d97706]' },
+  todo: { label: 'Chưa làm', className: 'bg-[#f1f5f9] text-[#64748b]' },
 }
 
 const LESSONS: Lesson[] = [
-  { number: '01', name: 'Kiểu dữ liệu cơ bản',        desc: 'Integer, Real, Char, Boolean, String',  icon: '💡', iconBg: '#eff6ff', chapter: 'Chương 1', status: 'done', questionCount: 24 },
-  { number: '02', name: 'Cấu trúc lặp FOR–DO',         desc: 'Vòng lặp xác định số lần lặp',          icon: '🔁', iconBg: '#d1fae5', chapter: 'Chương 2', status: 'done', questionCount: 31 },
-  { number: '03', name: 'Cấu trúc lặp WHILE–DO',       desc: 'Vòng lặp kiểm tra điều kiện trước',     icon: '🔄', iconBg: '#d1fae5', chapter: 'Chương 2', status: 'done', questionCount: 28 },
-  { number: '04', name: 'Chương trình con – Procedure', desc: 'Khai báo và gọi thủ tục',               icon: '🔧', iconBg: '#fef3c7', chapter: 'Chương 3', status: 'wip',  questionCount: 15 },
-  { number: '05', name: 'Chương trình con – Function',  desc: 'Hàm có giá trị trả về',                 icon: '⚙️', iconBg: '#ede9fe', chapter: 'Chương 3', status: 'wip',  questionCount: 12 },
-  { number: '06', name: 'Mảng một chiều',               desc: 'Khai báo, khởi tạo và xử lý mảng',     icon: '📊', iconBg: '#fee2e2', chapter: 'Chương 4', status: 'done', questionCount: 36 },
-  { number: '07', name: 'Xử lý tệp văn bản',            desc: 'Đọc và ghi dữ liệu vào file',           icon: '💾', iconBg: '#f0fdf4', chapter: 'Chương 5', status: 'todo', questionCount: 0  },
-  { number: '08', name: 'Cơ sở dữ liệu – Khái niệm',   desc: 'Bảng, trường, bản ghi, khoá',           icon: '🗄️', iconBg: '#fdf2f8', chapter: 'Chương 5', status: 'todo', questionCount: 0  },
+  { number: '01', name: 'Kiểu dữ liệu cơ bản', desc: 'Integer, Real, Char, Boolean, String', icon: Lightbulb, iconBg: '#eff6ff', chapter: 'Chương 1', status: 'done', questionCount: 24 },
+  { number: '02', name: 'Cấu trúc lặp FOR–DO', desc: 'Vòng lặp xác định số lần lặp', icon: Repeat2, iconBg: '#d1fae5', chapter: 'Chương 2', status: 'done', questionCount: 31 },
+  { number: '03', name: 'Cấu trúc lặp WHILE–DO', desc: 'Vòng lặp kiểm tra điều kiện trước', icon: RefreshCw, iconBg: '#d1fae5', chapter: 'Chương 2', status: 'done', questionCount: 28 },
+  { number: '04', name: 'Chương trình con – Procedure', desc: 'Khai báo và gọi thủ tục', icon: Wrench, iconBg: '#fef3c7', chapter: 'Chương 3', status: 'wip', questionCount: 15 },
+  { number: '05', name: 'Chương trình con – Function', desc: 'Hàm có giá trị trả về', icon: Cog, iconBg: '#ede9fe', chapter: 'Chương 3', status: 'wip', questionCount: 12 },
+  { number: '06', name: 'Mảng một chiều', desc: 'Khai báo, khởi tạo và xử lý mảng', icon: BarChart2, iconBg: '#fee2e2', chapter: 'Chương 4', status: 'done', questionCount: 36 },
+  { number: '07', name: 'Xử lý tệp văn bản', desc: 'Đọc và ghi dữ liệu vào file', icon: Save, iconBg: '#f0fdf4', chapter: 'Chương 5', status: 'todo', questionCount: 0 },
+  { number: '08', name: 'Cơ sở dữ liệu – Khái niệm', desc: 'Bảng, trường, bản ghi, khoá', icon: Database, iconBg: '#fdf2f8', chapter: 'Chương 5', status: 'todo', questionCount: 0 },
 ]
 
 export function LessonTable() {
@@ -46,10 +47,10 @@ export function LessonTable() {
             {/* khớp .lesson-name-cell */}
             <div className="flex items-center gap-[10px]">
               <div
-                className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-[9px] text-[17px]"
+                className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-[9px]"
                 style={{ background: lesson.iconBg }}
               >
-                {lesson.icon}
+                <lesson.icon size={17} />
               </div>
               <div>
                 {/* khớp .lesson-name */}
@@ -82,9 +83,9 @@ export function LessonTable() {
 
             {/* khớp .row-actions */}
             <div className="flex gap-[5px]">
-              <RowButton title="Xem">👁️</RowButton>
-              <RowButton title="Sửa">✏️</RowButton>
-              <RowButton title="Xóa">🗑️</RowButton>
+              <RowButton title="Xem"><Eye size={14} /></RowButton>
+              <RowButton title="Sửa"><Pencil size={14} /></RowButton>
+              <RowButton title="Xóa"><Trash2 size={14} /></RowButton>
             </div>
           </div>
         )

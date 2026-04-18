@@ -1,6 +1,7 @@
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog'
 import { useExamScores } from '../hooks/useExam'
 import type { ExamOut, ScoreWithStudent } from '../types/exam.type'
+import { BarChart2, Loader2, Inbox, Users, TrendingUp, CheckCircle2, Trophy } from 'lucide-react'
 
 interface ExamScoresProps {
     exam: ExamOut | null
@@ -27,19 +28,19 @@ export function ExamScores({ exam, onClose }: ExamScoresProps) {
         <Dialog open={exam !== null} onOpenChange={(open) => !open && onClose()}>
             <DialogContent className="max-w-3xl max-h-[85vh] overflow-hidden flex flex-col">
                 <DialogHeader>
-                    <DialogTitle>📊 Thống kê bài thi</DialogTitle>
+                    <DialogTitle className="flex items-center gap-2"><BarChart2 size={16} /> Thống kê bài thi</DialogTitle>
                     {exam && (
                         <p className="text-[12px] text-[#94a3b8] mt-0.5">{exam.title}</p>
                     )}
                 </DialogHeader>
 
                 {isLoading ? (
-                    <div className="flex items-center justify-center py-10 text-[14px] text-[#94a3b8]">
-                        ⏳ Đang tải...
+                    <div className="flex items-center justify-center py-10 text-[14px] text-[#94a3b8] gap-2">
+                        <Loader2 size={16} className="animate-spin" /> Đang tải...
                     </div>
                 ) : !scores?.length ? (
                     <div className="flex flex-col items-center justify-center py-10 text-center">
-                        <div className="text-5xl mb-3">📭</div>
+                        <Inbox size={48} className="mb-3 text-[#94a3b8]" />
                         <p className="text-[14px] font-semibold text-[#475569]">Chưa có học sinh nào làm bài</p>
                     </div>
                 ) : (
@@ -47,13 +48,13 @@ export function ExamScores({ exam, onClose }: ExamScoresProps) {
                         {/* Summary stats */}
                         <div className="grid grid-cols-4 gap-3">
                             {[
-                                { label: 'Số lượt thi', value: scores.length, icon: '👥', color: 'text-[#1a56db]' },
-                                { label: 'Điểm TB', value: avg, icon: '📈', color: 'text-[#d97706]' },
-                                { label: 'Đạt (≥5)', value: `${passed}/${scores.length}`, icon: '✅', color: 'text-[#10b981]' },
-                                { label: 'Cao nhất', value: highest.toFixed(1), icon: '🏆', color: 'text-[#7c3aed]' },
+                                { label: 'Số lượt thi', value: scores.length, icon: Users, color: 'text-[#1a56db]' },
+                                { label: 'Điểm TB', value: avg, icon: TrendingUp, color: 'text-[#d97706]' },
+                                { label: 'Đạt (≥5)', value: `${passed}/${scores.length}`, icon: CheckCircle2, color: 'text-[#10b981]' },
+                                { label: 'Cao nhất', value: highest.toFixed(1), icon: Trophy, color: 'text-[#7c3aed]' },
                             ].map((stat) => (
                                 <div key={stat.label} className="rounded-xl border border-[#e2e8f0] bg-[#f8fafc] p-3 text-center">
-                                    <div className="text-xl mb-1">{stat.icon}</div>
+                                    <div className="flex justify-center mb-1"><stat.icon size={20} className={stat.color} /></div>
                                     <div className={`text-[20px] font-extrabold ${stat.color}`}>{stat.value}</div>
                                     <div className="text-[11px] text-[#94a3b8] mt-0.5">{stat.label}</div>
                                 </div>

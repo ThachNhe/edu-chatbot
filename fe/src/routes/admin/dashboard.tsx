@@ -1,14 +1,16 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { useAdminStats, useAdminTrends, useTopTeachers } from '@/features/admin'
+import { GraduationCap, UserCog, FileText, HelpCircle, TrendingUp, Trophy } from 'lucide-react'
+import type { LucideIcon } from 'lucide-react'
 
 export const Route = createFileRoute('/admin/dashboard')({
   component: DashboardPage,
 })
 
-function StatCard({ icon, label, value, color }: { icon: string; label: string; value: number | string; color: string }) {
+function StatCard({ icon: Icon, label, value, color }: { icon: LucideIcon; label: string; value: number | string; color: string }) {
   return (
     <div className="bg-white p-5 rounded-2xl shadow-[0_2px_10px_rgba(0,0,0,0.04)] border border-gray-100 hover:shadow-md transition">
-      <div className="text-2xl mb-2">{icon}</div>
+      <div className="mb-2"><Icon size={24} className={color} /></div>
       <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider">{label}</p>
       <p className={`text-3xl font-extrabold mt-1 ${color}`}>{value}</p>
     </div>
@@ -20,7 +22,7 @@ function TrendChart({ data }: { data: { date: string; exams: number; submissions
   return (
     <div className="bg-white rounded-2xl border border-[#e2e8f0] shadow-[0_1px_3px_rgba(0,0,0,0.06)] p-5">
       <div className="flex items-center justify-between mb-4">
-        <h3 className="font-bold text-[#1e293b] text-sm">📈 Hoạt động 7 ngày gần đây</h3>
+        <h3 className="font-bold text-[#1e293b] text-sm flex items-center gap-1.5"><TrendingUp size={15} /> Hoạt động 7 ngày gần đây</h3>
         <div className="flex gap-4 text-xs text-gray-400">
           <span className="flex items-center gap-1.5"><span className="inline-block w-3 h-3 rounded-full bg-blue-500" />Đề thi</span>
           <span className="flex items-center gap-1.5"><span className="inline-block w-3 h-3 rounded-full bg-emerald-400" />Lượt nộp</span>
@@ -53,7 +55,7 @@ function TopTeachersCard({ data }: { data: { id: number; name: string; exam_coun
   const maxExams = Math.max(...data.map(t => t.exam_count), 1)
   return (
     <div className="bg-white rounded-2xl border border-[#e2e8f0] shadow-[0_1px_3px_rgba(0,0,0,0.06)] p-5">
-      <h3 className="font-bold text-[#1e293b] text-sm mb-4">🏆 Top giáo viên tích cực</h3>
+      <h3 className="font-bold text-[#1e293b] text-sm mb-4 flex items-center gap-1.5"><Trophy size={15} /> Top giáo viên tích cực</h3>
       <div className="space-y-4">
         {data.map((t, i) => (
           <div key={t.id} className="flex items-center gap-3">
@@ -64,9 +66,9 @@ function TopTeachersCard({ data }: { data: { id: number; name: string; exam_coun
               <div className="flex items-center justify-between mb-1">
                 <span className="text-sm font-semibold text-[#1e293b] truncate">{t.name}</span>
                 <div className="flex gap-3 text-[11px] text-gray-400 shrink-0 ml-2">
-                  <span>📝 {t.exam_count}</span>
-                  <span>🎓 {t.student_count}</span>
-                  <span>❓ {t.question_count}</span>
+                  <span className="flex items-center gap-0.5"><FileText size={11} /> {t.exam_count}</span>
+                  <span className="flex items-center gap-0.5"><GraduationCap size={11} /> {t.student_count}</span>
+                  <span className="flex items-center gap-0.5"><HelpCircle size={11} /> {t.question_count}</span>
                 </div>
               </div>
               <div className="h-1.5 bg-gray-100 rounded-full overflow-hidden">
@@ -104,10 +106,10 @@ function DashboardPage() {
           ))
         ) : (
           <>
-            <StatCard icon="🎓" label="Tổng Học sinh" value={stats?.total_students ?? 0} color="text-blue-600" />
-            <StatCard icon="👨‍🏫" label="Giáo viên" value={stats?.total_teachers ?? 0} color="text-purple-600" />
-            <StatCard icon="📄" label="Đề thi" value={stats?.total_exams ?? 0} color="text-green-600" />
-            <StatCard icon="❓" label="Câu hỏi" value={stats?.total_questions ?? 0} color="text-orange-500" />
+            <StatCard icon={GraduationCap} label="Tổng Học sinh" value={stats?.total_students ?? 0} color="text-blue-600" />
+            <StatCard icon={UserCog} label="Giáo viên" value={stats?.total_teachers ?? 0} color="text-purple-600" />
+            <StatCard icon={FileText} label="Đề thi" value={stats?.total_exams ?? 0} color="text-green-600" />
+            <StatCard icon={HelpCircle} label="Câu hỏi" value={stats?.total_questions ?? 0} color="text-orange-500" />
           </>
         )}
       </div>

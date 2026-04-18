@@ -1,4 +1,5 @@
 import { useChapterScores } from '../hooks/useStatsData'
+import { BarChart2 } from 'lucide-react'
 
 export function ChapterBarChart() {
   const { data: chapters, isLoading } = useChapterScores()
@@ -7,7 +8,7 @@ export function ChapterBarChart() {
     <div className="overflow-hidden rounded-xl border border-[#e2e8f0] bg-white shadow-[0_1px_3px_rgba(0,0,0,0.08),0_1px_2px_rgba(0,0,0,0.04)]">
       <div className="flex items-center justify-between border-b border-[#f1f5f9] px-5 py-4">
         <div className="flex items-center gap-[7px] text-[14px] font-extrabold text-[#1e293b]">
-          📊 Điểm TB theo chuyên đề
+          <BarChart2 size={16} /> Điểm TB theo chuyên đề
         </div>
         <span className="cursor-pointer text-[12px] font-bold text-[#1a56db] hover:underline">
           Xuất báo cáo

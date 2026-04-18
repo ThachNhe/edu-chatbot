@@ -1,14 +1,17 @@
+import { Package, Repeat2, BarChart2, Wrench, FolderOpen, Save, Pin } from 'lucide-react'
+import type { LucideIcon } from 'lucide-react'
+
 interface ChatRightPanelProps {
   onTopicClick: (topic: string) => void
 }
 
-const TOPICS = [
-  { icon: '📦', label: 'Kiểu dữ liệu cơ bản', bg: 'bg-[#eff6ff]', text: 'text-[#1a56db]' },
-  { icon: '🔁', label: 'Cấu trúc lặp', bg: 'bg-[#d1fae5]', text: 'text-[#065f46]' },
-  { icon: '📊', label: 'Mảng 1D & 2D', bg: 'bg-[#fef3c7]', text: 'text-[#92400e]' },
-  { icon: '🔧', label: 'Chương trình con', bg: 'bg-[#ede9fe]', text: 'text-[#4c1d95]' },
-  { icon: '🗂️', label: 'Record & Set', bg: 'bg-[#fee2e2]', text: 'text-[#7f1d1d]' },
-  { icon: '💾', label: 'Xử lý tệp', bg: 'bg-[#f0fdf4]', text: 'text-[#166534]' },
+const TOPICS: { icon: LucideIcon; label: string; bg: string; text: string }[] = [
+  { icon: Package, label: 'Kiểu dữ liệu cơ bản', bg: 'bg-[#eff6ff]', text: 'text-[#1a56db]' },
+  { icon: Repeat2, label: 'Cấu trúc lặp', bg: 'bg-[#d1fae5]', text: 'text-[#065f46]' },
+  { icon: BarChart2, label: 'Mảng 1D & 2D', bg: 'bg-[#fef3c7]', text: 'text-[#92400e]' },
+  { icon: Wrench, label: 'Chương trình con', bg: 'bg-[#ede9fe]', text: 'text-[#4c1d95]' },
+  { icon: FolderOpen, label: 'Record & Set', bg: 'bg-[#fee2e2]', text: 'text-[#7f1d1d]' },
+  { icon: Save, label: 'Xử lý tệp', bg: 'bg-[#f0fdf4]', text: 'text-[#166534]' },
 ]
 
 const PROGRESS = [
@@ -28,8 +31,8 @@ export function ChatRightPanel({ onTopicClick }: ChatRightPanelProps) {
   return (
     <div className="flex flex-col overflow-hidden border-l border-[#e2e8f0] bg-white">
       {/* Header — khớp .rp-header */}
-      <div className="flex-shrink-0 border-b border-[#e2e8f0] px-4 pb-3 pt-4 text-[13px] font-extrabold text-[#1e293b]">
-        📌 Chủ đề nhanh
+      <div className="flex-shrink-0 border-b border-[#e2e8f0] px-4 pb-3 pt-4 text-[13px] font-extrabold text-[#1e293b] flex items-center gap-1.5">
+        <Pin size={14} /> Chủ đề nhanh
       </div>
 
       {/* Body — khớp .rp-body */}
@@ -43,7 +46,7 @@ export function ChatRightPanel({ onTopicClick }: ChatRightPanelProps) {
               onClick={() => onTopicClick(t.label)}
               className={`mb-1.5 flex w-full items-center gap-1.5 rounded-lg px-[11px] py-[6px] text-[12px] font-semibold transition-opacity hover:opacity-85 ${t.bg} ${t.text}`}
             >
-              <span>{t.icon}</span>
+              <t.icon size={13} />
               {t.label}
             </button>
           ))}

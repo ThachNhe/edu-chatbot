@@ -9,6 +9,7 @@ import type {
   ExamQuestion,
   RoomOut,
 } from "@/features/exam";
+import { Sparkles, ClipboardList } from "lucide-react";
 
 export const Route = createFileRoute("/_authenticated/exam")({
   component: ExamPage,
@@ -69,13 +70,12 @@ function ExamPage() {
           <button
             key={t}
             onClick={() => setTab(t)}
-            className={`rounded-lg px-5 py-2 text-[13px] font-bold transition-all ${
-              tab === t
+            className={`rounded-lg px-5 py-2 text-[13px] font-bold transition-all ${tab === t
                 ? "bg-[#1a56db] text-white shadow-sm"
                 : "text-[#475569] hover:text-[#1a56db]"
-            }`}
+              }`}
           >
-            {t === "create" ? "✨ Tạo đề thi" : "📋 Danh sách đề thi"}
+            {t === "create" ? <><Sparkles size={13} className="inline mr-1" /> Tạo đề thi</> : <><ClipboardList size={13} className="inline mr-1" /> Danh sách đề thi</>}
           </button>
         ))}
       </div>

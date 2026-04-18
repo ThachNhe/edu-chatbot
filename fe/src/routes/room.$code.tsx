@@ -3,6 +3,7 @@ import { createFileRoute } from '@tanstack/react-router'
 import { useValidateStudent } from '@/features/admin'
 import { useRoomExam, useSubmitExam } from '@/features/exam'
 import type { SubmitResult } from '@/features/exam'
+import { Loader2, Lock, FileText, ClipboardList, Clock, XCircle, Rocket, User, CheckCircle2, Upload, AlertTriangle, Trophy, ThumbsUp, BookOpen, Star, CheckCheck } from 'lucide-react'
 
 export const Route = createFileRoute('/room/$code')({
   component: StudentExamPage,
@@ -87,20 +88,20 @@ function StudentExamPage() {
 
   const handleStart = async () => {
     if (!studentName.trim() || !studentCode.trim()) {
-       setErrorMsg('Vui lòng nhập đầy đủ Tên và Mã số học sinh.')
-       return
+      setErrorMsg('Vui lòng nhập đầy đủ Tên và Mã số học sinh.')
+      return
     }
     setErrorMsg('')
     try {
-        const res = await validateStudentAsync({ student_code: studentCode })
-        if (!res.valid) {
-            setErrorMsg('Học sinh không tồn tại trong hệ thống. Vui lòng kiểm tra lại Mã số học sinh.')
-            return
-        }
-        hasSubmittedRef.current = false
-        setStep('exam')
-    } catch(err) {
-        setErrorMsg('Lỗi kiểm tra học sinh. Vui lòng thử lại.')
+      const res = await validateStudentAsync({ student_code: studentCode })
+      if (!res.valid) {
+        setErrorMsg('Học sinh không tồn tại trong hệ thống. Vui lòng kiểm tra lại Mã số học sinh.')
+        return
+      }
+      hasSubmittedRef.current = false
+      setStep('exam')
+    } catch (err) {
+      setErrorMsg('Lỗi kiểm tra học sinh. Vui lòng thử lại.')
     }
   }
 
@@ -113,7 +114,7 @@ function StudentExamPage() {
   if (isLoading) {
     return (
       <div className="flex min-h-screen items-center justify-center bg-[#f0f4ff]">
-        <div className="text-[15px] text-[#94a3b8]">⏳ Đang tải đề thi...</div>
+        <div className="flex items-center gap-2 text-[15px] text-[#94a3b8]"><Loader2 size={18} className="animate-spin" /> Đang tải đề thi...</div>
       </div>
     )
   }
@@ -121,7 +122,7 @@ function StudentExamPage() {
   if (isError || !exam) {
     return (
       <div className="flex min-h-screen flex-col items-center justify-center bg-[#f0f4ff] text-center p-4">
-        <div className="text-6xl mb-4">🔒</div>
+        <Lock size={64} className="mb-4 text-[#94a3b8]" />
         <h2 className="text-[20px] font-bold text-[#1e293b]">Phòng thi không tồn tại hoặc đã đóng</h2>
         <p className="mt-2 text-[14px] text-[#94a3b8]">Vui lòng liên hệ giáo viên để được hỗ trợ.</p>
       </div>
@@ -134,11 +135,11 @@ function StudentExamPage() {
       <div className="flex min-h-screen items-center justify-center bg-[#f0f4ff] p-4">
         <div className="w-full max-w-md rounded-2xl bg-white p-8 shadow-[0_4px_24px_rgba(0,0,0,0.1)]">
           <div className="mb-6 text-center">
-            <div className="mb-3 text-5xl">📝</div>
+            <div className="mb-3"><FileText size={48} className="mx-auto text-[#94a3b8]" /></div>
             <h1 className="text-[20px] font-extrabold text-[#1e293b]">{exam.title}</h1>
             <div className="mt-2 flex justify-center gap-4 text-[12px] text-[#94a3b8]">
-              <span>⏱️ {exam.duration} phút</span>
-              <span>📋 {exam.questions.length} câu</span>
+              <span className="flex items-center gap-1"><Clock size={12} /> {exam.duration} phút</span>
+              <span className="flex items-center gap-1"><ClipboardList size={12} /> {exam.questions.length} câu</span>
             </div>
           </div>
 
@@ -177,22 +178,22 @@ function StudentExamPage() {
               />
             </Field>
 
-            <div className="mt-2 rounded-xl bg-[#eff6ff] border border-[#bfdbfe] px-4 py-3 text-[12px] text-[#1a56db]">
-              ⚠️ Mỗi học sinh chỉ nộp bài một lần. Đảm bảo thông tin chính xác trước khi bắt đầu.
+            <div className="mt-2 rounded-xl bg-[#eff6ff] border border-[#bfdbfe] px-4 py-3 text-[12px] text-[#1a56db] flex items-center gap-1.5">
+              <AlertTriangle size={13} /> Mỗi học sinh chỉ nộp bài một lần. Đảm bảo thông tin chính xác trước khi bắt đầu.
             </div>
 
             {errorMsg && (
-              <div className="mt-2 rounded-xl bg-[#fef2f2] border border-[#fecaca] px-4 py-3 text-[12px] font-medium text-[#ef4444]">
-                ❌ {errorMsg}
+              <div className="mt-2 rounded-xl bg-[#fef2f2] border border-[#fecaca] px-4 py-3 text-[12px] font-medium text-[#ef4444] flex items-center gap-1.5">
+                <XCircle size={13} /> {errorMsg}
               </div>
             )}
 
             <button
               onClick={handleStart}
               disabled={!studentName.trim() || !studentCode.trim() || isValidating}
-              className="mt-2 w-full rounded-xl bg-[#1a56db] py-3 text-[14px] font-bold text-white hover:bg-[#1d4ed8] disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+              className="mt-2 w-full rounded-xl bg-[#1a56db] py-3 text-[14px] font-bold text-white hover:bg-[#1d4ed8] disabled:opacity-50 disabled:cursor-not-allowed transition-colors flex items-center justify-center gap-2"
             >
-              🚀 {isValidating ? 'Đang kiểm tra...' : 'Bắt đầu làm bài'}
+              <Rocket size={15} /> {isValidating ? 'Đang kiểm tra...' : 'Bắt đầu làm bài'}
             </button>
           </div>
         </div>
@@ -209,8 +210,8 @@ function StudentExamPage() {
           <div className="mx-auto flex max-w-3xl items-center justify-between">
             <div>
               <h2 className="text-[14px] font-extrabold text-[#1e293b] truncate max-w-xs">{exam.title}</h2>
-              <p className="text-[12px] text-[#94a3b8]">
-                👤 {studentName}
+              <p className="text-[12px] text-[#94a3b8] flex items-center gap-1">
+                <User size={12} /> {studentName}
                 {studentCode && ` · ${studentCode}`}
                 {className && ` · Lớp ${className}`}
               </p>
@@ -247,16 +248,16 @@ function StudentExamPage() {
         {/* Cảnh báo hết giờ */}
         {timerWarning && !isExpired && (
           <div className="mx-auto mt-4 max-w-3xl px-6">
-            <div className="rounded-xl bg-[#fff7ed] border border-[#fed7aa] px-4 py-3 text-[13px] font-semibold text-[#c2410c]">
-              ⚠️ Còn dưới 5 phút! Kiểm tra lại bài làm và nộp bài trước khi hết giờ.
+            <div className="rounded-xl bg-[#fff7ed] border border-[#fed7aa] px-4 py-3 text-[13px] font-semibold text-[#c2410c] flex items-center gap-1.5">
+              <AlertTriangle size={14} /> Còn dưới 5 phút! Kiểm tra lại bài làm và nộp bài trước khi hết giờ.
             </div>
           </div>
         )}
 
         {isExpired && (
           <div className="mx-auto mt-4 max-w-3xl px-6">
-            <div className="rounded-xl bg-[#fee2e2] border border-[#fecaca] px-4 py-3 text-[13px] font-semibold text-[#ef4444]">
-              ⏰ Hết giờ! Bài thi đang được nộp tự động...
+            <div className="rounded-xl bg-[#fee2e2] border border-[#fecaca] px-4 py-3 text-[13px] font-semibold text-[#ef4444] flex items-center gap-1.5">
+              <Clock size={14} /> Hết giờ! Bài thi đang được nộp tự động...
             </div>
           </div>
         )}
@@ -306,15 +307,15 @@ function StudentExamPage() {
           <div className="mx-auto flex max-w-3xl items-center justify-between">
             <p className="text-[13px] text-[#94a3b8]">
               {answeredCount < totalCount
-                ? `⚠️ Còn ${totalCount - answeredCount} câu chưa trả lời`
-                : '✅ Đã trả lời tất cả câu hỏi'}
+                ? <span className="flex items-center gap-1"><AlertTriangle size={13} /> Còn {totalCount - answeredCount} câu chưa trả lời</span>
+                : <span className="flex items-center gap-1"><CheckCheck size={13} /> Đã trả lời tất cả câu hỏi</span>}
             </p>
             <button
               onClick={handleSubmit}
               disabled={isSubmitting || isExpired}
-              className="rounded-xl bg-[#10b981] px-8 py-2.5 text-[14px] font-bold text-white hover:opacity-90 disabled:opacity-60 transition-all"
+              className="rounded-xl bg-[#10b981] px-8 py-2.5 text-[14px] font-bold text-white hover:opacity-90 disabled:opacity-60 transition-all flex items-center gap-2"
             >
-              {isSubmitting ? '⏳ Đang nộp...' : '📤 Nộp bài'}
+              {isSubmitting ? <><Loader2 size={14} className="animate-spin" /> Đang nộp...</> : <><Upload size={14} /> Nộp bài</>}
             </button>
           </div>
         </div>
@@ -326,8 +327,8 @@ function StudentExamPage() {
   return (
     <div className="flex min-h-screen flex-col items-center justify-center bg-[#f0f4ff] p-4">
       <div className="w-full max-w-md rounded-2xl bg-white p-8 text-center shadow-[0_4px_24px_rgba(0,0,0,0.1)]">
-        <div className="mb-4 text-6xl">
-          {result && result.score >= 8 ? '🏆' : result && result.score >= 5 ? '👍' : '📚'}
+        <div className="mb-4">
+          {result && result.score >= 8 ? <Trophy size={64} className="mx-auto text-yellow-500" /> : result && result.score >= 5 ? <ThumbsUp size={64} className="mx-auto text-blue-500" /> : <BookOpen size={64} className="mx-auto text-gray-400" />}
         </div>
         <h2 className="mb-1 text-[20px] font-extrabold text-[#1e293b]">Kết quả bài thi</h2>
         <p className="text-[13px] text-[#94a3b8]">
@@ -340,11 +341,11 @@ function StudentExamPage() {
           <p className="text-[52px] font-extrabold leading-none">{result?.score.toFixed(1)}</p>
           <p className="text-[14px] opacity-80 mt-1">/ 10 điểm</p>
           <p className="mt-2 text-[13px] font-semibold opacity-90">
-            {result && result.score >= 9 ? '🌟 Xuất sắc!'
-              : result && result.score >= 8 ? '🏆 Giỏi!'
-                : result && result.score >= 6.5 ? '👍 Khá!'
-                  : result && result.score >= 5 ? '✅ Đạt yêu cầu'
-                    : '📚 Cần cố gắng hơn'}
+            {result && result.score >= 9 ? <><Star size={14} className="inline" /> Xuất sắc!</>
+              : result && result.score >= 8 ? <><Trophy size={14} className="inline" /> Giỏi!</>
+                : result && result.score >= 6.5 ? <><ThumbsUp size={14} className="inline" /> Khá!</>
+                  : result && result.score >= 5 ? <><CheckCircle2 size={14} className="inline" /> Đạt yêu cầu</>
+                    : <><BookOpen size={14} className="inline" /> Cần cố gắng hơn</>}
           </p>
         </div>
 
@@ -366,7 +367,7 @@ function StudentExamPage() {
         </div>
 
         <p className="text-[12px] text-[#94a3b8]">
-          Điểm của bạn đã được lưu lại. Cảm ơn bạn đã tham gia bài thi! 🎉
+          Điểm của bạn đã được lưu lại. Cảm ơn bạn đã tham gia bài thi!
         </p>
       </div>
     </div>
