@@ -7,7 +7,7 @@ from app.database import Base
 from app.models import (  # noqa: F401 – import để Alembic thấy metadata
     User, Lesson, Question, QuestionOption,
     Exam, ExamQuestion, ExamRoom, Student, Score,
-    Conversation, Message,
+    Conversation, Message, ActivityLog,
 )
 
 config = context.config

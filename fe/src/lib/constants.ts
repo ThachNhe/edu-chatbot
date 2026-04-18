@@ -59,7 +59,18 @@ export const QUERY_KEYS = {
   ADMIN: {
     STUDENTS: ['admin', 'students'] as const,
     INSTRUCTORS: ['admin', 'instructors'] as const,
-  }
+    STATS: ['admin', 'stats'] as const,
+    TRENDS: ['admin', 'stats', 'trends'] as const,
+    TOP_TEACHERS: ['admin', 'stats', 'top-teachers'] as const,
+    ACTIVITY_LOGS: (params?: object) => ['admin', 'activity-logs', params] as const,
+  },
+  QUESTIONS: {
+    LIST: (params?: object) => ['questions', 'list', params] as const,
+  },
+  STUDENTS: {
+    LIST: (params?: object) => ['students', 'list', params] as const,
+    DETAIL: (id: number) => ['students', 'detail', id] as const,
+  },
 } as const
 
 // ─── Local Storage Keys ────────────────────────────────────────────────────

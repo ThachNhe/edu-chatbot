@@ -5,6 +5,7 @@ from app.models.exam import Exam, ExamQuestion, ExamRoom
 from app.models.student import Student
 from app.models.score import Score
 from app.models.conversation import Conversation, Message
+from app.models.activity_log import ActivityLog
 
 __all__ = [
     "User",
@@ -18,4 +19,5 @@ __all__ = [
     "Score",
     "Conversation",
     "Message",
+    "ActivityLog",
 ]

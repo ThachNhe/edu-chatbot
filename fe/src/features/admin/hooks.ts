@@ -86,7 +86,29 @@ export function useToggleInstructorLock() {
 
 export function useAdminStats() {
     return useQuery({
-        queryKey: ['ADMIN_STATS'],
+        queryKey: QUERY_KEYS.ADMIN.STATS,
         queryFn: () => adminService.getAdminStats(),
     })
 }
+
+export function useAdminTrends(days = 7) {
+    return useQuery({
+        queryKey: QUERY_KEYS.ADMIN.TRENDS,
+        queryFn: () => adminService.getTrends(days),
+    })
+}
+
+export function useTopTeachers(limit = 5) {
+    return useQuery({
+        queryKey: QUERY_KEYS.ADMIN.TOP_TEACHERS,
+        queryFn: () => adminService.getTopTeachers(limit),
+    })
+}
+
+export function useActivityLogs(params?: { action?: string; skip?: number; limit?: number }) {
+    return useQuery({
+        queryKey: QUERY_KEYS.ADMIN.ACTIVITY_LOGS(params),
+        queryFn: () => adminService.getActivityLogs(params),
+    })
+}
+

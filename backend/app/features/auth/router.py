@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Depends, HTTPException, Response, status
+from fastapi import APIRouter, Depends, HTTPException, Request, Response, status
 from sqlalchemy.orm import Session
 
 from app.database import get_db
@@ -22,6 +22,7 @@ from app.utils.security import (
 )
 from app.dependencies.auth import get_current_user
 from app.config.config import settings
+from app.utils.activity_logger import log_activity
 
 router = APIRouter(prefix="/auth", tags=["Authentication"])
 
@@ -76,7 +77,7 @@ def register(_body: RegisterRequest):
 # ─── Login ──────────────────────────────────────────────────────────────────
 
 @router.post("/login", response_model=LoginResponse)
-def login(body: LoginRequest, response: Response, db: Session = Depends(get_db)):
+def login(body: LoginRequest, request: Request, response: Response, db: Session = Depends(get_db)):
     user = db.query(User).filter(User.email == body.email.lower()).first()
 
     if not user or not verify_password(body.password, user.password):
@@ -93,6 +94,16 @@ def login(body: LoginRequest, response: Response, db: Session = Depends(get_db))
 
     access_token = create_access_token(data={"sub": str(user.id)})
     _set_auth_cookie(response, access_token)
+
+    log_activity(
+        db,
+        user_id=user.id,
+        user_name=user.name,
+        action="login",
+        detail=f"Đăng nhập thành công ({user.role})",
+        ip_address=request.client.host if request.client else None,
+    )
+    db.commit()
 
     return LoginResponse(
         user=_user_to_response(user),

@@ -9,7 +9,8 @@ const NAV_ITEMS = [
   { icon: "🏠", label: "Trang chủ", path: "/dashboard" },
   { icon: "💬", label: "Trợ lý AI Chat", path: "/chat", badge: 3 },
   { icon: "📝", label: "Tạo đề thi / Bài tập", path: "/exam" },
-  // { icon: '📚', label: 'Quản lý Bài học', path: '/lessons' },
+  { icon: "📚", label: "Ngân hàng câu hỏi", path: "/questions" },
+  { icon: "🎓", label: "Quản lý học sinh", path: "/students" },
   { icon: "📊", label: "Thống kê & Báo cáo", path: "/stats" },
 ];
 

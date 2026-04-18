@@ -1,0 +1,109 @@
+Bo cau hoi goi y de bao ve do an: EduChatbot ho tro giao vien trong giang day Tin hoc 12
+
+1. Hoi: De tai nay giai quyet bai toan gi?
+   Tra loi: De tai giai quyet bai toan ho tro giao vien day Tin hoc 12 thong qua chatbot, tao de thi, to chuc phong thi va thong ke ket qua hoc sinh tren mot he thong web tap trung.
+
+2. Hoi: Doi tuong su dung cua he thong la ai?
+   Tra loi: He thong co 3 nhom chinh la admin, giao vien va hoc sinh. Admin quan ly tai khoan, giao vien su dung chatbot va tao de, hoc sinh vao phong thi de lam bai.
+
+3. Hoi: Chuc nang chinh cua he thong la gi?
+   Tra loi: He thong co dang nhap, chatbot hoi dap Tin hoc 12, quan ly hoi thoai, tao de thi bang AI, tao phong thi, nop bai, cham diem, thong ke va quan tri nguoi dung.
+
+4. Hoi: Diem noi bat cua do an nay la gi?
+   Tra loi: Diem noi bat la ket hop duoc chatbot RAG, sinh cau hoi trac nghiem bang AI, thi online va thong ke hoc tap trong cung mot he thong.
+
+5. Hoi: Vi sao em chon de tai nay?
+   Tra loi: Vi day la bai toan gan voi giao duc, co tinh ung dung thuc te va cho phep ket hop web, co so du lieu va AI trong cung mot san pham.
+
+6. Hoi: He thong nay ho tro giao vien nhu the nao?
+   Tra loi: Giao vien co the hoi dap kien thuc Tin hoc 12, tao de nhanh hon, mo phong thi cho hoc sinh va theo doi ket qua hoc tap qua dashboard va thong ke.
+
+7. Hoi: Chatbot lay kien thuc tu dau?
+   Tra loi: Chatbot lay noi dung tu file `data/output.txt`, sau do du lieu duoc cat thanh cac doan nho, tao embedding va luu vao FAISS de truy hoi khi nguoi dung dat cau hoi.
+
+8. Hoi: He thong su dung AI theo huong nao?
+   Tra loi: He thong su dung mo hinh OpenAI de tra loi hoi dap va sinh cau hoi trac nghiem. Khi chat, he thong ket hop RAG de lay noi dung lien quan truoc khi gui prompt cho mo hinh.
+
+9. Hoi: RAG la gi va vi sao em dung RAG?
+   Tra loi: RAG la Retrieval-Augmented Generation, tuc la truy hoi tai lieu lien quan truoc khi sinh cau tra loi. Em dung RAG de giam hallucination va giup chatbot bam sat noi dung Tin hoc THPT.
+
+10. Hoi: Tai sao em dung FAISS?
+    Tra loi: FAISS la vector database nhe, truy van nhanh, de tich hop va phu hop voi bai toan tim doan van ban gan nhat trong tap tai lieu khong qua lon.
+
+11. Hoi: Quy trinh build du lieu cho chatbot nhu the nao?
+    Tra loi: Dau vao la file `output.txt`, sau do he thong cat chunk voi overlap, tao embedding bang OpenAIEmbeddings, luu index vao `data/vectorstore/faiss_index`, roi runtime se load index nay de truy hoi.
+
+12. Hoi: Neu khong tim thay context phu hop thi sao?
+    Tra loi: He thong van cho phep mo hinh tra loi bang kien thuc chung, nhung prompt da rang buoc uu tien noi dung trong context de han che tra loi sai lech.
+
+13. Hoi: Kien truc tong the cua he thong la gi?
+    Tra loi: He thong tach thanh 2 phan chinh: frontend viet bang React + TypeScript + Vite, backend viet bang FastAPI, du lieu luu trong PostgreSQL, AI dung OpenAI va vector search dung FAISS.
+
+14. Hoi: Vi sao em chon FastAPI cho backend?
+    Tra loi: FastAPI nhe, de tach router theo module, ho tro REST API va WebSocket tot, phu hop voi bai toan chatbot can giao tiep thoi gian thuc.
+
+15. Hoi: Vi sao em dung WebSocket cho chat thay vi HTTP thong thuong?
+    Tra loi: WebSocket giup giu ket noi 2 chieu, gui nhan tin nhan lien tuc, phu hop voi trai nghiem chat hon so voi viec goi API moi lan gui tin nhan.
+
+16. Hoi: Frontend cua he thong su dung cong nghe gi?
+    Tra loi: Frontend su dung React 19, TypeScript, Vite, TanStack Router cho dieu huong, TanStack Query de goi API va cache, Zustand de quan ly state.
+
+17. Hoi: Database cua he thong gom nhung bang chinh nao?
+    Tra loi: Cac bang chinh gom users, students, conversations, messages, exams, exam_questions, exam_rooms, questions, question_options, scores va lessons.
+
+18. Hoi: Em thiet ke phan quyen nhu the nao?
+    Tra loi: He thong dua vao role. Admin duoc quan ly giao vien va hoc sinh, giao vien quan ly de thi va thong ke, con hoc sinh khong can dang nhap backend ma vao phong thi bang ma phong.
+
+19. Hoi: Co che dang nhap va bao mat cua he thong la gi?
+    Tra loi: He thong dung JWT, luu access token trong HttpOnly cookie, mat khau duoc bam bang bcrypt, va moi request se kiem tra token cung trang thai active cua tai khoan.
+
+20. Hoi: Vi sao hoc sinh co the vao phong thi ma khong can tai khoan dang nhap?
+    Tra loi: Vi bai toan phong thi duoc thiet ke de don gian hoa trai nghiem. Hoc sinh vao bang ma phong va ma hoc sinh da ton tai trong he thong, tu do giao vien de to chuc kiem tra nhanh hon.
+
+21. Hoi: Phong thi duoc tao va quan ly nhu the nao?
+    Tra loi: Moi de thi co the tao nhieu phong thi, moi phong co access code, co the dong mo phong va dat thoi gian het han de kiem soat phien lam bai.
+
+22. Hoi: He thong cham diem nhu the nao?
+    Tra loi: Khi hoc sinh nop bai, backend so sanh dap an da chon voi dap an dung cua tung cau, dem so cau dung va quy doi ra thang diem 10.
+
+23. Hoi: Phan thong ke cua he thong cho giao vien biet dieu gi?
+    Tra loi: He thong cho biet diem trung binh, ty le dat, so hoc sinh can ho tro, pho diem va bang xep hang hoc sinh theo ket qua cac bai thi.
+
+24. Hoi: Admin co nhung chuc nang gi?
+    Tra loi: Admin co the tao va khoa mo giao vien, quan ly hoc sinh, xem so luong hoc sinh, giao vien, de thi va gui thong tin tai khoan giao vien qua email.
+
+25. Hoi: Email trong he thong duoc dung vao viec gi?
+    Tra loi: Email duoc dung de gui thong tin tai khoan giao vien do admin tao va ho tro quy trinh quen mat khau.
+
+26. Hoi: Vi sao em tach router theo tung feature?
+    Tra loi: Cach tach nay giup code ro nghiep vu hon, de bao tri, de test va de mo rong vi moi nhom chuc nang nhu auth, conversations, exams, admin deu doc lap tuong doi.
+
+27. Hoi: Vi sao em dung SQLAlchemy va Alembic?
+    Tra loi: SQLAlchemy giup thao tac CSDL theo ORM de de quan ly model, con Alembic giup quan ly migration khi thay doi cau truc bang du lieu.
+
+28. Hoi: He thong co han che nao?
+    Tra loi: Hien tai chatbot phu thuoc vao chat luong du lieu dau vao va API AI, so luong tai lieu chua lon, va co mot so tinh nang chua sau nhu danh gia chat luong cau hoi sinh ra tu AI.
+
+29. Hoi: Neu mo hinh AI tra loi sai thi sao?
+    Tra loi: Em giam rui ro bang cach dung RAG, gioi han pham vi du lieu, dat prompt rang buoc va luu hoi thoai de de kiem tra lai. Tuy nhien em van xem day la han che can tiep tuc cai thien.
+
+30. Hoi: Tai sao de tai nay co tinh thuc te?
+    Tra loi: Vi no giai quyet duoc nhieu cong viec giao vien thuong gap: hoi dap kien thuc, tao cau hoi, to chuc bai kiem tra, thu ket qua va xem thong ke hoc sinh.
+
+31. Hoi: Neu muon mo rong he thong trong tuong lai thi em se lam gi?
+    Tra loi: Em co the mo rong them upload tai lieu tu giao dien, bo loc chat luong cau hoi AI, cham bai tu luan, thong ke nang cao va ho tro nhieu mon hoc khac ngoai Tin hoc 12.
+
+32. Hoi: Tai sao em chon PostgreSQL?
+    Tra loi: PostgreSQL on dinh, pho bien, ho tro quan he tot va phu hop voi du lieu co cau truc ro rang nhu nguoi dung, de thi, cau hoi, phong thi va diem so.
+
+33. Hoi: Dashboard cua giao vien dung de lam gi?
+    Tra loi: Dashboard tom tat nhanh so bai hoc, so de thi, so hoc sinh da tham gia, so luot hoi AI trong ngay, hoat dong gan day va lich trong tuan.
+
+34. Hoi: Tai sao em khong de nguoi dung tu dang ky giao vien?
+    Tra loi: He thong huong toi moi truong nha truong nen tai khoan giao vien duoc admin cap de dam bao kiem soat va tranh tao tai khoan tuy y.
+
+35. Hoi: Neu thuc hien lai do an, em muon cai tien dieu gi nhat?
+    Tra loi: Em muon cai tien chat luong du lieu RAG, bo sung logging va test tu dong day du hon, dong thoi them co che danh gia do chinh xac cua chatbot va cau hoi do AI sinh ra.
+
+36. Hoi: Mot cau tom tat ve gia tri cua do an?
+    Tra loi: Day la mot he thong web ket hop AI va quan ly hoc tap, giup giao vien day Tin hoc 12 day nhanh hon, tao de de hon va theo doi ket qua hoc sinh tot hon.

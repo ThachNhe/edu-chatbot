@@ -20,7 +20,10 @@ import { Route as RoomCodeRouteImport } from './routes/room.$code'
 import { Route as AdminStudentsRouteImport } from './routes/admin/students'
 import { Route as AdminInstructorsRouteImport } from './routes/admin/instructors'
 import { Route as AdminDashboardRouteImport } from './routes/admin/dashboard'
+import { Route as AdminActivityLogsRouteImport } from './routes/admin/activity-logs'
+import { Route as AuthenticatedStudentsRouteImport } from './routes/_authenticated/students'
 import { Route as AuthenticatedStatsRouteImport } from './routes/_authenticated/stats'
+import { Route as AuthenticatedQuestionsRouteImport } from './routes/_authenticated/questions'
 import { Route as AuthenticatedLessonsRouteImport } from './routes/_authenticated/lessons'
 import { Route as AuthenticatedExamRouteImport } from './routes/_authenticated/exam'
 import { Route as AuthenticatedDashboardRouteImport } from './routes/_authenticated/dashboard'
@@ -80,9 +83,24 @@ const AdminDashboardRoute = AdminDashboardRouteImport.update({
   path: '/dashboard',
   getParentRoute: () => AdminRoute,
 } as any)
+const AdminActivityLogsRoute = AdminActivityLogsRouteImport.update({
+  id: '/activity-logs',
+  path: '/activity-logs',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AuthenticatedStudentsRoute = AuthenticatedStudentsRouteImport.update({
+  id: '/students',
+  path: '/students',
+  getParentRoute: () => AuthenticatedRoute,
+} as any)
 const AuthenticatedStatsRoute = AuthenticatedStatsRouteImport.update({
   id: '/stats',
   path: '/stats',
+  getParentRoute: () => AuthenticatedRoute,
+} as any)
+const AuthenticatedQuestionsRoute = AuthenticatedQuestionsRouteImport.update({
+  id: '/questions',
+  path: '/questions',
   getParentRoute: () => AuthenticatedRoute,
 } as any)
 const AuthenticatedLessonsRoute = AuthenticatedLessonsRouteImport.update({
@@ -117,7 +135,10 @@ export interface FileRoutesByFullPath {
   '/dashboard': typeof AuthenticatedDashboardRoute
   '/exam': typeof AuthenticatedExamRoute
   '/lessons': typeof AuthenticatedLessonsRoute
+  '/questions': typeof AuthenticatedQuestionsRoute
   '/stats': typeof AuthenticatedStatsRoute
+  '/students': typeof AuthenticatedStudentsRoute
+  '/admin/activity-logs': typeof AdminActivityLogsRoute
   '/admin/dashboard': typeof AdminDashboardRoute
   '/admin/instructors': typeof AdminInstructorsRoute
   '/admin/students': typeof AdminStudentsRoute
@@ -134,7 +155,10 @@ export interface FileRoutesByTo {
   '/dashboard': typeof AuthenticatedDashboardRoute
   '/exam': typeof AuthenticatedExamRoute
   '/lessons': typeof AuthenticatedLessonsRoute
+  '/questions': typeof AuthenticatedQuestionsRoute
   '/stats': typeof AuthenticatedStatsRoute
+  '/students': typeof AuthenticatedStudentsRoute
+  '/admin/activity-logs': typeof AdminActivityLogsRoute
   '/admin/dashboard': typeof AdminDashboardRoute
   '/admin/instructors': typeof AdminInstructorsRoute
   '/admin/students': typeof AdminStudentsRoute
@@ -153,7 +177,10 @@ export interface FileRoutesById {
   '/_authenticated/dashboard': typeof AuthenticatedDashboardRoute
   '/_authenticated/exam': typeof AuthenticatedExamRoute
   '/_authenticated/lessons': typeof AuthenticatedLessonsRoute
+  '/_authenticated/questions': typeof AuthenticatedQuestionsRoute
   '/_authenticated/stats': typeof AuthenticatedStatsRoute
+  '/_authenticated/students': typeof AuthenticatedStudentsRoute
+  '/admin/activity-logs': typeof AdminActivityLogsRoute
   '/admin/dashboard': typeof AdminDashboardRoute
   '/admin/instructors': typeof AdminInstructorsRoute
   '/admin/students': typeof AdminStudentsRoute
@@ -172,7 +199,10 @@ export interface FileRouteTypes {
     | '/dashboard'
     | '/exam'
     | '/lessons'
+    | '/questions'
     | '/stats'
+    | '/students'
+    | '/admin/activity-logs'
     | '/admin/dashboard'
     | '/admin/instructors'
     | '/admin/students'
@@ -189,7 +219,10 @@ export interface FileRouteTypes {
     | '/dashboard'
     | '/exam'
     | '/lessons'
+    | '/questions'
     | '/stats'
+    | '/students'
+    | '/admin/activity-logs'
     | '/admin/dashboard'
     | '/admin/instructors'
     | '/admin/students'
@@ -207,7 +240,10 @@ export interface FileRouteTypes {
     | '/_authenticated/dashboard'
     | '/_authenticated/exam'
     | '/_authenticated/lessons'
+    | '/_authenticated/questions'
     | '/_authenticated/stats'
+    | '/_authenticated/students'
+    | '/admin/activity-logs'
     | '/admin/dashboard'
     | '/admin/instructors'
     | '/admin/students'
@@ -304,11 +340,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminDashboardRouteImport
       parentRoute: typeof AdminRoute
     }
+    '/admin/activity-logs': {
+      id: '/admin/activity-logs'
+      path: '/activity-logs'
+      fullPath: '/admin/activity-logs'
+      preLoaderRoute: typeof AdminActivityLogsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/_authenticated/students': {
+      id: '/_authenticated/students'
+      path: '/students'
+      fullPath: '/students'
+      preLoaderRoute: typeof AuthenticatedStudentsRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
     '/_authenticated/stats': {
       id: '/_authenticated/stats'
       path: '/stats'
       fullPath: '/stats'
       preLoaderRoute: typeof AuthenticatedStatsRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/questions': {
+      id: '/_authenticated/questions'
+      path: '/questions'
+      fullPath: '/questions'
+      preLoaderRoute: typeof AuthenticatedQuestionsRouteImport
       parentRoute: typeof AuthenticatedRoute
     }
     '/_authenticated/lessons': {
@@ -347,7 +404,9 @@ interface AuthenticatedRouteChildren {
   AuthenticatedDashboardRoute: typeof AuthenticatedDashboardRoute
   AuthenticatedExamRoute: typeof AuthenticatedExamRoute
   AuthenticatedLessonsRoute: typeof AuthenticatedLessonsRoute
+  AuthenticatedQuestionsRoute: typeof AuthenticatedQuestionsRoute
   AuthenticatedStatsRoute: typeof AuthenticatedStatsRoute
+  AuthenticatedStudentsRoute: typeof AuthenticatedStudentsRoute
 }
 
 const AuthenticatedRouteChildren: AuthenticatedRouteChildren = {
@@ -355,7 +414,9 @@ const AuthenticatedRouteChildren: AuthenticatedRouteChildren = {
   AuthenticatedDashboardRoute: AuthenticatedDashboardRoute,
   AuthenticatedExamRoute: AuthenticatedExamRoute,
   AuthenticatedLessonsRoute: AuthenticatedLessonsRoute,
+  AuthenticatedQuestionsRoute: AuthenticatedQuestionsRoute,
   AuthenticatedStatsRoute: AuthenticatedStatsRoute,
+  AuthenticatedStudentsRoute: AuthenticatedStudentsRoute,
 }
 
 const AuthenticatedRouteWithChildren = AuthenticatedRoute._addFileChildren(
@@ -363,12 +424,14 @@ const AuthenticatedRouteWithChildren = AuthenticatedRoute._addFileChildren(
 )
 
 interface AdminRouteChildren {
+  AdminActivityLogsRoute: typeof AdminActivityLogsRoute
   AdminDashboardRoute: typeof AdminDashboardRoute
   AdminInstructorsRoute: typeof AdminInstructorsRoute
   AdminStudentsRoute: typeof AdminStudentsRoute
 }
 
 const AdminRouteChildren: AdminRouteChildren = {
+  AdminActivityLogsRoute: AdminActivityLogsRoute,
   AdminDashboardRoute: AdminDashboardRoute,
   AdminInstructorsRoute: AdminInstructorsRoute,
   AdminStudentsRoute: AdminStudentsRoute,

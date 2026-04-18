@@ -9,8 +9,9 @@ from app.features.exams.router import router as exams_router
 from app.features.questions.router import router as questions_router
 from app.features.scores.router import router as rooms_router
 from app.features.stats.router import router as stats_router
-
 from app.features.admin.router import router as admin_router
+from app.features.students.router import router as students_router
+from app.features.activity_logs.router import router as activity_logs_router
 
 app = FastAPI(title="FC2 ChatBot")
 
@@ -32,6 +33,8 @@ app.include_router(questions_router, prefix="/api")
 app.include_router(rooms_router, prefix="/api")
 app.include_router(stats_router, prefix="/api")
 app.include_router(admin_router, prefix="/api")
+app.include_router(students_router, prefix="/api")
+app.include_router(activity_logs_router, prefix="/api")
 
 
 @app.get("/health")

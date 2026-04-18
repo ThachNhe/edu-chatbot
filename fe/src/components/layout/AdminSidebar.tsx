@@ -9,6 +9,7 @@ const NAV_ITEMS = [
   { icon: '📊', label: 'Bảng điều khiển', path: '/admin/dashboard' },
   { icon: '🎓', label: 'Quản lý Học sinh', path: '/admin/students' },
   { icon: '👨‍🏫', label: 'Quản lý Giáo viên', path: '/admin/instructors' },
+  { icon: '📋', label: 'Nhật ký hoạt động', path: '/admin/activity-logs' },
 ]
 
 export function AdminSidebar() {

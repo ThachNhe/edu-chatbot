@@ -1,8 +1,57 @@
-from typing import Optional
+from typing import List, Optional
 
+from sqlalchemy import func
 from sqlalchemy.orm import Session
 
+from app.models.exam import ExamQuestion
 from app.models.question import Question, QuestionOption
+
+
+def list_questions(
+    db: Session,
+    *,
+    created_by: int,
+    level: Optional[str] = None,
+    lesson_id: Optional[int] = None,
+    search: Optional[str] = None,
+    skip: int = 0,
+    limit: int = 50,
+) -> List[Question]:
+    q = db.query(Question).filter(Question.created_by == created_by)
+    if level:
+        q = q.filter(Question.level == level)
+    if lesson_id:
+        q = q.filter(Question.lesson_id == lesson_id)
+    if search:
+        q = q.filter(Question.content.ilike(f"%{search}%"))
+    return q.order_by(Question.created_at.desc()).offset(skip).limit(limit).all()
+
+
+def count_questions(
+    db: Session,
+    *,
+    created_by: int,
+    level: Optional[str] = None,
+    lesson_id: Optional[int] = None,
+    search: Optional[str] = None,
+) -> int:
+    q = db.query(func.count(Question.id)).filter(Question.created_by == created_by)
+    if level:
+        q = q.filter(Question.level == level)
+    if lesson_id:
+        q = q.filter(Question.lesson_id == lesson_id)
+    if search:
+        q = q.filter(Question.content.ilike(f"%{search}%"))
+    return q.scalar() or 0
+
+
+def get_usage_count(db: Session, question_id: int) -> int:
+    return db.query(func.count(ExamQuestion.id)).filter(ExamQuestion.question_id == question_id).scalar() or 0
+
+
+def delete_question(db: Session, question: Question) -> None:
+    db.delete(question)
+    db.flush()
 
 
 def create_question(

@@ -59,4 +59,28 @@ export const API_ENDPOINTS = {
     GET: (code: string) => `/rooms/${code}`,
     SUBMIT: (code: string) => `/rooms/${code}/submit`,
   },
+
+  // ─── Question Bank ────────────────────────────────────────────────────────
+  QUESTIONS: {
+    LIST: '/questions',
+    COUNT: '/questions/count',
+    CREATE: '/questions',
+    DELETE: (id: number) => `/questions/${id}`,
+  },
+
+  // ─── Students (teacher view) ──────────────────────────────────────────────
+  STUDENTS: {
+    LIST: '/students',
+    COUNT: '/students/count',
+    DETAIL: (id: number) => `/students/${id}`,
+  },
+
+  // ─── Admin extended ───────────────────────────────────────────────────────
+  ADMIN: {
+    STATS: '/admin/stats',
+    STATS_TRENDS: '/admin/stats/trends',
+    STATS_TOP_TEACHERS: '/admin/stats/top-teachers',
+    ACTIVITY_LOGS: '/admin/activity-logs',
+    ACTIVITY_LOGS_COUNT: '/admin/activity-logs/count',
+  },
 } as const
