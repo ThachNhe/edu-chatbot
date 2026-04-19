@@ -1,0 +1,100 @@
+@startuml usecase_activity_logs
+skinparam backgroundColor #FFFFFF
+skinparam defaultFontName Arial
+
+actor "Quản trị viên" as Admin
+
+usecase "Xem danh sách nhật ký" as UC1
+usecase "Lọc theo loại thao tác" as UC2
+usecase "Chuyển trang" as UC3
+
+Admin --> UC1
+Admin --> UC2
+Admin --> UC3
+
+UC2 .> UC1 : <<extend>>
+UC3 .> UC1 : <<extend>>
+@enduml
+
+
+
+@startuml activity_logs_simple
+skinparam backgroundColor #FFFFFF
+skinparam activityBorderColor #2C3E50
+skinparam activityBackgroundColor #ECF0F1
+skinparam activityArrowColor #2C3E50
+skinparam defaultFontName Arial
+title Biểu đồ hoạt động - Xem nhật ký hoạt động
+
+start
+:Truy cập trang Nhật ký hoạt động;
+
+if (Có quyền admin?) then (Có)
+  :Truy vấn và hiển thị danh sách log;
+  :Lọc hoặc chuyển trang (tùy chọn);
+  :Xem chi tiết bản ghi;
+  stop
+else (Không)
+  :Thông báo lỗi 403;
+  stop
+endif
+@enduml
+
+
+------------------
+@startuml usecase_question_bank
+skinparam backgroundColor #FFFFFF
+skinparam defaultFontName Arial
+
+actor "Giáo viên" as Teacher
+
+usecase "Xem danh sách câu hỏi" as UC1
+usecase "Tạo câu hỏi thủ công" as UC2
+usecase "Tạo câu hỏi bằng AI" as UC3
+usecase "Xóa câu hỏi" as UC4
+
+Teacher --> UC1
+Teacher --> UC2
+Teacher --> UC3
+Teacher --> UC4
+
+UC2 .> UC1 : <<extend>>
+UC3 .> UC1 : <<extend>>
+UC4 .> UC1 : <<extend>>
+@enduml
+
+
+@startuml activity_question_bank_simple
+skinparam backgroundColor #FFFFFF
+skinparam activityBorderColor #2C3E50
+skinparam activityBackgroundColor #ECF0F1
+skinparam activityArrowColor #2C3E50
+skinparam defaultFontName Arial
+title Biểu đồ hoạt động - Quản lý ngân hàng câu hỏi
+
+start
+:Truy cập trang Ngân hàng câu hỏi;
+:Xem danh sách câu hỏi (có thể lọc);
+
+switch (Chọn thao tác)
+case (Tạo thủ công)
+  :Nhập nội dung và đáp án;
+  :Lưu vào database;
+case (Tạo bằng AI)
+  :Chọn chủ đề, số lượng, mức độ;
+  :Gọi OpenAI sinh câu hỏi;
+  :Xem trước và chọn câu hỏi muốn lưu;
+  :Lưu vào database;
+case (Xóa câu hỏi)
+  :Xác nhận xóa;
+  :Xóa khỏi database;
+  stop
+endswitch
+
+:Ghi nhật ký hoạt động;
+:Thông báo thành công;
+stop
+@enduml
+
+
+
