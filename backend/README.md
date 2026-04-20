@@ -31,6 +31,18 @@ Khi chạy bằng Docker Compose, MailHog khả dụng tại `http://localhost:8
 python3 build_index.py
 ```
 
+## Seed Users
+Tạo 2 tài khoản mặc định cho bảng `users`:
+
+```bash
+python3 seed_data.py
+```
+
+- `admin@gmail.com` / `1234abcD` với role `admin`
+- `teacher@gmail.com` / `1234abcD` với role `teacher`
+
+Script này chỉ tạo mới nếu email chưa tồn tại, nên có thể chạy lại an toàn.
+
 ## Run
 ```bash
 uvicorn server:app --host 0.0.0.0 --port 8765
