@@ -1,5 +1,6 @@
-import { Package, Repeat2, BarChart2, Wrench, FolderOpen, Save, Pin } from 'lucide-react'
+import { Package, Repeat2, BarChart2, Wrench, FolderOpen, Save, Pin, ClipboardList, BookOpen } from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
+import { useNavigate } from '@tanstack/react-router'
 
 interface ChatRightPanelProps {
   onTopicClick: (topic: string) => void
@@ -28,6 +29,8 @@ const QUICK_STATS = [
 ]
 
 export function ChatRightPanel({ onTopicClick }: ChatRightPanelProps) {
+  const navigate = useNavigate()
+
   return (
     <div className="flex flex-col overflow-hidden border-l border-[#e2e8f0] bg-white">
       {/* Header — khớp .rp-header */}
@@ -37,6 +40,24 @@ export function ChatRightPanel({ onTopicClick }: ChatRightPanelProps) {
 
       {/* Body — khớp .rp-body */}
       <div className="flex-1 overflow-y-auto p-3.5">
+
+        {/* Quick navigation */}
+        <Section title="Truy cập nhanh">
+          <button
+            onClick={() => navigate({ to: '/exam' })}
+            className="mb-1.5 flex w-full items-center gap-1.5 rounded-lg px-[11px] py-[7px] text-[12px] font-semibold bg-[#eff6ff] text-[#1a56db] transition-opacity hover:opacity-85"
+          >
+            <ClipboardList size={13} />
+            Tạo đề thi
+          </button>
+          <button
+            onClick={() => navigate({ to: '/questions' })}
+            className="mb-1.5 flex w-full items-center gap-1.5 rounded-lg px-[11px] py-[7px] text-[12px] font-semibold bg-[#d1fae5] text-[#065f46] transition-opacity hover:opacity-85"
+          >
+            <BookOpen size={13} />
+            Ngân hàng câu hỏi
+          </button>
+        </Section>
 
         {/* Topics — khớp .topic-pill */}
         <Section title="Chương trình học">
@@ -52,7 +73,6 @@ export function ChatRightPanel({ onTopicClick }: ChatRightPanelProps) {
           ))}
         </Section>
 
-        {/* Progress — khớp .progress-bar-wrap */}
         {/* <Section title="Tiến độ hỏi hôm nay">
           {PROGRESS.map((p) => (
             <div key={p.label} className="mb-2.5">
