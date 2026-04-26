@@ -1,60 +1,84 @@
-\documentclass[12pt]{article}
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[T5]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[vietnamese]{babel}
+\usepackage{geometry}
 \usepackage{graphicx}
 \usepackage{indentfirst}
 \usepackage{tocloft}
-\usepackage[utf8]{inputenc}
-\usepackage{vietnam}
 \usepackage{hyphenat}
 \usepackage{hyperref}
 \usepackage{float}
-\usepackage[vietnamese]{babel}
 \usepackage{amssymb}
+\usepackage{amsmath}
 \usepackage{fancyhdr}
 \usepackage{xcolor}
-\usepackage{datetime}
 \usepackage{array}
+\usepackage{longtable}
+\usepackage{booktabs}
+\usepackage{enumitem}
 \usepackage{tikz}
 \usepackage{scrextend}
-\usetikzlibrary{calc}
+\usetikzlibrary{calc,positioning,arrows.meta,shapes.geometric}
 
-\definecolor{myblue}{RGB}{0,0,255}
+\definecolor{myblue}{RGB}{0,72,160}
+\definecolor{lightblue}{RGB}{232,242,252}
+\definecolor{lightgreen}{RGB}{232,247,238}
+\definecolor{linegray}{RGB}{120,120,120}
 
 \hypersetup{
 	colorlinks=true,
 	linkcolor=myblue,
 	citecolor=myblue,
-	urlcolor=myblue
+	urlcolor=myblue,
+	pdftitle={Bao cao do an Chatbot Tin hoc 12},
+	pdfauthor={Phạ Sắc - Lò Văn Hin}
 }
 
-\addto\captionsvietnamese{\renewcommand{\abstractname}{Mở đầu}}
-\usepackage[letterpaper,top=2.5cm,bottom=3cm,left=3.5cm,right=2cm,marginparwidth=1.75cm]{geometry}
+\geometry{top=2.5cm,bottom=3cm,left=3.5cm,right=2cm,marginparwidth=1.75cm}
+\setlength{\parindent}{1.5cm}
+\setlength{\parskip}{0.25em}
+\setlength{\emergencystretch}{3em}
+
+\setlength{\cftsubsecindent}{1.5em}
+\setlength{\cftsubsubsecindent}{3.5em}
+\renewcommand{\cftsubsecdotsep}{\cftdotsep}
+\renewcommand{\cftsubsubsecdotsep}{\cftdotsep}
+\renewcommand{\cftsecfont}{\bfseries}
+\renewcommand{\cftsubsecfont}{\normalfont}
+\renewcommand{\cftsubsubsecfont}{\normalfont\small}
+\renewcommand{\contentsname}{MỤC LỤC}
+\renewcommand{\listfigurename}{DANH MỤC HÌNH}
+\renewcommand{\listtablename}{DANH MỤC BẢNG}
+\addto\captionsvietnamese{\renewcommand{\abstractname}{ĐỀ TÀI}}
+
+\newcommand{\reporttitle}{XÂY DỰNG CHATBOT HỖ TRỢ GIÁO VIÊN TRONG GIẢNG DẠY TIN HỌC 12}
+\newcommand{\studentname}{Phạ Sắc - Lò Văn Hin}
+\newcommand{\studentid}{MSV: 2024LN031}
+\newcommand{\advisorname}{GV hướng dẫn: TS. Phạm Đình Thành}
 
 \begin{document}
 	
-	%===========================
-	% Trang bìa ngoài
-	%===========================
 	\begin{titlepage}
 		\begin{tikzpicture}[remember picture,overlay,inner sep=0,outer sep=0]
-			\draw[blue!70!black,line width=4pt] ([xshift=-1.5cm,yshift=-2cm]current page.north east) coordinate (A)--([xshift=1.5cm,yshift=-2cm]current page.north west) coordinate(B)--([xshift=1.5cm,yshift=2cm]current page.south west) coordinate (C)--([xshift=-1.5cm,yshift=2cm]current page.south east) coordinate(D)--cycle;
-			
+			\draw[myblue,line width=4pt] ([xshift=-1.5cm,yshift=-2cm]current page.north east) coordinate (A)--([xshift=1.5cm,yshift=-2cm]current page.north west) coordinate(B)--([xshift=1.5cm,yshift=2cm]current page.south west) coordinate (C)--([xshift=-1.5cm,yshift=2cm]current page.south east) coordinate(D)--cycle;
 			\draw ([yshift=0.5cm,xshift=-0.5cm]A)-- ([yshift=0.5cm,xshift=0.5cm]B)--
 			([yshift=-0.5cm,xshift=0.5cm]B) --([yshift=-0.5cm,xshift=-0.5cm]B)--([yshift=0.5cm,xshift=-0.5cm]C)--([yshift=0.5cm,xshift=0.5cm]C)--([yshift=-0.5cm,xshift=0.5cm]C)-- ([yshift=-0.5cm,xshift=-0.5cm]D)--([yshift=0.5cm,xshift=-0.5cm]D)--([yshift=0.5cm,xshift=0.5cm]D)--([yshift=-0.5cm,xshift=0.5cm]A)--([yshift=-0.5cm,xshift=-0.5cm]A)--([yshift=0.5cm,xshift=-0.5cm]A);
-			
 			\draw ([yshift=-0.3cm,xshift=0.3cm]A)-- ([yshift=-0.3cm,xshift=-0.3cm]B)--
 			([yshift=0.3cm,xshift=-0.3cm]B) --([yshift=0.3cm,xshift=0.3cm]B)--([yshift=-0.3cm,xshift=0.3cm]C)--([yshift=-0.3cm,xshift=-0.3cm]C)--([yshift=0.3cm,xshift=-0.3cm]C)-- ([yshift=0.3cm,xshift=0.3cm]D)--([yshift=-0.3cm,xshift=0.3cm]D)--([yshift=-0.3cm,xshift=-0.3cm]D)--([yshift=0.3cm,xshift=-0.3cm]A)--([yshift=0.3cm,xshift=0.3cm]A)--([yshift=-0.3cm,xshift=0.3cm]A);
 		\end{tikzpicture}
 		
 		\begin{center}
 			\vspace{7pt}
-			\textbf{TRƯỜNG ĐẠI HỌC TÂY BẮC}
+			\text{BỘ GIÁO DỤC VÀ ĐÀO TẠO}
 			
 			\vspace{7pt}
-			\textbf{KHOA KHOA HỌC TỰ NHIÊN VÀ CÔNG NGHỆ}
+			\textbf{TRƯỜNG ĐẠI HỌC TÂY BẮC}
 		\end{center}
 		
 		\begin{center}
-			\includegraphics[scale=0.5]{tb.jpg}
+			\IfFileExists{tb.jpg}{\includegraphics[scale=0.5]{tb.jpg}}{\vspace{2cm}}
 			
 			\vspace{10pt}
 			\fontsize{18pt}{17pt}\selectfont
@@ -65,68 +89,62 @@
 		
 		\begin{center}
 			\fontsize{18pt}{17pt}\selectfont
-			\textbf{\textrm{XÂY DỰNG CHATBOT HỖ TRỢ GIÁO VIÊN TRONG GIẢNG DẠY TIN HỌC 12}}
+			\textbf{\parbox{0.85\textwidth}{\centering\textrm{\reporttitle}}}
 		\end{center}
 		
 		\vspace{250pt}
 		\begin{center}
-			\today
+			Sơn La - năm 2026
 		\end{center}
 	\end{titlepage}
 	
-	%===========================
-	% Trang bìa trong
-	%===========================
 	\begin{titlepage}
 		\begin{tikzpicture}[remember picture,overlay,inner sep=0,outer sep=0]
-			\draw[blue!70!black,line width=4pt] ([xshift=-1.5cm,yshift=-2cm]current page.north east) coordinate (A)--([xshift=1.5cm,yshift=-2cm]current page.north west) coordinate(B)--([xshift=1.5cm,yshift=2cm]current page.south west) coordinate (C)--([xshift=-1.5cm,yshift=2cm]current page.south east) coordinate(D)--cycle;
-			
+			\draw[myblue,line width=4pt] ([xshift=-1.5cm,yshift=-2cm]current page.north east) coordinate (A)--([xshift=1.5cm,yshift=-2cm]current page.north west) coordinate(B)--([xshift=1.5cm,yshift=2cm]current page.south west) coordinate (C)--([xshift=-1.5cm,yshift=2cm]current page.south east) coordinate(D)--cycle;
 			\draw ([yshift=0.5cm,xshift=-0.5cm]A)-- ([yshift=0.5cm,xshift=0.5cm]B)--
 			([yshift=-0.5cm,xshift=0.5cm]B) --([yshift=-0.5cm,xshift=-0.5cm]B)--([yshift=0.5cm,xshift=-0.5cm]C)--([yshift=0.5cm,xshift=0.5cm]C)--([yshift=-0.5cm,xshift=0.5cm]C)-- ([yshift=-0.5cm,xshift=-0.5cm]D)--([yshift=0.5cm,xshift=-0.5cm]D)--([yshift=0.5cm,xshift=0.5cm]D)--([yshift=-0.5cm,xshift=0.5cm]A)--([yshift=-0.5cm,xshift=-0.5cm]A)--([yshift=0.5cm,xshift=-0.5cm]A);
-			
 			\draw ([yshift=-0.3cm,xshift=0.3cm]A)-- ([yshift=-0.3cm,xshift=-0.3cm]B)--
 			([yshift=0.3cm,xshift=-0.3cm]B) --([yshift=0.3cm,xshift=0.3cm]B)--([yshift=-0.3cm,xshift=0.3cm]C)--([yshift=-0.3cm,xshift=-0.3cm]C)--([yshift=0.3cm,xshift=-0.3cm]C)-- ([yshift=0.3cm,xshift=0.3cm]D)--([yshift=-0.3cm,xshift=0.3cm]D)--([yshift=-0.3cm,xshift=-0.3cm]D)--([yshift=0.3cm,xshift=-0.3cm]A)--([yshift=0.3cm,xshift=0.3cm]A)--([yshift=-0.3cm,xshift=0.3cm]A);
 		\end{tikzpicture}
 		
 		\begin{center}
 			\vspace{7pt}
-			\textbf{TRƯỜNG ĐẠI HỌC TÂY BẮC}
+			\text{BỘ GIÁO DỤC VÀ ĐÀO TẠO}
 			
 			\vspace{7pt}
-			\textbf{KHOA KHOA HỌC TỰ NHIÊN VÀ CÔNG NGHỆ}
+			\textbf{TRƯỜNG ĐẠI HỌC TÂY BẮC}
 		\end{center}
 		
 		\begin{center}
-			\includegraphics[scale=0.5]{tb}
+			\IfFileExists{tb.jpg}{\includegraphics[scale=0.5]{tb.jpg}}{\vspace{2cm}}
 			
 			\vspace{10pt}
 			\fontsize{18pt}{17pt}\selectfont
 			\textbf{ĐỒ ÁN TỐT NGHIỆP}
 			
-			\vspace{7pt}
+			\vspace{10pt}
 		\end{center}
 		
 		\begin{center}
 			\fontsize{18pt}{17pt}\selectfont
-			\textbf{\textrm{XÂY DỰNG CHATBOT HỖ TRỢ GIÁO VIÊN TRONG GIẢNG DẠY TIN HỌC 12}}
+			\textbf{\parbox{0.85\textwidth}{\centering\textrm{\reporttitle}}}
 		\end{center}
 		
 		\vspace{75pt}
-		\textbf{GV hướng dẫn: TS. Phạm Đình Thành}
+		\textbf{\advisorname}
 		
 		\vspace{10pt}
-		\textbf{Sinh viên thực hiện: Phạ Sắc -- Lò Văn Hin}
+		\textbf{Sinh viên thực hiện: \studentname}
 		
 		\vspace{10pt}
-		\textbf{MSV: 2024LN031}
+		\textbf{MSV: \studentid}
 		
-		\vspace{100pt}
+		\vspace{150pt}
 		\begin{center}
-			\today
+			Sơn La - năm 2026
 		\end{center}
 	\end{titlepage}
 	
-	% Lời cảm ơn
 	\newpage
 	\thispagestyle{empty}
 	\begin{center}
@@ -135,27 +153,27 @@
 	\end{center}
 	
 	\vspace{20pt}
-	\setlength{\parindent}{1.5cm}
 	
-	Trong suốt quá trình thực hiện đồ án tốt nghiệp, nhóm thực hiện đã nhận được nhiều sự quan tâm, hướng dẫn và hỗ trợ từ quý thầy cô, gia đình và bạn bè. Nhóm xin trân trọng gửi lời cảm ơn chân thành đến tất cả những cá nhân, tập thể đã đồng hành trong thời gian học tập và hoàn thiện đề tài.
+	Trong suốt quá trình nghiên cứu, phân tích yêu cầu, hiện thực hóa chức năng và hoàn thiện báo cáo cho đồ án \textbf{Chatbot hỗ trợ giáo viên trong giảng dạy Tin học 12}, em đã nhận được nhiều sự hỗ trợ quý báu từ thầy cô, bạn bè và các tài liệu chuyên môn liên quan đến trí tuệ nhân tạo, xử lý ngôn ngữ tự nhiên và phát triển phần mềm giáo dục.
 	
-	Trước hết, nhóm xin bày tỏ lòng biết ơn sâu sắc đến \textbf{TS. Phạm Đình Thành} -- giảng viên hướng dẫn trực tiếp của nhóm. Thầy đã tận tình định hướng, góp ý về chuyên môn và hỗ trợ nhóm trong quá trình phân tích bài toán, xây dựng hệ thống và hoàn thiện báo cáo.
+	Em xin bày tỏ lòng biết ơn sâu sắc tới \advisorname, người đã định hướng phương pháp tiếp cận, góp ý cho em trong quá trình lựa chọn phạm vi, tổ chức nội dung và hoàn thiện báo cáo. Những nhận xét có chiều sâu và thực tế đã giúp em nhìn rõ hơn cách chuyển hóa một bài toán kỹ thuật thành một sản phẩm có giá trị ứng dụng trong giảng dạy.
 	
-	Nhóm xin chân thành cảm ơn Ban Giám hiệu \textbf{Trường Đại học Tây Bắc}, Ban chủ nhiệm \textbf{Khoa Công nghệ Thông tin} cùng toàn thể quý thầy cô đã truyền đạt kiến thức nền tảng, tạo điều kiện học tập và nghiên cứu trong suốt thời gian qua.
+	Em xin chân thành cảm ơn Ban Giám hiệu \textbf{Trường Đại học Tây Bắc}, cùng tập thể quý thầy cô thuộc \textbf{Khoa Khoa học Tự nhiên và Công nghệ} đã truyền đạt cho em nền tảng kiến thức về phân tích hệ thống, cơ sở dữ liệu, phát triển ứng dụng web, kiểm thử phần mềm và triển khai hệ thống. Đó là hành trang quan trọng để em có thể xây dựng đề tài này theo hướng vừa có cơ sở học thuật, vừa có tính thực tiễn.
 	
-	Nhóm cũng xin cảm ơn gia đình và bạn bè đã luôn động viên, chia sẻ và hỗ trợ về tinh thần để nhóm có thể tập trung hoàn thành đề tài đúng tiến độ.
+	Em cũng xin cảm ơn gia đình và bạn bè đã luôn động viên, tạo điều kiện thuận lợi trong suốt quá trình học tập và thực hiện đồ án. Sự hỗ trợ về tinh thần và thời gian là nguồn động lực rất lớn để em có thể tập trung hoàn thành công việc đúng định hướng.
 	
-	Mặc dù đã nỗ lực trong quá trình thực hiện, đồ án chắc chắn vẫn còn những hạn chế nhất định. Nhóm rất mong nhận được những ý kiến đóng góp từ quý thầy cô để tiếp tục hoàn thiện đề tài trong thời gian tới.
+	Mặc dù đã nỗ lực nghiên cứu, hệ thống và báo cáo vẫn khó tránh khỏi những hạn chế nhất định, đặc biệt trong việc mở rộng kho tri thức sang các môn học khác, tối ưu hóa giao diện trên thiết bị di động và tích hợp gửi email thực trong môi trường sản xuất. Em rất mong nhận được thêm những góp ý quý báu từ thầy cô và bạn đọc để tiếp tục hoàn thiện đề tài ở các giai đoạn phát triển tiếp theo.
 	
 	\vspace{30pt}
+	
 	\begin{flushright}
 		\textit{Sơn La, \today}\\[10pt]
-		\textit{Nhóm sinh viên thực hiện}\\[30pt]
-		\textbf{Phạ Sắc -- Lò Văn Hin}
+		\textit{Sinh viên thực hiện}\\[30pt]
+		\textbf{\studentname}
 	\end{flushright}
 	
-	% Nhận xét giảng viên hướng dẫn
 	\newpage
+	\thispagestyle{empty}
 	\begin{center}
 		\textbf{NHẬN XÉT CỦA GIẢNG VIÊN HƯỚNG DẪN}
 	\end{center}
@@ -163,11 +181,11 @@
 	\vspace{1cm}
 	
 	\begin{enumerate}
-		\item Hình thức (bố cục, trình bày, lỗi chính tả, hình, bảng, công thức, phụ lục)
+		\item Hình thức (bố cục, trình bày, lỗi chính tả, đánh số, hình, bảng, phụ lục)
 		
 		\vspace{3cm}
 		
-		\item Nội dung (mục tiêu, phương pháp, kết quả đạt được, tính trung thực, các chương, tài liệu tham khảo)
+		\item Nội dung (mục tiêu, phương pháp, kết quả, mức độ hoàn thiện, khả năng mở rộng)
 		
 		\vspace{3cm}
 		
@@ -177,14 +195,15 @@
 	\end{enumerate}
 	
 	\vspace{1cm}
+	
 	\begin{flushright}
-		\textit{Sơn La, Ngày ...... tháng ...... năm 202......}\\[0.5cm]
+		\textit{Sơn La, Ngày ...... tháng ...... năm 2026}\\[0.5cm]
 		\textbf{Giảng viên hướng dẫn}\\[0.3cm]
 		\textit{(Ký tên, ghi rõ họ tên)}
 	\end{flushright}
 	
-	% Nhận xét giảng viên chấm
 	\newpage
+	\thispagestyle{empty}
 	\begin{center}
 		\textbf{NHẬN XÉT CỦA GIẢNG VIÊN CHẤM}
 	\end{center}
@@ -192,11 +211,11 @@
 	\vspace{1cm}
 	
 	\begin{enumerate}
-		\item Hình thức (bố cục, trình bày, lỗi chính tả, hình, bảng, công thức, phụ lục)
+		\item Hình thức (bố cục, trình bày, lỗi chính tả, đánh số, hình, bảng, phụ lục)
 		
 		\vspace{3cm}
 		
-		\item Nội dung (mục tiêu, phương pháp, kết quả đạt được, tính trung thực, các chương, tài liệu tham khảo)
+		\item Nội dung (mục tiêu, phương pháp, kết quả, mức độ hoàn thiện, khả năng mở rộng)
 		
 		\vspace{3cm}
 		
@@ -206,18 +225,37 @@
 	\end{enumerate}
 	
 	\vspace{1cm}
+	
 	\begin{flushright}
-		\textit{Sơn La, Ngày ...... tháng ...... năm 202......}\\[0.5cm]
+		\textit{Sơn La, Ngày ...... tháng ...... năm 2026}\\[0.5cm]
 		\textbf{Giảng viên chấm}\\[0.3cm]
 		\textit{(Ký tên, ghi rõ họ tên)}
 	\end{flushright}
 	
-	\newpage
-	\tableofcontents
-	\thispagestyle{empty}
 	\clearpage
-	\newpage
+	\pagenumbering{roman}
+	\tableofcontents
+	\clearpage
+	\phantomsection
+	\addcontentsline{toc}{section}{TÓM TẮT}
 	
+	\begin{abstract}
+		Trong bối cảnh chuyển đổi số giáo dục đang được Chính phủ Việt Nam xác định là lĩnh vực ưu tiên theo Quyết định số 749/QĐ-TTg năm 2020 , nhu cầu ứng dụng trí tuệ nhân tạo vào hỗ trợ giảng dạy ngày càng trở nên cấp thiết, đặc biệt tại các địa bàn có điều kiện tiếp cận nguồn lực hạn chế như khu vực Tây Bắc. Tại các tỉnh như Lào Cai và Lai Châu, tình trạng thiếu giáo viên Tin học có chuyên môn đúng ngành vẫn còn trầm trọng --- riêng Lai Châu thiếu gần 300 giáo viên Tin học và Tiếng Anh trong năm học 2023--2024 --- khiến giáo viên đang công tác phải kiêm nhiệm nhiều nhiệm vụ mà không có đủ công cụ hỗ trợ chuyên môn.
+		
+		Xuất phát từ thực tế đó, đề tài \textbf{xây dựng chatbot hỗ trợ giáo viên trong giảng dạy Tin học 12} được thực hiện nhằm giải quyết trực tiếp ba hạn chế có tính hệ thống mà giáo viên thường gặp: khó khăn trong việc trả lời nhanh các câu hỏi nội dung chuyên môn ngoài giờ; tốn nhiều thời gian biên soạn đề kiểm tra trắc nghiệm theo từng bài; và không có công cụ tích hợp để tổ chức thi trực tuyến và theo dõi kết quả học sinh một cách liền mạch. Hệ thống cho phép giáo viên hỏi đáp với trợ lý AI được xây dựng trên nền học liệu Tin học 12 đã lập chỉ mục, tạo đề thi trắc nghiệm bằng AI với khả năng kiểm soát và chỉnh sửa trước khi sử dụng, tổ chức phòng thi trực tuyến cho học sinh làm bài, đồng thời theo dõi kết quả và thống kê trên dashboard tập trung.
+		
+		Về phạm vi chức năng, hệ thống hỗ trợ ba nhóm người dùng chính là quản trị viên, giáo viên và học sinh, với phạm vi thao tác được phân quyền rõ ràng. Giáo viên có thể đăng nhập, hội thoại với AI, xem lịch sử hội thoại, tạo và quản lý đề thi, quản lý ngân hàng câu hỏi, tạo và điều hành phòng thi, xem dashboard và thống kê kết quả. Học sinh truy cập phòng thi qua liên kết, xác thực danh tính, làm bài và nhận điểm tự động sau khi nộp. Quản trị viên quản lý tài khoản toàn hệ thống, theo dõi biểu đồ xu hướng sử dụng, xếp hạng giáo viên và xem nhật ký hoạt động.
+		
+		Về kết quả đạt được, đề tài hoàn thành một hệ thống phần mềm theo mô hình client--server với kiến trúc nhiều lớp, tích hợp kỹ thuật Retrieval-Augmented Generation (RAG) để chatbot trả lời bám sát nội dung học liệu, mô hình dữ liệu quan hệ biểu diễn đầy đủ các thực thể nghiệp vụ từ người dùng đến lịch sử thi, và giao diện quản trị trực quan cho cả ba vai trò. Hệ thống được thiết kế theo hướng tách biệt rõ ràng giữa lớp giao diện, lớp nghiệp vụ và lớp dữ liệu, tạo nền tảng thuận lợi để mở rộng sang các môn học khác hoặc tích hợp thêm các tính năng phân tích học tập trong các giai đoạn phát triển tiếp theo.
+	\end{abstract}
+	
+	\clearpage
+	\listoffigures
+	\clearpage
+	\listoftables
+	\clearpage
+	
+	\phantomsection
 	\addcontentsline{toc}{section}{DANH MỤC TỪ VIẾT TẮT}
 	\begin{center}
 		\fontsize{14pt}{17pt}\selectfont
@@ -228,284 +266,191 @@
 	
 	\begin{table}[H]
 		\centering
-		\renewcommand{\arraystretch}{1.25}
 		\begin{tabular}{|c|p{11cm}|}
 			\hline
-			\textbf{Chữ viết tắt} & \multicolumn{1}{c|}{\textbf{Ý nghĩa}} \\
+			{Chữ viết tắt} & \multicolumn{1}{c|}{\textbf{Ý nghĩa}} \\
 			\hline
-			AI & Trí tuệ nhân tạo. \\
+			AI & Artificial Intelligence, trí tuệ nhân tạo. \\
 			\hline
-			API & Application Programming Interface, giao diện lập trình ứng dụng. \\
+			API & Application Programming Interface, giao diện lập trình ứng dụng giữa frontend và backend. \\
 			\hline
-			CSDL & Cơ sở dữ liệu. \\
+			CRUD & Create, Read, Update, Delete, bốn thao tác cơ bản với dữ liệu. \\
 			\hline
-			FAISS & Facebook AI Similarity Search, thư viện tìm kiếm tương đồng trên vector. \\
+			DB & Database, cơ sở dữ liệu lưu trữ trạng thái và lịch sử vận hành hệ thống. \\
 			\hline
-			JWT & JSON Web Token, chuẩn token dùng cho xác thực. \\
+			FAISS & Facebook AI Similarity Search, thư viện tìm kiếm vector hiệu năng cao dùng trong RAG. \\
 			\hline
-			LLM & Large Language Model, mô hình ngôn ngữ lớn. \\
+			FE & Frontend, phần giao diện người dùng được xây dựng bằng React và TypeScript. \\
 			\hline
-			ORM & Object-Relational Mapping, kỹ thuật ánh xạ đối tượng -- quan hệ. \\
+			BE & Backend, phần xử lý nghiệp vụ, xác thực và truy xuất dữ liệu phía máy chủ. \\
 			\hline
-			RAG & Retrieval-Augmented Generation, sinh phản hồi dựa trên truy xuất ngữ cảnh. \\
+			JWT & JSON Web Token, chuẩn token dùng cho xác thực người dùng. \\
 			\hline
-			REST & Representational State Transfer, kiểu thiết kế API phổ biến cho web service. \\
+			LLM & Large Language Model, mô hình ngôn ngữ lớn được sử dụng làm lõi sinh ngôn ngữ cho chatbot. \\
 			\hline
-			SMTP & Simple Mail Transfer Protocol, giao thức gửi thư điện tử. \\
+			ORM & Object Relational Mapping, cơ chế ánh xạ đối tượng với bảng dữ liệu quan hệ. \\
 			\hline
-			SQL & Structured Query Language, ngôn ngữ truy vấn cơ sở dữ liệu. \\
+			RAG & Retrieval-Augmented Generation, kỹ thuật kết hợp truy xuất tài liệu liên quan với sinh ngôn ngữ. \\
 			\hline
-			THPT & Trung học phổ thông. \\
+			RBAC & Role-Based Access Control, cơ chế kiểm soát truy cập theo vai trò người dùng. \\
 			\hline
-			UI & User Interface, giao diện người dùng. \\
+			THPT & Trung học Phổ thông. \\
 			\hline
-			UX & User Experience, trải nghiệm người dùng. \\
+			UI & User Interface, giao diện tương tác của người sử dụng. \\
 			\hline
-			WS & WebSocket, giao thức kết nối hai chiều theo thời gian thực. \\
+			WebSocket & Giao thức truyền thông hai chiều thời gian thực giữa trình duyệt và máy chủ. \\
 			\hline
 		\end{tabular}
 	\end{table}
+	
+	\clearpage
+	\pagenumbering{arabic}
+	\pagestyle{fancy}
+	\fancyhf{}
+	\fancyhead[L]{Đồ án tốt nghiệp}
+	\fancyhead[R]{\thepage}
+	\renewcommand{\headrulewidth}{0.4pt}
+	
+	% ============================================================
+	% PHẦN MỞ ĐẦU
+	% ============================================================
+	
+	\section*{CHƯƠNG I: KHẢO SÁT VÀ PHÂN TÍCH YÊU}
+	\addcontentsline{toc}{section}{CHƯƠNG I: KHẢO SÁT VÀ PHÂN TÍCH YÊU CẦU}
+	
+	% ------------------------------------------------------------------
+	\subsection*{1. Bối cảnh và lý do chọn đề tài}
+	\addcontentsline{toc}{subsection}{1. Bối cảnh và lý do chọn đề tài}
+	% ------------------------------------------------------------------
+	
+	\subsubsection*{1.1. Bối cảnh giáo dục vùng Tây Bắc và nhu cầu ứng dụng trí tuệ nhân tạo}
+	\addcontentsline{toc}{subsubsection}{1.1. Bối cảnh giáo dục vùng Tây Bắc và nhu cầu ứng dụng trí tuệ nhân tạo}
+	
+	Chuyển đổi số trong giáo dục đã được Chính phủ Việt Nam xác định là lĩnh vực ưu tiên trong Quyết định số 749/QĐ-TTg năm 2020 \cite{qd749}, với mục tiêu đưa công nghệ số vào mọi cấp học nhằm nâng cao chất lượng và mở rộng cơ hội tiếp cận giáo dục. Tuy nhiên, tại khu vực Tây Bắc --- đặc biệt các tỉnh Sơn La, Điện Biên, Lai Châu và Lào Cai --- khoảng cách số giữa trường học đô thị và vùng khó vẫn còn rất lớn. Theo khảo sát của Bộ Giáo dục, chỉ 12\% điểm trường vùng sâu có kết nối Internet ổn định \cite{jvs2025}, trong khi hạ tầng thiết bị và phòng học thông minh còn hạn chế; nhiều giáo viên phải di chuyển xa mới có thể tải tài liệu hoặc tham gia tập huấn trực tuyến \cite{gdtd2025}.
+	
+	Bên cạnh thách thức hạ tầng, tình trạng thiếu giáo viên bộ môn có chuyên môn đúng ngành là vấn đề cấp bách hơn. Riêng tỉnh Lai Châu thiếu gần 300 giáo viên Tin học và Tiếng Anh trong năm học 2023--2024 \cite{baolao2023}, buộc nhiều trường phải dồn lớp, ghép tiết hoặc hợp đồng thỉnh giảng. Thực trạng này khiến giáo viên Tin học tại khu vực Tây Bắc vừa thiếu đồng nghiệp để trao đổi chuyên môn, vừa phải kiêm nhiệm nhiều vai trò mà không có công cụ hỗ trợ đủ mạnh. Khi Chương trình giáo dục phổ thông 2018 yêu cầu năng lực giảng dạy Tin học ngày càng cao hơn, nghịch lý này trở nên gay gắt hơn bao giờ hết.
+	
+	Nhu cầu về một công cụ hỗ trợ giáo viên có thể trả lời nhanh câu hỏi chuyên môn, hỗ trợ soạn đề kiểm tra và tổ chức thi trực tuyến một cách tích hợp đã trở thành đòi hỏi thực tiễn rõ ràng, không chỉ là xu hướng công nghệ. Đây chính là xuất phát điểm của đề tài.
+	
+	\subsubsection*{1.2. Tổng quan nghiên cứu về chatbot giáo dục và kỹ thuật RAG}
+	\addcontentsline{toc}{subsubsection}{1.2. Tổng quan nghiên cứu về chatbot giáo dục và kỹ thuật RAG}
+	
+	Ứng dụng chatbot trí tuệ nhân tạo trong giáo dục đã được nghiên cứu rộng rãi trên bình diện quốc tế. Kav và cộng sự (2024) chỉ ra rằng chatbot AI có khả năng tạo bài giảng và câu hỏi được cá nhân hóa từ kho dữ liệu số, giúp giáo viên tiết kiệm đáng kể thời gian chuẩn bị bài \cite{kav2024}. Tuy nhiên, hạn chế lớn nhất của các mô hình ngôn ngữ lớn (LLM) khi dùng đơn độc là xu hướng ``ảo giác'' --- sinh ra thông tin không có trong tài liệu gốc --- đặc biệt nguy hiểm trong môi trường giáo dục khi nội dung cần bám sát chương trình chuẩn.
+	
+	Kỹ thuật Retrieval-Augmented Generation (RAG) ra đời như một giải pháp hiệu quả cho vấn đề này. Thay vì chỉ dựa vào kiến thức được mã hóa trong trọng số mô hình, RAG truy xuất các đoạn văn bản liên quan từ kho tài liệu đã lập chỉ mục rồi đưa vào ngữ cảnh trước khi sinh câu trả lời. Nguyễn Việt Hà và Trần Tuấn Vinh (2025) đã chứng minh rằng cách tiếp cận này giúp chatbot vượt qua hạn chế của tìm kiếm truyền thống và tăng độ chính xác của câu trả lời trong môi trường giáo dục Việt Nam \cite{nguyen2025rag}. Nghiên cứu của Lewis và cộng sự (2020) --- bài báo gốc đề xuất kiến trúc RAG --- cũng xác nhận rằng việc kết hợp truy xuất dày đặc với sinh ngôn ngữ tự nhiên cải thiện đáng kể hiệu năng trên các tác vụ hỏi đáp yêu cầu kiến thức cụ thể \cite{lewis2020rag}.
+	
+	Về phía tạo đề kiểm tra tự động, Kurdi và cộng sự (2020) tổng hợp các nghiên cứu về sinh câu hỏi tự động và kết luận rằng LLM kết hợp với dữ liệu học liệu có cấu trúc có thể tạo ra câu hỏi trắc nghiệm chất lượng cao với chi phí thời gian thấp hơn phương thức biên soạn thủ công nhiều lần \cite{kurdi2020qg}. Đây là cơ sở lý thuyết trực tiếp cho mô-đun tạo đề thi bằng AI trong hệ thống của đề tài.
+	
+	\subsubsection*{1.3. Các hệ thống liên quan và khoảng trống nghiên cứu}
+	\addcontentsline{toc}{subsubsection}{1.3. Các hệ thống liên quan và khoảng trống nghiên cứu}
+	
+	Hiện nay đã tồn tại một số nền tảng hỗ trợ giảng dạy ứng dụng AI. ChatGPT và Google Gemini là hai chatbot tổng quát phổ biến nhất, cung cấp khả năng hỏi đáp và soạn thảo nội dung mạnh mẽ, nhưng không được tối ưu cho học liệu Tin học 12 cụ thể và không có tính năng tổ chức thi tích hợp. Quizlet cung cấp công cụ tạo và ôn luyện câu hỏi trắc nghiệm nhưng thiếu thành phần chatbot AI hỏi đáp theo ngữ cảnh tài liệu. Google Forms và các nền tảng thi trực tuyến thông dụng yêu cầu giáo viên tạo câu hỏi thủ công và xử lý kết quả qua nhiều bước rời rạc trên nhiều nền tảng khác nhau. Trong nước, một số đề tài sinh viên đã thử nghiệm chatbot giáo dục nhưng thường chỉ dừng lại ở thành phần hỏi đáp đơn lẻ, chưa tích hợp với luồng tạo đề, tổ chức thi và theo dõi kết quả thành một hệ thống nhất quán.
+	
+	Khoảng trống mà đề tài hướng đến lấp đầy là: một hệ thống web tích hợp đầy đủ các thành phần chatbot RAG bám sát học liệu môn học, tạo đề thi bằng AI có kiểm soát, tổ chức phòng thi trực tuyến và theo dõi kết quả trên cùng một nền tảng, với giao diện đủ đơn giản để giáo viên vùng Tây Bắc có thể sử dụng hiệu quả ngay từ lần đầu tiếp cận.
+	
+	\subsubsection*{1.4. Lý do chọn đề tài}
+	\addcontentsline{toc}{subsubsection}{1.4. Lý do chọn đề tài}
+	
+	Xuất phát từ bối cảnh thực tiễn tại vùng Tây Bắc và nền tảng lý luận từ các nghiên cứu về RAG, sinh câu hỏi tự động và chatbot giáo dục, đề tài \textbf{Xây dựng chatbot hỗ trợ giáo viên trong giảng dạy Tin học 12} được lựa chọn và xây dựng như một hệ thống web hỗ trợ toàn diện cho hoạt động dạy học môn Tin học lớp 12. Đề tài mang ba ý nghĩa chính:
+	
+	\begin{itemize}[leftmargin=1.5cm]
+		\item \textbf{Ý nghĩa học thuật:} Đề tài vận dụng tổng hợp các kiến thức về phân tích yêu cầu, thiết kế kiến trúc hệ thống nhiều lớp, xây dựng API RESTful, giao tiếp WebSocket thời gian thực, phát triển giao diện người dùng và kỹ thuật RAG. Thành phần chatbot được xây dựng dựa trực tiếp trên cơ sở lý thuyết của Lewis và cộng sự (2020) \cite{lewis2020rag} và kết quả ứng dụng RAG trong giáo dục tại Việt Nam \cite{nguyen2025rag}.
+		\item \textbf{Ý nghĩa thực tiễn:} Hệ thống tạo ra công cụ số hóa trực tiếp ba khâu tốn kém thời gian nhất của giáo viên Tin học: tra cứu và giải đáp chuyên môn, biên soạn đề kiểm tra và tổ chức đánh giá. Điều này phù hợp với bối cảnh thiếu giáo viên chuyên ngành và hạ tầng hạn chế tại khu vực Tây Bắc.
+		\item \textbf{Ý nghĩa kỹ thuật:} Đề tài chứng minh khả năng xây dựng một hệ thống AI giáo dục tích hợp theo từng lớp độc lập, trong đó thành phần RAG có thể được mở rộng sang học liệu môn học khác mà không cần thay đổi kiến trúc lõi --- phù hợp với định hướng mở rộng sang nhiều môn học trong tương lai.
+	\end{itemize}
+	
+	% ------------------------------------------------------------------
+	\subsection*{2. Mục tiêu nghiên cứu}
+	\addcontentsline{toc}{subsection}{2. Mục tiêu nghiên cứu}
+	% ------------------------------------------------------------------
+	
+	Mục tiêu tổng quát của đề tài là xây dựng một hệ thống web hỗ trợ giáo viên Tin học 12 trong các hoạt động trọng tâm gồm hỏi đáp với trợ lý AI bám sát học liệu môn học, soạn và quản lý đề kiểm tra trắc nghiệm, tổ chức phòng thi trực tuyến cho học sinh và theo dõi kết quả học tập trên cùng một nền tảng.
+	
+	Từ mục tiêu tổng quát đó, đề tài tập trung vào sáu mục tiêu cụ thể sau:
+	
+	\begin{itemize}[leftmargin=1.5cm]
+		\item Thiết kế mô hình dữ liệu đủ chặt chẽ để biểu diễn quan hệ giữa người dùng, học liệu, hội thoại, câu hỏi, đề thi, phòng thi, bài làm học sinh và nhật ký hoạt động.
+		\item Xây dựng server theo kiến trúc nhiều lớp, tách biệt rõ tầng API, tầng nghiệp vụ và tầng truy cập dữ liệu, hỗ trợ cả REST API và WebSocket để phục vụ các luồng tương tác thời gian thực.
+		\item Hiện thực mô-đun chatbot RAG kết hợp FAISS và LLM, đảm bảo câu trả lời bám sát nội dung học liệu Tin học 12 đã lập chỉ mục, theo cơ sở lý thuyết của Lewis và cộng sự (2020) \cite{lewis2020rag}.
+		\item Xây dựng mô-đun tạo đề thi bằng AI hỗ trợ giáo viên sinh câu hỏi trắc nghiệm, chỉnh sửa và lưu trữ vào ngân hàng câu hỏi có thể tái sử dụng, theo định hướng của Kurdi và cộng sự (2020) \cite{kurdi2020qg}.
+		\item Xây dựng luồng tổ chức phòng thi trực tuyến cho phép giáo viên tạo phòng, học sinh vào làm bài qua liên kết, và hệ thống chấm điểm tự động ngay sau khi nộp bài.
+		\item Xây dựng giao diện trực quan và phân quyền rõ ràng cho ba vai trò quản trị viên, giáo viên và học sinh, kèm dashboard thống kê tổng quan và bảng xếp hạng giáo viên cho quản trị viên.
+	\end{itemize}
+	
+	% ------------------------------------------------------------------
+	\subsection*{3. Đối tượng và phạm vi nghiên cứu}
+	\addcontentsline{toc}{subsection}{3. Đối tượng và phạm vi nghiên cứu}
+	% ------------------------------------------------------------------
+	
+	\subsubsection*{3.1. Đối tượng nghiên cứu}
+	\addcontentsline{toc}{subsubsection}{3.1. Đối tượng nghiên cứu}
+	
+	Đối tượng nghiên cứu của đề tài là bài toán xây dựng hệ thống chatbot hỗ trợ giảng dạy trên nền tảng web, trong đó trọng tâm là kỹ thuật RAG để đảm bảo chatbot trả lời bám sát học liệu môn học \cite{lewis2020rag}, cơ chế sinh câu hỏi trắc nghiệm tự động bằng AI \cite{kurdi2020qg}, và thiết kế luồng tổ chức thi trực tuyến tích hợp đủ đơn giản để phù hợp với điều kiện sử dụng của giáo viên vùng Tây Bắc \cite{gdtd2025}.
+	
+	\subsubsection*{3.2. Phạm vi nghiên cứu}
+	\addcontentsline{toc}{subsubsection}{3.2. Phạm vi nghiên cứu}
+	
+	\textbf{Về phạm vi chức năng}, đề tài tập trung vào các thành phần chính gồm: xác thực người dùng (đăng nhập, đăng xuất, khôi phục mật khẩu); hội thoại với AI và lưu lịch sử hội thoại; tạo đề thi bằng AI và quản lý ngân hàng câu hỏi; tạo và quản lý phòng thi; học sinh làm bài và nhận điểm tự động; dashboard và thống kê cho giáo viên; quản lý tài khoản, biểu đồ xu hướng, bảng xếp hạng và nhật ký hoạt động cho quản trị viên.
+	
+	\textbf{Về phạm vi công nghệ}, backend sử dụng FastAPI, SQLAlchemy, Alembic và PostgreSQL; frontend sử dụng React, TypeScript và Vite; kho vector được xây dựng bằng FAISS; mô hình ngôn ngữ được tích hợp qua API; giao tiếp thời gian thực qua WebSocket; môi trường phát triển được đóng gói bởi Docker Compose; email phát triển được mô phỏng bằng MailHog.
+	
+	\textbf{Giới hạn của đề tài} ở giai đoạn hiện tại là chưa hoàn thiện luồng CRUD bài học đầy đủ trên API, chưa tích hợp gửi email thực trong môi trường sản xuất, chưa mở rộng kho tri thức sang các môn học khác, và giao diện trên thiết bị di động chưa được tối ưu hoàn toàn. Việc xác định rõ phạm vi này giúp hệ thống tập trung vào lõi nghiệp vụ vững chắc trước khi mở rộng.
+	
+	% ------------------------------------------------------------------
+	\subsection*{4. Phương pháp nghiên cứu}
+	\addcontentsline{toc}{subsection}{4. Phương pháp nghiên cứu}
+	% ------------------------------------------------------------------
+	
+	Đề tài kết hợp bốn phương pháp nghiên cứu chính như sau.
+	
+	\textbf{Phương pháp khảo sát và phân tích nghiệp vụ.} Bài toán được phân tích từ góc nhìn thực tế của giáo viên Tin học THPT: cần biết họ gặp khó khăn gì, bước nào trong quy trình dạy học tốn thời gian nhất, và công cụ nào họ sẵn sàng chấp nhận trong điều kiện hạ tầng thực tế. Trên cơ sở đó, hệ thống được mô hình hóa thành các tác nhân, thực thể dữ liệu và quy trình xử lý có thể kiểm soát được.
+	
+	\textbf{Phương pháp phân tích tài liệu khoa học.} Đề tài dựa trên các tài liệu về kỹ thuật RAG \cite{lewis2020rag}, sinh câu hỏi tự động bằng AI \cite{kurdi2020qg}, ứng dụng RAG trong giáo dục tại Việt Nam \cite{nguyen2025rag}, chatbot cá nhân hóa trong giảng dạy \cite{kav2024} và bối cảnh chuyển đổi số giáo dục tại Tây Bắc \cite{baolao2023, gdtd2025} để định hướng thiết kế kiến trúc và lựa chọn kỹ thuật phù hợp.
+	
+	\textbf{Phương pháp thiết kế phần mềm.} Hệ thống được hiện thực theo kiến trúc nhiều lớp (multi-tier architecture), sử dụng UML để đặc tả tác nhân, ca sử dụng, luồng hoạt động và tuần tự tương tác. Cơ sở dữ liệu được thiết kế theo mô hình quan hệ với các ràng buộc nghiệp vụ rõ ràng, đảm bảo tính toàn vẹn dữ liệu ở cả tầng lưu trữ lẫn tầng ứng dụng.
+	
+	\textbf{Phương pháp kiểm chứng qua thử nghiệm.} Hệ thống được kiểm thử qua các kịch bản thực tế: giáo viên hỏi câu hỏi thuộc nội dung học liệu và ngoài phạm vi, tạo đề thi từ các chủ đề khác nhau, tổ chức phòng thi với nhiều học sinh đồng thời. Kết quả được đánh giá theo tiêu chí độ chính xác của câu trả lời RAG, tính nhất quán của đề thi được sinh, và tính ổn định của luồng làm bài.
+	
+	% ------------------------------------------------------------------
+	\subsection*{5. Cấu trúc báo cáo}
+	\addcontentsline{toc}{subsection}{5. Cấu trúc báo cáo}
+	% ------------------------------------------------------------------
+	
+	Cấu trúc báo cáo được tổ chức như sau:
+	
+	\textbf{Chương 1 -- Khảo sát và Phân tích Yêu cầu} trình bày mục đích khảo sát, bối cảnh thực tiễn tại vùng Tây Bắc, kết quả khảo sát nghiệp vụ và thiết kế giao diện từ các hệ thống tham khảo, cùng đặc tả yêu cầu chức năng cho từng nhóm người dùng.
+	
+	\textbf{Chương 2 -- Phân tích và Thiết kế Hệ thống} trình bày xác định bài toán, phân tích tác nhân và ca sử dụng, đặc tả các ca sử dụng chi tiết, biểu đồ hoạt động cho từng luồng nghiệp vụ và biểu đồ tuần tự minh họa tương tác giữa các thành phần.
+	
+	\textbf{Chương 3 -- Xây dựng Chương trình} trình bày kiến trúc chi tiết của backend và frontend, thiết kế cơ sở dữ liệu, cơ chế RAG và lập chỉ mục học liệu, mô-đun sinh câu hỏi bằng AI, phương án triển khai Docker Compose, kết quả kiểm thử và giao diện hệ thống.
+	
+	Cách tổ chức này đảm bảo báo cáo đi từ cơ sở lý luận và bối cảnh thực tiễn, sang , rồi đến hiện thực kỹ thuật một cách mạch lạc và có hệ thống.
 	
 	\newpage
+	\section*{CHƯƠNG II: PHÂN TÍCH VÀ THIẾT KẾ HỆ THỐNG}
+    \addcontentsline{toc}{section}{CHƯƠNG II: PHÂN TÍCH VÀ THIẾT KẾ HỆ THỐNG}
 	
-	\begin{abstract}
-		\pagenumbering{arabic}
-		\pagestyle{fancy}
-		
-		Trong bối cảnh chuyển đổi số trong giáo dục, nhu cầu sử dụng các công cụ hỗ trợ dạy học thông minh ngày càng trở nên rõ rệt, đặc biệt với những môn học có tính thực hành và đòi hỏi giải thích thường xuyên như Tin học 12. Từ thực tế đó, đề tài ``Xây dựng chatbot hỗ trợ giáo viên trong giảng dạy Tin học 12'' được thực hiện nhằm xây dựng một hệ thống web hỗ trợ giáo viên trong các nghiệp vụ đang có nhu cầu cao như hỏi đáp với AI, tạo đề thi trắc nghiệm bằng AI, tổ chức phòng thi trực tuyến và theo dõi kết quả học sinh.
-		
-		Hệ thống được xây dựng theo mô hình client -- server. Phần frontend sử dụng React, TypeScript và Vite để xây dựng giao diện; phần backend sử dụng FastAPI để cung cấp API và WebSocket; dữ liệu được lưu trữ trên PostgreSQL thông qua SQLAlchemy và Alembic. Chức năng chatbot sử dụng mô hình ngôn ngữ lớn kết hợp FAISS để truy xuất ngữ cảnh từ bộ dữ liệu học liệu đã được lập chỉ mục. Đề thi được sinh bằng AI dưới dạng câu hỏi trắc nghiệm, cho phép giáo viên lưu lại, chỉnh sửa, tạo phòng thi và công bố cho học sinh làm bài trực tuyến.
-		
-		Về mặt chức năng, hệ thống hiện hỗ trợ ba nhóm người dùng chính. Giáo viên có thể đăng nhập, khôi phục mật khẩu, hội thoại với AI, xem lịch sử hội thoại, tạo đề thi, quản lý ngân hàng câu hỏi, tạo phòng thi, theo dõi dashboard và xem thống kê kết quả học sinh. Học sinh có thể truy cập phòng thi qua liên kết, xác thực mã học sinh, làm bài và nhận điểm sau khi nộp. Quản trị viên có thể xem số liệu tổng quan, theo dõi xu hướng sử dụng, xếp hạng giáo viên, xem nhật ký hoạt động hệ thống, thêm giáo viên, thêm học sinh, khóa hoặc mở khóa tài khoản khi cần thiết.
-		
-		Kết quả đạt được cho thấy hệ thống đã đáp ứng tốt các luồng chính của bài toán đặt ra và có khả năng triển khai tiếp trong môi trường thực tế. Bên cạnh đó, đồ án cũng chỉ ra một số nội dung cần phát triển thêm như hoàn thiện quản lý bài học, tích hợp gửi email khôi phục mật khẩu trong môi trường thực, mở rộng nguồn tri thức và tối ưu giao diện trên thiết bị di động.
-	\end{abstract}
-	
-	\clearpage
-	\listoffigures
-	\clearpage
-	\listoftables
-	\clearpage
-	
-	\section{KHẢO SÁT VÀ PHÂN TÍCH YÊU CẦU}
-	
-	\subsection{Mục đích khảo sát}
-	Mục đích khảo sát của đề tài là làm rõ nhu cầu thực tế của bài toán và xác định phạm vi triển khai phù hợp với nguồn lực hiện có. Nội dung khảo sát tập trung vào các vấn đề sau:
-	
-	\begin{itemize}
-		\item Xác định những khó khăn mà giáo viên Tin học 12 thường gặp trong quá trình chuẩn bị bài, trả lời câu hỏi và tổ chức kiểm tra đánh giá.
-		\item Xác định mức độ cần thiết của một công cụ AI có thể hỗ trợ hỏi đáp, gợi ý nội dung và tạo đề thi trắc nghiệm.
-		\item Xác định các chức năng cốt lõi cần ưu tiên triển khai trong phiên bản đầu tiên của hệ thống.
-		\item Đánh giá cách tổ chức giao diện sao cho phù hợp với ba nhóm người dùng: giáo viên, học sinh và quản trị viên.
-	\end{itemize}
-	
-	\subsection{Khảo sát}
-	
-	\subsubsection{Đối tượng khảo sát}
-	Khảo sát của đề tài hướng đến ba nhóm đối tượng chính:
-	
-	\begin{itemize}
-		\item \textbf{Giáo viên Tin học THPT}: là nhóm sử dụng trực tiếp các chức năng hỏi đáp AI, tạo đề thi, tạo phòng thi và theo dõi kết quả học sinh.
-		\item \textbf{Học sinh lớp 12}: là nhóm tham gia làm bài trong các phòng thi do giáo viên tạo ra và nhận phản hồi kết quả sau khi nộp bài.
-		\item \textbf{Quản trị viên}: là nhóm quản lý tài khoản giáo viên, học sinh và theo dõi số liệu tổng quan của hệ thống.
-	\end{itemize}
-	
-	\subsubsection{Khảo sát nghiệp vụ}
-	Qua quá trình phân tích yêu cầu và đối chiếu với các luồng nghiệp vụ thực tế, nhóm xác định các nhu cầu nổi bật như sau:
-	
-	\paragraph{Đối với giáo viên}
-	\begin{itemize}
-		\item Cần một công cụ có thể trả lời nhanh các câu hỏi về nội dung Tin học THPT, giúp tiết kiệm thời gian tra cứu tài liệu.
-		\item Cần rút ngắn thời gian biên soạn câu hỏi trắc nghiệm, đồng thời vẫn bảo đảm có thể chỉnh sửa trước khi sử dụng.
-		\item Cần một nơi lưu trữ câu hỏi tập trung để có thể tái sử dụng câu hỏi qua nhiều đề thi khác nhau mà không phải nhập lại.
-		\item Cần một cách đơn giản để tổ chức làm bài trực tuyến và theo dõi điểm số học sinh theo từng đề thi đã giao.
-	\end{itemize}
-	
-	\paragraph{Đối với học sinh}
-	\begin{itemize}
-		\item Cần một cách vào phòng thi trực quan, không yêu cầu thao tác kỹ thuật phức tạp.
-		\item Cần giao diện làm bài rõ ràng, có bộ đếm thời gian và thông báo kết quả sau khi nộp bài.
-	\end{itemize}
-	
-	\paragraph{Đối với quản trị viên}
-	\begin{itemize}
-		\item Cần giao diện riêng để tạo tài khoản giáo viên, thêm học sinh và khóa hoặc mở khóa người dùng.
-		\item Cần xem được số liệu tổng quan như tổng số học sinh, giáo viên, đề thi và câu hỏi đang có trong hệ thống.
-		\item Cần theo dõi xu hướng sử dụng theo ngày và xếp hạng giáo viên theo số đề thi đã tạo.
-		\item Cần xem nhật ký hoạt động hệ thống để kiểm tra các thao tác quan trọng như đăng nhập, tạo đề thi, khóa tài khoản.
-	\end{itemize}
-	
-	\subsubsection{Khảo sát thực tế}
-	Kết quả khảo sát định tính được tổng hợp trong Bảng \ref{tab:khao-sat-thuc-te}. Nội dung khảo sát tập trung vào khó khăn phổ biến trong giảng dạy Tin học 12 và kỳ vọng về hệ thống hỗ trợ.
-	
-	\begin{table}[H]
-		\centering
-		\caption{Tổng hợp khảo sát thực tế}
-		\label{tab:khao-sat-thuc-te}
-		\begin{tabular}{|p{6cm}|p{8cm}|}
-			\hline
-			\centering\textbf{Câu hỏi} & \centering\arraybackslash\textbf{Câu trả lời tổng hợp} \\
-			\hline
-			Trong quá trình giảng dạy Tin học lớp 12, thầy/cô thường gặp khó khăn nào? & Việc giải đáp câu hỏi ngoài giờ, xây dựng câu hỏi kiểm tra và tổng hợp kết quả học sinh thường tốn nhiều thời gian. \\
-			\hline
-			Khi sử dụng một công cụ hỗ trợ giảng dạy, thầy/cô ưu tiên điều gì? & Tính chính xác của nội dung, tốc độ phản hồi và khả năng chỉnh sửa nội dung trước khi đưa vào sử dụng. \\
-			\hline
-			Việc tổ chức bài kiểm tra trực tuyến hiện nay còn bất tiện ở điểm nào? & Giáo viên phải tạo đề, chia sẻ link, kiểm tra danh sách học sinh và tổng hợp điểm qua nhiều bước rời rạc. \\
-			\hline
-			Thầy/cô đánh giá thế nào về khả năng ứng dụng chatbot AI trong môn Tin học 12? & Khả thi nếu hệ thống bám sát nội dung chương trình, giao diện đơn giản và cho phép giáo viên kiểm soát đầu ra của AI trước khi sử dụng. \\
-			\hline
-		\end{tabular}
-	\end{table}
-	
-	\subsubsection{Khảo sát thiết kế giao diện}
-	Bên cạnh khảo sát nghiệp vụ, nhóm tiến hành tham khảo giao diện của một số hệ thống phổ biến trên thị trường nhằm rút ra định hướng thiết kế phù hợp. Các hệ thống được lựa chọn thuộc ba nhóm đặc trưng: chatbot AI hỏi đáp, công cụ tạo đề thi trắc nghiệm và nền tảng quản lý dữ liệu. Từ quá trình quan sát và phân tích, nhóm xác định được các mẫu giao diện và nguyên tắc tổ chức cần tham khảo khi thiết kế từng mô-đun của hệ thống.
-	
-	\paragraph{ChatGPT (OpenAI)}
-	ChatGPT là một trong những chatbot AI được sử dụng rộng rãi nhất hiện nay, với giao diện hội thoại tối giản và trực quan. Màn hình chính bao gồm thanh bên trái liệt kê danh sách các cuộc hội thoại, trong đó mỗi hội thoại có tiêu đề được sinh tự động từ nội dung câu hỏi đầu tiên. Vùng chat trung tâm hiển thị tin nhắn xen kẽ giữa người dùng và AI theo thứ tự thời gian, với nội dung phản hồi hỗ trợ định dạng Markdown gồm tiêu đề, danh sách và đoạn mã có màu nền riêng biệt. Ô nhập liệu được cố định ở phía dưới màn hình và hỗ trợ gửi tin nhắn bằng phím Enter thay vì bắt buộc nhấn nút.
-	
-	Hình \ref{fig:ref_chatgpt} minh họa giao diện chính của ChatGPT với ba vùng bố cục tách biệt rõ ràng gồm thanh điều hướng bên trái, vùng hội thoại và ô nhập liệu cố định phía dưới.
+    \subsection*{1. Mô hình hóa hệ thống}
+	\addcontentsline{toc}{subsection}{1. Mô hình hóa hệ thống}
 	
 	\begin{figure}[H]
 		\centering
-		\includegraphics[width=1\linewidth]{images/chatgpt}
-		\caption{Giao diện hội thoại của ChatGPT}
-		\label{fig:ref_chatgpt}
+		\includegraphics[width=0.9\linewidth]{images/uc_tong_quat}
+		\caption{Sơ đồ ca sử dụng tổng quát}
+		\label{fig:uctongquat}
 	\end{figure}
 	
+	Hệ thống xác định ba nhóm tác nhân chính tham gia vào quá trình vận hành: quản trị viên, giáo viên và học sinh. Quản trị viên có toàn quyền quản lý tài khoản người dùng trong hệ thống, theo dõi nhật ký hoạt động và xem biểu đồ thống kê tổng quan về mức độ sử dụng nền tảng. Giáo viên là nhóm người dùng trung tâm, có thể đăng nhập, trao đổi với trợ lý AI thông qua giao diện chat, tạo và quản lý đề thi bằng AI, xây dựng ngân hàng câu hỏi, tổ chức phòng thi trực tuyến và theo dõi kết quả học tập của học sinh trên dashboard. Học sinh không cần tạo tài khoản mà chỉ truy cập phòng thi thông qua liên kết do giáo viên cung cấp, xác thực bằng mã học sinh, làm bài và nhận điểm tự động ngay sau khi nộp. Mô hình phân quyền này đảm bảo mỗi nhóm người dùng chỉ tiếp cận đúng phạm vi chức năng phù hợp với vai trò của mình, vừa đơn giản hóa trải nghiệm sử dụng vừa tăng tính bảo mật cho hệ thống.
 	
-	Từ thiết kế của ChatGPT, nhóm xác định hai nguyên tắc áp dụng cho mô-đun hội thoại: thứ nhất là tổ chức lịch sử hội thoại thành danh sách dọc ở thanh bên để người dùng có thể quay lại các cuộc trò chuyện cũ một cách nhanh chóng; thứ hai là hiển thị nội dung phản hồi của AI theo định dạng có cấu trúc Markdown thay vì văn bản thuần túy, giúp người dùng đọc kết quả dễ dàng hơn.
+	\subsubsection*{1.1 Ca sử dụng đăng nhập}
+	\addcontentsline{toc}{subsubsection}{1.1 Ca sử dụng đăng nhập}
 	
-	\paragraph{Google Gemini}
-	Google Gemini là chatbot AI của Google, cung cấp khả năng hỏi đáp tương tự ChatGPT nhưng với một số điểm khác biệt trong cách tổ chức giao diện. Điểm nổi bật trong thiết kế của Gemini là phần gợi ý câu hỏi mẫu được hiển thị ngay khi người dùng khởi tạo một hội thoại mới, giúp người dùng chưa quen với chatbot AI biết cách bắt đầu tương tác. Ngoài ra, Gemini cho phép xem lại các phiên bản phản hồi khác nhau cho cùng một câu hỏi thông qua nút chuyển tab bên dưới mỗi tin nhắn, tạo sự linh hoạt khi người dùng muốn so sánh các cách giải thích khác nhau.
-	
-	Hình \ref{fig:ref_gemini} minh họa giao diện khởi đầu của Google Gemini với khu vực gợi ý câu hỏi mẫu và ô nhập liệu được đặt nổi bật ở trung tâm màn hình.
-	
-	
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=1\textwidth]{images/gemini}
-		\caption{Giao diện khởi đầu của Google Gemini}
-		\label{fig:ref_gemini}
-	\end{figure}
-	
-	Từ quan sát này, nhóm nhận thấy tầm quan trọng của việc hỗ trợ người dùng lần đầu tiếp cận hệ thống thông qua các hướng dẫn nội tuyến hoặc câu hỏi gợi ý mẫu, đặc biệt khi đối tượng sử dụng là giáo viên chưa quen với chatbot AI.
-	
-	\paragraph{Quizlet}
-	Quizlet là nền tảng học tập và tạo bộ câu hỏi trắc nghiệm trực tuyến được sử dụng rộng rãi trong môi trường giáo dục. Giao diện tạo câu hỏi của Quizlet được tổ chức theo danh sách dọc, trong đó mỗi câu hỏi hiển thị dưới dạng một thẻ độc lập với ô nhập câu hỏi, ô nhập các đáp án và chỉ định đáp án đúng. Hệ thống hỗ trợ gắn nhãn câu hỏi theo chủ đề và mức độ khó, giúp người dùng lọc nhanh trong bộ câu hỏi lớn. Các thao tác thêm câu mới, nhân bản và xóa câu hỏi đều có nút biểu tượng đặt trực tiếp trên từng thẻ, giảm số bước thao tác so với mô hình menu tập trung. Từ giao diện của Quizlet, nhóm xác định rằng mô-đun ngân hàng câu hỏi cần hỗ trợ lọc theo chủ đề và mức độ, hiển thị danh sách câu hỏi theo dạng bảng có phân trang, đồng thời các nút thao tác chỉnh sửa và xóa nên được đặt trực tiếp trên từng hàng để người dùng không phải mở thêm màn hình khác.
-	
-	\paragraph{Google Forms}
-	Google Forms là công cụ tạo biểu mẫu và khảo sát trực tuyến của Google, được nhiều giáo viên sử dụng để tổ chức bài kiểm tra. Giao diện của Google Forms được chia theo ba tab chức năng rõ ràng: soạn câu hỏi, xem trước biểu mẫu và xem phản hồi. Phần soạn thảo hiển thị từng câu hỏi dưới dạng thẻ độc lập, người dùng có thể kéo thả để sắp xếp lại thứ tự và chọn loại câu hỏi từ danh sách thả xuống. Phần xem phản hồi tổng hợp kết quả theo biểu đồ tròn, biểu đồ cột và bảng chi tiết cho từng câu, giúp giáo viên đánh giá kết quả học sinh một cách trực quan.
-	Từ thiết kế của Google Forms, nhóm rút ra nguyên tắc áp dụng cho màn hình tạo đề thi và thống kê: cần có giao diện xem trước câu hỏi trước khi lưu, mỗi câu hỏi nên được trình bày theo khối riêng biệt và màn hình thống kê cần kết hợp biểu đồ trực quan bên cạnh bảng số liệu để giáo viên nắm bắt kết quả nhanh hơn.
-	
-	\paragraph{Tổng hợp nguyên tắc thiết kế}
-	Từ quá trình khảo sát các hệ thống trên, nhóm rút ra một số nguyên tắc chung áp dụng cho toàn bộ giao diện của hệ thống:
-	
-	\begin{itemize}
-		\item \textbf{Phân tách theo vai trò}: Mỗi nhóm người dùng (giáo viên, học sinh, quản trị viên) sử dụng giao diện riêng với điều hướng và chức năng phù hợp với nhiệm vụ của từng vai trò, không chia sẻ màn hình để tránh nhầm lẫn.
-		\item \textbf{Thanh bên điều hướng cố định}: Tham khảo từ ChatGPT và Gemini, thanh điều hướng bên trái liệt kê các mục chức năng giúp người dùng chuyển đổi giữa các tính năng mà không mất định hướng trên màn hình hiện tại.
-		\item \textbf{Tối giản hoá màn hình trọng tâm}: Màn hình hội thoại AI và màn hình làm bài thi cần loại bỏ các thành phần không cần thiết để người dùng tập trung hoàn toàn vào nội dung chính.
-		\item \textbf{Phản hồi tức thì sau thao tác}: Mọi hành động thêm, xóa, lưu dữ liệu cần kèm theo thông báo kết quả ngay lập tức dưới dạng thông báo nổi hoặc thay đổi trạng thái trực quan trên giao diện, tham khảo từ cách Google Forms thông báo lưu thành công.
-		\item \textbf{Nhất quán về bố cục và màu sắc}: Sử dụng bảng màu và kiều chữ thống nhất xuyên suốt toàn bộ hệ thống để giảm tải nhận thức và tạo cảm giác quen thuộc khi người dùng điều hướng giữa các màn hình khác nhau.
-	\end{itemize}
-	
-	\subsubsection{Phân tích yêu cầu}
-	Từ khảo sát và đối chiếu với phạm vi triển khai thực tế của codebase, nhóm xác định hệ thống cần đáp ứng những yêu cầu sau:
-	
-	\paragraph{Yêu cầu đối với giao diện}
-	\begin{itemize}
-		\item Giao diện phải rõ ràng, dễ sử dụng và tách biệt theo nhóm vai trò.
-		\item Các thao tác chính như đăng nhập, hỏi AI, tạo đề, tạo phòng thi và xem thống kê phải được truy cập nhanh.
-		\item Màn hình làm bài dành cho học sinh phải tối giản, tập trung vào câu hỏi và thời gian làm bài.
-	\end{itemize}
-	
-	\paragraph{Chức năng của giáo viên}
-	\begin{itemize}
-		\item Đăng nhập và đăng xuất hệ thống bằng email và mật khẩu.
-		\item Gửi yêu cầu khôi phục mật khẩu và đặt lại mật khẩu bằng token.
-		\item Hội thoại với AI, lưu lịch sử hội thoại và mở lại các cuộc hội thoại cũ.
-		\item Tạo đề thi trắc nghiệm bằng AI, chỉnh sửa câu hỏi, lưu nháp hoặc công bố đề thi.
-		\item Quản lý ngân hàng câu hỏi: tạo, xem, lọc theo chủ đề hoặc mức độ, và xóa câu hỏi khi cần.
-		\item Tạo phòng thi, nhận liên kết truy cập và bật hoặc tắt trạng thái phòng thi.
-		\item Xem dashboard tổng quan và thống kê kết quả học sinh.
-	\end{itemize}
-	
-	\paragraph{Chức năng của học sinh}
-	\begin{itemize}
-		\item Truy cập phòng thi bằng liên kết chứa mã phòng.
-		\item Nhập thông tin xác thực và làm bài trực tuyến.
-		\item Nộp bài và nhận điểm ngay sau khi hệ thống chấm tự động.
-	\end{itemize}
-	
-	\paragraph{Chức năng của quản trị viên}
-	\begin{itemize}
-		\item Xem số liệu tổng quan về giáo viên, học sinh, đề thi và câu hỏi trong toàn hệ thống.
-		\item Theo dõi biểu đồ xu hướng sử dụng theo ngày và bảng xếp hạng giáo viên theo số đề thi đã tạo.
-		\item Thêm học sinh mới, thêm giáo viên mới và gửi thông tin tài khoản qua email.
-		\item Khóa hoặc mở khóa tài khoản giáo viên và học sinh.
-		\item Xem nhật ký hoạt động hệ thống, lọc theo loại thao tác để kiểm tra các sự kiện quan trọng.
-	\end{itemize}
-	
-	\paragraph{Phạm vi chưa hoàn thiện hoàn toàn trong phiên bản hiện tại}
-	\begin{itemize}
-		\item Phần bài học hiện mới ở mức giao diện danh mục và mô hình dữ liệu, chưa có luồng CRUD đầy đủ trên API như các module chính.
-		\item Chức năng quên mật khẩu đã có API sinh token và đường dẫn đặt lại mật khẩu, nhưng trong môi trường phát triển đường dẫn này hiện được ghi ra log thay vì gửi email thật.
-	\end{itemize}
-	
-	\section{PHÂN TÍCH VÀ THIẾT KẾ HỆ THỐNG}
-	
-	\subsection{Xác định bài toán}
-	\paragraph{Tên đề tài}
-	Xây dựng chatbot hỗ trợ giáo viên trong giảng dạy Tin học 12.
-	
-	\paragraph{Mô tả bài toán}
-	Đề tài hướng tới việc xây dựng một hệ thống web hỗ trợ giáo viên Tin học 12 trong các hoạt động trọng tâm gồm: hỏi đáp với AI, tạo đề kiểm tra trắc nghiệm bằng AI, tạo phòng thi trực tuyến cho học sinh và theo dõi kết quả học tập. Hệ thống cần hoạt động trên nền web, có phân quyền người dùng rõ ràng và bảo đảm dữ liệu được lưu trữ tập trung.
-	
-	\paragraph{Kết quả dự kiến đạt được}
-	\begin{itemize}
-		\item Xây dựng được bản phân tích thiết kế hệ thống và mô hình cơ sở dữ liệu.
-		\item Xây dựng được website gồm các vai trò giáo viên, học sinh và quản trị viên.
-		\item Hoàn thiện được các luồng nghiệp vụ chính: chat với AI, tạo đề thi, tạo phòng thi, làm bài thi trực tuyến và xem thống kê.
-	\end{itemize}
-	
-	\paragraph{Đối với giáo viên}
-	\begin{itemize}
-		\item Đăng nhập hệ thống.
-		\item Thực hiện quên mật khẩu và đặt lại mật khẩu.
-		\item Hỏi đáp với AI và xem lại lịch sử hội thoại.
-		\item Tạo đề thi bằng AI, chỉnh sửa và lưu đề thi.
-		\item Quản lý ngân hàng câu hỏi: tạo, lọc lìm đọc và xóa câu hỏi.
-		\item Tạo phòng thi cho học sinh và xem thống kê kết quả.
-		\item Xem dashboard tổng quan.
-	\end{itemize}
-	
-	\paragraph{Đối với học sinh}
-	\begin{itemize}
-		\item Tham gia làm bài thi trực tuyến qua phòng thi được giáo viên chia sẻ.
-		\item Nhận kết quả sau khi nộp bài.
-	\end{itemize}
-	
-	\paragraph{Đối với quản trị viên}
-	\begin{itemize}
-		\item Quản lý giáo viên và học sinh.
-		\item Theo dõi số lượng đối tượng và số lượng đề thi của toàn hệ thống.
-		\item Xem biểu đồ xu hướng và bảng xếp hạng giáo viên.
-		\item Xem nhật ký hoạt động hệ thống.
-	\end{itemize}
-	
-	\subsection{Phân tích hệ thống}
-	
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=0.9\linewidth]{2_1.png}
-		\caption{Sơ đồ use case tổng quát}
-		\label{fig:2_1_usecase_tong_quat}
-	\end{figure}
-	
-	\paragraph{Use case đăng nhập}
+	\paragraph{Biểu đồ ca sử dụng}
+	\noindent
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=0.9\linewidth]{2_2.png}
-		\caption{Use case đăng nhập}
+		\caption{Biểu đồ use case đăng nhập}
 		\label{fig:2_2_login}
 	\end{figure}
 	
@@ -537,11 +482,35 @@
 		\end{tabular}
 	\end{center}
 	
-	\paragraph{Use case quên mật khẩu}
+	\paragraph{Biểu đồ hoạt động}
+	\noindent
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.7\linewidth]{2_12.png}
+		\caption{Biểu đồ hoạt động đăng nhập}
+		\label{fig:2_12_activity_login}
+	\end{figure}
+	Người dùng nhập email và mật khẩu; hệ thống kiểm tra thông tin xác thực và trạng thái tài khoản, nếu hợp lệ thì cấp phiên đăng nhập và điều hướng theo vai trò, ngược lại trả về thông báo lỗi.
+	
+	
+	\paragraph{Biểu đồ tuần tự}
+	\noindent
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\linewidth]{2_21.png}
+		\caption{Biểu đồ tuần tự đăng nhập}
+		\label{fig:2_21_sequence_login}
+	\end{figure}
+	Frontend gửi email và mật khẩu tới Backend; Backend xác thực thông tin, kiểm tra trạng thái tài khoản, tạo cookie xác thực và trả thông tin vai trò để Frontend điều hướng đến màn hình phù hợp.
+	
+	
+	\subsubsection*{1.2 Ca sử dụng quên mật khẩu}
+	\addcontentsline{toc}{subsubsection}{1.2 Ca sử dụng quên mật khẩu}
+	\noindent
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=0.9\linewidth]{2_3.png}
-		\caption{Use case quên mật khẩu}
+		\caption{Biểu đồ ca sử dụng quên mật khẩu}
 		\label{fig:2_3_forgot_password}
 	\end{figure}
 	
@@ -574,7 +543,34 @@
 		\end{tabular}
 	\end{center}
 	
-	\paragraph{Use case hội thoại với AI}
+	\paragraph{Biểu đồ hoạt động}	
+	\noindent
+	\begin{figure}
+		\centering
+		\includegraphics[width=0.8\linewidth]{images/action_quen_mk}
+		\caption{Biểu đồ hoạt động quên mật khẩu}
+		\label{fig:actionquenmk}
+	\end{figure}
+	Người dùng nhập email để yêu cầu cấp lại mật khẩu; hệ thống sinh token khôi phục và tạo đường dẫn đặt lại, người dùng truy cập đường dẫn và nhập mật khẩu mới để hoàn tất.
+	
+	
+	\paragraph{Biểu đồ tuần tự}	
+	\noindent
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\linewidth]{2_22.png}
+		\caption{Biểu đồ tuần tự quên mật khẩu}
+		\label{fig:2_22_sequence_forgot}
+	\end{figure}
+	Frontend gửi email đến Backend để yêu cầu token khôi phục; Backend sinh token, tạo đường dẫn đặt lại và trả lại (ghi log trong môi trường phát triển). Sau đó người dùng gửi token và mật khẩu mới; Backend xác thực token và cập nhật mật khẩu.
+	
+	
+	\subsubsection*{1.3 Ca sử dụng hội thoại với AI}
+	\addcontentsline{toc}{subsubsection}{1.3 Ca sử dụng hội thoại với AI}
+	
+	\paragraph{Biểu đồ ca sử dụng}
+	
+	\noindent
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=0.9\linewidth]{2_4.png}
@@ -611,7 +607,33 @@
 		\end{tabular}
 	\end{center}
 	
-	\paragraph{Use case tạo đề thi}
+	\paragraph{Biểu đồ hoạt động}
+	\noindent
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.55\linewidth]{2_13.png}
+		\caption{Biểu đồ hoạt động chat với AI}
+		\label{fig:2_13_activity_chat}
+	\end{figure}
+	Giáo viên mở màn hình chat và nhập câu hỏi; hệ thống truy xuất ngữ cảnh từ kho FAISS, gọi mô hình AI để sinh phản hồi và lưu toàn bộ cuộc hội thoại vào cơ sở dữ liệu.
+	
+	
+	\paragraph{Biểu đồ tuần tự}
+	\noindent
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\linewidth]{2_23.png}
+		\caption{Biểu đồ tuần tự chat với AI}
+		\label{fig:2_23_sequence_chat}
+	\end{figure}
+	Frontend thiết lập kết nối WebSocket và gửi câu hỏi; Backend truy xuất ngữ cảnh từ FAISS, gọi OpenAI, nhận phản hồi và phát trực tuyến về Frontend, đồng thời lưu tin nhắn vào cơ sở dữ liệu.
+	
+	
+	\subsubsection*{1.4 Ca sử dụng tạo đề thi}
+	\addcontentsline{toc}{subsubsection}{1.4 Ca sử dụng tạo đề thi}
+	
+	\paragraph{Biểu đồ ca sử dụng}
+	\noindent
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=0.9\linewidth]{2_5.png}
@@ -648,18 +670,44 @@
 		\end{tabular}
 	\end{center}
 	
-	\paragraph{Use case tạo phòng thi}
+	\paragraph{Biểu đồ ca hoạt động}
+	\noindent
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.7\linewidth]{2_14.png}
+		\caption{Biểu đồ hoạt động tạo đề thi}
+		\label{fig:2_14_activity_exam}
+	\end{figure}
+	Giáo viên cấu hình tham số đề thi; hệ thống gọi AI để sinh câu hỏi trắc nghiệm, hiển thị để giáo viên xem trước và chỉnh sửa, sau đó lưu đề thi cùng toàn bộ câu hỏi và đáp án vào cơ sở dữ liệu.
+	
+	
+	\paragraph{Biểu đồ tuần tự}
+	\noindent
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\linewidth]{2_24.png}
+		\caption{Biểu đồ tuần tự tạo đề thi}
+		\label{fig:2_24_sequence_exam}
+	\end{figure}
+	Frontend gửi cấu hình đề thi; Backend gọi OpenAI để sinh câu hỏi và trả danh sách về Frontend. Sau khi giáo viên xác nhận, Frontend gửi yêu cầu lưu; Backend lưu đề thi cùng câu hỏi và đáp án vào cơ sở dữ liệu.
+	
+	
+	\subsubsection*{1.5 Ca sử dụng tạo phòng thi}
+	\addcontentsline{toc}{subsubsection}{1.5 Ca sử dụng tạo phòng thi}
+	
+	\paragraph{Biểu đồ ca sử dụng}
+	\noindent
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=0.9\linewidth]{2_6.png}
-		\caption{Use case tạo phòng thi}
+		\caption{Ca sử dụng tạo phòng thi}
 		\label{fig:2_6_create_room}
 	\end{figure}
 	
 	\begin{center}
 		\begin{tabular}{|p{4cm}|p{10cm}|}
 			\hline
-			\textbf{Tên use case} & \textbf{Tạo phòng thi} \\
+			\textbf{Tên ca sử dụng} & \textbf{Tạo phòng thi} \\
 			\hline
 			Tác nhân chính & Giáo viên \\
 			\hline
@@ -684,18 +732,44 @@
 		\end{tabular}
 	\end{center}
 	
-	\paragraph{Use case làm bài thi trực tuyến}
+	\paragraph{Biểu đồ hoạt động}
+	\noindent
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.7\linewidth]{2_15.png}
+		\caption{Biểu đồ hoạt động tạo phòng thi}
+		\label{fig:2_15_activity_room}
+	\end{figure}
+	Giáo viên chọn đề thi đã lưu và yêu cầu tạo phòng thi; hệ thống sinh mã truy cập và liên kết công khai, giáo viên có thể bật hoặc tắt phòng thi bất kỳ lúc nào.
+	
+	
+	\paragraph{Biểu đồ tuần tự}
+	\noindent
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\linewidth]{2_25.png}
+		\caption{Biểu đồ tuần tự tạo phòng thi}
+		\label{fig:2_25_sequence_room}
+	\end{figure}
+	Frontend gửi yêu cầu tạo phòng thi kèm mã đề thi; Backend sinh mã truy cập và liên kết công khai, lưu phòng thi vào cơ sở dữ liệu và trả liên kết về Frontend để giáo viên chia sẻ.
+	
+	
+	\subsubsection*{1.6 Ca sử dụng làm bài thi trực tuyến}
+	\addcontentsline{toc}{subsubsection}{1.6 Ca sử dụng làm bài thi trực tuyến}
+	
+	\paragraph{Biểu đồ ca sử dụng}
+	\noindent
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=0.9\linewidth]{2_7.png}
-		\caption{Use case làm bài thi trực tuyến}
+		\caption{Biểu đồ ca sử dụng làm bài thi trực tuyến}
 		\label{fig:2_7_take_exam}
 	\end{figure}
 	
 	\begin{center}
 		\begin{tabular}{|p{4cm}|p{10cm}|}
 			\hline
-			\textbf{Tên use case} & \textbf{Làm bài thi} \\
+			\textbf{Tên ca sử dụng} & \textbf{Làm bài thi} \\
 			\hline
 			Tác nhân chính & Học sinh \\
 			\hline
@@ -722,18 +796,43 @@
 		\end{tabular}
 	\end{center}
 	
-	\paragraph{Use case xem dashboard}
+	\paragraph{Biểu đồ hoạt động}
+	\noindent
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.6\linewidth]{2_17.png}
+		\caption{Biểu đồ hoạt động làm bài thi}
+		\label{fig:2_17_activity_take_exam}
+	\end{figure}
+	Học sinh truy cập liên kết phòng thi và xác thực bằng mã học sinh; sau khi xác thực thành công, học sinh làm bài trong giới hạn thời gian, nộp bài và nhận kết quả chấm điểm tự động ngay lập tức.
+	
+	\paragraph{Biểu đồ tuần tự}
+	\noindent
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\linewidth]{2_26.png}
+		\caption{Biểu đồ tuần tự làm bài thi}
+		\label{fig:2_26_sequence_take_exam}
+	\end{figure}
+	Frontend gửi mã học sinh để xác thực; Backend kiểm tra và trả đề thi. Sau khi học sinh nộp bài, Frontend gửi danh sách đáp án; Backend chấm điểm tự động, lưu kết quả vào bảng \texttt{scores} và trả điểm về Frontend.
+	
+	
+	\subsubsection*{1.7 Ca sử dụng xem dashboard}
+	\addcontentsline{toc}{subsubsection}{1.7 Ca sử dụng xem dashboard}
+	
+	\paragraph{Biểu đồ ca sử dụng}
+	\noindent
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=0.9\linewidth]{2_8.png}
-		\caption{Use case xem dashboard}
+		\caption{Biểu đồ ca sử dụng xem dashboard}
 		\label{fig:2_8_dashboard}
 	\end{figure}
 	
 	\begin{center}
 		\begin{tabular}{|p{4cm}|p{10cm}|}
 			\hline
-			\textbf{Tên use case} & \textbf{Xem dashboard} \\
+			\textbf{Tên ca sử dụng} & \textbf{Xem dashboard} \\
 			\hline
 			Tác nhân chính & Giáo viên \\
 			\hline
@@ -757,18 +856,44 @@
 		\end{tabular}
 	\end{center}
 	
-	\paragraph{Use case xem thống kê}
+	\paragraph{Biểu đồ hoạt động}
+	\noindent
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.6\linewidth]{2_16.png}
+		\caption{Biểu đồ hoạt động xem dashboard}
+		\label{fig:2_16_activity_dashboard}
+	\end{figure}
+	Giáo viên truy cập dashboard; hệ thống tổng hợp số liệu về bài học, đề thi, học sinh và lượt hỏi AI, sau đó hiển thị cùng danh sách hoạt động gần đây.
+	
+	
+	\paragraph{Biểu đồ tuần tự}
+	\noindent
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\linewidth]{2_27.png}
+		\caption{Biểu đồ tuần tự xem dashboard}
+		\label{fig:2_27_sequence_dashboard}
+	\end{figure}
+	Frontend gọi API dashboard; Backend truy vấn các bảng để tổng hợp số liệu bài học, đề thi, học sinh và lượt hỏi AI trong ngày, sau đó trả dữ liệu JSON để Frontend hiển thị.
+	
+	
+	
+	\subsubsection*{1.8 Ca sử dụng xem thống kê}
+	\addcontentsline{toc}{subsubsection}{1.9 Ca sử dụng xem thống kê}
+	\paragraph{Biểu đồ ca sử dụng}
+	\noindent
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=0.9\linewidth]{2_9.png}
-		\caption{Use case xem thống kê}
+		\caption{Biểu đồ ca sử dụng xem thống kê}
 		\label{fig:2_9_stats}
 	\end{figure}
 	
 	\begin{center}
 		\begin{tabular}{|p{4cm}|p{10cm}|}
 			\hline
-			\textbf{Tên use case} & \textbf{Xem thống kê} \\
+			\textbf{Tên ca sử dụng} & \textbf{Xem thống kê} \\
 			\hline
 			Tác nhân chính & Giáo viên \\
 			\hline
@@ -792,18 +917,44 @@
 		\end{tabular}
 	\end{center}
 	
-	\paragraph{Use case quản lý học sinh}
+	\paragraph{Biểu đồ hoạt động}
+	\noindent
 	\begin{figure}[H]
 		\centering
-		\includegraphics[width=0.9\linewidth]{2_10.png}
-		\caption{Use case quản lý học sinh}
+		\includegraphics[width=0.6\linewidth]{2_18.png}
+		\caption{Biểu đồ hoạt động thống kê}
+		\label{fig:2_18_activity_stats}
+	\end{figure}
+	Giáo viên mở trang thống kê; hệ thống tính toán các chỉ số như điểm trung bình, tỷ lệ đạt và phân bố kết quả, sau đó hiển thị bảng xếp hạng và biểu đồ để giáo viên phân tích.
+	
+	
+	\paragraph{Biểu đồ tuần tự}
+	\noindent
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\linewidth]{2_28.png}
+		\caption{Biểu đồ tuần tự xem thống kê}
+		\label{fig:2_28_sequence_stats}
+	\end{figure}
+	Frontend gọi API thống kê; Backend tính các chỉ số điểm trung bình, tỷ lệ đạt, phân bố kết quả và bảng xếp hạng từ bảng \texttt{scores}, sau đó trả về để Frontend hiển thị dưới dạng biểu đồ.
+	
+	
+	\subsubsection*{1.10 Ca sử dụng quản lý học sinh}
+	\addcontentsline{toc}{subsubsection}{1.10 Ca sử dụng quản lý học sinh}
+	\paragraph{Biểu đồ ca sử dụng}
+	\noindent
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.7\linewidth]{2_10.png}
+		\caption{Biểu đồ ca sử dụng quản lý học sinh}
 		\label{fig:2_10_manage_students}
 	\end{figure}
+	
 	
 	\begin{center}
 		\begin{tabular}{|p{4cm}|p{10cm}|}
 			\hline
-			\textbf{Tên use case} & \textbf{Quản lý học sinh} \\
+			\textbf{Tên ca sử dụng} & \textbf{Quản lý học sinh} \\
 			\hline
 			Tác nhân chính & Admin \\
 			\hline
@@ -827,18 +978,44 @@
 		\end{tabular}
 	\end{center}
 	
-	\paragraph{Use case quản lý giáo viên}
+	
+	\paragraph{Biểu đồ hoạt động}
+	\noindent
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\linewidth]{2_19.png}
+		\caption{Biểu đồ hoạt động quản lý học sinh}
+		\label{fig:2_19_activity_students}
+	\end{figure}
+	Admin truy cập màn hình quản lý học sinh, xem danh sách hiện có và có thể thêm học sinh mới hoặc thay đổi trạng thái khóa; hệ thống kiểm tra trùng mã học sinh trước khi lưu.
+	
+	\paragraph{Biểu đồ tuần tự}
+	\noindent
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\linewidth]{2_29.png}
+		\caption{Biểu đồ tuần tự quản lý học sinh}
+		\label{fig:2_29_sequence_students}
+	\end{figure}
+	Frontend gửi thông tin học sinh mới; Backend kiểm tra trùng mã, nếu hợp lệ thì lưu bản ghi mới và trả kết quả. Khi khóa hoặc mở khóa, Backend cập nhật trường \texttt{is\_active} và trả trạng thái mới.
+	
+	
+	\subsubsection*{1.11 Ca sử dụng quản lý giáo viên}
+	\addcontentsline{toc}{subsubsection}{1.11 Ca sử dụng quản lý giáo viên}
+	
+	\paragraph{Biểu đồ ca sử dụng}
+	\noindent
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=0.9\linewidth]{2_11.png}
-		\caption{Use case quản lý giáo viên}
+		\caption{Biểu đồ ca sử dụng quản lý giáo viên}
 		\label{fig:2_11_manage_teachers}
 	\end{figure}
 	
 	\begin{center}
 		\begin{tabular}{|p{4cm}|p{10cm}|}
 			\hline
-			\textbf{Tên use case} & \textbf{Quản lý giáo viên} \\
+			\textbf{Tên ca sử dụng} & \textbf{Quản lý giáo viên} \\
 			\hline
 			Tác nhân chính & Admin \\
 			\hline
@@ -864,14 +1041,37 @@
 		\end{tabular}
 	\end{center}
 	
-	
-	
-	
-	\paragraph{Use case quản lý ngân hàng câu hỏi}
+	\paragraph{Biểu đồ hoạt động}
+	\noindent
 	\begin{figure}[H]
 		\centering
-		\includegraphics[width=0.9\linewidth]{images/us_questions_bank}
-		\caption{Use case quản lý ngân hàng của hỏi}
+		\includegraphics[width=0.9\linewidth]{2_20.png}
+		\caption{Biểu đồ hoạt động quản lý giáo viên}
+		\label{fig:2_20_activity_teachers}
+	\end{figure}
+	Admin nhập thông tin tài khoản giáo viên mới; hệ thống tạo tài khoản, gửi thông tin đăng nhập qua email và cho phép admin khóa hoặc mở khóa tài khoản giáo viên khi cần.
+	
+	\paragraph{Biểu đồ tuần tự}
+	\noindent
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\linewidth]{2_30.png}
+		\caption{Biểu đồ tuần tự quản lý giáo viên}
+		\label{fig:2_30_sequence_teachers}
+	\end{figure}
+	Frontend gửi thông tin tài khoản giáo viên mới; Backend tạo tài khoản, gọi dịch vụ email để gửi thông tin đăng nhập và trả kết quả. Nếu gửi email thất bại, Backend rollback và trả về thông báo lỗi.
+	
+	
+	
+	\subsubsection*{1.12 Ca sử dụng quản lý ngân hàng câu hỏi}
+	\addcontentsline{toc}{subsubsection}{1.12 Ca sử dụng quản lý ngân hàng câu hỏi}
+	
+	\paragraph{Biểu đồ ca sử dụng}
+	\noindent
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.65\linewidth]{images/us_questions_bank}
+		\caption{Biểu đồ ca sử dụng quản lý ngân hàng của hỏi}
 		\label{fig:2_31_question_bank}
 	\end{figure}
 	
@@ -879,7 +1079,7 @@
 	\begin{center}
 		\begin{tabular}{|p{4cm}|p{10cm}|}
 			\hline
-			\textbf{Tên use case} & \textbf{Quản lý ngân hàng câu hỏi} \\
+			\textbf{Tên ca sử dụng} & \textbf{Quản lý ngân hàng câu hỏi} \\
 			\hline
 			Tác nhân chính & Giáo viên \\
 			\hline
@@ -904,12 +1104,38 @@
 			\hline
 		\end{tabular}
 	\end{center}
-
-	\paragraph{Use case xem nhật ký hoạt động}		
+	
+	
+	\paragraph{Biểu đồ hoạt động}
+	\noindent
 	\begin{figure}[H]
 		\centering
-		\includegraphics[width=0.9\linewidth]{images/us_active_logs}
-		\caption{}
+		\includegraphics[width=0.7\linewidth]{images/action_question_bank}
+		\caption{Biểu đồ hoạt động quản lý ngân hàng câu hỏi}
+		\label{fig:2_21_activity_question_bank}
+	\end{figure}
+	Giáo viên xem danh sách câu hỏi trong ngân hàng với bộ lọc theo chủ đề và mức độ; giáo viên có thể tạo câu hỏi mới thủ công hoặc dùng AI sinh trước, sau đó lưu hoặc xóa câu hỏi không còn cần thiết.
+	
+	
+	\paragraph{Biểu đồ tuần tự}
+	\noindent
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.7\linewidth]{images/sequence_question_bank}
+		\caption{Biểu đồ tuần tự quản lý ngân hàng câu hỏi}
+		\label{fig:2_31_sequence_question_bank}
+	\end{figure}
+	Frontend gửi nội dung câu hỏi và đáp án; Backend lưu câu hỏi vào bảng \texttt{questions}, lưu các đáp án vào bảng \texttt{question\_options}, ghi nhật ký hoạt động và trả bản ghi câu hỏi về Frontend.
+	
+	
+	\subsubsection*{1.13 Ca sử dụng xem nhật ký hoạt động}
+	\addcontentsline{toc}{subsubsection}{1.13 Ca sử dụng xem nhật ký hoạt động}
+	\paragraph{Biểu đồ ca sử dụng}
+	\noindent	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.8\linewidth]{images/us_active_logs}
+		\caption{Biểu đồ xem nhật ký hoạt động}
 		\label{fig:2_32_activity_logs}
 	\end{figure}
 	
@@ -917,7 +1143,7 @@
 	\begin{center}
 		\begin{tabular}{|p{4cm}|p{10cm}|}
 			\hline
-			\textbf{Tên use case} & \textbf{Xem nhật ký hoạt động} \\
+			\textbf{Tên ca sử dụng} & \textbf{Xem nhật ký hoạt động} \\
 			\hline
 			Tác nhân chính & Admin \\
 			\hline
@@ -941,194 +1167,20 @@
 			\hline
 		\end{tabular}
 	\end{center}
-	Người dùng nhập email và mật khẩu; hệ thống kiểm tra thông tin xác thực và trạng thái tài khoản, nếu hợp lệ thì cấp phiên đăng nhập và điều hướng theo vai trò, ngược lại trả về thông báo lỗi.
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=0.9\linewidth]{2_12.png}
-		\caption{Biểu đồ hoạt động đăng nhập}
-		\label{fig:2_12_activity_login}
-	\end{figure}
 	
-	Người dùng nhập email để yêu cầu cấp lại mật khẩu; hệ thống sinh token khôi phục và tạo đường dẫn đặt lại, người dùng truy cập đường dẫn và nhập mật khẩu mới để hoàn tất.
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=0.9\linewidth]{2_13.png}
-		\caption{Biểu đồ hoạt động quên mật khẩu}
-		\label{fig:2_13_activity_forgot}
-	\end{figure}
-	
-	Giáo viên mở màn hình chat và nhập câu hỏi; hệ thống truy xuất ngữ cảnh từ kho FAISS, gọi mô hình AI để sinh phản hồi và lưu toàn bộ cuộc hội thoại vào cơ sở dữ liệu.
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=0.9\linewidth]{2_13.png}
-		\caption{Biểu đồ hoạt động chat với AI}
-		\label{fig:2_13_activity_chat}
-	\end{figure}
-	
-	Giáo viên cấu hình tham số đề thi; hệ thống gọi AI để sinh câu hỏi trắc nghiệm, hiển thị để giáo viên xem trước và chỉnh sửa, sau đó lưu đề thi cùng toàn bộ câu hỏi và đáp án vào cơ sở dữ liệu.
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=0.9\linewidth]{2_14.png}
-		\caption{Biểu đồ hoạt động tạo đề thi}
-		\label{fig:2_14_activity_exam}
-	\end{figure}
-	
-	Giáo viên chọn đề thi đã lưu và yêu cầu tạo phòng thi; hệ thống sinh mã truy cập và liên kết công khai, giáo viên có thể bật hoặc tắt phòng thi bất kỳ lúc nào.
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=0.9\linewidth]{2_15.png}
-		\caption{Biểu đồ hoạt động tạo phòng thi}
-		\label{fig:2_15_activity_room}
-	\end{figure}
-	
-	Giáo viên truy cập dashboard; hệ thống tổng hợp số liệu về bài học, đề thi, học sinh và lượt hỏi AI, sau đó hiển thị cùng danh sách hoạt động gần đây.
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=0.9\linewidth]{2_16.png}
-		\caption{Biểu đồ hoạt động xem dashboard}
-		\label{fig:2_16_activity_dashboard}
-	\end{figure}
-	
-	Học sinh truy cập liên kết phòng thi và xác thực bằng mã học sinh; sau khi xác thực thành công, học sinh làm bài trong giới hạn thời gian, nộp bài và nhận kết quả chấm điểm tự động ngay lập tức.
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=0.9\linewidth]{2_17.png}
-		\caption{Biểu đồ hoạt động làm bài thi}
-		\label{fig:2_17_activity_take_exam}
-	\end{figure}
-	
-	Giáo viên mở trang thống kê; hệ thống tính toán các chỉ số như điểm trung bình, tỷ lệ đạt và phân bố kết quả, sau đó hiển thị bảng xếp hạng và biểu đồ để giáo viên phân tích.
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=0.9\linewidth]{2_18.png}
-		\caption{Biểu đồ hoạt động thống kê}
-		\label{fig:2_18_activity_stats}
-	\end{figure}
-	
-	Admin truy cập màn hình quản lý học sinh, xem danh sách hiện có và có thể thêm học sinh mới hoặc thay đổi trạng thái khóa; hệ thống kiểm tra trùng mã học sinh trước khi lưu.
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=0.9\linewidth]{2_19.png}
-		\caption{Biểu đồ hoạt động quản lý học sinh}
-		\label{fig:2_19_activity_students}
-	\end{figure}
-	
-	Admin nhập thông tin tài khoản giáo viên mới; hệ thống tạo tài khoản, gửi thông tin đăng nhập qua email và cho phép admin khóa hoặc mở khóa tài khoản giáo viên khi cần.
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=0.9\linewidth]{2_20.png}
-		\caption{Biểu đồ hoạt động quản lý giáo viên}
-		\label{fig:2_20_activity_teachers}
-	\end{figure}
-	
-	Giáo viên xem danh sách câu hỏi trong ngân hàng với bộ lọc theo chủ đề và mức độ; giáo viên có thể tạo câu hỏi mới thủ công hoặc dùng AI sinh trước, sau đó lưu hoặc xóa câu hỏi không còn cần thiết.
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=0.7\linewidth]{images/action_question_bank}
-		\caption{Biểu đồ hoạt động quản lý ngân hàng câu hỏi}
-		\label{fig:2_21_activity_question_bank}
-	\end{figure}
-	
-	
-	Admin truy cập trang nhật ký và tùy chọn lọc theo loại hành động; hệ thống truy vấn bảng \texttt{activity\_logs} và hiển thị danh sách bản ghi theo thứ tự thời gian.
+	\paragraph{Biểu đồ hoạt động}
+	\noindent
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=0.7\linewidth]{images/sequence_active_logs}
 		\caption{Biểu đồ hoạt động xem nhật ký hoạt động}
 		\label{fig:2_22_activity_logs}
 	\end{figure}
-	
-	\subsubsection{Biểu đồ tuần tự}
-	
-	Frontend gửi email và mật khẩu tới Backend; Backend xác thực thông tin, kiểm tra trạng thái tài khoản, tạo cookie xác thực và trả thông tin vai trò để Frontend điều hướng đến màn hình phù hợp.
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=0.9\linewidth]{2_21.png}
-		\caption{Biểu đồ tuần tự đăng nhập}
-		\label{fig:2_21_sequence_login}
-	\end{figure}
-	
-	Frontend gửi email đến Backend để yêu cầu token khôi phục; Backend sinh token, tạo đường dẫn đặt lại và trả lại (ghi log trong môi trường phát triển). Sau đó người dùng gửi token và mật khẩu mới; Backend xác thực token và cập nhật mật khẩu.
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=0.9\linewidth]{2_22.png}
-		\caption{Biểu đồ tuần tự quên mật khẩu}
-		\label{fig:2_22_sequence_forgot}
-	\end{figure}
-	
-	Frontend thiết lập kết nối WebSocket và gửi câu hỏi; Backend truy xuất ngữ cảnh từ FAISS, gọi OpenAI, nhận phản hồi và phát trực tuyến về Frontend, đồng thời lưu tin nhắn vào cơ sở dữ liệu.
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=0.9\linewidth]{2_23.png}
-		\caption{Biểu đồ tuần tự chat với AI}
-		\label{fig:2_23_sequence_chat}
-	\end{figure}
-	
-	Frontend gửi cấu hình đề thi; Backend gọi OpenAI để sinh câu hỏi và trả danh sách về Frontend. Sau khi giáo viên xác nhận, Frontend gửi yêu cầu lưu; Backend lưu đề thi cùng câu hỏi và đáp án vào cơ sở dữ liệu.
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=0.9\linewidth]{2_24.png}
-		\caption{Biểu đồ tuần tự tạo đề thi}
-		\label{fig:2_24_sequence_exam}
-	\end{figure}
-	
-	Frontend gửi yêu cầu tạo phòng thi kèm mã đề thi; Backend sinh mã truy cập và liên kết công khai, lưu phòng thi vào cơ sở dữ liệu và trả liên kết về Frontend để giáo viên chia sẻ.
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=0.9\linewidth]{2_25.png}
-		\caption{Biểu đồ tuần tự tạo phòng thi}
-		\label{fig:2_25_sequence_room}
-	\end{figure}
-	
-	Frontend gửi mã học sinh để xác thực; Backend kiểm tra và trả đề thi. Sau khi học sinh nộp bài, Frontend gửi danh sách đáp án; Backend chấm điểm tự động, lưu kết quả vào bảng \texttt{scores} và trả điểm về Frontend.
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=0.9\linewidth]{2_26.png}
-		\caption{Biểu đồ tuần tự làm bài thi}
-		\label{fig:2_26_sequence_take_exam}
-	\end{figure}
-	
-	Frontend gọi API dashboard; Backend truy vấn các bảng để tổng hợp số liệu bài học, đề thi, học sinh và lượt hỏi AI trong ngày, sau đó trả dữ liệu JSON để Frontend hiển thị.
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=0.9\linewidth]{2_27.png}
-		\caption{Biểu đồ tuần tự xem dashboard}
-		\label{fig:2_27_sequence_dashboard}
-	\end{figure}
-	
-	Frontend gọi API thống kê; Backend tính các chỉ số điểm trung bình, tỷ lệ đạt, phân bố kết quả và bảng xếp hạng từ bảng \texttt{scores}, sau đó trả về để Frontend hiển thị dưới dạng biểu đồ.
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=0.9\linewidth]{2_28.png}
-		\caption{Biểu đồ tuần tự xem thống kê}
-		\label{fig:2_28_sequence_stats}
-	\end{figure}
-	
-	Frontend gửi thông tin học sinh mới; Backend kiểm tra trùng mã, nếu hợp lệ thì lưu bản ghi mới và trả kết quả. Khi khóa hoặc mở khóa, Backend cập nhật trường \texttt{is\_active} và trả trạng thái mới.
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=0.9\linewidth]{2_29.png}
-		\caption{Biểu đồ tuần tự quản lý học sinh}
-		\label{fig:2_29_sequence_students}
-	\end{figure}
-	
-	Frontend gửi thông tin tài khoản giáo viên mới; Backend tạo tài khoản, gọi dịch vụ email để gửi thông tin đăng nhập và trả kết quả. Nếu gửi email thất bại, Backend rollback và trả về thông báo lỗi.
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=0.9\linewidth]{2_30.png}
-		\caption{Biểu đồ tuần tự quản lý giáo viên}
-		\label{fig:2_30_sequence_teachers}
-	\end{figure}
-	
-	Frontend gửi nội dung câu hỏi và đáp án; Backend lưu câu hỏi vào bảng \texttt{questions}, lưu các đáp án vào bảng \texttt{question\_options}, ghi nhật ký hoạt động và trả bản ghi câu hỏi về Frontend.
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=0.7\linewidth]{images/sequence_question_bank}
-		\caption{Biểu đồ tuần tự quản lý ngân hàng câu hỏi}
-		\label{fig:2_31_sequence_question_bank}
-	\end{figure}
+	Admin truy cập trang nhật ký và tùy chọn lọc theo loại hành động; hệ thống truy vấn bảng \texttt{activity\_logs} và hiển thị danh sách bản ghi theo thứ tự thời gian.	
 	
 	
+	\paragraph{Biểu đồ tuần tự}
+	\noindent
 	Frontend gửi yêu cầu lấy nhật ký kèm tham số lọc và phân trang; Backend truy vấn bảng \texttt{activity\_logs} theo điều kiện, sau đó trả danh sách bản ghi về Frontend để Admin xem.
 	\begin{figure}[H]
 		\centering
@@ -1138,7 +1190,19 @@
 	\end{figure}
 	
 	
-	\subsection{Mô hình hóa dữ liệu}
+	
+	\subsection*{2. Mô hình hóa dữ liệu}
+	\addcontentsline{toc}{subsection}{2. Mô hình hóa dữ liệu}
+	
+	\paragraph{Sơ đồ thiết kế cơ sở dữ liệu}
+	\noindent
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.95
+		\linewidth]{images/DB}
+		\caption{Mô hình cơ sở dữ liệu}
+		\label{fig:db}
+	\end{figure}
 	
 	\paragraph{Danh sách các đối tượng}
 	Hệ thống sử dụng 12 bảng chính để lưu trữ thông tin người dùng, đề thi, hội thoại và kết quả học tập. Danh sách các bảng được trình bày trong Bảng \ref{tab:doi-tuong}.
@@ -1178,13 +1242,6 @@
 		\end{tabular}
 	\end{table}
 	
-	\paragraph{Sơ đồ thiết kế cơ sở dữ liệu}
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=0.9\linewidth]{DB.png}
-		\caption{Mô hình cơ sở dữ liệu}
-		\label{fig:db_model}
-	\end{figure}
 	
 	\begin{table}[H]
 		\centering
@@ -1474,12 +1531,15 @@
 		\end{tabular}
 	\end{table}
 	
-	\section{XÂY DỰNG CHƯƠNG TRÌNH}
+	\section*{CHƯƠNG III: XÂY DỰNG CHƯƠNG TRÌNH}
+    \addcontentsline{toc}{section}{CHƯƠNG III: XÂY DỰNG CHƯƠNG TRÌNH}
 	
-	\subsection{Công nghệ sử dụng}
+	\subsection*{1. Công nghệ sử dụng}
+	\addcontentsline{toc}{subsection}{1. Công nghệ sử dụng}
 	
-	\subsubsection{Python \& FastAPI}
-	FastAPI \cite{fastapi} là framework web chính được sử dụng ở backend để xây dựng API và WebSocket. Việc sử dụng FastAPI giúp hệ thống dễ tổ chức theo module, hỗ trợ xác thực, xử lý dữ liệu đầu vào và phát triển nhanh các endpoint cho từng tính năng.
+	\subsubsection*{1.1 Python \& FastAPI}
+	\addcontentsline{toc}{subsubsection}{1.1 Python \& FastAPI}
+	FastAPI là framework web chính được sử dụng ở backend để xây dựng API và WebSocket. Việc sử dụng FastAPI giúp hệ thống dễ tổ chức theo module, hỗ trợ xác thực, xử lý dữ liệu đầu vào và phát triển nhanh các endpoint cho từng tính năng.
 	
 	\paragraph{Vai trò trong hệ thống}
 	\begin{itemize}
@@ -1488,8 +1548,9 @@
 		\item Kết hợp tốt với Pydantic để kiểm tra dữ liệu đầu vào và đầu ra.
 	\end{itemize}
 	
-	\subsubsection{PostgreSQL}
-	PostgreSQL \cite{postgresql} được sử dụng làm hệ quản trị cơ sở dữ liệu quan hệ cho toàn bộ hệ thống. Đây là nơi lưu trữ thông tin người dùng, đề thi, câu hỏi, phòng thi, hội thoại và điểm số.
+	\subsubsection*{1.2 PostgreSQL}
+	\addcontentsline{toc}{subsubsection}{1.2 PostgreSQL}
+	PostgreSQL được sử dụng làm hệ quản trị cơ sở dữ liệu quan hệ cho toàn bộ hệ thống. Đây là nơi lưu trữ thông tin người dùng, đề thi, câu hỏi, phòng thi, hội thoại và điểm số.
 	
 	\paragraph{Vai trò trong hệ thống}
 	\begin{itemize}
@@ -1505,7 +1566,8 @@
 		\label{fig:postgres}
 	\end{figure}
 	
-	\subsubsection{SQLAlchemy \& Alembic}
+	\subsubsection*{1.3 SQLAlchemy \& Alembic}
+	\addcontentsline{toc}{subsubsection}{1.3 SQLAlchemy \& Alembic}
 	SQLAlchemy được sử dụng để ánh xạ các đối tượng Python với bảng dữ liệu trong PostgreSQL. Alembic được sử dụng để quản lý migration, giúp đồng bộ cấu trúc dữ liệu trong quá trình phát triển.
 	
 	\paragraph{Vai trò trong hệ thống}
@@ -1515,8 +1577,9 @@
 		\item Hỗ trợ thay đổi cấu trúc cơ sở dữ liệu theo từng phiên bản của đề tài.
 	\end{itemize}
 	
-	\subsubsection{React, TypeScript \& Vite}
-	Frontend của hệ thống được xây dựng bằng React, TypeScript và Vite \cite{vite}. React hỗ trợ xây dựng giao diện theo component, TypeScript giúp kiểm soát kiểu dữ liệu, còn Vite cung cấp môi trường phát triển nhanh và tối ưu quá trình build.
+	\subsubsection*{1.4 React, TypeScript \& Vite}
+	\addcontentsline{toc}{subsubsection}{1.4 React, TypeScript \& Vite}
+	Frontend của hệ thống được xây dựng bằng React, TypeScript và Vite. React hỗ trợ xây dựng giao diện theo component, TypeScript giúp kiểm soát kiểu dữ liệu, còn Vite cung cấp môi trường phát triển nhanh và tối ưu quá trình build.
 	
 	\paragraph{Vai trò trong hệ thống}
 	\begin{itemize}
@@ -1532,8 +1595,9 @@
 		\label{fig:react}
 	\end{figure}
 	
-	\subsubsection{Tailwind CSS và shadcn/ui}
-	Tailwind CSS và shadcn/ui \cite{shadcnui} được sử dụng để xây dựng giao diện theo hướng component hóa, giúp hệ thống có giao diện hiện đại, đồng bộ và dễ tùy chỉnh.
+	\subsubsection*{1.5 Tailwind CSS và shadcn/ui}
+	\addcontentsline{toc}{subsubsection}{1.5 Tailwind CSS và shadcn/ui}
+	Tailwind CSS và shadcn/ui được sử dụng để xây dựng giao diện theo hướng component hóa, giúp hệ thống có giao diện hiện đại, đồng bộ và dễ tùy chỉnh.
 	
 	\paragraph{Vai trò trong hệ thống}
 	\begin{itemize}
@@ -1549,7 +1613,8 @@
 		\label{fig:tailwindcss}
 	\end{figure}
 	
-	\subsubsection{TanStack Router, React Query và Zustand}
+	\subsubsection*{1.6 TanStack Router, React Query và Zustand}
+	\addcontentsline{toc}{subsubsection}{1.6 TanStack Router, React Query và Zustand}
 	Ngoài bộ công nghệ chính, frontend còn sử dụng TanStack Router để định tuyến, React Query để quản lý dữ liệu bất đồng bộ và Zustand để quản lý trạng thái cục bộ. Đây là những thành phần giúp kiến trúc frontend gọn, rõ ràng và dễ bảo trì.
 	
 	\paragraph{Vai trò trong hệ thống}
@@ -1559,7 +1624,8 @@
 		\item Zustand lưu các trạng thái dùng chung như giao diện, thông báo và một số cài đặt trong ứng dụng.
 	\end{itemize}
 	
-	\subsubsection{OpenAI, FAISS và WebSocket}
+	\subsubsection*{1.7 OpenAI, FAISS và WebSocket}
+	\addcontentsline{toc}{subsubsection}{1.7 OpenAI, FAISS và WebSocket}
 	Đây là nhóm công nghệ quan trọng nhất cho chức năng AI của hệ thống. Chatbot sử dụng mô hình ngôn ngữ lớn thông qua OpenAI, FAISS để truy xuất ngữ cảnh từ bộ dữ liệu đã lập chỉ mục, và WebSocket để duy trì trao đổi thời gian thực giữa frontend và backend.
 	
 	\paragraph{Vai trò trong hệ thống}
@@ -1569,7 +1635,8 @@
 		\item WebSocket giúp màn hình chat phản hồi theo thời gian thực và hỗ trợ nạp lại lịch sử hội thoại cũ.
 	\end{itemize}
 	
-	\subsubsection{Docker Compose, MailHog và SMTP}
+	\subsubsection*{1.8 Docker Compose, MailHog và SMTP}
+	\addcontentsline{toc}{subsubsection}{1.8 Docker Compose, MailHog và SMTP}
 	Hệ thống được cấu hình để có thể chạy bằng Docker Compose với các dịch vụ PostgreSQL, backend, frontend và MailHog. MailHog được dùng làm hộp thư giả lập trong quá trình phát triển để kiểm tra email tài khoản giáo viên.
 	
 	\paragraph{Vai trò trong hệ thống}
@@ -1579,7 +1646,8 @@
 		\item Dễ dàng mở rộng sang môi trường triển khai thật bằng cách thay thế cấu hình SMTP.
 	\end{itemize}
 	
-	\subsubsection{Mô hình client -- server}
+	\subsubsection*{1.9 Mô hình client -- server}
+	\addcontentsline{toc}{subsubsection}{1.9 Mô hình client -- server}
 	Kiến trúc tổng thể của hệ thống được xây dựng theo mô hình client -- server. Frontend đảm nhiệm giao diện và tương tác với người dùng. Backend tiếp nhận yêu cầu, xử lý nghiệp vụ, kết nối cơ sở dữ liệu và tích hợp AI.
 	
 	\begin{figure}[H]
@@ -1589,7 +1657,8 @@
 		\label{fig:client-server}
 	\end{figure}
 	
-	\subsection{Kiến trúc triển khai chương trình}
+	\subsection*{Kiến trúc triển khai chương trình}
+	\addcontentsline{toc}{subsection}{Kiến trúc triển khai chương trình}
 	Kiến trúc hệ thống gồm các thành phần chính sau:
 	
 	\begin{itemize}
@@ -1602,9 +1671,11 @@
 	
 	Trong luồng chat, backend nhận câu hỏi từ WebSocket, truy xuất ngữ cảnh liên quan từ chỉ mục FAISS và gửi prompt tới mô hình AI. Trong luồng tạo đề thi, backend gửi prompt sinh câu hỏi trắc nghiệm cho mô hình AI, sau đó frontend cho phép giáo viên chỉnh sửa trước khi lưu. Trong luồng làm bài thi, học sinh truy cập phòng thi công khai, backend kiểm tra mã học sinh, chấm tự động và lưu điểm vào bảng \texttt{scores}.
 	
-	\subsection{Xây dựng chương trình}
+	\subsection*{2. Xây dựng chương trình}
+	\addcontentsline{toc}{subsection}{2. Xây dựng chương trình}
 	
-	\subsubsection{Giao diện đăng nhập}
+	\subsubsection*{2.1 Giao diện đăng nhập}
+	\addcontentsline{toc}{subsubsection}{2.1 Giao diện đăng nhập}
 	Giao diện đăng nhập là điểm bắt đầu của người dùng giáo viên hoặc quản trị viên. Người dùng nhập email và mật khẩu đã được cấp sẵn. Nếu thông tin không đúng hoặc tài khoản đang bị khóa, hệ thống sẽ hiển thị thông báo lỗi. Nếu thông tin hợp lệ, hệ thống tạo phiên đăng nhập bằng cookie xác thực và điều hướng người dùng tới màn hình phù hợp với vai trò.
 	
 	\begin{figure}[H]
@@ -1614,7 +1685,8 @@
 		\label{fig:35dangnhap}
 	\end{figure}
 	
-	\subsubsection{Giao diện quên mật khẩu}
+	\subsubsection*{2.2 Giao diện quên mật khẩu}
+	\addcontentsline{toc}{subsubsection}{2.2 Giao diện quên mật khẩu}
 	Màn hình quên mật khẩu cho phép người dùng nhập email để yêu cầu cấp lại mật khẩu. Backend sẽ sinh token khôi phục và tạo đường dẫn đặt lại mật khẩu. Trong môi trường phát triển, đường dẫn này được ghi ra log để kiểm thử; khi cấu hình SMTP đầy đủ, luồng này có thể mở rộng sang gửi email thực tế.
 	
 	\begin{figure}[H]
@@ -1624,7 +1696,8 @@
 		\label{fig:36quenmk}
 	\end{figure}
 	
-	\subsubsection{Giao diện trang chủ}
+	\subsubsection*{2.3 Giao diện trang chủ}
+	\addcontentsline{toc}{subsubsection}{2.3 Giao diện trang chủ}
 	Sau khi đăng nhập, giáo viên được đưa đến trang chủ dạng dashboard. Tại đây hệ thống hiển thị các số liệu tổng quan như số bài học, số đề thi, số học sinh đã tham gia làm bài và số lượt hỏi AI trong ngày. Ngoài ra còn có khối hoạt động gần đây để giúp giáo viên nắm được những thay đổi mới nhất. Trong phiên bản hiện tại, khối lịch tuần trên giao diện được dùng chủ yếu để minh họa bố cục và định hướng mở rộng.
 	
 	\begin{figure}[H]
@@ -1634,22 +1707,23 @@
 		\label{fig:37trangchu}
 	\end{figure}
 	
-%	\begin{figure}[H]
-%		\centering
-%		\includegraphics[width=0.9\linewidth]{3_7_trang_chu}
-%		\caption{Giao diện trang chủ hiển thị các số liệu tổng quan và hoạt động gần đây của giáo viên}
-%		\label{fig:37trangchu}
-%	\end{figure}
+	%	\begin{figure}[H]
+		%		\centering
+		%		\includegraphics[width=0.9\linewidth]{3_7_trang_chu}
+		%		\caption{Giao diện trang chủ hiển thị các số liệu tổng quan và hoạt động gần đây của giáo viên}
+		%		\label{fig:37trangchu}
+		%	\end{figure}
 	
-	\subsubsection{Giao diện chat với AI}
+	\subsubsection*{2.4 Giao diện chat với AI}
+	\addcontentsline{toc}{subsubsection}{2.4 Giao diện chat với AI}
 	Màn hình chat cho phép giáo viên trao đổi trực tiếp với trợ lý AI. Hệ thống sử dụng WebSocket để gửi và nhận phản hồi theo thời gian thực. Cột bên trái hiển thị lịch sử hội thoại, người dùng có thể tạo cuộc trò chuyện mới hoặc mở lại hội thoại cũ. Khu vực bên phải có phần gợi ý chủ đề để giáo viên bắt đầu nhanh các câu hỏi thường gặp. Nội dung phản hồi được hiển thị dưới dạng văn bản có hỗ trợ markdown.
 	
-%	\begin{figure}[H]
-%		\centering
-%		\includegraphics[width=0.9\linewidth]{3_8_chat_ai}
-%		\caption{Giao diện chat với AI hỗ trợ lịch sử hội thoại và phản hồi theo thời gian thực}
-%		\label{fig:38chatai}
-%	\end{figure}
+	%	\begin{figure}[H]
+		%		\centering
+		%		\includegraphics[width=0.9\linewidth]{3_8_chat_ai}
+		%		\caption{Giao diện chat với AI hỗ trợ lịch sử hội thoại và phản hồi theo thời gian thực}
+		%		\label{fig:38chatai}
+		%	\end{figure}
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=1\linewidth]{images/UI_chat_voi_AI}
@@ -1658,7 +1732,8 @@
 	\end{figure}
 	
 	
-	\subsubsection{Giao diện tạo đề thi}
+	\subsubsection*{2.5 Giao diện tạo đề thi}
+	\addcontentsline{toc}{subsubsection}{2.5 Giao diện tạo đề thi}
 	Giao diện tạo đề thi cho phép giáo viên cấu hình chủ đề, số câu hỏi, mức độ và thời gian làm bài. Sau khi gửi yêu cầu, AI sinh ra danh sách câu hỏi trắc nghiệm để giáo viên xem trước. Giáo viên có thể lưu đề thi dưới dạng nháp hoặc công bố chính thức. Sau khi lưu, giáo viên có thể tạo phòng thi ngay từ đề thi đó. Ở tab danh sách đề thi, giáo viên còn có thể xem lại đề, tạo phòng thi, bật hoặc tắt phòng thi và xem điểm theo đề thi.
 	
 	\begin{figure}[H]
@@ -1678,7 +1753,8 @@
 		\label{fig:392lambaithi}
 	\end{figure}
 	
-	\subsubsection{Giao diện làm bài thi của học sinh}
+	\subsubsection*{2.6 Giao diện làm bài thi của học sinh}
+	\addcontentsline{toc}{subsubsection}{2.6 Giao diện làm bài thi của học sinh}
 	Trước khi bắt đầu làm bài, học sinh nhập họ tên và mã học sinh để hệ thống xác thực. Giao diện hiện có thêm trường lớp và email nhằm phục vụ mở rộng, tuy nhiên ở phiên bản backend hiện tại việc xác thực và lưu điểm được thực hiện chủ yếu dựa trên mã học sinh. Khi xác thực thành công, học sinh được chuyển tới màn hình làm bài có bộ đếm thời gian, danh sách câu hỏi và nút nộp bài. Giao diện làm bài được thiết kế tối giản nhằm hạn chế phân tâm, tập trung vào nội dung câu hỏi và thời gian còn lại. Sau khi nộp, hệ thống chấm điểm tự động và trả về điểm số cùng số câu đúng ngay trên màn hình.
 	
 	\begin{figure}[H]
@@ -1697,7 +1773,8 @@
 	
 	
 	
-	\subsubsection{Giao diện thống kê}
+	\subsubsection*{2.7 Giao diện thống kê}
+	\addcontentsline{toc}{subsubsection}{2.7 Giao diện thống kê}
 	Màn hình thống kê cung cấp cho giáo viên các chỉ số quan trọng như điểm trung bình, tỷ lệ đạt yêu cầu, số học sinh cần hỗ trợ, điểm trung bình theo chủ đề, phân bố kết quả học sinh và bảng xếp hạng. Đây là căn cứ để giáo viên đánh giá chất lượng học tập sau mỗi đợt kiểm tra.
 	
 	\begin{figure}[H]
@@ -1706,9 +1783,10 @@
 		\caption{Giao diện thống kê kết quả học sinh bao gồm điểm trung bình, phẩn bố kết quả và bảng xếp hạng}
 		\label{fig:310thongke}
 	\end{figure}
-
 	
-	\subsubsection{Giao diện thống kê cho admin}
+	
+	\subsubsection*{2.8 Giao diện thống kê cho admin}
+	\addcontentsline{toc}{subsubsection}{2.8 Giao diện thống kê cho admin}
 	Màn hình dashboard của quản trị viên hiển thị số lượng học sinh, số lượng giáo viên, số lượng đề thi và tổng số câu hỏi toàn hệ thống. Ngoài các số liệu tổng hợp, quản trị viên còn có thể theo dõi biểu đồ xu hướng sử dụng theo ngày trong 7 ngày gần nhất, thể hiện số đề thi được tạo và số lượt nộp bài của học sinh. Bảng xếp hạng giáo viên tích cực nhất cũng được hiển thị dựa trên số lượng đề thi mà mỗi giáo viên đã tạo. Đây là những chỉ số giúp quản trị viên nắm bắt nhanh mức độ sử dụng nền tảng và phát hiện xu hướng hoạt động bất thường nếu có.
 	
 	\begin{figure}[H]
@@ -1718,9 +1796,10 @@
 		\label{fig:uiuithongkechoad}
 	\end{figure}
 	
-	\subsubsection{Giao diện quản lý học sinh cho admin}
+	\subsubsection*{2.9 Giao diện quản lý học sinh cho admin}
+	\addcontentsline{toc}{subsubsection}{2.9 Giao diện quản lý học sinh cho admin}
 	Màn hình này cho phép quản trị viên thêm học sinh mới vào hệ thống, theo dõi danh sách học sinh hiện có và khóa hoặc mở khóa học sinh khi cần. Hệ thống kiểm tra trùng mã học sinh trước khi lưu nhằm hạn chế lỗi dữ liệu.
-
+	
 	
 	\begin{figure}[H]
 		\centering
@@ -1730,7 +1809,8 @@
 	\end{figure}
 	
 	
-	\subsubsection{Giao diện quản lý giáo viên cho admin}
+	\subsubsection*{2.10 Giao diện quản lý giáo viên cho admin}
+	\addcontentsline{toc}{subsubsection}{2.10 Giao diện quản lý giáo viên cho admin}
 	Màn hình này cho phép quản trị viên tạo tài khoản giáo viên mới, nhập họ tên, email và mật khẩu khởi tạo. Sau khi tạo thành công, hệ thống tự động gửi thông tin tài khoản tới giáo viên thông qua MailHog hoặc SMTP. Trong trường hợp dịch vụ email không khả dụng, hệ thống sẽ từ chối tạo tài khoản và thông báo lỗi để quản trị viên kiểm tra cấu hình. Quản trị viên cũng có thể khóa hoặc mở khóa tài khoản giáo viên khi cần thiết, trạng thái tài khoản được cập nhật ngay lập tức trên danh sách.
 	
 	
@@ -1741,7 +1821,8 @@
 		\label{fig:uiqlgv}
 	\end{figure}
 	
-	\subsubsection{Giao diện ngân hàng câu hỏi}
+	\subsubsection*{2.11 Giao diện ngân hàng câu hỏi}
+	\addcontentsline{toc}{subsubsection}{2.11 Giao diện ngân hàng câu hỏi}
 	Màn hình ngân hàng câu hỏi cho phép giáo viên quản lý kho câu hỏi riêng của mình một cách tập trung. Giáo viên có thể xem danh sách toàn bộ câu hỏi đã tạo, lọc theo chủ đề, mức độ khó hoặc tìm kiếm theo từ khóa. Mỗi câu hỏi hiển thị số lần được sử dụng trong các đề thi, giúp giáo viên đánh giá mức độ khai thác và quyết định có nên giữ lại hay không. Giáo viên có thể tạo câu hỏi mới thủ công với bốn đáp án A, B, C, D hoặc dùng chức năng sinh câu hỏi bằng AI để xem trước trước khi lưu chính thức. Câu hỏi trong ngân hàng có thể được tái sử dụng cho nhiều đề thi khác nhau mà không cần nhập lại.
 	
 	\begin{figure}[H]
@@ -1751,7 +1832,8 @@
 		\label{fig:314nganhangcauhoi}
 	\end{figure}
 	
-	\subsubsection{Giao diện theo dõi kết quả học tập của học sinh}
+	\subsubsection*{2.12 Giao diện theo dõi kết quả học tập của học sinh}
+	\addcontentsline{toc}{subsubsection}{2.12 Giao diện theo dõi kết quả học tập của học sinh}
 	Màn hình theo dõi kết quả học tập của học sinh qua các học sinh tham gia thi. Từ dữ liệu này giáo viên có thể theo dõi để đánh giá sự tiến bộ của học sinh, từ đó có những giải pháp phù hợp giúp học sinh cải thiện kết quả học tập
 	\begin{figure}[H]
 		\centering
@@ -1762,7 +1844,8 @@
 	
 	
 	
-	\subsubsection{Giao diện nhật ký hoạt động cho admin}
+	\subsubsection*{2.13 Giao diện nhật ký hoạt động cho admin}
+	\addcontentsline{toc}{subsubsection}{2.13 Giao diện nhật ký hoạt động cho admin}
 	Màn hình nhật ký hoạt động cung cấp cho quản trị viên lịch sử các thao tác quan trọng đã xảy ra trong hệ thống. Mỗi bản ghi nhật ký bao gồm tên người dùng, loại hành động, đối tượng bị tác động, địa chỉ IP và thời điểm thực hiện. Các hành động được ghi nhật ký bao gồm: đăng nhập, tạo đề thi, tạo phòng thi, tạo câu hỏi, xóa câu hỏi, khóa và mở khóa tài khoản, thêm học sinh và thêm giáo viên. Quản trị viên có thể lọc nhật ký theo loại hành động để tập trung theo dõi một nhóm sự kiện cụ thể, ví dụ chỉ xem các lần đăng nhập hoặc các thao tác quản lý tài khoản.
 	
 	\begin{figure}[H]
@@ -1773,47 +1856,57 @@
 	\end{figure}
 	
 	
-	\section{KẾT LUẬN VÀ KIẾN NGHỊ}
+	\newpage
+	\section*{KẾT LUẬN VÀ KIẾN NGHỊ}
+	\addcontentsline{toc}{section}{KẾT LUẬN VÀ KIẾN NGHỊ}
 	
-	Sau quá trình nghiên cứu, thiết kế và phát triển, đồ án đã xây dựng được một hệ thống web hỗ trợ giáo viên trong giảng dạy Tin học 12 với các chức năng trọng tâm đã hoạt động theo đúng codebase hiện có. Cụ thể, hệ thống đã triển khai được luồng đăng nhập và xác thực người dùng, khôi phục mật khẩu bằng token, hỏi đáp với AI qua WebSocket, lưu lịch sử hội thoại, tạo đề thi bằng AI, quản lý ngân hàng câu hỏi, tạo phòng thi trực tuyến, tổ chức làm bài cho học sinh, chấm điểm tự động, hiển thị dashboard, thống kê học tập, quản trị tài khoản giáo viên và học sinh, và theo dõi nhật ký hoạt động hệ thống. Đây là những chức năng có giá trị sử dụng thực tế, hỗ trợ giáo viên tiết kiệm thời gian trong khâu chuẩn bị và đánh giá.
+	Sau quá trình nghiên cứu, thiết kế và phát triển, đồ án đã xây dựng được một hệ thống web hỗ trợ giáo viên trong giảng dạy Tin học 12 với đầy đủ các chức năng trọng tâm hoạt động ổn định theo đúng kiến trúc đã đề ra. Hệ thống đã triển khai thành công luồng đăng nhập và xác thực người dùng, khôi phục mật khẩu bằng token, hỏi đáp với AI qua WebSocket có lưu lịch sử hội thoại, tạo đề thi bằng AI với khả năng xem trước và chỉnh sửa, quản lý ngân hàng câu hỏi tái sử dụng, tạo và điều hành phòng thi trực tuyến, chấm điểm tự động sau khi học sinh nộp bài, cùng với dashboard thống kê học tập, quản trị tài khoản giáo viên và học sinh và theo dõi nhật ký hoạt động hệ thống. Đây là những chức năng có giá trị sử dụng thực tế, trực tiếp hỗ trợ giáo viên tiết kiệm thời gian trong hai khâu tốn kém nhất là chuẩn bị bài kiểm tra và đánh giá kết quả học sinh.
 	
-	Bên cạnh những kết quả đạt được, hệ thống vẫn còn một số hạn chế cần được nhìn nhận đúng với trạng thái triển khai hiện tại:
+	Bên cạnh những kết quả đạt được, hệ thống vẫn còn một số hạn chế cần được nhìn nhận khách quan. Chất lượng phản hồi của chatbot phụ thuộc trực tiếp vào dữ liệu đã được lập chỉ mục trong bộ học liệu và năng lực của mô hình AI được tích hợp, do đó câu trả lời có thể chưa bao phủ toàn bộ các tình huống câu hỏi thực tế của giáo viên. Chức năng quên mật khẩu đã có đủ luồng tạo token và đặt lại mật khẩu, nhưng việc gửi email khôi phục trong môi trường phát triển chưa được hoàn thiện tương đương luồng gửi email tài khoản giáo viên. Ngoài ra, phần bài học hiện mới dừng lại ở mức danh mục và mô hình dữ liệu, chưa có API CRUD đầy đủ như các module chat, đề thi và thống kê; giao diện trên thiết bị di động cũng cần được tiếp tục tối ưu để phục vụ tốt hơn trong điều kiện sử dụng thực tế của giáo viên vùng Tây Bắc.
 	
-	\begin{itemize}
-		\item Chất lượng phản hồi của chatbot phụ thuộc vào dữ liệu đã được lập chỉ mục trong bộ học liệu và khả năng của mô hình AI.
-		\item Chức năng quên mật khẩu đã có luồng tạo token và đặt lại mật khẩu, nhưng việc gửi email khôi phục trong môi trường phát triển chưa được hoàn thiện như luồng gửi email tài khoản giáo viên.
-		\item Phần bài học hiện chủ yếu ở mức danh mục và mô hình dữ liệu, chưa có API CRUD đầy đủ như các module chat, đề thi và thống kê.
-		\item Giao diện học sinh hiện thu thập thêm lớp và email, nhưng backend hiện mới sử dụng mã học sinh để xác thực và lưu kết quả thi.
-		\item Giao diện trên thiết bị di động vẫn cần tiếp tục tối ưu để sử dụng thuận tiện hơn trên nhiều kích thước màn hình.
-	\end{itemize}
+	Từ những hạn chế trên, hướng phát triển tiếp theo được đề xuất tập trung vào bốn điểm chính. Thứ nhất, hoàn thiện module bài học và quản lý tri thức, cho phép cập nhật học liệu trực tiếp từ giao diện quản trị để không cần can thiệp thủ công vào bộ chỉ mục FAISS mỗi khi nội dung thay đổi. Thứ hai, tích hợp luồng gửi email thực tế cho chức năng quên mật khẩu và các thông báo hệ thống, đồng thời mở rộng nguồn học liệu bằng cách bổ sung nhiều bộ sách và tài liệu ôn tập để nâng cao chất lượng phản hồi của chatbot. Thứ ba, nâng cấp phần thống kê với khả năng lọc sâu hơn theo lớp, chủ đề hoặc khoảng thời gian kiểm tra, và hoàn thiện tính năng liên kết câu hỏi trong ngân hàng với bài học tương ứng để hỗ trợ tổ chức nội dung tốt hơn. Thứ tư, tối ưu toàn diện giao diện và trải nghiệm người dùng trên thiết bị di động, ưu tiên các màn hình mà giáo viên sử dụng thường xuyên nhất như chat, tạo đề thi và xem kết quả.
 	
-	Từ những hạn chế trên, nhóm đề xuất một số hướng phát triển tiếp theo như sau:
-	
-	\begin{itemize}
-		\item Hoàn thiện module bài học và quản lý tri thức, cho phép cập nhật học liệu trực tiếp từ giao diện quản trị hoặc giáo viên.
-		\item Tích hợp luồng gửi email thực tế cho chức năng quên mật khẩu và các thông báo hệ thống khác.
-		\item Mở rộng nguồn dữ liệu học liệu, bổ sung nhiều bộ sách và tài liệu ôn tập hơn để nâng cao chất lượng phản hồi của chatbot.
-		\item Nâng cấp phần thống kê, bổ sung lọc dữ liệu sâu hơn theo lớp, chủ đề hoặc thời gian kiểm tra.
-		\item Hoàn thiện tính năng liên kết câu hỏi trong ngân hàng với bài học tương ứng để hỗ trợ tổ chức nội dung tốt hơn.
-		\item Tối ưu giao diện và trải nghiệm người dùng trên thiết bị di động.
-	\end{itemize}
-	
-	Nhìn chung, đồ án đã đạt được mục tiêu chính là xây dựng một nền tảng hỗ trợ giảng dạy có ứng dụng thực tế, đồng thời tạo tiền đề kỹ thuật tốt để tiếp tục phát triển thành một hệ thống đầy đủ hơn trong tương lai.
+	Nhìn chung, đồ án đã đạt được mục tiêu chính là xây dựng một nền tảng hỗ trợ giảng dạy tích hợp có ứng dụng thực tế, đồng thời tạo ra nền tảng kỹ thuật đủ vững chắc để tiếp tục phát triển thành một hệ thống hoàn chỉnh hơn trong tương lai, có thể mở rộng sang nhiều môn học khác mà không cần thay đổi kiến trúc lõi.
 	
 	\newpage
 	\begin{thebibliography}{99}
 		
-		\bibitem{fastapi}
-		FastAPI Documentation. Truy cập tại: \url{https://fastapi.tiangolo.com/}.
+		% --- Văn bản pháp lý và thực tiễn Việt Nam ---
+		\bibitem{qd749}
+		Thủ tướng Chính phủ, \textit{Quyết định số 749/QĐ-TTg phê duyệt Chương trình Chuyển đổi số quốc gia đến năm 2025, định hướng đến năm 2030}, 2020. Truy cập tại: \url{https://chinhphu.vn/default.aspx?pageid=27160&docid=200163}
 		
-		\bibitem{postgresql}
-		PostgreSQL Documentation. Truy cập tại: \url{https://www.postgresql.org/docs/}.
+		\bibitem{baolao2023}
+		Báo Lào Cai, \textit{Lai Châu thiếu gần 300 giáo viên Tin học và Tiếng Anh}, 2023. Truy cập tại: \url{https://baolaocai.vn}
 		
-		\bibitem{vite}
-		Vite Documentation. Truy cập tại: \url{https://vite.dev/}.
+		\bibitem{gdtd2025}
+		Tạp chí Giáo dục và Thời đại, \textit{Giáo viên vùng cao và thực trạng tiếp cận chuyển đổi số}, 2025. Truy cập tại: \url{https://giaoducthoidai.vn}
 		
-		\bibitem{shadcnui}
-		shadcn/ui Documentation. Truy cập tại: \url{https://ui.shadcn.com/}.
+		\bibitem{fptis2023}
+		FPT IS, \textit{Chuyển đổi số giáo dục tại vùng sâu vùng xa: Thực trạng và giải pháp}, 2023. Truy cập tại: \url{https://fptis.vn}
+		
+		\bibitem{jvs2025}
+		Tạp chí Khoa học Việt Nam, \textit{Khảo sát hạ tầng Internet trường học vùng khó khăn}, 2025.
+		
+		% --- Nghiên cứu về RAG và mô hình ngôn ngữ ---
+		\bibitem{lewis2020rag}
+		Lewis, P., Perez, E., Piktus, A., et al., \textit{Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks}, Advances in Neural Information Processing Systems (NeurIPS), Vol.~33, pp.~9459--9474, 2020.
+		
+		\bibitem{nguyen2025rag}
+		Nguyễn Việt Hà, Trần Tuấn Vinh, \textit{Ứng dụng Retrieval-Augmented Generation trong xây dựng chatbot giáo dục tiếng Việt}, Tạp chí Khoa học và Công nghệ Việt Nam, 2025.
+		
+		% --- Nghiên cứu về sinh câu hỏi và chatbot giáo dục ---
+		\bibitem{kurdi2020qg}
+		Kurdi, G., Leo, J., Parsia, B., Sattler, U., Al-Emari, S., \textit{A Systematic Review of Automatic Question Generation for Educational Purposes}, International Journal of Artificial Intelligence in Education, Vol.~30, pp.~121--204, 2020.
+		
+		\bibitem{kav2024}
+		Kav, M., et al., \textit{Personalized AI Chatbots in Education: Generating Lessons and Questions from Digital Resources}, Computers \& Education, 2024.
+		
+		% --- Hệ thống liên quan ---
+		\bibitem{openai_chatgpt}
+		OpenAI, \textit{ChatGPT: Optimizing Language Models for Dialogue}, 2023. Truy cập tại: \url{https://openai.com/chatgpt}
+		
+		\bibitem{google_gemini}
+		Google DeepMind, \textit{Gemini: A Family of Highly Capable Multimodal Models}, 2024. Truy cập tại: \url{https://gemini.google.com}
 		
 	\end{thebibliography}
 	
