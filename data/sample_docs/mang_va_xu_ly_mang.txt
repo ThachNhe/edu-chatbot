@@ -1,0 +1,89 @@
+CHƯƠNG 3: MẢNG VÀ XỬ LÝ MẢNG TRONG PASCAL/C++
+(Tin học 12)
+
+I. KHÁI NIỆM MẢNG
+Mảng là một cấu trúc dữ liệu bao gồm một số hữu hạn các phần tử có cùng kiểu dữ liệu, được lưu trữ liên tiếp trong bộ nhớ và được truy cập thông qua chỉ số (index).
+
+Đặc điểm của mảng:
+- Tất cả các phần tử trong mảng có cùng kiểu dữ liệu.
+- Các phần tử được lưu liên tiếp nhau trong bộ nhớ.
+- Mỗi phần tử được xác định bởi chỉ số (bắt đầu từ 0 trong C++, từ 1 trong Pascal).
+- Kích thước mảng cố định sau khi khai báo (mảng tĩnh).
+
+II. KHAI BÁO MẢNG
+Trong C++:
+  int a[100];         // Mảng 100 phần tử kiểu int
+  float b[50];        // Mảng 50 phần tử kiểu float
+  string s[20];       // Mảng 20 chuỗi
+
+Trong Pascal:
+  var a: array[1..100] of integer;
+  var b: array[1..50] of real;
+
+III. TRUY CẬP PHẦN TỬ MẢNG
+Phần tử thứ i của mảng được truy cập bằng a[i].
+Ví dụ: a[0] = 5; (C++) hoặc a[1] := 5; (Pascal)
+
+IV. NHẬP/XUẤT MẢNG
+Nhập mảng (C++):
+  for (int i = 0; i < n; i++) cin >> a[i];
+
+Xuất mảng (C++):
+  for (int i = 0; i < n; i++) cout << a[i] << " ";
+
+V. CÁC THAO TÁC CƠ BẢN TRÊN MẢNG
+1. Tính tổng các phần tử:
+   int sum = 0;
+   for (int i = 0; i < n; i++) sum += a[i];
+
+2. Tìm phần tử lớn nhất:
+   int max = a[0];
+   for (int i = 1; i < n; i++)
+     if (a[i] > max) max = a[i];
+
+3. Đếm số phần tử thỏa điều kiện:
+   int count = 0;
+   for (int i = 0; i < n; i++)
+     if (a[i] % 2 == 0) count++;
+
+4. Sắp xếp nổi bọt (Bubble Sort):
+   for (int i = 0; i < n-1; i++)
+     for (int j = 0; j < n-1-i; j++)
+       if (a[j] > a[j+1]) swap(a[j], a[j+1]);
+
+5. Tìm kiếm tuyến tính:
+   int pos = -1;
+   for (int i = 0; i < n; i++)
+     if (a[i] == x) { pos = i; break; }
+
+6. Tìm kiếm nhị phân (mảng đã sắp xếp):
+   int left = 0, right = n-1, mid;
+   while (left <= right) {
+     mid = (left + right) / 2;
+     if (a[mid] == x) { pos = mid; break; }
+     else if (a[mid] < x) left = mid + 1;
+     else right = mid - 1;
+   }
+
+VI. MẢNG HAI CHIỀU
+Mảng hai chiều là mảng của các mảng, dùng để biểu diễn ma trận.
+Khai báo: int a[10][10];
+Truy cập: a[i][j] (hàng i, cột j)
+
+Nhập ma trận:
+  for (int i = 0; i < m; i++)
+    for (int j = 0; j < n; j++)
+      cin >> a[i][j];
+
+VII. ĐỘ PHỨC TẠP THUẬT TOÁN
+- Truy cập phần tử: O(1)
+- Tìm kiếm tuyến tính: O(n)
+- Tìm kiếm nhị phân: O(log n)
+- Sắp xếp nổi bọt: O(n²)
+- Sắp xếp nhanh (Quick Sort): O(n log n) trung bình
+
+VIII. ỨNG DỤNG CỦA MẢNG
+- Lưu trữ danh sách điểm số học sinh.
+- Biểu diễn ma trận trong tính toán khoa học.
+- Xử lý chuỗi ký tự (mảng ký tự).
+- Cài đặt hàng đợi, ngăn xếp.

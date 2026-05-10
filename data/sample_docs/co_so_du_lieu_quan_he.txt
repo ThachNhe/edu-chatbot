@@ -1,0 +1,85 @@
+CHƯƠNG 5: CƠ SỞ DỮ LIỆU QUAN HỆ
+(Tin học 12)
+
+I. KHÁI NIỆM CƠ SỞ DỮ LIỆU
+Cơ sở dữ liệu (CSDL) là tập hợp dữ liệu có cấu trúc, được lưu trữ trên máy tính, cho phép nhiều người dùng truy cập, cập nhật và khai thác một cách hiệu quả.
+
+Hệ quản trị CSDL (DBMS – Database Management System) là phần mềm cho phép tạo lập, quản lý và khai thác CSDL.
+Ví dụ: MySQL, Microsoft SQL Server, Oracle, PostgreSQL, SQLite.
+
+II. MÔ HÌNH QUAN HỆ
+Mô hình quan hệ tổ chức dữ liệu thành các bảng (table/relation).
+- Mỗi bảng gồm các hàng (bản ghi/record) và các cột (thuộc tính/field).
+- Mỗi bảng có một khóa chính (Primary Key) – trường xác định duy nhất mỗi bản ghi.
+- Khóa ngoại (Foreign Key) – trường tham chiếu đến khóa chính của bảng khác.
+
+Ví dụ bảng HOCSINH:
+  MaHS (PK) | HoTen       | NgaySinh   | Lop
+  HS001     | Nguyễn An   | 01/01/2008 | 12A1
+  HS002     | Trần Bình   | 15/03/2008 | 12A2
+
+III. NGÔN NGỮ SQL
+SQL (Structured Query Language) là ngôn ngữ chuẩn để truy vấn và thao tác CSDL quan hệ.
+
+1. Tạo bảng:
+   CREATE TABLE HocSinh (
+     MaHS VARCHAR(10) PRIMARY KEY,
+     HoTen NVARCHAR(50),
+     NgaySinh DATE,
+     Lop VARCHAR(10)
+   );
+
+2. Chèn dữ liệu:
+   INSERT INTO HocSinh VALUES ('HS001', N'Nguyễn An', '2008-01-01', '12A1');
+
+3. Truy vấn dữ liệu:
+   SELECT * FROM HocSinh;
+   SELECT HoTen, Lop FROM HocSinh WHERE Lop = '12A1';
+   SELECT HoTen FROM HocSinh ORDER BY HoTen ASC;
+
+4. Cập nhật dữ liệu:
+   UPDATE HocSinh SET Lop = '12A2' WHERE MaHS = 'HS001';
+
+5. Xóa dữ liệu:
+   DELETE FROM HocSinh WHERE MaHS = 'HS001';
+
+6. Truy vấn nhiều bảng (JOIN):
+   SELECT hs.HoTen, diem.Diem
+   FROM HocSinh hs
+   JOIN Diem diem ON hs.MaHS = diem.MaHS;
+
+IV. CÁC HÀM TỔNG HỢP (AGGREGATE FUNCTIONS)
+- COUNT(*): Đếm số bản ghi
+- SUM(cột): Tính tổng
+- AVG(cột): Tính trung bình
+- MAX(cột): Giá trị lớn nhất
+- MIN(cột): Giá trị nhỏ nhất
+
+Ví dụ:
+  SELECT COUNT(*) FROM HocSinh WHERE Lop = '12A1';
+  SELECT AVG(Diem) FROM Diem WHERE MaMon = 'TOAN';
+
+V. NHÓM DỮ LIỆU (GROUP BY)
+  SELECT Lop, COUNT(*) AS SoHocSinh
+  FROM HocSinh
+  GROUP BY Lop
+  HAVING COUNT(*) > 30;
+
+VI. CHỈ MỤC (INDEX)
+Chỉ mục giúp tăng tốc độ truy vấn:
+  CREATE INDEX idx_lop ON HocSinh(Lop);
+
+VII. RÀNG BUỘC TOÀN VẸN DỮ LIỆU
+- NOT NULL: Không được để trống
+- UNIQUE: Giá trị không trùng lặp
+- PRIMARY KEY: Khóa chính
+- FOREIGN KEY: Khóa ngoại
+- CHECK: Kiểm tra điều kiện
+
+Ví dụ:
+  Diem FLOAT CHECK (Diem >= 0 AND Diem <= 10)
+
+VIII. CÁC DẠNG CHUẨN HÓA
+- 1NF: Mỗi ô chứa giá trị nguyên tử (không phân chia được).
+- 2NF: Đạt 1NF và mọi thuộc tính không khóa phụ thuộc đầy đủ vào khóa chính.
+- 3NF: Đạt 2NF và không có phụ thuộc bắc cầu.

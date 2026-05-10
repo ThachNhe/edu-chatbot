@@ -21,6 +21,7 @@ export const API_ENDPOINTS = {
   CONVERSATIONS: {
     LIST: '/conversations',
     MESSAGES: (id: number) => `/conversations/${id}/messages`,
+    SAVE_WITH_MESSAGES: '/conversations/with-messages',
   },
 
   // ─── Dashboard ───────────────────────────────────────────────────────────
@@ -40,8 +41,7 @@ export const API_ENDPOINTS = {
 
   // ─── Exams ───────────────────────────────────────────────────────────────
   EXAMS: {
-    GENERATE: '/exams/generate',
-    CREATE: '/exams', CREATE_FROM_BANK: '/exams/from-bank', LIST: '/exams',
+    GENERATE: '/exams/generate', GENERATE_FROM_FILE: '/exams/generate-from-file', CREATE: '/exams', CREATE_FROM_BANK: '/exams/from-bank', LIST: '/exams',
     DETAIL: (id: number) => `/exams/${id}`,
     DELETE: (id: number) => `/exams/${id}`,
     UPDATE_QUESTION: (examId: number, questionId: number) =>

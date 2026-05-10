@@ -52,13 +52,13 @@ export function CreateRoomModal({ room, onClose }: CreateRoomModalProps) {
                     <div className="flex gap-2">
                         <button
                             onClick={handleCopy}
-                            className="flex-1 rounded-xl bg-[#1a56db] py-2.5 text-[13px] font-bold text-white hover:bg-[#1d4ed8] transition-colors"
+                            className="flex flex-1 items-center justify-center gap-1.5 rounded-xl bg-[#1a56db] py-2.5 text-[13px] font-bold text-white hover:bg-[#1d4ed8] transition-colors"
                         >
                             {copied ? <><CheckCircle2 size={14} /> Đã sao chép!</> : <><ClipboardList size={14} /> Sao chép link</>}
                         </button>
                         <button
                             onClick={onClose}
-                            className="rounded-xl border border-[#e2e8f0] px-5 py-2.5 text-[13px] font-bold text-[#475569] hover:border-[#1a56db] hover:text-[#1a56db] transition-colors"
+                            className="flex items-center justify-center rounded-xl border border-[#e2e8f0] px-5 py-2.5 text-[13px] font-bold text-[#475569] hover:border-[#1a56db] hover:text-[#1a56db] transition-colors"
                         >
                             Đóng
                         </button>

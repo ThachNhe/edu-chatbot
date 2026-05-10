@@ -1,5 +1,6 @@
 import { useAuthStore } from '@/stores/useAuthStore'
 import { TypingIndicator } from './TypingIndicator'
+import { ChatExamResult } from './ChatExamResult'
 import type { ChatMessage } from '../types/chat.types'
 
 /**
@@ -73,22 +74,27 @@ export function MessageBubble({ message, isTyping }: MessageBubbleProps) {
 
       {/* Bubble */}
       <div className={`flex flex-col gap-1 ${isUser ? 'items-end' : 'items-start'}`}>
-        <div
-          className={`max-w-[68%] px-4 py-3 text-[13.5px] leading-[1.65] shadow-[0_1px_3px_rgba(0,0,0,0.08)] ${isUser
-            ? 'rounded-[14px_14px_4px_14px] border border-[#1a56db] bg-[#1a56db] text-white shadow-[0_2px_10px_rgba(26,86,219,0.25)]'
-            : 'rounded-[14px_14px_14px_4px] border border-[#e2e8f0] bg-white text-[#1e293b]'
-            }`}
-        >
-          {isTyping ? (
-            <TypingIndicator />
-          ) : isUser ? (
-            // User messages: plain text, không render HTML
-            <span className="whitespace-pre-wrap">{message.content}</span>
-          ) : (
-            // AI messages: markdown → safe HTML
-            <span dangerouslySetInnerHTML={{ __html: markdownToHtml(message.content) }} />
-          )}
-        </div>
+        {message.examDetail ? (
+          // Exam result card — full width, no bubble constraint
+          <ChatExamResult exam={message.examDetail} />
+        ) : (
+          <div
+            className={`max-w-[68%] px-4 py-3 text-[13.5px] leading-[1.65] shadow-[0_1px_3px_rgba(0,0,0,0.08)] ${isUser
+              ? 'rounded-[14px_14px_4px_14px] border border-[#1a56db] bg-[#1a56db] text-white shadow-[0_2px_10px_rgba(26,86,219,0.25)]'
+              : 'rounded-[14px_14px_14px_4px] border border-[#e2e8f0] bg-white text-[#1e293b]'
+              }`}
+          >
+            {isTyping ? (
+              <TypingIndicator />
+            ) : isUser ? (
+              // User messages: plain text, không render HTML
+              <span className="whitespace-pre-wrap">{message.content}</span>
+            ) : (
+              // AI messages: markdown → safe HTML
+              <span dangerouslySetInnerHTML={{ __html: markdownToHtml(message.content) }} />
+            )}
+          </div>
+        )}
         {!isTyping && (
           <span className="px-1 text-[11px] text-[#94a3b8]">
             {new Date(message.timestamp).toLocaleTimeString('vi-VN', {

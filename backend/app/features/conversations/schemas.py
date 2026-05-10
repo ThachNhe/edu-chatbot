@@ -23,3 +23,13 @@ class ConversationOut(BaseModel):
 
 class ConversationDetail(ConversationOut):
     messages: List[MessageOut]
+
+
+class MessageIn(BaseModel):
+    role: str
+    content: str
+
+
+class CreateConversationWithMessagesRequest(BaseModel):
+    title: str
+    messages: List[MessageIn]

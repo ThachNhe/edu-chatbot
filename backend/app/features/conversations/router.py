@@ -9,7 +9,7 @@ import app.features.conversations.repository as conversation_repo
 import app.features.conversations.service as conversation_service
 from app.database import get_db
 from app.dependencies.auth import get_current_user, get_current_user_from_websocket
-from app.features.conversations.schemas import ConversationDetail, ConversationOut
+from app.features.conversations.schemas import ConversationDetail, ConversationOut, CreateConversationWithMessagesRequest
 from app.models.user import User
 
 router = APIRouter(tags=["Conversations"])
@@ -37,6 +37,20 @@ def get_conversation_messages(
             status_code=status.HTTP_404_NOT_FOUND,
             detail="Conversation not found",
         )
+    return conv
+
+
+@router.post("/conversations/with-messages", response_model=ConversationOut, status_code=201)
+def create_conversation_with_messages(
+    body: CreateConversationWithMessagesRequest,
+    current_user: User = Depends(get_current_user),
+    db: Session = Depends(get_db),
+):
+    """Tạo conversation mới kèm theo các messages (dùng khi tạo đề thi từ chat)."""
+    conv = conversation_repo.create_conversation(db, current_user.id, body.title[:80])
+    for msg in body.messages:
+        if msg.role in ("user", "ai"):
+            conversation_repo.add_message(db, conv.id, msg.role, msg.content)
     return conv
 
 

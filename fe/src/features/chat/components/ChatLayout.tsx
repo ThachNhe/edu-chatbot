@@ -8,11 +8,13 @@ export function ChatLayout() {
     messages,
     conversations,
     isTyping,
+    isCreatingExam,
     messagesEndRef,
     sendMessage,
     wsStatus,
     startNewChat,
     selectConversation,
+    createExamFromFile,
   } = useChat()
 
   const handleTopicClick = (topic: string) => {
@@ -29,8 +31,10 @@ export function ChatLayout() {
       <ChatMain
         messages={messages}
         isTyping={isTyping}
+        isCreatingExam={isCreatingExam}
         messagesEndRef={messagesEndRef}
         onSend={sendMessage}
+        onCreateExamFromFile={createExamFromFile}
         wsStatus={wsStatus}
       />
       <ChatRightPanel onTopicClick={handleTopicClick} />

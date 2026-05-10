@@ -97,4 +97,50 @@ stop
 @enduml
 
 
+@startuml Act_QuenMatKhau
+skinparam swimlaneBorderThickness 1
+skinparam swimlaneWidth 200
+
+|User|
+start
+:Chọn "Quên mật khẩu"\ntừ trang đăng nhập;
+:Nhập địa chỉ email;
+
+|Hệ thống|
+:Kiểm tra email\ntrong CSDL;
+
+if (Email tồn tại?) then (Có)
+  :Tạo reset token\n(JWT, hết hạn 1 giờ);
+  :Tạo đường dẫn\nđặt lại mật khẩu;
+  :Gửi email chứa\nlink đặt lại mật khẩu;
+else (Không)
+endif
+
+:Thông báo:\n"Nếu email tồn tại, chúng tôi\nđã gửi link đặt lại mật khẩu";
+
+|User|
+:Kiểm tra hộp thư\nvà mở email;
+:Nhấn link đặt lại mật khẩu\n(chuyển đến trang reset);
+:Nhập mật khẩu mới;
+
+|Hệ thống|
+:Xác thực reset token;
+
+if (Token hợp lệ?) then (Hợp lệ)
+  :Lấy email từ token;
+  :Hash và cập nhật\nmật khẩu mới trong CSDL;
+  :Thông báo đặt lại\nmật khẩu thành công;
+  |User|
+  :Chuyển đến trang đăng nhập;
+else (Không hợp lệ\nhoặc hết hạn)
+  :Thông báo lỗi\n"Token không hợp lệ\nhoặc đã hết hạn";
+  |User|
+  :Thực hiện lại\nquá trình quên mật khẩu;
+  |Hệ thống|
+endif
+
+stop
+@enduml
+
+
 

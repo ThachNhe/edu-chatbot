@@ -1,0 +1,77 @@
+CHƯƠNG 7: MẠNG MÁY TÍNH VÀ INTERNET
+(Tin học 12)
+
+I. KHÁI NIỆM MẠNG MÁY TÍNH
+Mạng máy tính là tập hợp các máy tính và thiết bị ngoại vi được kết nối với nhau thông qua đường truyền vật lý (cáp đồng, cáp quang, sóng vô tuyến) theo một kiến trúc nhất định để chia sẻ tài nguyên và trao đổi thông tin.
+
+II. PHÂN LOẠI MẠNG MÁY TÍNH
+1. Theo phạm vi địa lý:
+   - LAN (Local Area Network): Mạng cục bộ, phạm vi nhỏ (phòng, tòa nhà, trường học).
+   - MAN (Metropolitan Area Network): Mạng đô thị, phạm vi một thành phố.
+   - WAN (Wide Area Network): Mạng diện rộng, phạm vi quốc gia hoặc toàn cầu.
+   - Internet: Mạng toàn cầu kết nối hàng tỉ thiết bị.
+
+2. Theo kiến trúc (Topology):
+   - Hình sao (Star): Tất cả máy nối vào switch/hub trung tâm.
+   - Hình bus (Bus): Tất cả máy dùng chung một đường truyền.
+   - Hình vòng (Ring): Các máy nối thành vòng khép kín.
+
+3. Theo vai trò:
+   - Client-Server: Máy chủ cung cấp dịch vụ, máy khách sử dụng.
+   - Peer-to-Peer (P2P): Các máy bình đẳng, chia sẻ trực tiếp.
+
+III. CÁC THIẾT BỊ MẠNG
+- Router (Bộ định tuyến): Kết nối các mạng khác nhau, định tuyến gói tin.
+- Switch (Bộ chuyển mạch): Kết nối các thiết bị trong cùng mạng LAN.
+- Hub (Bộ tập trung): Khuếch đại và phân phối tín hiệu (ít dùng hiện nay).
+- Access Point (Điểm truy cập không dây): Cung cấp kết nối Wi-Fi.
+- Modem: Chuyển đổi tín hiệu số ↔ tín hiệu tương tự để truyền qua đường điện thoại.
+- NIC (Network Interface Card): Card mạng tích hợp trong máy tính.
+
+IV. GIAO THỨC MẠNG (PROTOCOLS)
+Giao thức là tập hợp các quy tắc quy định cách thức trao đổi dữ liệu giữa các thiết bị.
+
+- TCP/IP (Transmission Control Protocol/Internet Protocol): Giao thức nền tảng của Internet.
+  + IP: Định địa chỉ và định tuyến gói tin.
+  + TCP: Đảm bảo truyền tin cậy, kiểm soát luồng.
+- HTTP/HTTPS: Giao thức truyền trang web (cổng 80/443).
+- FTP: Giao thức truyền tệp (cổng 21).
+- SMTP/POP3/IMAP: Giao thức email.
+- DNS (Domain Name System): Phân giải tên miền sang địa chỉ IP.
+
+V. ĐỊA CHỈ IP
+Địa chỉ IP là số định danh duy nhất cho mỗi thiết bị trên mạng.
+
+IPv4: 32 bit, chia 4 octet, ví dụ: 192.168.1.1
+  - Địa chỉ mạng (Network Address): phần đầu.
+  - Địa chỉ host: phần cuối.
+  - Subnet Mask: Phân biệt phần mạng và phần host. Ví dụ: 255.255.255.0
+
+IPv6: 128 bit, ví dụ: 2001:0db8:85a3::8a2e:0370:7334
+
+Địa chỉ IP đặc biệt:
+  - 127.0.0.1: Loopback (máy tính tự trỏ về mình)
+  - 192.168.x.x, 10.x.x.x: Địa chỉ IP riêng (Private IP)
+
+VI. MÔ HÌNH OSI (7 TẦNG)
+7. Tầng Ứng dụng (Application) – HTTP, FTP, DNS
+6. Tầng Trình diễn (Presentation) – Mã hóa, nén dữ liệu
+5. Tầng Phiên (Session) – Quản lý phiên làm việc
+4. Tầng Vận chuyển (Transport) – TCP, UDP
+3. Tầng Mạng (Network) – IP, Router
+2. Tầng Liên kết dữ liệu (Data Link) – Switch, MAC address
+1. Tầng Vật lý (Physical) – Cáp, sóng, tín hiệu
+
+VII. INTERNET VÀ DỊCH VỤ
+- World Wide Web (WWW): Hệ thống tài liệu siêu văn bản liên kết với nhau.
+- Email: Thư điện tử, gửi/nhận qua giao thức SMTP và POP3/IMAP.
+- Cloud Computing: Điện toán đám mây, lưu trữ và xử lý trên máy chủ từ xa.
+- VPN (Virtual Private Network): Mạng riêng ảo, bảo mật kết nối qua Internet.
+- Firewall: Tường lửa, kiểm soát lưu lượng mạng vào/ra.
+
+VIII. BẢO MẬT MẠNG
+- Virus, Worm, Trojan: Phần mềm độc hại.
+- Phishing: Giả mạo để lừa lấy thông tin.
+- DDoS (Distributed Denial of Service): Tấn công từ chối dịch vụ phân tán.
+- Mã hóa SSL/TLS: Bảo mật truyền dữ liệu trên HTTPS.
+- Xác thực hai yếu tố (2FA): Tăng cường bảo mật tài khoản.

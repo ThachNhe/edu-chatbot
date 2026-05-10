@@ -3,6 +3,8 @@ import { useNavigate, useSearch } from '@tanstack/react-router'
 import { api } from '@/services/api'
 import { API_ENDPOINTS } from '@/services/endpoints'
 import type { ChatMessage, ChatConversation } from '../types/chat.types'
+import type { ExamDetail } from '@/features/exam/types/exam.type'
+import type { ExamCreateOptions } from '../components/CreateExamPanel'
 
 const buildWsUrl = (conversationId?: number): string => {
   const apiUrl = import.meta.env.VITE_API_URL
@@ -43,6 +45,7 @@ export function useChat() {
   const [activeConversationId, setActiveConversationId] = useState<number | undefined>(urlConversationId)
   const [isTyping, setIsTyping] = useState(false)
   const [wsStatus, setWsStatus] = useState<WsStatus>('connecting')
+  const [isCreatingExam, setIsCreatingExam] = useState(false)
 
   const messagesEndRef = useRef<HTMLDivElement>(null)
   const wsRef = useRef<WebSocket | null>(null)
@@ -222,15 +225,104 @@ export function useChat() {
     [connectWs, scrollToBottom, updateUrlConversationId],
   )
 
+  // ─── Create exam from file ────────────────────────────────────────────────
+
+  const difficultyLabel: Record<string, string> = {
+    easy: 'Dễ',
+    med: 'Trung bình',
+    hard: 'Khó',
+    mixed: 'Hỗn hợp',
+  }
+
+  const createExamFromFile = useCallback(
+    async (opts: ExamCreateOptions) => {
+      const userMsg: ChatMessage = {
+        id: genId(),
+        role: 'user',
+        content: `📄 Tạo đề thi từ **"${opts.files.map((f) => f.name).join('", "')}"**\n- Tên đề: ${opts.title}\n- Số câu: ${opts.questionCount}\n- Mức độ: ${difficultyLabel[opts.difficulty] ?? opts.difficulty}\n- Thời gian: ${opts.duration} phút`,
+        timestamp: new Date(),
+      }
+      setMessages((prev) => [...prev, userMsg])
+      setIsCreatingExam(true)
+      scrollToBottom()
+
+      try {
+        const formData = new FormData()
+        formData.append('file', opts.files[0])
+        formData.append('title', opts.title)
+        formData.append('question_count', String(opts.questionCount))
+        formData.append('difficulty', opts.difficulty)
+        formData.append('duration', opts.duration)
+
+        const res = await api.post<ExamDetail>(
+          API_ENDPOINTS.EXAMS.GENERATE_FROM_FILE,
+          formData,
+          { headers: { 'Content-Type': 'multipart/form-data' } },
+        )
+        const exam = res.data
+
+        const aiMsg: ChatMessage = {
+          id: genId(),
+          role: 'ai',
+          content: `✅ Đã tạo đề thi **"${exam.title}"** thành công với ${exam.questions.length} câu hỏi.`,
+          timestamp: new Date(),
+          examDetail: exam,
+        }
+        setMessages((prev) => [...prev, aiMsg])
+        scrollToBottom()
+
+        // Lưu conversation vào DB để không mất khi F5
+        try {
+          const convRes = await api.post<{ id: number; title: string; created_at: string }>(
+            API_ENDPOINTS.CONVERSATIONS.SAVE_WITH_MESSAGES,
+            {
+              title: `Tạo đề thi: ${exam.title}`,
+              messages: [
+                { role: 'user', content: userMsg.content },
+                { role: 'ai', content: aiMsg.content },
+              ],
+            },
+          )
+          const newConvId = convRes.data.id
+          activeConvIdRef.current = newConvId
+          setActiveConversationId(newConvId)
+          updateUrlConversationId(newConvId)
+          refreshConversations()
+          // Kết nối WS vào conversation mới để tiếp tục chat
+          connectWs(newConvId)
+        } catch {
+          // Không ảnh hưởng UX nếu lưu thất bại
+        }
+      } catch (err: unknown) {
+        const detail =
+          (err as { response?: { data?: { detail?: string } } })?.response?.data?.detail ??
+          'Tạo đề thi thất bại. Vui lòng thử lại.'
+        const errMsg: ChatMessage = {
+          id: genId(),
+          role: 'ai',
+          content: `❌ ${detail}`,
+          timestamp: new Date(),
+        }
+        setMessages((prev) => [...prev, errMsg])
+        scrollToBottom()
+      } finally {
+        setIsCreatingExam(false)
+      }
+    },
+    [scrollToBottom],
+  )
+
   return {
     messages,
     conversations,
     activeConversationId,
     isTyping,
+    isCreatingExam,
     wsStatus,
     messagesEndRef,
     sendMessage,
     startNewChat,
     selectConversation,
+    createExamFromFile,
   }
 }

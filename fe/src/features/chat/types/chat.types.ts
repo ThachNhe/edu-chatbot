@@ -1,8 +1,11 @@
+import type { ExamDetail } from '@/features/exam/types/exam.type'
+
 export interface ChatMessage {
   id: string
   role: 'user' | 'ai'
   content: string
   timestamp: Date
+  examDetail?: ExamDetail
 }
 
 export interface ChatConversation {

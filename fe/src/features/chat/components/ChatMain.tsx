@@ -3,17 +3,20 @@ import { ChatInput } from './ChatInput'
 import { SuggestedQuestions } from './SuggestedQuestions'
 import type { ChatMessage } from '../types/chat.types'
 import type { WsStatus } from '../hooks/useChat'
+import type { ExamCreateOptions } from './CreateExamPanel'
 import { Bot, Trash2, Settings2, Loader2, AlertTriangle } from 'lucide-react'
 
 interface ChatMainProps {
   messages: ChatMessage[]
   isTyping: boolean
-  wsStatus: WsStatus          // thêm
+  wsStatus: WsStatus
+  isCreatingExam: boolean
   messagesEndRef: React.RefObject<HTMLDivElement>
   onSend: (text: string) => void
+  onCreateExamFromFile: (opts: ExamCreateOptions) => Promise<void>
 }
 
-export function ChatMain({ messages, isTyping, wsStatus, messagesEndRef, onSend }: ChatMainProps) {
+export function ChatMain({ messages, isTyping, wsStatus, isCreatingExam, messagesEndRef, onSend, onCreateExamFromFile }: ChatMainProps) {
   const isDisconnected = wsStatus !== 'open'
 
   return (
@@ -46,9 +49,9 @@ export function ChatMain({ messages, isTyping, wsStatus, messagesEndRef, onSend 
       {/* Messages */}
       <div className="flex flex-1 flex-col gap-4 overflow-y-auto px-5 py-5 [scrollbar-width:thin] [&::-webkit-scrollbar]:w-1 [&::-webkit-scrollbar-thumb]:rounded [&::-webkit-scrollbar-thumb]:bg-[#e2e8f0]">
         {messages.map((msg) => <MessageBubble key={msg.id} message={msg} />)}
-        {isTyping && (
+        {(isTyping || isCreatingExam) && (
           <MessageBubble
-            message={{ id: 'typing', role: 'ai', content: '', timestamp: new Date() }}
+            message={{ id: isCreatingExam ? 'creating-exam' : 'typing', role: 'ai', content: '', timestamp: new Date() }}
             isTyping
           />
         )}
@@ -59,7 +62,7 @@ export function ChatMain({ messages, isTyping, wsStatus, messagesEndRef, onSend 
         <SuggestedQuestions onSelect={onSend} />
       </div>
 
-      <ChatInput onSend={onSend} disabled={isDisconnected} />
+      <ChatInput onSend={onSend} onCreateExamFromFile={onCreateExamFromFile} disabled={isDisconnected} isCreatingExam={isCreatingExam} />
     </div>
   )
 }

@@ -1,6 +1,6 @@
 from typing import List, Optional
 
-from fastapi import APIRouter, Depends, HTTPException, status
+from fastapi import APIRouter, Depends, File, Form, HTTPException, UploadFile, status
 from sqlalchemy.orm import Session
 
 
@@ -75,6 +75,108 @@ async def generate_exam(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
             detail=f"Lỗi tạo đề bằng AI: {str(e)}",
         )
+
+
+# ─── Generate from File (AI, tạo và lưu DB) ──────────────────────────────────
+
+@router.post("/generate-from-file", response_model=ExamDetail, status_code=status.HTTP_201_CREATED)
+async def generate_exam_from_file(
+    file: UploadFile = File(...),
+    title: str = Form(...),
+    question_count: int = Form(10),
+    difficulty: str = Form("mixed"),
+    duration: str = Form("45"),
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_user),
+):
+    """Upload một file tài liệu và tạo đề thi từ nội dung đó bằng AI."""
+    allowed_types = {
+        "text/plain",
+        "application/pdf",
+        "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+        "application/msword",
+    }
+    content_type = file.content_type or ""
+    filename = file.filename or "upload"
+    ext = filename.rsplit(".", 1)[-1].lower() if "." in filename else ""
+
+    if content_type not in allowed_types and ext not in ("txt", "pdf", "doc", "docx"):
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Chỉ hỗ trợ file .txt, .pdf, .docx",
+        )
+
+    if question_count < 1 or question_count > 40:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Số câu hỏi phải từ 1 đến 40",
+        )
+
+    if difficulty not in ("easy", "med", "hard", "mixed"):
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Mức độ không hợp lệ",
+        )
+
+    try:
+        file_bytes = await file.read()
+        text_content = exam_service._extract_text_from_bytes(filename, file_bytes)
+    except Exception as e:
+        raise HTTPException(
+            status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
+            detail=f"Không thể đọc nội dung file: {str(e)}",
+        )
+
+    if not text_content.strip():
+        raise HTTPException(
+            status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
+            detail="File không có nội dung văn bản",
+        )
+
+    try:
+        generated = await exam_service.generate_exam_questions_from_content(
+            content=text_content,
+            count=question_count,
+            difficulty=difficulty,
+        )
+    except Exception as e:
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=f"Lỗi AI sinh câu hỏi: {str(e)}",
+        )
+
+    # Lưu đề thi vào DB
+    exam = exam_repo.create_exam(
+        db=db,
+        title=title,
+        topic=filename,
+        duration=duration,
+        level_mix=difficulty,
+        status="draft",
+        created_by=current_user.id,
+    )
+
+    for order, q_data in enumerate(generated, start=1):
+        question = question_repo.create_question(
+            db=db,
+            content=q_data["content"],
+            level=q_data.get("level", "med"),
+            created_by=current_user.id,
+        )
+        for opt in q_data.get("options", []):
+            question_repo.create_option(
+                db=db,
+                question_id=question.id,
+                letter=opt["letter"],
+                content=opt["content"],
+                is_correct=opt.get("is_correct", False),
+            )
+        db.add(ExamQuestion(exam_id=exam.id, question_id=question.id, order_num=order))
+
+    db.commit()
+
+    exam = exam_repo.get_exam_with_questions(db, exam.id, current_user.id)
+    return _to_exam_detail(exam)
 
 
 # ─── Create ───────────────────────────────────────────────────────────────────

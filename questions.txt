@@ -1,109 +1,151 @@
-Bo cau hoi goi y de bao ve do an: EduChatbot ho tro giao vien trong giang day Tin hoc 12
+Bộ câu hỏi gợi ý để bảo vệ đồ án: EduChatbot hỗ trợ giáo viên trong giảng dạy Tin học 12
 
-1. Hoi: De tai nay giai quyet bai toan gi?
-   Tra loi: De tai giai quyet bai toan ho tro giao vien day Tin hoc 12 thong qua chatbot, tao de thi, to chuc phong thi va thong ke ket qua hoc sinh tren mot he thong web tap trung.
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+PHẦN 1 – TỔNG QUAN ĐỀ TÀI
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-2. Hoi: Doi tuong su dung cua he thong la ai?
-   Tra loi: He thong co 3 nhom chinh la admin, giao vien va hoc sinh. Admin quan ly tai khoan, giao vien su dung chatbot va tao de, hoc sinh vao phong thi de lam bai.
+1. Hỏi: Đề tài này giải quyết bài toán gì?
+   Trả lời: Đề tài giải quyết bài toán hỗ trợ giáo viên dạy Tin học 12 thông qua chatbot hỏi đáp, tạo đề thi bằng AI, tổ chức phòng thi trực tuyến và thống kê kết quả học sinh trên một hệ thống web tập trung.
 
-3. Hoi: Chuc nang chinh cua he thong la gi?
-   Tra loi: He thong co dang nhap, chatbot hoi dap Tin hoc 12, quan ly hoi thoai, tao de thi bang AI, tao phong thi, nop bai, cham diem, thong ke va quan tri nguoi dung.
+2. Hỏi: Đối tượng sử dụng của hệ thống là ai?
+   Trả lời: Hệ thống có 3 nhóm chính: Admin quản lý tài khoản giáo viên và học sinh; Giáo viên sử dụng chatbot, tạo đề thi và theo dõi kết quả; Học sinh vào phòng thi bằng mã phòng để làm bài mà không cần tài khoản đăng nhập riêng.
 
-4. Hoi: Diem noi bat cua do an nay la gi?
-   Tra loi: Diem noi bat la ket hop duoc chatbot RAG, sinh cau hoi trac nghiem bang AI, thi online va thong ke hoc tap trong cung mot he thong.
+3. Hỏi: Chức năng chính của hệ thống là gì?
+   Trả lời: Hệ thống bao gồm: đăng nhập/xác thực JWT, chatbot hỏi đáp Tin học 12 theo thời gian thực qua WebSocket, quản lý hội thoại, ngân hàng câu hỏi, tạo đề thi bằng AI hoặc từ ngân hàng, tạo phòng thi, nộp bài và chấm điểm tự động, thống kê học tập, dashboard và quản trị người dùng.
 
-5. Hoi: Vi sao em chon de tai nay?
-   Tra loi: Vi day la bai toan gan voi giao duc, co tinh ung dung thuc te va cho phep ket hop web, co so du lieu va AI trong cung mot san pham.
+4. Hỏi: Điểm nổi bật của đồ án này là gì?
+   Trả lời: Điểm nổi bật là tích hợp trong một hệ thống: chatbot dùng kỹ thuật RAG bám sát nội dung sách giáo khoa, sinh câu hỏi trắc nghiệm bằng AI, tổ chức thi trực tuyến và thống kê học tập – giúp giáo viên tiết kiệm thời gian từ soạn bài đến tổ chức kiểm tra.
 
-6. Hoi: He thong nay ho tro giao vien nhu the nao?
-   Tra loi: Giao vien co the hoi dap kien thuc Tin hoc 12, tao de nhanh hon, mo phong thi cho hoc sinh va theo doi ket qua hoc tap qua dashboard va thong ke.
+5. Hỏi: Vì sao em chọn đề tài này?
+   Trả lời: Đây là bài toán gần với thực tiễn giáo dục, có tính ứng dụng cao và cho phép kết hợp ba lĩnh vực: phát triển web full-stack, cơ sở dữ liệu quan hệ và ứng dụng AI – phù hợp để thể hiện năng lực tổng hợp trong một đồ án tốt nghiệp.
 
-7. Hoi: Chatbot lay kien thuc tu dau?
-   Tra loi: Chatbot lay noi dung tu file `data/output.txt`, sau do du lieu duoc cat thanh cac doan nho, tao embedding va luu vao FAISS de truy hoi khi nguoi dung dat cau hoi.
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+PHẦN 2 – KIẾN TRÚC VÀ CÔNG NGHỆ
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-8. Hoi: He thong su dung AI theo huong nao?
-   Tra loi: He thong su dung mo hinh OpenAI de tra loi hoi dap va sinh cau hoi trac nghiem. Khi chat, he thong ket hop RAG de lay noi dung lien quan truoc khi gui prompt cho mo hinh.
+6. Hỏi: Kiến trúc tổng thể của hệ thống là gì?
+   Trả lời: Hệ thống theo kiến trúc client-server tách biệt: Frontend viết bằng React 19 + TypeScript + Vite, Backend viết bằng FastAPI (Python), dữ liệu lưu trong PostgreSQL, AI dùng OpenAI API, vector search dùng FAISS. Tất cả được đóng gói bằng Docker và Docker Compose.
 
-9. Hoi: RAG la gi va vi sao em dung RAG?
-   Tra loi: RAG la Retrieval-Augmented Generation, tuc la truy hoi tai lieu lien quan truoc khi sinh cau tra loi. Em dung RAG de giam hallucination va giup chatbot bam sat noi dung Tin hoc THPT.
+7. Hỏi: Vì sao em chọn FastAPI cho backend?
+   Trả lời: FastAPI nhẹ, hiệu năng cao nhờ async/await, hỗ trợ tốt cả REST API lẫn WebSocket, tự động sinh tài liệu OpenAPI, và cú pháp type hint của Python giúp code dễ đọc. Đặc biệt phù hợp với chatbot cần xử lý I/O bất đồng bộ.
 
-10. Hoi: Tai sao em dung FAISS?
-    Tra loi: FAISS la vector database nhe, truy van nhanh, de tich hop va phu hop voi bai toan tim doan van ban gan nhat trong tap tai lieu khong qua lon.
+8. Hỏi: Vì sao em dùng WebSocket cho chat thay vì HTTP thông thường?
+   Trả lời: WebSocket duy trì kết nối hai chiều liên tục, cho phép server chủ động đẩy phản hồi ngay khi AI tạo xong câu trả lời mà không cần client liên tục polling. Điều này mang lại trải nghiệm chat mượt mà và giảm độ trễ so với gọi API từng lần.
 
-11. Hoi: Quy trinh build du lieu cho chatbot nhu the nao?
-    Tra loi: Dau vao la file `output.txt`, sau do he thong cat chunk voi overlap, tao embedding bang OpenAIEmbeddings, luu index vao `data/vectorstore/faiss_index`, roi runtime se load index nay de truy hoi.
+9. Hỏi: Frontend của hệ thống sử dụng công nghệ gì?
+   Trả lời: Frontend dùng React 19, TypeScript, Vite để build, TanStack Router cho điều hướng file-based, TanStack Query để quản lý server state và cache, Zustand để quản lý client state, Tailwind CSS + Shadcn UI cho giao diện, Zod + React Hook Form cho validation form.
 
-12. Hoi: Neu khong tim thay context phu hop thi sao?
-    Tra loi: He thong van cho phep mo hinh tra loi bang kien thuc chung, nhung prompt da rang buoc uu tien noi dung trong context de han che tra loi sai lech.
+10. Hỏi: Vì sao em chọn TanStack Router thay vì React Router?
+    Trả lời: TanStack Router hỗ trợ type-safety cho route params và search params, file-based routing tự động sinh route tree, tích hợp tốt với TanStack Query. Điều này giúp giảm lỗi runtime liên quan đến điều hướng và dễ mở rộng thêm route.
 
-13. Hoi: Kien truc tong the cua he thong la gi?
-    Tra loi: He thong tach thanh 2 phan chinh: frontend viet bang React + TypeScript + Vite, backend viet bang FastAPI, du lieu luu trong PostgreSQL, AI dung OpenAI va vector search dung FAISS.
+11. Hỏi: Vì sao em chọn PostgreSQL?
+    Trả lời: PostgreSQL ổn định, phổ biến, hỗ trợ quan hệ tốt và phù hợp với dữ liệu có cấu trúc rõ ràng như người dùng, đề thi, câu hỏi, phòng thi và điểm số. Ngoài ra PostgreSQL có hỗ trợ tốt với SQLAlchemy ORM và Alembic migration.
 
-14. Hoi: Vi sao em chon FastAPI cho backend?
-    Tra loi: FastAPI nhe, de tach router theo module, ho tro REST API va WebSocket tot, phu hop voi bai toan chatbot can giao tiep thoi gian thuc.
+12. Hỏi: Vì sao em dùng SQLAlchemy và Alembic?
+    Trả lời: SQLAlchemy giúp thao tác CSDL theo ORM, tránh viết SQL thuần, dễ bảo trì và có thể chuyển đổi CSDL sau này. Alembic quản lý migration tự động khi thay đổi cấu trúc bảng, giúp cập nhật schema an toàn mà không mất dữ liệu.
 
-15. Hoi: Vi sao em dung WebSocket cho chat thay vi HTTP thong thuong?
-    Tra loi: WebSocket giup giu ket noi 2 chieu, gui nhan tin nhan lien tuc, phu hop voi trai nghiem chat hon so voi viec goi API moi lan gui tin nhan.
+13. Hỏi: Hệ thống được triển khai như thế nào?
+    Trả lời: Hệ thống sử dụng Docker Compose với các service riêng biệt cho backend FastAPI, frontend React và PostgreSQL. Mỗi service có Dockerfile riêng, cấu hình qua biến môi trường trong file .env.
 
-16. Hoi: Frontend cua he thong su dung cong nghe gi?
-    Tra loi: Frontend su dung React 19, TypeScript, Vite, TanStack Router cho dieu huong, TanStack Query de goi API va cache, Zustand de quan ly state.
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+PHẦN 3 – AI VÀ RAG
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-17. Hoi: Database cua he thong gom nhung bang chinh nao?
-    Tra loi: Cac bang chinh gom users, students, conversations, messages, exams, exam_questions, exam_rooms, questions, question_options, scores va lessons.
+14. Hỏi: Chatbot lấy kiến thức từ đâu?
+    Trả lời: Chatbot lấy nội dung từ file `data/output.txt` chứa tài liệu Tin học 12. Dữ liệu được cắt thành các đoạn nhỏ (chunk_size=800, chunk_overlap=200), tạo embedding bằng OpenAIEmbeddings và lưu vào FAISS. Khi người dùng hỏi, hệ thống truy vấn các đoạn liên quan nhất để đưa vào context.
 
-18. Hoi: Em thiet ke phan quyen nhu the nao?
-    Tra loi: He thong dua vao role. Admin duoc quan ly giao vien va hoc sinh, giao vien quan ly de thi va thong ke, con hoc sinh khong can dang nhap backend ma vao phong thi bang ma phong.
+15. Hỏi: RAG là gì và vì sao em dùng RAG?
+    Trả lời: RAG (Retrieval-Augmented Generation) là kỹ thuật kết hợp truy hồi tài liệu liên quan trước khi sinh câu trả lời. Em dùng RAG để giảm hallucination, giúp chatbot bám sát nội dung sách giáo khoa Tin học THPT thay vì dựa hoàn toàn vào kiến thức nền của mô hình.
 
-19. Hoi: Co che dang nhap va bao mat cua he thong la gi?
-    Tra loi: He thong dung JWT, luu access token trong HttpOnly cookie, mat khau duoc bam bang bcrypt, va moi request se kiem tra token cung trang thai active cua tai khoan.
+16. Hỏi: Tại sao em dùng FAISS?
+    Trả lời: FAISS là thư viện vector search nhẹ, truy vấn nhanh với similarity search, dễ tích hợp và không cần hạ tầng server riêng. Phù hợp với bài toán tìm đoạn văn bản gần nhất trong tập tài liệu không quá lớn như sách giáo khoa Tin học 12.
 
-20. Hoi: Vi sao hoc sinh co the vao phong thi ma khong can tai khoan dang nhap?
-    Tra loi: Vi bai toan phong thi duoc thiet ke de don gian hoa trai nghiem. Hoc sinh vao bang ma phong va ma hoc sinh da ton tai trong he thong, tu do giao vien de to chuc kiem tra nhanh hon.
+17. Hỏi: Quy trình xây dựng dữ liệu cho chatbot như thế nào?
+    Trả lời: File `output.txt` được đọc và chia nhỏ bằng `CharacterTextSplitter` với chunk_size=800 và overlap=200. Mỗi chunk được tạo embedding qua `OpenAIEmbeddings`, khử trùng bằng SHA-1 hash, rồi lưu vào FAISS index tại `data/vectorstore/faiss_index`. Runtime load index này để truy hồi.
 
-21. Hoi: Phong thi duoc tao va quan ly nhu the nao?
-    Tra loi: Moi de thi co the tao nhieu phong thi, moi phong co access code, co the dong mo phong va dat thoi gian het han de kiem soat phien lam bai.
+18. Hỏi: chunk_size=800 và overlap=200 có ý nghĩa gì?
+    Trả lời: chunk_size=800 giới hạn mỗi đoạn văn bản khoảng 800 ký tự để vừa với cửa sổ context. chunk_overlap=200 cho phép 200 ký tự được chia sẻ giữa hai chunk liền kề, tránh mất thông tin ở ranh giới cắt – đặc biệt quan trọng với các đoạn có tính liên tục về ngữ nghĩa.
 
-22. Hoi: He thong cham diem nhu the nao?
-    Tra loi: Khi hoc sinh nop bai, backend so sanh dap an da chon voi dap an dung cua tung cau, dem so cau dung va quy doi ra thang diem 10.
+19. Hỏi: Nếu không tìm thấy context phù hợp thì sao?
+    Trả lời: Hệ thống có ngưỡng similarity score (SCORE_THRESHOLD=0.5). Nếu không có đoạn nào vượt ngưỡng, chatbot vẫn trả lời nhưng dựa vào kiến thức chung của mô hình. Prompt được thiết kế để ưu tiên context cung cấp và giới hạn phạm vi câu trả lời về Tin học THPT.
 
-23. Hoi: Phan thong ke cua he thong cho giao vien biet dieu gi?
-    Tra loi: He thong cho biet diem trung binh, ty le dat, so hoc sinh can ho tro, pho diem va bang xep hang hoc sinh theo ket qua cac bai thi.
+20. Hỏi: Hệ thống phát hiện ngôn ngữ như thế nào và dùng để làm gì?
+    Trả lời: Hệ thống dùng thư viện `lingua-language-detector` để phát hiện ngôn ngữ của câu hỏi người dùng. Kết quả dùng để điều chỉnh ngôn ngữ phản hồi phù hợp (tiếng Việt hoặc tiếng Anh), giúp chatbot linh hoạt hơn khi người dùng hỏi bằng cả hai ngôn ngữ.
 
-24. Hoi: Admin co nhung chuc nang gi?
-    Tra loi: Admin co the tao va khoa mo giao vien, quan ly hoc sinh, xem so luong hoc sinh, giao vien, de thi va gui thong tin tai khoan giao vien qua email.
+21. Hỏi: Nếu mô hình AI trả lời sai thì sao?
+    Trả lời: Em giảm rủi ro bằng cách dùng RAG giới hạn phạm vi dữ liệu, đặt prompt ràng buộc mô hình bám sát context, lưu lịch sử hội thoại để kiểm tra lại và trả về trường `is_answerable` để client biết câu trả lời có căn cứ từ tài liệu hay không. Đây vẫn là hạn chế cần tiếp tục cải thiện.
 
-25. Hoi: Email trong he thong duoc dung vao viec gi?
-    Tra loi: Email duoc dung de gui thong tin tai khoan giao vien do admin tao va ho tro quy trinh quen mat khau.
+22. Hỏi: Hệ thống sinh câu hỏi trắc nghiệm bằng AI như thế nào?
+    Trả lời: Giáo viên chọn chủ đề, số lượng câu và mức độ khó. Backend gọi OpenAI với prompt được thiết kế để sinh câu hỏi trắc nghiệm 4 lựa chọn đúng chuẩn. Câu hỏi được trả về cho giáo viên xem trước, sau đó mới lưu vào đề thi – không lưu thẳng để giáo viên có thể kiểm duyệt.
 
-26. Hoi: Vi sao em tach router theo tung feature?
-    Tra loi: Cach tach nay giup code ro nghiep vu hon, de bao tri, de test va de mo rong vi moi nhom chuc nang nhu auth, conversations, exams, admin deu doc lap tuong doi.
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+PHẦN 4 – TÍNH NĂNG VÀ NGHIỆP VỤ
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-27. Hoi: Vi sao em dung SQLAlchemy va Alembic?
-    Tra loi: SQLAlchemy giup thao tac CSDL theo ORM de de quan ly model, con Alembic giup quan ly migration khi thay doi cau truc bang du lieu.
+23. Hỏi: Cơ chế đăng nhập và bảo mật của hệ thống là gì?
+    Trả lời: Hệ thống dùng JWT, lưu access token trong HttpOnly cookie để chống XSS, mật khẩu được băm bằng bcrypt. Mỗi request kiểm tra tính hợp lệ của token và trạng thái `is_active` của tài khoản. WebSocket cũng được xác thực qua cookie trước khi thiết lập kết nối.
 
-28. Hoi: He thong co han che nao?
-    Tra loi: Hien tai chatbot phu thuoc vao chat luong du lieu dau vao va API AI, so luong tai lieu chua lon, va co mot so tinh nang chua sau nhu danh gia chat luong cau hoi sinh ra tu AI.
+24. Hỏi: Em thiết kế phân quyền như thế nào?
+    Trả lời: Hệ thống dựa vào trường `role` trong bảng users. Admin quản lý giáo viên và học sinh, giáo viên quản lý đề thi và thống kê của mình, còn học sinh không có tài khoản backend mà vào phòng thi bằng mã phòng và mã học sinh đã tồn tại trong hệ thống.
 
-29. Hoi: Neu mo hinh AI tra loi sai thi sao?
-    Tra loi: Em giam rui ro bang cach dung RAG, gioi han pham vi du lieu, dat prompt rang buoc va luu hoi thoai de de kiem tra lai. Tuy nhien em van xem day la han che can tiep tuc cai thien.
+25. Hỏi: Vì sao học sinh có thể vào phòng thi mà không cần tài khoản đăng nhập?
+    Trả lời: Để đơn giản hóa trải nghiệm cho học sinh và giảm thủ tục cho giáo viên. Học sinh chỉ cần mã phòng và mã học sinh đã được nhập sẵn vào hệ thống. Điều này phù hợp với việc kiểm tra nhanh trên lớp mà không cần học sinh phải tạo tài khoản trước.
 
-30. Hoi: Tai sao de tai nay co tinh thuc te?
-    Tra loi: Vi no giai quyet duoc nhieu cong viec giao vien thuong gap: hoi dap kien thuc, tao cau hoi, to chuc bai kiem tra, thu ket qua va xem thong ke hoc sinh.
+26. Hỏi: Phòng thi được tạo và quản lý như thế nào?
+    Trả lời: Mỗi đề thi có thể tạo nhiều phòng thi với access code ngẫu nhiên. Giáo viên có thể mở/đóng phòng, đặt thời gian hết hạn để kiểm soát phiên làm bài. Hệ thống ghi nhận thời điểm bắt đầu và kết thúc của mỗi lượt thi.
 
-31. Hoi: Neu muon mo rong he thong trong tuong lai thi em se lam gi?
-    Tra loi: Em co the mo rong them upload tai lieu tu giao dien, bo loc chat luong cau hoi AI, cham bai tu luan, thong ke nang cao va ho tro nhieu mon hoc khac ngoai Tin hoc 12.
+27. Hỏi: Hệ thống chấm điểm như thế nào?
+    Trả lời: Khi học sinh nộp bài, backend so sánh từng đáp án đã chọn với đáp án đúng trong bảng `question_options`, đếm số câu đúng và quy đổi ra thang điểm 10. Kết quả được lưu vào bảng `scores` kèm thời gian nộp.
 
-32. Hoi: Tai sao em chon PostgreSQL?
-    Tra loi: PostgreSQL on dinh, pho bien, ho tro quan he tot va phu hop voi du lieu co cau truc ro rang nhu nguoi dung, de thi, cau hoi, phong thi va diem so.
+28. Hỏi: Phần thống kê của hệ thống cho giáo viên biết điều gì?
+    Trả lời: Hệ thống cung cấp: điểm trung bình, tỷ lệ đạt/không đạt, số học sinh cần hỗ trợ, phổ điểm phân bố và bảng xếp hạng học sinh theo kết quả các bài thi. Giáo viên có thể lọc theo từng đề thi hoặc phòng thi.
 
-33. Hoi: Dashboard cua giao vien dung de lam gi?
-    Tra loi: Dashboard tom tat nhanh so bai hoc, so de thi, so hoc sinh da tham gia, so luot hoi AI trong ngay, hoat dong gan day va lich trong tuan.
+29. Hỏi: Dashboard của giáo viên dùng để làm gì?
+    Trả lời: Dashboard tóm tắt nhanh: số bài học, số đề thi đã tạo, số học sinh đã tham gia thi, số lượt hỏi AI trong ngày, hoạt động gần đây và lịch trong tuần. Giúp giáo viên nắm được tình hình học tập tổng quan chỉ trong một màn hình.
 
-34. Hoi: Tai sao em khong de nguoi dung tu dang ky giao vien?
-    Tra loi: He thong huong toi moi truong nha truong nen tai khoan giao vien duoc admin cap de dam bao kiem soat va tranh tao tai khoan tuy y.
+30. Hỏi: Admin có những chức năng gì?
+    Trả lời: Admin có thể tạo tài khoản giáo viên, kích hoạt/khóa tài khoản, quản lý danh sách học sinh, xem tổng quan số lượng giáo viên, học sinh, đề thi và gửi thông tin đăng nhập cho giáo viên qua email.
 
-35. Hoi: Neu thuc hien lai do an, em muon cai tien dieu gi nhat?
-    Tra loi: Em muon cai tien chat luong du lieu RAG, bo sung logging va test tu dong day du hon, dong thoi them co che danh gia do chinh xac cua chatbot va cau hoi do AI sinh ra.
+31. Hỏi: Email trong hệ thống được dùng vào việc gì?
+    Trả lời: Email được dùng để gửi thông tin tài khoản cho giáo viên mới do admin tạo và hỗ trợ quy trình quên mật khẩu (forgot password / reset password) thông qua link đặt lại mật khẩu.
 
-36. Hoi: Mot cau tom tat ve gia tri cua do an?
-    Tra loi: Day la mot he thong web ket hop AI va quan ly hoc tap, giup giao vien day Tin hoc 12 day nhanh hon, tao de de hon va theo doi ket qua hoc sinh tot hon.
+32. Hỏi: Activity log trong hệ thống là gì?
+    Trả lời: Hệ thống có module `activity_logs` ghi lại các hành động quan trọng của người dùng (tạo đề, mở phòng thi, v.v.) kèm timestamp. Điều này giúp admin và giáo viên theo dõi lịch sử hoạt động và hỗ trợ debug khi cần.
+
+33. Hỏi: Vì sao em không để người dùng tự đăng ký tài khoản giáo viên?
+    Trả lời: Hệ thống hướng tới môi trường nhà trường có kiểm soát, nên tài khoản giáo viên phải được admin cấp. Điều này đảm bảo chỉ giáo viên thực sự của trường mới có quyền truy cập và tránh tạo tài khoản tùy ý.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+PHẦN 5 – THIẾT KẾ VÀ KIẾN TRÚC CODE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+34. Hỏi: Vì sao em tách router theo từng feature?
+    Trả lời: Cách tổ chức theo feature (auth, conversations, exams, questions, scores, stats, admin, students, activity_logs) giúp code rõ nghiệp vụ, dễ bảo trì và dễ mở rộng vì mỗi module độc lập tương đối với nhau.
+
+35. Hỏi: Database của hệ thống gồm những bảng chính nào?
+    Trả lời: Các bảng chính gồm: `users`, `students`, `conversations`, `messages`, `exams`, `exam_questions`, `exam_rooms`, `questions`, `question_options`, `scores`, `lessons` và `activity_logs`. Các bảng liên kết qua khóa ngoại rõ ràng.
+
+36. Hỏi: Em quản lý state phía frontend như thế nào?
+    Trả lời: Em phân chia rõ ràng: TanStack Query quản lý server state (data fetch, cache, invalidation), Zustand quản lý client state (auth info, UI state). Việc tách này giúp tránh re-render không cần thiết và dễ debug từng tầng.
+
+37. Hỏi: Em xử lý validation dữ liệu như thế nào ở frontend?
+    Trả lời: Em dùng Zod để định nghĩa schema validation, kết hợp với React Hook Form để quản lý form. Zod đảm bảo type-safety và tái sử dụng được schema validation ở nhiều nơi; React Hook Form tối ưu performance bằng cách không re-render toàn bộ form.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+PHẦN 6 – HẠN CHẾ VÀ HƯỚNG PHÁT TRIỂN
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+38. Hỏi: Hệ thống có hạn chế nào?
+    Trả lời: Chatbot phụ thuộc vào chất lượng tài liệu đầu vào và API OpenAI (chi phí và giới hạn rate); dữ liệu RAG hiện chỉ từ một file; chưa có cơ chế đánh giá chất lượng câu hỏi do AI sinh ra; chưa có unit test tự động đầy đủ; và chưa hỗ trợ môn học khác ngoài Tin học 12.
+
+39. Hỏi: Nếu mô hình AI trả lời sai nội dung Tin học thì hệ thống xử lý thế nào?
+    Trả lời: Em giảm rủi ro qua RAG, prompt ràng buộc và trường `is_answerable` để cảnh báo người dùng khi câu trả lời thiếu căn cứ tài liệu. Tuy nhiên đây vẫn là hạn chế vì chưa có pipeline kiểm tra tự động độ chính xác của câu trả lời.
+
+40. Hỏi: Nếu muốn mở rộng hệ thống trong tương lai thì em sẽ làm gì?
+    Trả lời: Em có thể: (1) Cho phép upload tài liệu trực tiếp từ giao diện để mở rộng nguồn dữ liệu RAG; (2) Thêm bộ lọc đánh giá chất lượng câu hỏi AI sinh ra; (3) Hỗ trợ chấm bài tự luận; (4) Thống kê nâng cao theo thời gian; (5) Mở rộng sang nhiều môn học khác.
+
+41. Hỏi: Nếu thực hiện lại đồ án, em muốn cải tiến điều gì nhất?
+    Trả lời: Em muốn cải thiện chất lượng dữ liệu RAG bằng cách thu thập và chuẩn hóa nhiều nguồn hơn, bổ sung unit test và integration test đầy đủ, thêm cơ chế đánh giá độ chính xác của chatbot và có pipeline CI/CD để triển khai tự động.
+
+42. Hỏi: Một câu tóm tắt về giá trị của đồ án?
+    Trả lời: Đây là hệ thống web tích hợp AI và quản lý học tập, giúp giáo viên Tin học 12 hỏi đáp kiến thức nhanh hơn, tạo đề dễ hơn và theo dõi kết quả học sinh tốt hơn – tất cả trong một nền tảng duy nhất.

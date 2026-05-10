@@ -12,7 +12,7 @@ export default defineConfig({
     },
   },
   server: {
-    allowedHosts: ['expects-decreased-rivers-tall.trycloudflare.com'],
+    allowedHosts: ['scuba-sense-further-navy.trycloudflare.com'],
     proxy: {
       '/api': {
         target: 'http://backend:8765',
