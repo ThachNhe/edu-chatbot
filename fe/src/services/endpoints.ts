@@ -51,6 +51,7 @@ export const API_ENDPOINTS = {
     TOGGLE_ROOM: (examId: number, roomId: number) =>
       `/exams/${examId}/rooms/${roomId}/toggle`,
     SCORES: (examId: number) => `/exams/${examId}/scores`,
+    PUBLISH: (id: number) => `/exams/${id}/publish`,
   },
 
   // ─── Public Rooms (học sinh) ─────────────────────────────────────────────

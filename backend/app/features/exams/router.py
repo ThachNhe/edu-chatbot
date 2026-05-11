@@ -289,6 +289,26 @@ def get_exam(
     return _to_exam_detail(exam)
 
 
+# ─── Publish ──────────────────────────────────────────────────────────────────
+
+@router.patch("/{exam_id}/publish", response_model=ExamOut)
+def publish_exam(
+    exam_id: int,
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_user),
+):
+    exam = exam_repo.get_exam(db, exam_id, current_user.id)
+    if not exam:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="Đề thi không tồn tại",
+        )
+    exam.status = "published"
+    db.commit()
+    db.refresh(exam)
+    return exam
+
+
 # ─── Delete ───────────────────────────────────────────────────────────────────
 
 @router.delete("/{exam_id}", status_code=status.HTTP_204_NO_CONTENT)

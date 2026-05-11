@@ -76,4 +76,9 @@ export const examService = {
 
     getExamScores: (examId: number) =>
         apiGet<ScoreWithStudent[]>(API_ENDPOINTS.EXAMS.SCORES(examId)),
+
+    publish: (examId: number) =>
+        api
+            .patch<ExamOut>(API_ENDPOINTS.EXAMS.PUBLISH(examId))
+            .then((r) => r.data),
 }

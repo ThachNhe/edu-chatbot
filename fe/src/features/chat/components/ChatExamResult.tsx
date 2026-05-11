@@ -8,6 +8,7 @@ import {
     ChevronDown,
     ChevronUp,
     Loader2,
+    Upload,
 } from 'lucide-react'
 import { examService } from '@/features/exam/services/exam.service'
 import { CreateRoomModal } from '@/features/exam/components/CreateRoomModal'
@@ -15,6 +16,7 @@ import type { ExamDetail, RoomOut } from '@/features/exam/types/exam.type'
 
 interface ChatExamResultProps {
     exam: ExamDetail
+    onPublished?: (updated: ExamDetail) => void
 }
 
 const LEVEL_STYLES: Record<string, string> = {
@@ -24,11 +26,14 @@ const LEVEL_STYLES: Record<string, string> = {
 }
 const LEVEL_LABELS: Record<string, string> = { easy: 'Dễ', med: 'TB', hard: 'Khó' }
 
-export function ChatExamResult({ exam }: ChatExamResultProps) {
+export function ChatExamResult({ exam, onPublished }: ChatExamResultProps) {
     const [showQuestions, setShowQuestions] = useState(false)
     const [isCreatingRoom, setIsCreatingRoom] = useState(false)
     const [room, setRoom] = useState<RoomOut | null>(null)
     const [roomError, setRoomError] = useState('')
+    const [examStatus, setExamStatus] = useState(exam.status)
+    const [isPublishing, setIsPublishing] = useState(false)
+    const [publishError, setPublishError] = useState('')
 
     const handleCreateRoom = async () => {
         setIsCreatingRoom(true)
@@ -43,6 +48,20 @@ export function ChatExamResult({ exam }: ChatExamResultProps) {
         }
     }
 
+    const handlePublish = async () => {
+        setIsPublishing(true)
+        setPublishError('')
+        try {
+            const updated = await examService.publish(exam.id)
+            setExamStatus(updated.status)
+            onPublished?.({ ...exam, status: updated.status })
+        } catch {
+            setPublishError('Xuất bản thất bại. Vui lòng thử lại.')
+        } finally {
+            setIsPublishing(false)
+        }
+    }
+
     return (
         <div className="mt-1 w-full max-w-[560px] overflow-hidden rounded-xl border border-[#e2e8f0] bg-white shadow-[0_2px_8px_rgba(0,0,0,0.08)]">
             {/* Header */}
@@ -53,12 +72,12 @@ export function ChatExamResult({ exam }: ChatExamResultProps) {
                         {exam.title}
                     </h3>
                     <span
-                        className={`shrink-0 rounded-full px-2.5 py-1 text-[11px] font-bold ${exam.status === 'published'
-                                ? 'bg-green-400/30 text-green-100'
-                                : 'bg-white/20 text-white/80'
+                        className={`shrink-0 rounded-full px-2.5 py-1 text-[11px] font-bold ${examStatus === 'published'
+                            ? 'bg-green-400/30 text-green-100'
+                            : 'bg-white/20 text-white/80'
                             }`}
                     >
-                        {exam.status === 'published' ? (
+                        {examStatus === 'published' ? (
                             <><CheckCircle2 size={11} className="inline mr-1" />Đã xuất bản</>
                         ) : (
                             <><ClipboardList size={11} className="inline mr-1" />Nháp</>
@@ -110,8 +129,8 @@ export function ChatExamResult({ exam }: ChatExamResultProps) {
                                     <div
                                         key={opt.id}
                                         className={`rounded-lg px-3 py-1.5 text-[12px] leading-snug ${opt.is_correct
-                                                ? 'bg-[#d1fae5] font-semibold text-[#10b981]'
-                                                : 'bg-[#f8fafc] text-[#475569]'
+                                            ? 'bg-[#d1fae5] font-semibold text-[#10b981]'
+                                            : 'bg-[#f8fafc] text-[#475569]'
                                             }`}
                                     >
                                         <span className="mr-1.5 font-bold">{opt.letter}.</span>
@@ -128,7 +147,20 @@ export function ChatExamResult({ exam }: ChatExamResultProps) {
             )}
 
             {/* Actions */}
-            <div className="flex items-center gap-3 border-t border-[#f1f5f9] bg-[#f8fafc] px-5 py-3">
+            <div className="flex flex-wrap items-center gap-3 border-t border-[#f1f5f9] bg-[#f8fafc] px-5 py-3">
+                {examStatus === 'draft' && (
+                    <button
+                        onClick={handlePublish}
+                        disabled={isPublishing}
+                        className="flex items-center gap-1.5 rounded-[9px] bg-[#10b981] px-4 py-2 text-[12.5px] font-bold text-white transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50"
+                    >
+                        {isPublishing ? (
+                            <><Loader2 size={13} className="animate-spin" />Đang xuất bản...</>
+                        ) : (
+                            <><Upload size={13} />Xuất bản đề thi</>
+                        )}
+                    </button>
+                )}
                 <button
                     onClick={handleCreateRoom}
                     disabled={isCreatingRoom}
@@ -142,6 +174,9 @@ export function ChatExamResult({ exam }: ChatExamResultProps) {
                 </button>
                 {roomError && (
                     <span className="text-[12px] text-red-500">{roomError}</span>
+                )}
+                {publishError && (
+                    <span className="text-[12px] text-red-500">{publishError}</span>
                 )}
             </div>
 
