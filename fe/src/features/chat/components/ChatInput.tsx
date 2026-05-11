@@ -141,16 +141,18 @@ export function ChatInput({ onSend, onCreateExamFromFile, disabled, isCreatingEx
   const isInputDisabled = disabled || isCreatingExam
 
   return (
-    <div className="border-t border-[#e2e8f0] bg-white px-5 pb-4 pt-3.5">
-      {/* Exam creation panel */}
+    <div className="relative border-t border-[#e2e8f0] bg-white px-5 pb-4 pt-3.5">
+      {/* Exam creation panel - floats above input */}
       {showExamPanel && (
-        <CreateExamPanel
-          attachedFiles={attachedFiles}
-          onSubmit={handleExamSubmit}
-          onCancel={handleExamCancel}
-          onFilesChange={setAttachedFiles}
-          isLoading={isCreatingExam ?? false}
-        />
+        <div className="absolute bottom-full left-0 right-0 z-20 max-h-[calc(100vh-160px)] overflow-y-auto shadow-[0_-4px_20px_rgba(0,0,0,0.08)]">
+          <CreateExamPanel
+            attachedFiles={attachedFiles}
+            onSubmit={handleExamSubmit}
+            onCancel={handleExamCancel}
+            onFilesChange={setAttachedFiles}
+            isLoading={isCreatingExam ?? false}
+          />
+        </div>
       )}
 
       {/* Slash command suggestions */}
