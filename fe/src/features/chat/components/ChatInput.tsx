@@ -144,7 +144,7 @@ export function ChatInput({ onSend, onCreateExamFromFile, disabled, isCreatingEx
     <div className="relative border-t border-[#e2e8f0] bg-white px-5 pb-4 pt-3.5">
       {/* Exam creation panel - floats above input */}
       {showExamPanel && (
-        <div className="absolute bottom-full left-0 right-0 z-20 max-h-[calc(100vh-160px)] overflow-y-auto shadow-[0_-4px_20px_rgba(0,0,0,0.08)]">
+        <div className="absolute bottom-full right-4 z-20 max-h-[min(520px,calc(100vh-160px))] w-[calc(100%-2rem)] max-w-[520px] overflow-y-auto shadow-[0_-4px_20px_rgba(0,0,0,0.08)] sm:right-5 sm:w-[calc(100%-2.5rem)]">
           <CreateExamPanel
             attachedFiles={attachedFiles}
             onSubmit={handleExamSubmit}
